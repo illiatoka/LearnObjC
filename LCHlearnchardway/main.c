@@ -8,8 +8,22 @@
 
 #include <stdio.h>
 
+// Macros that prints size of variable
+// TODO: define macro here
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    
+    // Define variables with specific types
+    char a;
+    int b;
+    float c;
+    double d;
+    
+    // TODO: Replace this with macro
+    printf("Size of variable a (type: char) = %lu\n", sizeof(a));
+    printf("Size of variable b (type: int) = %lu\n", sizeof(b));
+    printf("Size of variable c (type: float) = %lu\n", sizeof(c));
+    printf("Size of variable d (type: double) = %lu\n", sizeof(d));
+    
     return 0;
 }
