@@ -1,6 +1,3 @@
-# Exclude Xcode folder
-LCHlearnchardway.xcodeproj/
-
 # Compiled Object files
 *.slo
 *.lo
