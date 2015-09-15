@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A69BA6D31BA7553400C548A5 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A69BA6D21BA7553400C548A5 /* main.c */; };
+		A624AD401BA88412001371AB /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A624AD3E1BA88412001371AB /* main.c */; };
+		A69BFA0B1BA8ABDB00CF067E /* LCHDataTypesTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A69BFA0A1BA8ABDB00CF067E /* LCHDataTypesTests.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +24,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A624AD3E1BA88412001371AB /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A624AD481BA8A8B9001371AB /* LCHDataTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHDataTypes.h; sourceTree = "<group>"; };
 		A69BA6CF1BA7553400C548A5 /* LCHlearnchardway */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHlearnchardway; sourceTree = BUILT_PRODUCTS_DIR; };
-		A69BA6D21BA7553400C548A5 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A69BFA0A1BA8ABDB00CF067E /* LCHDataTypesTests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHDataTypesTests.c; sourceTree = "<group>"; };
+		A69BFA0C1BA8AC2F00CF067E /* LCHDataTypesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHDataTypesTests.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,11 +42,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A624AD3D1BA88412001371AB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A624AD471BA8A859001371AB /* LCHDataTypes */,
+				A624AD3E1BA88412001371AB /* main.c */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A624AD3F1BA88412001371AB /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A624AD491BA8A8C2001371AB /* LCHDataTypesTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A624AD471BA8A859001371AB /* LCHDataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				A624AD481BA8A8B9001371AB /* LCHDataTypes.h */,
+			);
+			path = LCHDataTypes;
+			sourceTree = "<group>";
+		};
+		A624AD491BA8A8C2001371AB /* LCHDataTypesTests */ = {
+			isa = PBXGroup;
+			children = (
+				A69BFA0C1BA8AC2F00CF067E /* LCHDataTypesTests.h */,
+				A69BFA0A1BA8ABDB00CF067E /* LCHDataTypesTests.c */,
+			);
+			path = LCHDataTypesTests;
+			sourceTree = "<group>";
+		};
 		A69BA6C61BA7553400C548A5 = {
 			isa = PBXGroup;
 			children = (
-				A69BA6D11BA7553400C548A5 /* LCHlearnchardway */,
 				A69BA6D01BA7553400C548A5 /* Products */,
+				A624AD3D1BA88412001371AB /* Sources */,
+				A624AD3F1BA88412001371AB /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,14 +91,6 @@
 				A69BA6CF1BA7553400C548A5 /* LCHlearnchardway */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A69BA6D11BA7553400C548A5 /* LCHlearnchardway */ = {
-			isa = PBXGroup;
-			children = (
-				A69BA6D21BA7553400C548A5 /* main.c */,
-			);
-			path = LCHlearnchardway;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69BA6D31BA7553400C548A5 /* main.c in Sources */,
+				A624AD401BA88412001371AB /* main.c in Sources */,
+				A69BFA0B1BA8ABDB00CF067E /* LCHDataTypesTests.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
