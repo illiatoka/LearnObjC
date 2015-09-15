@@ -8,22 +8,17 @@
 
 #include <stdio.h>
 
-// Macros that prints size of variable
-// TODO: define macro here
+// Macros that prints size of data type
+#define LCHSizeofType(type) \
+    printf("Size of variable " #type " (type: " #type ") = %lu\n", sizeof(type))
 
 int main(int argc, const char * argv[]) {
     
-    // Define variables with specific types
-    char a;
-    int b;
-    float c;
-    double d;
-    
-    // TODO: Replace this with macro
-    printf("Size of variable a (type: char) = %lu\n", sizeof(a));
-    printf("Size of variable b (type: int) = %lu\n", sizeof(b));
-    printf("Size of variable c (type: float) = %lu\n", sizeof(c));
-    printf("Size of variable d (type: double) = %lu\n", sizeof(d));
+    // Print data type using macro
+    LCHSizeofType(char);
+    LCHSizeofType(int);
+    LCHSizeofType(float);
+    LCHSizeofType(double);
     
     return 0;
 }
