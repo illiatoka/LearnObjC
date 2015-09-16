@@ -1,19 +1,16 @@
-//
-//  main.c
-//  LCHlearnchardway
-//
-//  Created by ILYA Toka on 9/14/15.
-//  Copyright (c) 2015 ILYA Toka. All rights reserved.
-//
-
 #include <stdio.h>
 
 #include "LCHDataTypesTests.h"
+#include "LCHCheckValueAndPrintTests.h"
 
 int main(int argc, const char * argv[]) {
     
-    //Run function to print sizeof data types
-    PrintSizeofDataType();
+    // Test macro for print sizeof data types
+    LCHPrintSizeofDataTypeTests();
+    
+    // Test function for print specific strings depends on value
+    LCHCheckValueAndPrintTests();
     
     return 0;
+    
 }
