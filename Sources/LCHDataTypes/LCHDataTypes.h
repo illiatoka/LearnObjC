@@ -3,8 +3,7 @@
 
 #include <stdio.h>
 
-// Macro for print size of data type
-#define LCHSizeofValue(value) \
-printf("Size of data with type: " #value " = %lu\n", sizeof(value))
+// This macro prints sizeof data type
+#define LCHPrintSizeofData(type) printf("Size of data with type: " #type " = %lu\n", sizeof(type))
 
 #endif

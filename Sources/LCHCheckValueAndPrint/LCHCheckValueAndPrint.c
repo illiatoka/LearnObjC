@@ -1,25 +1,29 @@
 #include <stdio.h>
 
-// Print string depends on input value
-int LCHCheckValueAndPrint(int value) {
+#include "LCHCheckValueAndPrint.h"
+
+LCHParentType LCHCheckParentType(int value) {
+    const int kLCHMotherValue = 3;
+    const int kLCHFatherValue = 5;
     
-    // Local variable definition
-    int result = 0;
+    LCHParentType result = kLCHParentTypeUndefined;
     
-    // Print specific string depends on value
-    if (value % 15 == 0) {
-        result = 15;
-        printf("Mother and Father (result = %d)\n", result);
-    } else if (value % 5 == 0) {
-        result = 5;
-        printf("Father (result = %d)\n", result);
-    } else if (value % 3 == 0) {
-        result = 3;
-        printf("Mother (result = %d)\n", result);
-    } else {
-        result = 0;
+    if (0 == value % kLCHMotherValue && 0 != value) {
+        result = kLCHParentTypeMother;
+        printf("Mother");
+    }
+    
+    if (0 == value % kLCHFatherValue && 0 != value) {
+        result = (kLCHParentTypeMother == result
+                  ? kLCHParentTypeMotherFather
+                  : kLCHParentTypeFather);
+
+        printf("Father");
+    }
+    
+    if (kLCHParentTypeUndefined != result) {
+        printf("\n");
     }
     
     return result;
-    
 }
