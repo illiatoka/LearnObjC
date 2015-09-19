@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A63D36951BA9846500A68CF9 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A63D36941BA9846500A68CF9 /* main.c */; };
-		A67A17621BA98A6F00ECEF67 /* LCHDataTypesTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A67A17601BA98A6F00ECEF67 /* LCHDataTypesTests.c */; };
-		A67A17701BA99D7300ECEF67 /* LCHCheckValueAndPrintTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A67A176E1BA99D7300ECEF67 /* LCHCheckValueAndPrintTests.c */; };
-		A67A17721BA9A26000ECEF67 /* LCHCheckValueAndPrint.c in Sources */ = {isa = PBXBuildFile; fileRef = A67A17691BA99BDB00ECEF67 /* LCHCheckValueAndPrint.c */; };
+		A65AC45C1BAD8EE500244B08 /* LCHPerformParentType.c in Sources */ = {isa = PBXBuildFile; fileRef = A65AC4521BAD8EE500244B08 /* LCHPerformParentType.c */; settings = {ASSET_TAGS = (); }; };
+		A65AC45D1BAD8EE500244B08 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A65AC4541BAD8EE500244B08 /* main.c */; settings = {ASSET_TAGS = (); }; };
+		A65AC45E1BAD8EE500244B08 /* LCHDataTypeTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A65AC4571BAD8EE500244B08 /* LCHDataTypeTests.c */; settings = {ASSET_TAGS = (); }; };
+		A65AC45F1BAD8EE500244B08 /* LCHPerformParentTypeTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A65AC45A1BAD8EE500244B08 /* LCHPerformParentTypeTests.c */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,14 +27,14 @@
 
 /* Begin PBXFileReference section */
 		A63D36891BA9809E00A68CF9 /* LCHLearnchardway */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHLearnchardway; sourceTree = BUILT_PRODUCTS_DIR; };
-		A63D36941BA9846500A68CF9 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		A67A17601BA98A6F00ECEF67 /* LCHDataTypesTests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHDataTypesTests.c; sourceTree = "<group>"; };
-		A67A17611BA98A6F00ECEF67 /* LCHDataTypesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHDataTypesTests.h; sourceTree = "<group>"; };
-		A67A17631BA98AF100ECEF67 /* LCHDataTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHDataTypes.h; sourceTree = "<group>"; };
-		A67A17651BA98DD100ECEF67 /* LCHCheckValueAndPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHCheckValueAndPrint.h; sourceTree = "<group>"; };
-		A67A17691BA99BDB00ECEF67 /* LCHCheckValueAndPrint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHCheckValueAndPrint.c; sourceTree = "<group>"; };
-		A67A176E1BA99D7300ECEF67 /* LCHCheckValueAndPrintTests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHCheckValueAndPrintTests.c; sourceTree = "<group>"; };
-		A67A176F1BA99D7300ECEF67 /* LCHCheckValueAndPrintTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHCheckValueAndPrintTests.h; sourceTree = "<group>"; };
+		A65AC4501BAD8EE500244B08 /* LCHDataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHDataType.h; sourceTree = "<group>"; };
+		A65AC4521BAD8EE500244B08 /* LCHPerformParentType.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHPerformParentType.c; sourceTree = "<group>"; };
+		A65AC4531BAD8EE500244B08 /* LCHPerformParentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPerformParentType.h; sourceTree = "<group>"; };
+		A65AC4541BAD8EE500244B08 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A65AC4571BAD8EE500244B08 /* LCHDataTypeTests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHDataTypeTests.c; sourceTree = "<group>"; };
+		A65AC4581BAD8EE500244B08 /* LCHDataTypeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHDataTypeTests.h; sourceTree = "<group>"; };
+		A65AC45A1BAD8EE500244B08 /* LCHPerformParentTypeTests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHPerformParentTypeTests.c; sourceTree = "<group>"; };
+		A65AC45B1BAD8EE500244B08 /* LCHPerformParentTypeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPerformParentTypeTests.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +52,8 @@
 			isa = PBXGroup;
 			children = (
 				A63D368A1BA9809E00A68CF9 /* Products */,
-				A63D36931BA983D900A68CF9 /* Sources */,
-				A67A175F1BA98A3300ECEF67 /* Tests */,
+				A65AC44E1BAD8EE500244B08 /* Sources */,
+				A65AC4551BAD8EE500244B08 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,42 +65,58 @@
 			path = Products;
 			sourceTree = "<group>";
 		};
-		A63D36931BA983D900A68CF9 /* Sources */ = {
+		A65AC44E1BAD8EE500244B08 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				A67A17641BA98C8F00ECEF67 /* LCHCheckValueAndPrint */,
-				A67A17581BA9889E00ECEF67 /* LCHDataTypes */,
-				A63D36941BA9846500A68CF9 /* main.c */,
+				A65AC44F1BAD8EE500244B08 /* LCHDataType */,
+				A65AC4511BAD8EE500244B08 /* LCHPerformParentType */,
+				A65AC4541BAD8EE500244B08 /* main.c */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		A67A17581BA9889E00ECEF67 /* LCHDataTypes */ = {
+		A65AC44F1BAD8EE500244B08 /* LCHDataType */ = {
 			isa = PBXGroup;
 			children = (
-				A67A17631BA98AF100ECEF67 /* LCHDataTypes.h */,
+				A65AC4501BAD8EE500244B08 /* LCHDataType.h */,
 			);
-			path = LCHDataTypes;
+			path = LCHDataType;
 			sourceTree = "<group>";
 		};
-		A67A175F1BA98A3300ECEF67 /* Tests */ = {
+		A65AC4511BAD8EE500244B08 /* LCHPerformParentType */ = {
 			isa = PBXGroup;
 			children = (
-				A67A176F1BA99D7300ECEF67 /* LCHCheckValueAndPrintTests.h */,
-				A67A176E1BA99D7300ECEF67 /* LCHCheckValueAndPrintTests.c */,
-				A67A17611BA98A6F00ECEF67 /* LCHDataTypesTests.h */,
-				A67A17601BA98A6F00ECEF67 /* LCHDataTypesTests.c */,
+				A65AC4531BAD8EE500244B08 /* LCHPerformParentType.h */,
+				A65AC4521BAD8EE500244B08 /* LCHPerformParentType.c */,
+			);
+			path = LCHPerformParentType;
+			sourceTree = "<group>";
+		};
+		A65AC4551BAD8EE500244B08 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A65AC4561BAD8EE500244B08 /* LCHDataTypeTests */,
+				A65AC4591BAD8EE500244B08 /* LCHPerformParentTypeTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		A67A17641BA98C8F00ECEF67 /* LCHCheckValueAndPrint */ = {
+		A65AC4561BAD8EE500244B08 /* LCHDataTypeTests */ = {
 			isa = PBXGroup;
 			children = (
-				A67A17651BA98DD100ECEF67 /* LCHCheckValueAndPrint.h */,
-				A67A17691BA99BDB00ECEF67 /* LCHCheckValueAndPrint.c */,
+				A65AC4581BAD8EE500244B08 /* LCHDataTypeTests.h */,
+				A65AC4571BAD8EE500244B08 /* LCHDataTypeTests.c */,
 			);
-			path = LCHCheckValueAndPrint;
+			path = LCHDataTypeTests;
+			sourceTree = "<group>";
+		};
+		A65AC4591BAD8EE500244B08 /* LCHPerformParentTypeTests */ = {
+			isa = PBXGroup;
+			children = (
+				A65AC45B1BAD8EE500244B08 /* LCHPerformParentTypeTests.h */,
+				A65AC45A1BAD8EE500244B08 /* LCHPerformParentTypeTests.c */,
+			);
+			path = LCHPerformParentTypeTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,10 +175,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A63D36951BA9846500A68CF9 /* main.c in Sources */,
-				A67A17701BA99D7300ECEF67 /* LCHCheckValueAndPrintTests.c in Sources */,
-				A67A17721BA9A26000ECEF67 /* LCHCheckValueAndPrint.c in Sources */,
-				A67A17621BA98A6F00ECEF67 /* LCHDataTypesTests.c in Sources */,
+				A65AC45E1BAD8EE500244B08 /* LCHDataTypeTests.c in Sources */,
+				A65AC45F1BAD8EE500244B08 /* LCHPerformParentTypeTests.c in Sources */,
+				A65AC45D1BAD8EE500244B08 /* main.c in Sources */,
+				A65AC45C1BAD8EE500244B08 /* LCHPerformParentType.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

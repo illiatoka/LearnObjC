@@ -1,14 +1,11 @@
 #include <stdio.h>
 
-#include "LCHDataTypesTests.h"
-#include "LCHCheckValueAndPrintTests.h"
+#include "LCHDataTypeTests.h"
+#include "LCHPerformParentTypeTests.h"
 
 int main(int argc, const char * argv[]) {
-    LCHPrintSizeofDataTests();
-    LCHCheckParentTypeMother();
-    LCHCheckParentTypeFather();
-    LCHCheckParentTypeMotherFather();
-    LCHCheckParentTypeTests();
+    LCHPrintSizeOfDataTypeTests();
+    LCHPerformParentTypeTests();
     
     return 0;
 }
