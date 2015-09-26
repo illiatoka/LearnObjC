@@ -1,5 +1,7 @@
-#ifndef LCHDataValue_h
-#define LCHDataValue_h
+#ifndef LCHPrintValueOfData_h
+#define LCHPrintValueOfData_h
+
+#include <stdio.h>
 
 #pragma mark -
 #pragma mark Public Declarations

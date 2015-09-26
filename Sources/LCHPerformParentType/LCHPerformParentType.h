@@ -11,6 +11,7 @@ typedef enum {
     kLCHParentTypeMotherFather
 } LCHParentType;
 
-extern LCHParentType LCHPerformParentType(int value);
+extern
+LCHParentType LCHPerformParentType(int value);
 
 #endif

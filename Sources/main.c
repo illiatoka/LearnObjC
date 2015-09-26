@@ -2,12 +2,15 @@
 
 #include "LCHDataTypeTests.h"
 #include "LCHPerformParentTypeTests.h"
-#include "LCHDataValueTests.h"
+#include "LCHPrintValueOfDataTests.h"
+#include "LCHPrintBytesOfValueTests.h"
 
 int main(int argc, const char * argv[]) {
-    LCHPrintSizeOfDataTypeTests();
-    LCHPerformParentTypeTests();
-    LCHDataValueTests();
+    // LCHPrintSizeOfDataTypeTests();
+    // LCHPerformParentTypeTests();
+    // LCHPrintValueOfDataTests();
+    
+    LCHPrintBytesOfValueTests();
     
     return 0;
 }
