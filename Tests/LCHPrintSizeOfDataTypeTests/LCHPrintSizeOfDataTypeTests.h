@@ -1,5 +1,5 @@
-#ifndef LCHDataTypeTests_h
-#define LCHDataTypeTests_h
+#ifndef LCHPrintSizeOfDataTypeTests_h
+#define LCHPrintSizeOfDataTypeTests_h
 
 #include <stdio.h>
 

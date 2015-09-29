@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "LCHDataTypeTests.h"
+#include "LCHPrintSizeOfDataTypeTests.h"
 #include "LCHPerformParentTypeTests.h"
 #include "LCHPrintValueOfDataTests.h"
 #include "LCHPrintBytesOfValueTests.h"
@@ -11,8 +11,8 @@ int main(int argc, const char * argv[]) {
     // LCHPerformParentTypeTests();
     // LCHPrintValueOfDataTests();
     
-    LCHPrintBytesOfValueTests();
     LCHPerfomStructuresTests();
+    LCHPrintBytesOfValueTests();
     
     return 0;
 }

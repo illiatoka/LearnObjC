@@ -1,5 +1,5 @@
-#ifndef LCHlearnchardway_LCHDataType_h
-#define LCHlearnchardway_LCHDataType_h
+#ifndef LCHPrintSizeOfDataType_h
+#define LCHPrintSizeOfDataType_h
 
 #pragma mark -
 #pragma mark Public Declarations

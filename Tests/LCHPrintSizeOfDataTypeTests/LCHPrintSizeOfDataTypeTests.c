@@ -1,5 +1,5 @@
-#include "LCHDataTypeTests.h"
-#include "LCHDataType.h"
+#include "LCHPrintSizeOfDataTypeTests.h"
+#include "LCHPrintSizeOfDataType.h"
 
 #pragma mark -
 #pragma Public Implementatios
