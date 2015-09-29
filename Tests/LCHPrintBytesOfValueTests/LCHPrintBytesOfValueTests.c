@@ -13,6 +13,9 @@ void LCHPrintBytesOfShortValue(void);
 static
 void LCHPrintBytesOfIntValue(void);
 
+static
+LCHEndianType LCHDetectEndianType(void);
+
 #pragma mark -
 #pragma mark Public Implementations
 
@@ -25,26 +28,55 @@ void LCHPrintBytesOfValueTests(void) {
 #pragma mark -
 #pragma mark Private Implementations
 
+// Detect endian type
+LCHEndianType LCHDetectEndianType(void) {
+    LCHEndianType endianType = 0;
+    kLCHEndianFlag endianFlag;
+    endianFlag.data = 1;
+    
+    if (1 == endianFlag.isLittleEndian) {
+        endianType = kLCHLittleEndian;
+    } else if (1 == endianFlag.isBigEndian) {
+        endianType = kLCHBigEndian;
+    }
+    
+    return endianType;
+}
+
 // Perform test with 'char'
 // Function should print data with size equal to 1 byte
 void LCHPrintBytesOfCharValue(void) {
     char value = 'A';
     void *valuePointer = &value;
+    size_t sizeOfValue = sizeof(value);
+    LCHEndianType endianType = 0;
+    LCHEndianType endianTypeFlag = LCHDetectEndianType();
     
-    unsigned long sizeOfValue = sizeof(value);
+    if (endianTypeFlag == kLCHLittleEndian) {
+        endianType = kLCHLittleEndian;
+    } else if (endianTypeFlag == kLCHBigEndian) {
+        endianType = kLCHBigEndian;
+    }
     
-    LCHPrintBytesOfValue(valuePointer, sizeOfValue);
+    LCHGetBitsOfValue(valuePointer, sizeOfValue, endianType);
 }
 
 // Perform test with 'short'
 // Function should print data with size equal to 2 bytes
 void LCHPrintBytesOfShortValue(void) {
-    short value = 347;
+    short value = 1;
     void *valuePointer = &value;
+    size_t sizeOfValue = sizeof(value);
+    LCHEndianType endianType = 0;
+    LCHEndianType endianTypeFlag = LCHDetectEndianType();
     
-    unsigned long sizeOfValue = sizeof(value);
+    if (endianTypeFlag == kLCHLittleEndian) {
+        endianType = kLCHLittleEndian;
+    } else if (endianTypeFlag == kLCHBigEndian) {
+        endianType = kLCHBigEndian;
+    }
     
-    LCHPrintBytesOfValue(valuePointer, sizeOfValue);
+    LCHGetBitsOfValue(valuePointer, sizeOfValue, endianType);
 }
 
 // Perform test with 'int'
@@ -52,8 +84,15 @@ void LCHPrintBytesOfShortValue(void) {
 void LCHPrintBytesOfIntValue(void) {
     int value = 94783743;
     void *valuePointer = &value;
+    size_t sizeOfValue = sizeof(value);
+    LCHEndianType endianType = 0;
+    LCHEndianType endianTypeFlag = LCHDetectEndianType();
     
-    unsigned long sizeOfValue = sizeof(value);
+    if (endianTypeFlag == kLCHLittleEndian) {
+        endianType = kLCHLittleEndian;
+    } else if (endianTypeFlag == kLCHBigEndian) {
+        endianType = kLCHBigEndian;
+    }
     
-    LCHPrintBytesOfValue(valuePointer, sizeOfValue);
+    LCHGetBitsOfValue(valuePointer, sizeOfValue, endianType);
 }
