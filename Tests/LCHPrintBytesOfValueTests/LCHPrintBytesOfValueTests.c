@@ -14,7 +14,7 @@ static
 void LCHPrintBytesOfIntValue(void);
 
 static
-LCHEndianType LCHDetectEndianType(void);
+LCHEndianType LCHCurrentEndianType(void);
 
 #pragma mark -
 #pragma mark Public Implementations
@@ -29,9 +29,9 @@ void LCHPrintBytesOfValueTests(void) {
 #pragma mark Private Implementations
 
 // Detect endian type
-LCHEndianType LCHDetectEndianType(void) {
+LCHEndianType LCHCurrentEndianType(void) {
     LCHEndianType endianType = 0;
-    kLCHEndianFlag endianFlag;
+    LCHEndianFlag endianFlag;
     endianFlag.data = 1;
     
     if (1 == endianFlag.isLittleEndian) {
@@ -50,7 +50,7 @@ void LCHPrintBytesOfCharValue(void) {
     void *valuePointer = &value;
     size_t sizeOfValue = sizeof(value);
     LCHEndianType endianType = 0;
-    LCHEndianType endianTypeFlag = LCHDetectEndianType();
+    LCHEndianType endianTypeFlag = LCHCurrentEndianType();
     
     if (endianTypeFlag == kLCHLittleEndian) {
         endianType = kLCHLittleEndian;
@@ -58,7 +58,7 @@ void LCHPrintBytesOfCharValue(void) {
         endianType = kLCHBigEndian;
     }
     
-    LCHGetBitsOfValue(valuePointer, sizeOfValue, endianType);
+    LCHPrintBitsOfValue(valuePointer, sizeOfValue, endianType);
 }
 
 // Perform test with 'short'
@@ -68,7 +68,7 @@ void LCHPrintBytesOfShortValue(void) {
     void *valuePointer = &value;
     size_t sizeOfValue = sizeof(value);
     LCHEndianType endianType = 0;
-    LCHEndianType endianTypeFlag = LCHDetectEndianType();
+    LCHEndianType endianTypeFlag = LCHCurrentEndianType();
     
     if (endianTypeFlag == kLCHLittleEndian) {
         endianType = kLCHLittleEndian;
@@ -76,7 +76,7 @@ void LCHPrintBytesOfShortValue(void) {
         endianType = kLCHBigEndian;
     }
     
-    LCHGetBitsOfValue(valuePointer, sizeOfValue, endianType);
+    LCHPrintBitsOfValue(valuePointer, sizeOfValue, endianType);
 }
 
 // Perform test with 'int'
@@ -86,7 +86,7 @@ void LCHPrintBytesOfIntValue(void) {
     void *valuePointer = &value;
     size_t sizeOfValue = sizeof(value);
     LCHEndianType endianType = 0;
-    LCHEndianType endianTypeFlag = LCHDetectEndianType();
+    LCHEndianType endianTypeFlag = LCHCurrentEndianType();
     
     if (endianTypeFlag == kLCHLittleEndian) {
         endianType = kLCHLittleEndian;
@@ -94,5 +94,5 @@ void LCHPrintBytesOfIntValue(void) {
         endianType = kLCHBigEndian;
     }
     
-    LCHGetBitsOfValue(valuePointer, sizeOfValue, endianType);
+    LCHPrintBitsOfValue(valuePointer, sizeOfValue, endianType);
 }

@@ -35,6 +35,7 @@
 		A602CCF31BB70EC6004946B3 /* LCHPrintValueOfData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPrintValueOfData.h; sourceTree = "<group>"; };
 		A602CCF91BB73013004946B3 /* LCHPerformStructuresTests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHPerformStructuresTests.c; sourceTree = "<group>"; };
 		A602CCFA1BB73013004946B3 /* LCHPerformStructuresTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPerformStructuresTests.h; sourceTree = "<group>"; };
+		A636F9171BBC0AE000FDE577 /* LCHPerformStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPerformStructures.h; sourceTree = "<group>"; };
 		A63D36891BA9809E00A68CF9 /* LCHLearnchardway */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHLearnchardway; sourceTree = BUILT_PRODUCTS_DIR; };
 		A642C8A71BB43BDE00013A88 /* LCHPrintBytesOfValue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHPrintBytesOfValue.c; sourceTree = "<group>"; };
 		A642C8A81BB43BDE00013A88 /* LCHPrintBytesOfValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPrintBytesOfValue.h; sourceTree = "<group>"; };
@@ -87,6 +88,14 @@
 			path = LCHPerformStructuresTests;
 			sourceTree = "<group>";
 		};
+		A636F9151BBC0A8800FDE577 /* LCHPerformStructures */ = {
+			isa = PBXGroup;
+			children = (
+				A636F9171BBC0AE000FDE577 /* LCHPerformStructures.h */,
+			);
+			path = LCHPerformStructures;
+			sourceTree = "<group>";
+		};
 		A63D36801BA9809E00A68CF9 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +138,7 @@
 				A65AC4511BAD8EE500244B08 /* LCHPerformParentType */,
 				A602CCF21BB70E97004946B3 /* LCHPrintValueOfData */,
 				A642C8A61BB43B8A00013A88 /* LCHPrintBytesOfValue */,
+				A636F9151BBC0A8800FDE577 /* LCHPerformStructures */,
 				A65AC4541BAD8EE500244B08 /* main.c */,
 			);
 			path = Sources;

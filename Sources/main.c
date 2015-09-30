@@ -10,9 +10,8 @@ int main(int argc, const char * argv[]) {
     // LCHPrintSizeOfDataTypeTests();
     // LCHPerformParentTypeTests();
     // LCHPrintValueOfDataTests();
-    
-    LCHPerfomStructuresTests();
-    LCHPrintBytesOfValueTests();
+    // LCHPrintBytesOfValueTests();
+    // LCHPerfomStructuresTests();
     
     return 0;
 }
