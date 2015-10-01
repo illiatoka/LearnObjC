@@ -137,8 +137,8 @@
 				A6FCD3E51BBAA15000454D21 /* LCHPrintSizeOfDataType */,
 				A65AC4511BAD8EE500244B08 /* LCHPerformParentType */,
 				A602CCF21BB70E97004946B3 /* LCHPrintValueOfData */,
-				A642C8A61BB43B8A00013A88 /* LCHPrintBytesOfValue */,
 				A636F9151BBC0A8800FDE577 /* LCHPerformStructures */,
+				A642C8A61BB43B8A00013A88 /* LCHPrintBytesOfValue */,
 				A65AC4541BAD8EE500244B08 /* main.c */,
 			);
 			path = Sources;
@@ -159,8 +159,8 @@
 				A6FCD3E71BBAA1FF00454D21 /* LCHPrintSizeOfDataTypeTests */,
 				A65AC4591BAD8EE500244B08 /* LCHPerformParentTypeTests */,
 				A602CCEB1BB70C65004946B3 /* LCHPrintValueOfDataTests */,
-				A642C8AA1BB6F5E600013A88 /* LCHPrintBytesOfValueTests */,
 				A602CCF81BB72FA4004946B3 /* LCHPerformStructuresTests */,
+				A642C8AA1BB6F5E600013A88 /* LCHPrintBytesOfValueTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
