@@ -5,32 +5,37 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+#define LCHPrintTextForOffsetOfStructure(structure, structureElement) \
+    printf("\tOffset of " #structureElement " is: %lu\n", offsetof(structure, structureElement));
+
 #define LCHPrintOffsetOfStructureElements(structure) \
-    printf("\tOffset of bool1 is: %lu\n", offsetof(structure, bool1)); \
-    printf("\tOffset of bool2 is: %lu\n", offsetof(structure, bool2)); \
-    printf("\tOffset of doubleValue is: %lu\n", offsetof(structure, doubleValue)); \
-    printf("\tOffset of bool3 is: %lu\n", offsetof(structure, bool3)); \
-    printf("\tOffset of bool4 is: %lu\n", offsetof(structure, bool4)); \
-    printf("\tOffset of bool5 is: %lu\n", offsetof(structure, bool5)); \
-    printf("\tOffset of bool6 is: %lu\n", offsetof(structure, bool6)); \
-    printf("\tOffset of shortValue1 is: %lu\n", offsetof(structure, shortValue1)); \
-    printf("\tOffset of floatValue is: %lu\n", offsetof(structure, floatValue)); \
-    printf("\tOffset of shortValue2 is: %lu\n", offsetof(structure, shortValue2)); \
-    printf("\tOffset of shortValue3 is: %lu\n", offsetof(structure, shortValue3)); \
-    printf("\tOffset of intValue is: %lu\n", offsetof(structure, intValue)); \
-    printf("\tOffset of longlongValue is: %lu\n", offsetof(structure, longLongValue)); \
-    printf("\tOffset of string is: %lu\n\n", offsetof(structure, string));
+    LCHPrintTextForOffsetOfStructure(structure, bool1) \
+    LCHPrintTextForOffsetOfStructure(structure, bool2) \
+    LCHPrintTextForOffsetOfStructure(structure, bool3) \
+    LCHPrintTextForOffsetOfStructure(structure, bool4) \
+    LCHPrintTextForOffsetOfStructure(structure, bool5) \
+    LCHPrintTextForOffsetOfStructure(structure, bool6) \
+    LCHPrintTextForOffsetOfStructure(structure, doubleValue) \
+    LCHPrintTextForOffsetOfStructure(structure, shortValue1) \
+    LCHPrintTextForOffsetOfStructure(structure, floatValue) \
+    LCHPrintTextForOffsetOfStructure(structure, shortValue2) \
+    LCHPrintTextForOffsetOfStructure(structure, shortValue3) \
+    LCHPrintTextForOffsetOfStructure(structure, intValue) \
+    LCHPrintTextForOffsetOfStructure(structure, longLongValue) \
+    LCHPrintTextForOffsetOfStructure(structure, string) \
+    printf("\n");
 
 #define LCHPrintOffsetOfUnionElements(structure) \
-    printf("\tOffset of longlongValue is: %lu\n", offsetof(structure, longLongValue)); \
-    printf("\tOffset of doubleValue is: %lu\n", offsetof(structure, doubleValue)); \
-    printf("\tOffset of floatValue is: %lu\n", offsetof(structure, floatValue)); \
-    printf("\tOffset of intValue is: %lu\n", offsetof(structure, intValue)); \
-    printf("\tOffset of string is: %lu\n", offsetof(structure, string)); \
-    printf("\tOffset of shortValue1 is: %lu\n", offsetof(structure, shortValue1)); \
-    printf("\tOffset of shortValue2 is: %lu\n", offsetof(structure, shortValue2)); \
-    printf("\tOffset of shortValue3 is: %lu\n", offsetof(structure, shortValue3)); \
-    printf("\tOffset of boolFlags is: %lu\n\n", offsetof(structure, boolFlags));
+    LCHPrintTextForOffsetOfStructure(structure, string) \
+    LCHPrintTextForOffsetOfStructure(structure, longLongValue) \
+    LCHPrintTextForOffsetOfStructure(structure, doubleValue) \
+    LCHPrintTextForOffsetOfStructure(structure, floatValue) \
+    LCHPrintTextForOffsetOfStructure(structure, intValue) \
+    LCHPrintTextForOffsetOfStructure(structure, shortValue1) \
+    LCHPrintTextForOffsetOfStructure(structure, shortValue2) \
+    LCHPrintTextForOffsetOfStructure(structure, shortValue3) \
+    LCHPrintTextForOffsetOfStructure(structure, boolFlags) \
+    printf("\n");
 
 typedef struct {
     bool bool1;
@@ -50,11 +55,11 @@ typedef struct {
 } LCHRandomStructure;
 
 typedef struct {
+    char *string;
     long long longLongValue;
     double doubleValue;
     float floatValue;
     int intValue;
-    char *string;
     short shortValue1;
     short shortValue2;
     short shortValue3;
@@ -67,11 +72,11 @@ typedef struct {
 } LCHOptimizedStructure;
 
 typedef struct {
+    char *string;
     long long longLongValue;
     double doubleValue;
     float floatValue;
     int intValue;
-    char *string;
     short shortValue1;
     short shortValue2;
     short shortValue3;

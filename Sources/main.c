@@ -11,7 +11,7 @@ int main(int argc, const char * argv[]) {
     // LCHPerformParentTypeTests();
     // LCHPrintValueOfDataTests();
     // LCHPrintBytesOfValueTests();
-    // LCHPerfomStructuresTests();
+    LCHPerfomStructuresTests();
     
     return 0;
 }

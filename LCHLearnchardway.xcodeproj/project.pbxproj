@@ -159,8 +159,8 @@
 				A6FCD3E71BBAA1FF00454D21 /* LCHPrintSizeOfDataTypeTests */,
 				A65AC4591BAD8EE500244B08 /* LCHPerformParentTypeTests */,
 				A602CCEB1BB70C65004946B3 /* LCHPrintValueOfDataTests */,
-				A602CCF81BB72FA4004946B3 /* LCHPerformStructuresTests */,
 				A642C8AA1BB6F5E600013A88 /* LCHPrintBytesOfValueTests */,
+				A602CCF81BB72FA4004946B3 /* LCHPerformStructuresTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";

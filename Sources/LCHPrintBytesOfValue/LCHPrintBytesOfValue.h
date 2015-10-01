@@ -2,7 +2,8 @@
 #define LCHPrintBytesOfValue_h
 
 typedef enum {
-    kLCHLittleEndian = 0,
+    kLCHEndianUnknown = 0,
+    kLCHLittleEndian,
     kLCHBigEndian,
 } LCHEndianType;
 

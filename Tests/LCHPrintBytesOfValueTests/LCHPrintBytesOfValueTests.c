@@ -1,3 +1,5 @@
+#include <assert.h>
+
 #include "LCHPrintBytesOfValueTests.h"
 #include "LCHPrintBytesOfValue.h"
 
@@ -28,9 +30,9 @@ void LCHPrintBytesOfValueTests(void) {
 #pragma mark -
 #pragma mark Private Implementations
 
-// Detect endian type
+// Detect current endian type
 LCHEndianType LCHCurrentEndianType(void) {
-    LCHEndianType endianType = 0;
+    LCHEndianType endianType = kLCHEndianUnknown;
     LCHEndianFlag endianFlag;
     endianFlag.data = 1;
     
@@ -49,15 +51,18 @@ void LCHPrintBytesOfCharValue(void) {
     char value = 'A';
     void *valuePointer = &value;
     size_t sizeOfValue = sizeof(value);
-    LCHEndianType endianType = 0;
+    LCHEndianType endianType = kLCHEndianUnknown;
     LCHEndianType endianTypeFlag = LCHCurrentEndianType();
+    
+    // Program will crash here if current endian type is Unknown
+    assert(endianTypeFlag != kLCHEndianUnknown);
     
     if (endianTypeFlag == kLCHLittleEndian) {
         endianType = kLCHLittleEndian;
     } else if (endianTypeFlag == kLCHBigEndian) {
         endianType = kLCHBigEndian;
     }
-    
+
     LCHPrintBitsOfValue(valuePointer, sizeOfValue, endianType);
 }
 
@@ -67,8 +72,11 @@ void LCHPrintBytesOfShortValue(void) {
     short value = 1;
     void *valuePointer = &value;
     size_t sizeOfValue = sizeof(value);
-    LCHEndianType endianType = 0;
+    LCHEndianType endianType = kLCHEndianUnknown;
     LCHEndianType endianTypeFlag = LCHCurrentEndianType();
+    
+    // Program will crash here if current endian type is Unknown
+    assert(endianTypeFlag != kLCHEndianUnknown);
     
     if (endianTypeFlag == kLCHLittleEndian) {
         endianType = kLCHLittleEndian;
@@ -85,8 +93,11 @@ void LCHPrintBytesOfIntValue(void) {
     int value = 94783743;
     void *valuePointer = &value;
     size_t sizeOfValue = sizeof(value);
-    LCHEndianType endianType = 0;
+    LCHEndianType endianType = kLCHEndianUnknown;
     LCHEndianType endianTypeFlag = LCHCurrentEndianType();
+    
+    // Program will crash here if current endian type is Unknown
+    assert(endianTypeFlag != kLCHEndianUnknown);
     
     if (endianTypeFlag == kLCHLittleEndian) {
         endianType = kLCHLittleEndian;
