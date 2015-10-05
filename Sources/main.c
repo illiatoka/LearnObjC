@@ -3,8 +3,9 @@
 #include "LCHPrintSizeOfDataTypeTests.h"
 #include "LCHPerformParentTypeTests.h"
 #include "LCHPrintValueOfDataTests.h"
-#include "LCHPrintBytesOfValueTests.h"
 #include "LCHPerformStructuresTests.h"
+#include "LCHPrintBytesOfValueTests.h"
+#include "LCHHumanObjectTests.h"
 
 int main(int argc, const char * argv[]) {
     // LCHPrintSizeOfDataTypeTests();
@@ -12,6 +13,8 @@ int main(int argc, const char * argv[]) {
     // LCHPrintValueOfDataTests();
     // LCHPerfomStructuresTests();
     // LCHPrintBytesOfValueTests();
+    
+    LCHHumanObjectTests();
     
     return 0;
 }
