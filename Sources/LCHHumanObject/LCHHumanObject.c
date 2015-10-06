@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdio.h>
 
 #include "LCHHumanObject.h"
@@ -9,11 +8,11 @@
 struct LCHHuman {
     char *_name;
     char *_surname;
-    LCHHuman *_partnerPointer;
-    LCHHuman *_parrentMotherPointer;
-    LCHHuman *_parrentFatherPointer;
-    LCHHuman *_childrenListPointer[20];
-    char _age;
-    char _childrenCount;
-    char _gender;
+    LCHHuman *_partner;
+    LCHHuman *_mother;
+    LCHHuman *_father;
+    LCHHuman *_children[20];
+    uint8_t _age;
+    uint8_t _childrenCount;
+    LCHHumanGenderType _gender;
 };

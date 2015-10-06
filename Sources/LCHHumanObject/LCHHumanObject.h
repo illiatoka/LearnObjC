@@ -1,56 +1,50 @@
 #ifndef LCHHumanObject_h
 #define LCHHumanObject_h
 
-#endif
-
 typedef struct LCHHuman LCHHuman;
+
+typedef enum {
+    LCHHumanGenderMale,
+    LCHHumanGenderFemale
+} LCHHumanGenderType;
 
 extern
 LCHHuman *LCHHumanCreate(void);
+
 extern
 void _LCHHumanDeallocate(LCHHuman *object);
 
 extern
-char *LCHHumanName(LCHHuman *object);
-extern
-void LCHHumanSetName(LCHHuman *object, char *name);
+char LCHHumanName(LCHHuman *object);
 
 extern
-char *LCHHumanSurname(LCHHuman *object);
-extern
-void LCHHumanSetSurname(LCHHuman *object, char *surname);
+char LCHHumanSurname(LCHHuman *object);
 
 extern
-char *LCHHumanGender(LCHHuman *object);
-extern
-void LCHHumanSetGender(LCHHuman *object, char gender);
+LCHHumanGenderType LCHHumanGender(LCHHuman *object);
 
 extern
-char *LCHHumanAge(LCHHuman *object);
-extern
-void LCHHumanSetAge(LCHHuman *object, char age);
+uint8_t LCHHumanAge(LCHHuman *object);
 
 extern
-char *LCHHumanChildrenCount(LCHHuman *object);
-extern
-void LCHHumanSetChildrenCount(LCHHuman *object, char childrenCount);
+uint8_t LCHHumanChildrenCount(LCHHuman *object);
 
 extern
-char *LCHHumanPartner(LCHHuman *object);
+LCHHuman LCHHumanPartner(LCHHuman *object);
 extern
-void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner);
+LCHHuman LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner);
 
 extern
-char *LCHHumanParrentMother(LCHHuman *object);
+LCHHuman LCHHumanMother(LCHHuman *object);
 extern
-void LCHHumanSetParrentMother(LCHHuman *object, LCHHuman *parrentMother);
+LCHHuman LCHHumanSetMother(LCHHuman *object, LCHHuman *mother);
 
 extern
-char *LCHHumanParrentFather(LCHHuman *object);
+LCHHuman LCHHumanFather(LCHHuman *object);
 extern
-void LCHHumanSetParrentFather(LCHHuman *object, LCHHuman *parrentFather);
+LCHHuman LCHHumanSetFather(LCHHuman *object, LCHHuman *father);
 
 extern
-char *LCHHumanChildrenList(LCHHuman *object);
-extern
-void LCHHumanSetChildrenList(LCHHuman *object, LCHHuman *childrenList);
+LCHHuman LCHHumanChildren(LCHHuman *object);
+
+#endif
