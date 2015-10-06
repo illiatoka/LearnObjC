@@ -1,6 +1,10 @@
 #ifndef LCHHumanObject_h
 #define LCHHumanObject_h
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
 typedef struct LCHHuman LCHHuman;
 
 typedef enum {
@@ -27,10 +31,10 @@ extern
 void _LCHHumanDeallocate(LCHHuman *object);
 
 extern
-char LCHHumanName(LCHHuman *object);
+char *LCHHumanName(LCHHuman *object);
 
 extern
-char LCHHumanSurname(LCHHuman *object);
+char *LCHHumanSurname(LCHHuman *object);
 
 extern
 LCHHumanGenderType LCHHumanGender(LCHHuman *object);
@@ -43,16 +47,22 @@ uint8_t LCHHumanChildrenCount(LCHHuman *object);
 
 extern
 LCHHuman LCHHumanPartner(LCHHuman *object);
+
 extern
-LCHHuman LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner);
+LCHHuman LCHHumanSetMarry(LCHHuman *object, LCHHuman *wife, LCHHuman *husband);
+
+extern
+LCHHuman LCHHumanSetDivorce(LCHHuman *object, LCHHuman *wife, LCHHuman *husband);
 
 extern
 LCHHuman LCHHumanMother(LCHHuman *object);
+
 extern
 LCHHuman LCHHumanSetMother(LCHHuman *object, LCHHuman *mother);
 
 extern
 LCHHuman LCHHumanFather(LCHHuman *object);
+
 extern
 LCHHuman LCHHumanSetFather(LCHHuman *object, LCHHuman *father);
 

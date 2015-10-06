@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #include "LCHPrintSizeOfDataTypeTests.h"
 #include "LCHPerformParentTypeTests.h"
 #include "LCHPrintValueOfDataTests.h"
