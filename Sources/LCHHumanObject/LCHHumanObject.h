@@ -2,12 +2,14 @@
 #define LCHHumanObject_h
 
 #include <stdio.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <assert.h>
 
 typedef struct LCHHuman LCHHuman;
 
 typedef enum {
+    LCHHumanGenderUnknown,
     LCHHumanGenderMale,
     LCHHumanGenderFemale
 } LCHHumanGenderType;
@@ -22,10 +24,12 @@ struct LCHHuman {
     uint8_t _age;
     uint8_t _childrenCount;
     LCHHumanGenderType _gender;
+    
+    uint64_t _referenceCount;
 };
 
 extern
-LCHHuman *LCHHumanCreate(void);
+LCHHuman *LCHHumanCreate(LCHHumanGenderType gender);
 
 extern
 void _LCHHumanDeallocate(LCHHuman *object);
@@ -46,27 +50,30 @@ extern
 uint8_t LCHHumanChildrenCount(LCHHuman *object);
 
 extern
-LCHHuman LCHHumanPartner(LCHHuman *object);
+LCHHuman *LCHHumanPartner(LCHHuman *object);
 
 extern
-LCHHuman LCHHumanSetMarry(LCHHuman *object, LCHHuman *wife, LCHHuman *husband);
+bool LCHHumanMarried(LCHHuman *object);
 
 extern
-LCHHuman LCHHumanSetDivorce(LCHHuman *object, LCHHuman *wife, LCHHuman *husband);
+void LCHHumanSetMarry(LCHHuman *object, LCHHuman *partner);
 
 extern
-LCHHuman LCHHumanMother(LCHHuman *object);
+void LCHHumanSetDivorce(LCHHuman *object, LCHHuman *partner);
 
 extern
-LCHHuman LCHHumanSetMother(LCHHuman *object, LCHHuman *mother);
+LCHHuman *LCHHumanMother(LCHHuman *object);
 
 extern
-LCHHuman LCHHumanFather(LCHHuman *object);
+void LCHHumanSetMother(LCHHuman *object, LCHHuman *mother);
 
 extern
-LCHHuman LCHHumanSetFather(LCHHuman *object, LCHHuman *father);
+LCHHuman *LCHHumanFather(LCHHuman *object);
 
 extern
-LCHHuman LCHHumanChildren(LCHHuman *object);
+void LCHHumanSetFather(LCHHuman *object, LCHHuman *father);
+
+extern
+LCHHuman *LCHHumanChildren(LCHHuman *object);
 
 #endif
