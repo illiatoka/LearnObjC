@@ -21,17 +21,36 @@ void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner);
 #pragma mark -
 #pragma mark Public Implementations
 
-LCHHuman *LCHHumanCreate(LCHHumanGenderType gender) {
+LCHHuman *LCHHumanCreate(void) {
+    LCHHuman *human = calloc(1, sizeof(LCHHuman));
+    assert(NULL != human);
+    
+    uint8_t rank = rand() % 100 + 1;
+    
+    LCHHumanSetGender(human, LCHHumanGenderUnknown);
+    LCHHumanSetAge(human, 1);
+    LCHHumanSetRank(human, rank);
+    
+    return human;
+}
+
+LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender, char *name, char *surname, uint8_t age, uint8_t rank) {
     LCHHuman *human = calloc(1, sizeof(LCHHuman));
     assert(NULL != human);
     
     LCHHumanSetGender(human, gender);
-    LCHHumanSetAge(human, 1);
+    LCHHumanSetName(human, name);
+    LCHHumanSetSurname(human, surname);
+    LCHHumanSetAge(human, age);
+    LCHHumanSetRank(human, rank);
     
     return human;
 }
 
 void _LCHHumanDeallocate(LCHHuman *object) {
+    // TODO: set NULL to all pointer fildes
+    // LCHHumanSetName(object, NULL);
+    
     free(object);
 }
 
@@ -39,8 +58,34 @@ char *LCHHumanName(LCHHuman *object) {
     return NULL != object ? object->_name : NULL;
 }
 
+void LCHHumanSetName(LCHHuman *object, char *name) {
+    if (NULL != object) {
+        if (NULL != object->_name) {
+            free(object->_name);
+            object->_name = NULL;
+        }
+        
+        if (name) {
+            object->_name = strdup(name);
+        }
+    }
+}
+
 char *LCHHumanSurname(LCHHuman *object) {
     return NULL != object ? object->_surname : NULL;
+}
+
+void LCHHumanSetSurname(LCHHuman *object, char *surname) {
+    if (NULL != object) {
+        if (NULL != object->_surname) {
+            free(object->_surname);
+            object->_name = NULL;
+        }
+        
+        if (surname) {
+            object->_surname = strdup(surname);
+        }
+    }
 }
 
 LCHHumanGenderType LCHHumanGender(LCHHuman *object) {
@@ -140,6 +185,14 @@ void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
 
 LCHHuman *LCHHumanChildren(LCHHuman *object) {
     return *(NULL != object ? object->_children : NULL);
+}
+
+void LCHHumanSetRank(LCHHuman *object, uint8_t rank) {
+    if (NULL != object) {
+        if (0 == object->_rankOfAwesomeness && 0 != rank) {
+            object->_rankOfAwesomeness = rank;
+        }
+    }
 }
 
 #pragma mark -
