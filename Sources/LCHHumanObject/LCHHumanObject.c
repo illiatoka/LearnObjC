@@ -261,10 +261,6 @@ void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
     }
 }
 
-LCHHuman *LCHHumanChildren(LCHHuman *object) {
-    return *(NULL != object ? object->_children : NULL);
-}
-
 #pragma mark -
 #pragma mark Private Implementations
 

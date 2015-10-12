@@ -128,7 +128,4 @@ LCHHuman *LCHHumanFather(LCHHuman *object);
 extern
 void LCHHumanSetFather(LCHHuman *object, LCHHuman *father);
 
-extern
-LCHHuman *LCHHumanChildren(LCHHuman *object);
-
 #endif
