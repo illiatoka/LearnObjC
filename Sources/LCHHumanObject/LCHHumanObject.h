@@ -10,11 +10,14 @@
 // Readme
 // Create new human object using LCHHumanCreate method. It will generate object with default parameters:
 //  age: 1,
-//  gender: LCHHumanGenderUnknown
+//  gender: LCHHumanGenderType
+//  rankOfAwesomeness: random
 
-// Parameters
-// age: set in years, will srore in days
-// rankOfAwesomeness: store value between 1 to 100. Set predominancy in relationship between objects. Object with lower value will have low power. Rank value can't be change after assign.
+// Parameters specifications:
+// age: set in years
+// gender: use Male or Female type.
+// rankOfAwesomeness: store value between 1 to 100. Set predominancy in relationship between objects.
+//    Object with lower value will have low power. Rank value can't be change after assign.
 
 
 typedef struct LCHHuman LCHHuman;
@@ -29,11 +32,18 @@ static
 const uint8_t kLCHChildrenLimit = 20;
 
 static
-const uint8_t kLCHMaxLifeTime = 75;
+const uint8_t kLCHAgeLimitMin = 18;
+
+static
+const uint8_t kLCHAgeLimitMax = 75;
+
+static
+const uint8_t kLCHRankOfAwesomenessMax = 100;
 
 struct LCHHuman {
     char *_name;
     char *_surname;
+    char *_maidenName;
     LCHHuman *_partner;
     LCHHuman *_mother;
     LCHHuman *_father;
@@ -47,10 +57,22 @@ struct LCHHuman {
 };
 
 extern
-LCHHuman *LCHHumanCreate(void);
+LCHHuman *LCHHumanCreate(LCHHumanGenderType gender);
 
 extern
-LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender, char *name, char *surname, uint8_t age, uint8_t rank);
+LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender,
+                                       char *name,
+                                       char *surname,
+                                       uint8_t age,
+                                       uint8_t rank
+                                       );
+
+extern
+LCHHuman *LCHHumanCreateBabyWithParameters(LCHHumanGenderType gender,
+                             LCHHuman *mother,
+                             LCHHuman *father,
+                             char*name
+                             );
 
 extern
 void _LCHHumanDeallocate(LCHHuman *object);
@@ -68,10 +90,16 @@ extern
 void LCHHumanSetSurname(LCHHuman *object, char *surname);
 
 extern
+char *LCHHumanMaidenName(LCHHuman *object);
+
+extern
 LCHHumanGenderType LCHHumanGender(LCHHuman *object);
 
 extern
 uint8_t LCHHumanAge(LCHHuman *object);
+
+extern
+void LCHHumanSetAge(LCHHuman *object, uint8_t age);
 
 extern
 uint8_t LCHHumanChildrenCount(LCHHuman *object);
@@ -80,13 +108,13 @@ extern
 LCHHuman *LCHHumanPartner(LCHHuman *object);
 
 extern
-bool LCHHumanMarried(LCHHuman *object);
+bool LCHHumanIsMarried(LCHHuman *object);
 
 extern
 void LCHHumanSetMarry(LCHHuman *object, LCHHuman *partner);
 
 extern
-void LCHHumanSetDivorce(LCHHuman *object, LCHHuman *partner);
+void LCHHumanSetDivorce(LCHHuman *object);
 
 extern
 LCHHuman *LCHHumanMother(LCHHuman *object);
@@ -102,8 +130,5 @@ void LCHHumanSetFather(LCHHuman *object, LCHHuman *father);
 
 extern
 LCHHuman *LCHHumanChildren(LCHHuman *object);
-
-extern
-void LCHHumanSetRank(LCHHuman *object, uint8_t rank);
 
 #endif
