@@ -5,8 +5,8 @@
 #pragma mark -
 #pragma mark Private Declarations
 
-const int kLCHMotherDivisor = 3;
-const int kLCHFatherDivisor = 5;
+static const int kLCHMotherDivisor = 3;
+static const int kLCHFatherDivisor = 5;
 
 #pragma mark -
 #pragma mark Public Implementations
@@ -19,7 +19,6 @@ LCHParentType LCHPerformParentType(int value) {
         if (0 == value % kLCHMotherDivisor) {
             result = kLCHParentTypeMother;
             printf("Mother");
-            
         }
         
         if (0 == value % kLCHFatherDivisor) {

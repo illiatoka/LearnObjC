@@ -7,7 +7,7 @@
 #pragma mark Private Declarations
 
 static const int kLCHBitCount = 8;
-static const int kLCHBitMask = 1;
+static const int kLCHBitMask  = 1;
 
 static
 void LCHPrintBitsOfByte(uint8_t value);
@@ -41,6 +41,5 @@ void LCHPrintBitsOfValue(void *valuePointer, size_t typeSize, LCHEndianType endi
 void LCHPrintBitsOfByte(uint8_t byteData) {
     for (int bitIndex = kLCHBitCount; bitIndex != 0; bitIndex--) {
         printf("%s", (((byteData >> (bitIndex - 1)) & kLCHBitMask) ? "1" : "0"));
-        
     }
 }

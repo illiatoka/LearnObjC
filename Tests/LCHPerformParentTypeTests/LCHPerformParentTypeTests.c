@@ -17,6 +17,9 @@ static
 void LCHCheckParentTypeMotherFather(void);
 
 static
+void LCHCheckParentTypeUndefined(void);
+
+static
 void LCHCheckParentTypeLoop(void);
 
 #pragma mark -
@@ -26,6 +29,7 @@ void LCHPerformParentTypeTests(void) {
     LCHCheckParentTypeMother();
     LCHCheckParentTypeFather();
     LCHCheckParentTypeMotherFather();
+    LCHCheckParentTypeUndefined();
     LCHCheckParentTypeLoop();
 }
 
@@ -34,38 +38,39 @@ void LCHPerformParentTypeTests(void) {
 
 // LCHCheckParentType function must return kLCHParentTypeMother
 void LCHCheckParentTypeMother(void) {
-    int result = LCHPerformParentType(3);
-    
     // If not, program will crash here
-    assert(result == kLCHParentTypeMother);
+    assert(LCHPerformParentType(3) == kLCHParentTypeMother);
+    assert(LCHPerformParentType(9) == kLCHParentTypeMother);
 }
 
 // LCHCheckParentType function must return kLCHParentTypeFather
 void LCHCheckParentTypeFather(void) {
-    int result = LCHPerformParentType(5);
-    
     // If not, program will crash here
-    assert(result == kLCHParentTypeFather);
+    assert(LCHPerformParentType(5) == kLCHParentTypeFather);
+    assert(LCHPerformParentType(10) == kLCHParentTypeFather);
 }
 
 // LCHCheckParentType function must return kLCHParentTypeMotherFather
 void LCHCheckParentTypeMotherFather(void) {
-    int result = LCHPerformParentType(15);
-    
     // If not, program will crash here
-    assert(result == kLCHParentTypeMotherFather);
+    assert(LCHPerformParentType(15) == kLCHParentTypeMotherFather);
+    assert(LCHPerformParentType(30) == kLCHParentTypeMotherFather);
+}
+
+// LCHCheckParentType function must return kLCHParentTypeMotherFather
+void LCHCheckParentTypeUndefined(void) {
+    // If not, program will crash here
+    assert(LCHPerformParentType(0) == kLCHParentTypeUndefined);
+    assert(LCHPerformParentType(7) == kLCHParentTypeUndefined);
 }
 
 // Test LCHCheckParentType function using loop with 16 iteration
 void LCHCheckParentTypeLoop(void) {
-    for (int count = 0; count < 16; count++) {
-        int currentCount = count;
-        
+    for (int count = 0; count < 17; count++) {
         // Print current counter value
-        printf("counter = %d\t", currentCount);
+        printf("counter = %d\n", count);
         
         // Run function with current counter value in parameters
-        LCHPerformParentType(currentCount);
+        LCHPerformParentType(count);
     }
-    
 }

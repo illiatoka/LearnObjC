@@ -30,80 +30,30 @@ void LCHPrintBytesOfValueTests(void) {
 #pragma mark -
 #pragma mark Private Implementations
 
-// Detect current endian type
-LCHEndianType LCHCurrentEndianType(void) {
-    LCHEndianType endianType = kLCHEndianUnknown;
-    LCHEndianFlag endianFlag;
-    endianFlag.data = 1;
-    
-    if (1 == endianFlag.isLittleEndian) {
-        endianType = kLCHLittleEndian;
-    } else if (1 == endianFlag.isBigEndian) {
-        endianType = kLCHBigEndian;
-    }
-    
-    return endianType;
-}
-
 // Perform test with 'char'
 // Function should print data with size equal to 1 byte
 void LCHPrintBytesOfCharValue(void) {
     char value = 'A';
-    void *valuePointer = &value;
-    size_t sizeOfValue = sizeof(value);
-    LCHEndianType endianType = kLCHEndianUnknown;
-    LCHEndianType endianTypeFlag = LCHCurrentEndianType();
-    
-    // Program will crash here if current endian type is Unknown
-    assert(endianTypeFlag != kLCHEndianUnknown);
-    
-    if (endianTypeFlag == kLCHLittleEndian) {
-        endianType = kLCHLittleEndian;
-    } else if (endianTypeFlag == kLCHBigEndian) {
-        endianType = kLCHBigEndian;
-    }
-
-    LCHPrintBitsOfValue(valuePointer, sizeOfValue, endianType);
+    LCHPrintBitsOfValue(&value, sizeof(value), LCHCurrentEndianType());
 }
 
 // Perform test with 'short'
 // Function should print data with size equal to 2 bytes
 void LCHPrintBytesOfShortValue(void) {
     short value = 1;
-    void *valuePointer = &value;
-    size_t sizeOfValue = sizeof(value);
-    LCHEndianType endianType = kLCHEndianUnknown;
-    LCHEndianType endianTypeFlag = LCHCurrentEndianType();
-    
-    // Program will crash here if current endian type is Unknown
-    assert(endianTypeFlag != kLCHEndianUnknown);
-    
-    if (endianTypeFlag == kLCHLittleEndian) {
-        endianType = kLCHLittleEndian;
-    } else if (endianTypeFlag == kLCHBigEndian) {
-        endianType = kLCHBigEndian;
-    }
-    
-    LCHPrintBitsOfValue(valuePointer, sizeOfValue, endianType);
+    LCHPrintBitsOfValue(&value, sizeof(value), LCHCurrentEndianType());
 }
 
 // Perform test with 'int'
 // Function should print data with size equal to 4 bytes
 void LCHPrintBytesOfIntValue(void) {
     int value = 94783743;
-    void *valuePointer = &value;
-    size_t sizeOfValue = sizeof(value);
-    LCHEndianType endianType = kLCHEndianUnknown;
-    LCHEndianType endianTypeFlag = LCHCurrentEndianType();
+    LCHPrintBitsOfValue(&value, sizeof(value), LCHCurrentEndianType());
+}
+
+LCHEndianType LCHCurrentEndianType(void) {
+    uint16_t endianMarker = 1;
+    LCHEndianType endianType = ((uint8_t *)&endianMarker)[0] == 1 ? kLCHLittleEndian : kLCHBigEndian;
     
-    // Program will crash here if current endian type is Unknown
-    assert(endianTypeFlag != kLCHEndianUnknown);
-    
-    if (endianTypeFlag == kLCHLittleEndian) {
-        endianType = kLCHLittleEndian;
-    } else if (endianTypeFlag == kLCHBigEndian) {
-        endianType = kLCHBigEndian;
-    }
-    
-    LCHPrintBitsOfValue(valuePointer, sizeOfValue, endianType);
+    return endianType;
 }

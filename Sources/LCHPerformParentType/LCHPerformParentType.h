@@ -2,7 +2,7 @@
 #define LCHPerformParentType_h
 
 typedef enum {
-    kLCHParentTypeUndefined = 0,
+    kLCHParentTypeUndefined,
     kLCHParentTypeMother,
     kLCHParentTypeFather,
     kLCHParentTypeMotherFather
