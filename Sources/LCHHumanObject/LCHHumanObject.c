@@ -10,35 +10,40 @@ static
 void LCHObjectRelease(LCHHuman *object);
 
 static
-void LCHHumanSetMaidenName(LCHHuman *object, char *maidenName);
+void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner);
 
 static
 void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender);
 
 static
-void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner);
-
-static
 void LCHHumanSetRank(LCHHuman *object, uint8_t rank);
 
 static
-bool LCHHumanIsBabyPossible(LCHHuman *object, LCHHuman *partner);
+bool LCHHumanShouldBeMarried(LCHHuman *object, LCHHuman *partner);
 
 static
-bool LCHHumanIsLegalMarriage(LCHHuman *object, LCHHuman *partner);
+bool LCHHumanShouldCreateChild(LCHHuman *object, LCHHuman *partner);
 
 #pragma mark -
 #pragma mark Public Implementations
+
+void _LCHHumanDeallocate(LCHHuman *object) {
+    // TODO: Set NULL to all pointer fields
+    //       Send release to all retained object
+    LCHHumanSetName(object, NULL);
+    LCHHumanSetSurname(object, NULL);
+    LCHHumanDivorce(object);
+    
+    free(object);
+}
 
 LCHHuman *LCHHumanCreate(LCHHumanGenderType gender) {
     LCHHuman *object = calloc(1, sizeof(LCHHuman));
     assert(NULL != object);
     
-    uint8_t rank = arc4random_uniform(kLCHRankOfAwesomenessMax);
-    
     LCHHumanSetGender(object, gender);
     LCHHumanSetAge(object, 1);
-    LCHHumanSetRank(object, rank);
+    LCHHumanSetRank(object, arc4random_uniform(kLCHRankOfAwesomenessMax));
     
     return object;
 }
@@ -47,13 +52,10 @@ LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender,
                                        char *name,
                                        char *surname,
                                        uint8_t age,
-                                       uint8_t rank
-                                       )
+                                       uint8_t rank)
 {
-    LCHHuman *object = calloc(1, sizeof(LCHHuman));
-    assert(NULL != object);
-    
-    LCHHumanSetGender(object, gender);
+    LCHHuman *object = LCHHumanCreate(gender);
+
     LCHHumanSetName(object, name);
     LCHHumanSetSurname(object, surname);
     LCHHumanSetAge(object, age);
@@ -62,36 +64,31 @@ LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender,
     return object;
 }
 
-LCHHuman *LCHHumanCreateBabyWithParameters(LCHHumanGenderType gender,
+// TODO: Ask about where should I implement this methods
+//       Add child to mother/father children array
+//       Retain/release for children/parrents
+LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
                                            LCHHuman *mother,
                                            LCHHuman *father,
-                                           char*name) {
-    // TODO: Set correct retain to mother, father, child
-    //       Add child to array with children
-    assert(true == LCHHumanIsBabyPossible(mother, father));
+                                           char*name)
+{
+    // TODO: Ask about better way to perform this check
+    if (false == LCHHumanShouldCreateChild(mother, father)) {
+        return NULL;
+    }
     
-    LCHHuman *object = calloc(1, sizeof(LCHHuman));
-    assert(NULL != object);
+    LCHHuman *object = LCHHumanCreate(gender);
     
-    uint8_t rank = (mother->_rankOfAwesomeness + father->_rankOfAwesomeness) / 2;
-    
-    LCHHumanSetGender(object, gender);
     LCHHumanSetName(object, name);
-    LCHHumanSetSurname(object, father->_surname);
+    LCHHumanSetSurname(object, LCHHumanSurname(father));
     LCHHumanSetAge(object, 1);
-    LCHHumanSetRank(object, rank);
-    
+    LCHHumanSetRank(object, (LCHHumanRank(mother) + LCHHumanRank(father)) / 2);
+        
     return object;
 }
 
-void _LCHHumanDeallocate(LCHHuman *object) {
-    // TODO: set NULL to all pointer fields
-    LCHHumanSetName(object, NULL);
-    LCHHumanSetSurname(object, NULL);
-    LCHHumanSetDivorce(object);
-    
-    free(object);
-}
+#pragma mark -
+#pragma mark Accessors
 
 char *LCHHumanName(LCHHuman *object) {
     return NULL != object ? object->_name : NULL;
@@ -123,7 +120,10 @@ void LCHHumanSetSurname(LCHHuman *object, char *surname) {
         
         if (surname) {
             object->_surname = strdup(surname);
-            LCHHumanSetMaidenName(object, surname);
+        }
+        
+        if (LCHHumanGenderFemale == LCHHumanGender(object) && NULL == LCHHumanMaidenName(object)) {
+            object->_maidenName = strdup(surname);
         }
     }
 }
@@ -132,22 +132,8 @@ char *LCHHumanMaidenName(LCHHuman *object) {
     return NULL != object ? object->_maidenName : NULL;
 }
 
-void LCHHumanSetMaidenName(LCHHuman *object, char *maidenName) {
-    if (NULL != object && object->_gender == LCHHumanGenderFemale) {
-        if (NULL == object->_maidenName && maidenName) {
-            object->_maidenName = strdup(maidenName);
-        }
-    }
-}
-
 LCHHumanGenderType LCHHumanGender(LCHHuman *object) {
     return NULL != object ? object->_gender : LCHHumanGenderUnknown;
-}
-
-void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender) {
-    if (NULL != object) {
-        object->_gender = gender;
-    }
 }
 
 uint8_t LCHHumanAge(LCHHuman *object) {
@@ -156,7 +142,7 @@ uint8_t LCHHumanAge(LCHHuman *object) {
 
 void LCHHumanSetAge(LCHHuman *object, uint8_t age) {
     if (NULL != object) {
-        if (age > object->_age && age <= kLCHAgeLimitMax) {
+        if (age > object->_age && age <= kLCHAgeLimitMax ? age : kLCHAgeLimitMax) {
             object->_age = age;
         }
     }
@@ -170,42 +156,27 @@ LCHHuman *LCHHumanPartner(LCHHuman *object) {
     return NULL != object ? object->_partner : NULL;
 }
 
+// TODO: Ask about name for method
 bool LCHHumanIsMarried(LCHHuman *object) {
     return NULL != object && NULL != object->_partner;
 }
 
-bool LCHHumanIsLegalMarriage(LCHHuman *object, LCHHuman *partner) {
-    bool isLegal = false;
-    
-    if (NULL != object && NULL != partner) {
-        if (object->_gender != partner->_gender) {
-            if (kLCHAgeLimitMin <= object->_age && kLCHAgeLimitMax >= object->_age &&
-                kLCHAgeLimitMin <= partner->_age && kLCHAgeLimitMax >= partner->_age) {
-                if (NULL != object->_name && NULL != partner->_name) {
-                    if (NULL != object->_surname && NULL != partner->_surname) {
-                        if (object != partner->_partner) {
-                            isLegal = true;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    return isLegal;
+uint8_t LCHHumanRank(LCHHuman *object) {
+    return NULL != object ? object->_rankOfAwesomeness : 0;
 }
 
-void LCHHumanSetMarry(LCHHuman *object, LCHHuman *partner) {
+void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
     // TODO: Set correct surname to partners
     //       Set wife surname equal to husband depends on rank
+    //       Check logic
     if (NULL != object && NULL != partner) {
-        if (true == LCHHumanIsLegalMarriage(object, partner)) {
+        if (true == LCHHumanShouldBeMarried(object, partner)) {
             if (NULL != object->_partner) {
-                LCHHumanSetDivorce(object);
+                LCHHumanDivorce(object);
             }
             
             if (NULL != partner->_partner) {
-                LCHHumanSetDivorce(partner);
+                LCHHumanDivorce(partner);
             }
     
             LCHHumanSetPartner(object, partner);
@@ -213,9 +184,10 @@ void LCHHumanSetMarry(LCHHuman *object, LCHHuman *partner) {
     }
 }
 
-void LCHHumanSetDivorce(LCHHuman *object) {
+void LCHHumanDivorce(LCHHuman *object) {
     // TODO: Set correct surname to partners
     //       Set wife surname equal to her maidenName
+    //       Check logic
     if (NULL != object) {
         if (NULL != object->_partner) {
             LCHHumanSetPartner(object, NULL);
@@ -228,6 +200,7 @@ LCHHuman *LCHHumanMother(LCHHuman *object) {
 }
 
 void LCHHumanSetMother(LCHHuman *object, LCHHuman *mother) {
+    // TODO: Check logic
     if (NULL != object && NULL != mother) {
         if (NULL != object->_mother) {
             // TODO: Decrement _childrenCount field of previous mother.
@@ -247,6 +220,7 @@ LCHHuman *LCHHumanFather(LCHHuman *object) {
 }
 
 void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
+    // TODO: Check logic
     if (NULL != object && NULL != father) {
         if (NULL != object->_father) {
             // TODO: Decrement _childrenCount field of previous father.
@@ -278,46 +252,46 @@ void LCHObjectRelease(LCHHuman *object) {
     }
 }
 
+// TODO: Refactor this shit
+//       Ask about better way to perform set-partner method
 void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner) {
     if (NULL != object) {
         
         if (NULL == partner) {
-            if (object->_rankOfAwesomeness > object->_partner->_rankOfAwesomeness) {
+            if (LCHHumanRank(object) > LCHHumanRank(object->_partner)) {
                 object->_partner->_partner = NULL;
                 LCHObjectRelease(object->_partner);
                 object->_partner = NULL;
-            }
-            else if (object->_rankOfAwesomeness < object->_partner->_rankOfAwesomeness) {
+            } else if (LCHHumanRank(object) < LCHHumanRank(object->_partner)) {
                 object->_partner->_partner = NULL;
                 object->_partner = NULL;
                 LCHObjectRelease(object);
-            } else if (object->_rankOfAwesomeness == object->_partner->_rankOfAwesomeness) {
-                if (object->_gender == LCHHumanGenderMale) {
+            } else {
+                if (LCHHumanGenderMale == LCHHumanGender(object)) {
                     object->_partner->_partner = NULL;
                     LCHObjectRelease(object->_partner);
                     object->_partner = NULL;
-                } else if (object->_partner->_gender == LCHHumanGenderMale) {
+                } else if (LCHHumanGenderMale == LCHHumanGender(object->_partner)) {
                     object->_partner->_partner = NULL;
                     object->_partner = NULL;
                     LCHObjectRelease(object);
                 }
             }
-        }
-        else {
-            if (object->_rankOfAwesomeness > partner->_rankOfAwesomeness) {
+        } else {
+            if (LCHHumanRank(object) > LCHHumanRank(partner)) {
                 partner->_partner = object;
                 LCHObjectRetain(partner);
                 object->_partner = partner;
-            } else if (object->_rankOfAwesomeness < partner->_rankOfAwesomeness) {
+            } else if (LCHHumanRank(object) < LCHHumanRank(partner)) {
                 object->_partner = partner;
                 LCHObjectRetain(object);
                 partner->_partner = object;
-            } else if (object->_rankOfAwesomeness == partner->_rankOfAwesomeness) {
-                if (object->_gender == LCHHumanGenderMale) {
+            } else {
+                if (LCHHumanGenderMale == LCHHumanGender(object)) {
                     partner->_partner = object;
                     LCHObjectRetain(partner);
                     object->_partner = partner;
-                } else if (partner->_gender == LCHHumanGenderMale) {
+                } else if (LCHHumanGenderMale == LCHHumanGender(partner)) {
                     object->_partner = partner;
                     LCHObjectRetain(object);
                     partner->_partner = object;
@@ -327,28 +301,47 @@ void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner) {
     }
 }
 
+void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender) {
+    if (NULL != object) {
+        object->_gender = gender;
+    }
+}
+
 void LCHHumanSetRank(LCHHuman *object, uint8_t rank) {
     if (NULL != object) {
         object->_rankOfAwesomeness = kLCHRankOfAwesomenessMax >= rank ? rank : kLCHRankOfAwesomenessMax;
     }
 }
 
-bool LCHHumanIsBabyPossible(LCHHuman *object, LCHHuman *partner) {
-    bool isPossible = false;
+bool LCHHumanShouldBeMarried(LCHHuman *object, LCHHuman *partner) {
+    bool result = false;
     
     if (NULL != object && NULL != partner) {
-        if (object->_gender != partner->_gender) {
-            if (kLCHAgeLimitMin <= object->_age && kLCHAgeLimitMax >= object->_age &&
-                kLCHAgeLimitMin <= partner->_age && kLCHAgeLimitMax >= partner->_age) {
-                if (object->_childrenCount < kLCHChildrenLimit && partner->_childrenCount < kLCHChildrenLimit) {
-                    if (NULL != object->_surname && NULL != partner->_surname) {
-                        isPossible = true;
-                    }
-                }
+        if (LCHHumanGender(object) != LCHHumanGender(partner)) {
+            if ((kLCHAgeLimitMin <= LCHHumanAge(object) && kLCHAgeLimitMax >= LCHHumanAge(object))
+                && (kLCHAgeLimitMin <= LCHHumanAge(partner) && kLCHAgeLimitMax >= LCHHumanAge(partner)))
+            {
+                result = object != LCHHumanPartner(object);
             }
         }
     }
-
     
-    return isPossible;
+    return result;
+}
+
+bool LCHHumanShouldCreateChild(LCHHuman *object, LCHHuman *partner) {
+    bool result = false;
+    
+    if (NULL != object && NULL != partner) {
+        if (LCHHumanGender(object) != LCHHumanGender(partner)) {
+            if ((kLCHAgeLimitMin <= LCHHumanAge(object) && kLCHAgeLimitMax >= LCHHumanAge(object))
+                && (kLCHAgeLimitMin <= LCHHumanAge(partner) && kLCHAgeLimitMax >= LCHHumanAge(partner)))
+            {
+                result = kLCHChildrenLimit > LCHHumanChildrenCount(object)
+                             && kLCHChildrenLimit > LCHHumanChildrenCount(partner);
+            }
+        }
+    }
+    
+    return result;
 }

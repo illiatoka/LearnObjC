@@ -7,19 +7,6 @@
 #include <assert.h>
 #include <string.h>
 
-// Readme
-// Create new human object using LCHHumanCreate method. It will generate object with default parameters:
-//  age: 1,
-//  gender: LCHHumanGenderType
-//  rankOfAwesomeness: random
-
-// Parameters specifications:
-// age: set in years
-// gender: use Male or Female type.
-// rankOfAwesomeness: store value between 1 to 100. Set predominancy in relationship between objects.
-//    Object with lower value will have low power. Rank value can't be change after assign.
-
-
 typedef struct LCHHuman LCHHuman;
 
 typedef enum {
@@ -28,17 +15,10 @@ typedef enum {
     LCHHumanGenderFemale
 } LCHHumanGenderType;
 
-static
-const uint8_t kLCHChildrenLimit = 20;
-
-static
-const uint8_t kLCHAgeLimitMin = 18;
-
-static
-const uint8_t kLCHAgeLimitMax = 75;
-
-static
-const uint8_t kLCHRankOfAwesomenessMax = 100;
+static const uint8_t kLCHRankOfAwesomenessMax = 100;
+static const uint8_t kLCHChildrenLimit        = 20;
+static const uint8_t kLCHAgeLimitMin          = 18;
+static const uint8_t kLCHAgeLimitMax          = 75;
 
 struct LCHHuman {
     char *_name;
@@ -56,6 +36,13 @@ struct LCHHuman {
     uint64_t _referenceCount;
 };
 
+// TODO: Not finished
+extern
+void _LCHHumanDeallocate(LCHHuman *object);
+
+#pragma mark -
+#pragma mark How can I call this type of declarations?
+
 extern
 LCHHuman *LCHHumanCreate(LCHHumanGenderType gender);
 
@@ -64,18 +51,16 @@ LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender,
                                        char *name,
                                        char *surname,
                                        uint8_t age,
-                                       uint8_t rank
-                                       );
+                                       uint8_t rank);
 
 extern
-LCHHuman *LCHHumanCreateBabyWithParameters(LCHHumanGenderType gender,
-                             LCHHuman *mother,
-                             LCHHuman *father,
-                             char*name
-                             );
+LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
+                                           LCHHuman *mother,
+                                           LCHHuman *father,
+                                           char*name);
 
-extern
-void _LCHHumanDeallocate(LCHHuman *object);
+#pragma mark -
+#pragma mark Accessors
 
 extern
 char *LCHHumanName(LCHHuman *object);
@@ -107,25 +92,36 @@ uint8_t LCHHumanChildrenCount(LCHHuman *object);
 extern
 LCHHuman *LCHHumanPartner(LCHHuman *object);
 
+// TODO: Ask about name for method
 extern
 bool LCHHumanIsMarried(LCHHuman *object);
 
 extern
-void LCHHumanSetMarry(LCHHuman *object, LCHHuman *partner);
+uint8_t LCHHumanRank(LCHHuman *object);
 
+// TODO: Not finished
 extern
-void LCHHumanSetDivorce(LCHHuman *object);
+void LCHHumanMarry(LCHHuman *object, LCHHuman *partner);
+
+// TODO: Not finished
+extern
+void LCHHumanDivorce(LCHHuman *object);
 
 extern
 LCHHuman *LCHHumanMother(LCHHuman *object);
 
+// TODO: Not finished
 extern
 void LCHHumanSetMother(LCHHuman *object, LCHHuman *mother);
 
 extern
 LCHHuman *LCHHumanFather(LCHHuman *object);
 
+// TODO: Not finished
 extern
 void LCHHumanSetFather(LCHHuman *object, LCHHuman *father);
+
+extern
+uint64_t LCHHumanReferenceCount(LCHHuman *object);
 
 #endif
