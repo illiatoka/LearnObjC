@@ -48,13 +48,9 @@ void LCHHumanObjectTests(void) {
     
     printf("Male partner: %p\n", LCHHumanPartner(male));
     printf("Male reference: %llu\n", LCHHumanReferenceCount(male));
-    printf("Female partner: %p\n", LCHHumanPartner(female));
-    printf("Female reference: %llu\n\n", LCHHumanReferenceCount(female));
     
     LCHObjectRelease(female);
     
-    printf("Male partner: %p\n", LCHHumanPartner(male));
-    printf("Male reference: %llu\n", LCHHumanReferenceCount(male));
     printf("Female partner: %p\n", LCHHumanPartner(female));
     printf("Female reference: %llu\n\n", LCHHumanReferenceCount(female));
     
