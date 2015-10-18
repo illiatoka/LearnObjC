@@ -27,6 +27,6 @@ extern
 void LCHObjectRelease(void *object);
 
 extern
-uint64_t LCHHumanReferenceCount(void *object);
+uint64_t LCHObjectReferenceCount(void *object);
 
 #endif

@@ -12,7 +12,7 @@ int main(int argc, const char * argv[]) {
     // LCHPerfomStructuresTests();
     // LCHPrintBytesOfValueTests();
     
-    LCHHumanObjectTests();
+    LCHPerformHumanObjectTests();
     
     return 0;
 }

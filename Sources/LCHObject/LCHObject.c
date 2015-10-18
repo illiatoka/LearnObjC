@@ -39,6 +39,6 @@ void LCHObjectRelease(void *object) {
     }
 }
 
-uint64_t LCHHumanReferenceCount(void *object) {
+uint64_t LCHObjectReferenceCount(void *object) {
     return NULL != object ? ((LCHObject *)object)->_referenceCount : 0;
 }
