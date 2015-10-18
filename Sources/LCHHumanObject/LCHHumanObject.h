@@ -7,6 +7,8 @@
 #include <assert.h>
 #include <string.h>
 
+#include "LCHObject.h"
+
 typedef struct LCHHuman LCHHuman;
 
 typedef enum {
@@ -15,11 +17,6 @@ typedef enum {
     LCHHumanGenderFemale
 } LCHHumanGenderType;
 
-typedef enum {
-    LCHHumanStatusMaster,
-    LCHHumanStatusSlave
-} LCHHumanStatusType;
-
 extern const uint8_t kLCHRankOfAwesomenessMax;
 extern const uint8_t kLCHChildrenLimit;
 extern const uint8_t kLCHAgeInitial;
@@ -27,7 +24,7 @@ extern const uint8_t kLCHAgeLimitMin;
 extern const uint8_t kLCHAgeLimitMax;
 
 extern
-void _LCHHumanDeallocate(LCHHuman *object);
+void _LCHHumanDeallocate(void *object);
 
 extern
 LCHHuman *LCHHumanCreate(LCHHumanGenderType gender);
@@ -44,12 +41,6 @@ LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
                                            LCHHuman *mother,
                                            LCHHuman *father,
                                            char*name);
-
-extern
-void LCHObjectRetain(LCHHuman *object);
-
-extern
-void LCHObjectRelease(LCHHuman *object);
 
 extern
 char *LCHHumanName(LCHHuman *object);
@@ -95,8 +86,5 @@ LCHHuman *LCHHumanMother(LCHHuman *object);
 
 extern
 LCHHuman *LCHHumanFather(LCHHuman *object);
-
-extern
-uint64_t LCHHumanReferenceCount(LCHHuman *object);
 
 #endif
