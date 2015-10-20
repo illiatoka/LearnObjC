@@ -23,6 +23,8 @@ extern const uint8_t kLCHAgeInitial;
 extern const uint8_t kLCHAgeLimitMin;
 extern const uint8_t kLCHAgeLimitMax;
 
+// Create macros for getter!!! and check if elements not equal
+
 extern
 void _LCHHumanDeallocate(void *object);
 

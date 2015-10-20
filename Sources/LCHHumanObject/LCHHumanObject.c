@@ -19,7 +19,6 @@ struct LCHHuman {
     LCHHuman *_father;
     LCHHuman *_children[kLCHChildrenLimit];
     uint8_t _age;
-    uint8_t _childrenCount;
     uint8_t _rankOfAwesomeness;
     LCHHumanGenderType _gender;
 };
@@ -56,6 +55,7 @@ LCHHuman *LCHHumanWithStatusMaster(LCHHuman *object, LCHHuman *partner);
 
 #pragma mark -
 #pragma mark Initealizations and Deallocation
+// check spell!
 
 void _LCHHumanDeallocate(void *object) {
     LCHHumanSetName(object, NULL);
@@ -134,6 +134,7 @@ void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
     }
 }
 
+// Improve this with screenshot!
 void LCHHumanDivorce(LCHHuman *object) {
     if (NULL != object && NULL != LCHHumanPartner(object)) {
         LCHHuman *master = LCHHumanWithStatusMaster(object, object->_partner);
@@ -147,6 +148,7 @@ void LCHHumanDivorce(LCHHuman *object) {
 
 #pragma mark -
 #pragma mark Accessors
+// initializations, accessors, public, private
 
 char *LCHHumanName(LCHHuman *object) {
     return NULL != object ? object->_name : NULL;
@@ -258,17 +260,16 @@ void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
 #pragma mark Private Implementations
 
 void LCHHumanAddChild(LCHHuman *object, LCHHuman *child) {
-    if (object != NULL) {
+    if (object != NULL && child != NULL) {
         if (kLCHHumanGenderFemale == LCHHumanGender(object)) {
             LCHHumanSetMother(child, object);
-        } else if (kLCHHumanGenderMale == LCHHumanGender(object)) {
+        } else {
             LCHHumanSetFather(child, object);
         }
         
         for (uint8_t index = 0; index < kLCHChildrenLimit; index++) {
             if (NULL == object->_children[index]) {
                 object->_children[index] = child;
-                object->_childrenCount++;
                 LCHObjectRetain(child);
                 
                 return;
@@ -284,13 +285,12 @@ void LCHHumanRemoveChildren(LCHHuman *object) {
             if (NULL != child) {
                 if (kLCHHumanGenderFemale == LCHHumanGender(object)) {
                     LCHHumanSetMother(child, NULL);
-                } else if (kLCHHumanGenderMale == LCHHumanGender(object)) {
+                } else {
                     LCHHumanSetFather(child, NULL);
                 }
                 
                 LCHObjectRelease(child);
                 object->_children[index] = NULL;
-                object->_childrenCount--;
             }
         }
     }
@@ -319,6 +319,7 @@ LCHHuman *LCHHumanWithStatusMaster(LCHHuman *object, LCHHuman *partner) {
     uint8_t objectRank = LCHHumanRank(object);
     uint8_t partnerRank = LCHHumanRank(partner);
     
+    // Change to if statements!
     return objectRank > partnerRank
             ? object
             : objectRank < partnerRank
