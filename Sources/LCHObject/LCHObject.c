@@ -1,7 +1,7 @@
 #include "LCHObject.h"
 
 #pragma mark -
-#pragma mark Public Implementations
+#pragma mark Initealizations and Deallocation
 
 void _LCHObjectDeallocate(void *object) {
     if (NULL != object) {
@@ -22,6 +22,9 @@ void *_LCHObjectCreate(size_t size, LCHObjectDeallocate deallocator) {
     
     return object;
 }
+
+#pragma mark -
+#pragma mark Public Implementations
 
 void LCHObjectRetain(void *object) {
     if (NULL != object) {
