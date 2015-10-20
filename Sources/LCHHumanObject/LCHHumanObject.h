@@ -12,9 +12,9 @@
 typedef struct LCHHuman LCHHuman;
 
 typedef enum {
-    LCHHumanGenderUnknown,
-    LCHHumanGenderMale,
-    LCHHumanGenderFemale
+    kLCHHumanGenderUnknown,
+    kLCHHumanGenderMale,
+    kLCHHumanGenderFemale
 } LCHHumanGenderType;
 
 extern const uint8_t kLCHRankOfAwesomenessMax;

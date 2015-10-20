@@ -100,7 +100,7 @@ LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
     LCHHuman *child = NULL;
     
     if (true == LCHHumanShouldCreateChild(mother, father)) {
-        LCHHuman *redefinedFather = LCHHumanGender(father) == LCHHumanGenderMale ? father : mother;
+        LCHHuman *redefinedFather = LCHHumanGender(father) == kLCHHumanGenderMale ? father : mother;
         
         child = LCHHumanCreateWithParameters(gender,
                                              name,
@@ -259,9 +259,9 @@ void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
 
 void LCHHumanAddChild(LCHHuman *object, LCHHuman *child) {
     if (object != NULL) {
-        if (LCHHumanGenderFemale == LCHHumanGender(object)) {
+        if (kLCHHumanGenderFemale == LCHHumanGender(object)) {
             LCHHumanSetMother(child, object);
-        } else if (LCHHumanGenderMale == LCHHumanGender(object)) {
+        } else if (kLCHHumanGenderMale == LCHHumanGender(object)) {
             LCHHumanSetFather(child, object);
         }
         
@@ -282,9 +282,9 @@ void LCHHumanRemoveChildren(LCHHuman *object) {
         for (uint8_t index = 0; index < kLCHChildrenLimit; index++) {
             LCHHuman *child = object->_children[index];
             if (NULL != child) {
-                if (LCHHumanGenderFemale == LCHHumanGender(object)) {
+                if (kLCHHumanGenderFemale == LCHHumanGender(object)) {
                     LCHHumanSetMother(child, NULL);
-                } else if (LCHHumanGenderMale == LCHHumanGender(object)) {
+                } else if (kLCHHumanGenderMale == LCHHumanGender(object)) {
                     LCHHumanSetFather(child, NULL);
                 }
                 
@@ -323,7 +323,7 @@ LCHHuman *LCHHumanWithStatusMaster(LCHHuman *object, LCHHuman *partner) {
             ? object
             : objectRank < partnerRank
             ? partner
-            : LCHHumanGenderMale == LCHHumanGender(object)
+            : kLCHHumanGenderMale == LCHHumanGender(object)
             ? object
             : partner;
 }

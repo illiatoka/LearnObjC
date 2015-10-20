@@ -28,14 +28,14 @@ void LCHPerformHumanObjectTests(void) {
 
 void LCHHumanObjectCreateTests(void) {
     // Create default Human object with gender Male
-    LCHHuman *male = LCHHumanCreate(LCHHumanGenderMale);
+    LCHHuman *male = LCHHumanCreate(kLCHHumanGenderMale);
     
     // After Human male object was created:
     // Object must not be NULL
     assert(NULL != male);
     
     // Object must have Male gender
-    assert(LCHHumanGenderMale == LCHHumanGender(male));
+    assert(kLCHHumanGenderMale == LCHHumanGender(male));
     
     // Object name must be NULL
     assert(NULL == LCHHumanName(male));
@@ -72,14 +72,14 @@ void LCHHumanObjectCreateWithParametersTests(void) {
     char *femaleSurname = "Melof";
     
     // Create Human object with gender female and parameters
-    LCHHuman *female = LCHHumanCreateWithParameters(LCHHumanGenderFemale, femaleName, femaleSurname, 27, 93);
+    LCHHuman *female = LCHHumanCreateWithParameters(kLCHHumanGenderFemale, femaleName, femaleSurname, 27, 93);
     
     // After Human male object was created:
     // Object must not be NULL
     assert(NULL != female);
     
     // Object must have Female gender
-    assert(LCHHumanGenderFemale == LCHHumanGender(female));
+    assert(kLCHHumanGenderFemale == LCHHumanGender(female));
     
     // Object name must be equal to femaleName
     assert(0 == strcmp(femaleName, LCHHumanName(female)));
@@ -112,8 +112,8 @@ void LCHHumanObjectCreateWithParametersTests(void) {
 }
 
 void LCHHumanObjectMarriedTests(void) {
-    LCHHuman *male = LCHHumanCreate(LCHHumanGenderMale);
-    LCHHuman *female = LCHHumanCreate(LCHHumanGenderFemale);
+    LCHHuman *male = LCHHumanCreate(kLCHHumanGenderMale);
+    LCHHuman *female = LCHHumanCreate(kLCHHumanGenderFemale);
     LCHHumanSetAge(male, 34);
     LCHHumanSetAge(female, 31);
     
@@ -159,22 +159,22 @@ void LCHHumanObjectMarriedTests(void) {
 
 void LCHHumanObjectCreateChildTests(void) {
     char *maleSurname = "Doe";
-    LCHHuman *male = LCHHumanCreate(LCHHumanGenderMale);
-    LCHHuman *female = LCHHumanCreate(LCHHumanGenderFemale);
+    LCHHuman *male = LCHHumanCreate(kLCHHumanGenderMale);
+    LCHHuman *female = LCHHumanCreate(kLCHHumanGenderFemale);
     LCHHumanSetAge(male, 34);
     LCHHumanSetAge(female, 31);
     LCHHumanSetSurname(male, maleSurname);
     
     // Create Human object with gender female and parameters
     char *childName = "Marry";
-    LCHHuman *child = LCHHumanCreateChildWithParameters(LCHHumanGenderFemale, female, male, childName);
+    LCHHuman *child = LCHHumanCreateChildWithParameters(kLCHHumanGenderFemale, female, male, childName);
     
     // After Human child object was created:
     // Object must not be NULL
     assert(NULL != child);
     
     // Object must have Female gender
-    assert(LCHHumanGenderFemale == LCHHumanGender(child));
+    assert(kLCHHumanGenderFemale == LCHHumanGender(child));
     
     // Object name must be equal to femaleName
     assert(0 == strcmp(childName, LCHHumanName(child)));
