@@ -26,7 +26,7 @@ extern const uint8_t kLCHAgeLimitMax;
 // Create macros for getter!!! and check if elements not equal
 
 extern
-void _LCHHumanDeallocate(void *object);
+void __LCHHumanDeallocate(void *object);
 
 extern
 LCHHuman *LCHHumanCreate(LCHHumanGenderType gender);
@@ -42,7 +42,7 @@ extern
 LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
                                            LCHHuman *mother,
                                            LCHHuman *father,
-                                           char*name);
+                                           char *name);
 
 extern
 char *LCHHumanName(LCHHuman *object);

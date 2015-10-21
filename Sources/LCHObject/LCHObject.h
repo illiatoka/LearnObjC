@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#define LCHObjectCreateOfType(type) _LCHObjectCreate(sizeof(type), _ ## type ## Deallocate)
+#define LCHObjectCreateOfType(type) __LCHObjectCreate(sizeof(type), __ ## type ## Deallocate)
 
 typedef void (*LCHObjectDeallocate)(void *object);
 
@@ -15,10 +15,10 @@ typedef struct {
 } LCHObject;
 
 extern
-void _LCHObjectDeallocate(void *object);
+void __LCHObjectDeallocate(void *object);
 
 extern
-void *_LCHObjectCreate(size_t size, LCHObjectDeallocate deallocator);
+void *__LCHObjectCreate(size_t size, LCHObjectDeallocate deallocator);
 
 extern
 void LCHObjectRetain(void *object);

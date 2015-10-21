@@ -1,15 +1,15 @@
 #include "LCHObject.h"
 
 #pragma mark -
-#pragma mark Initealizations and Deallocation
+#pragma mark Initializations and Deallocation
 
-void _LCHObjectDeallocate(void *object) {
+void __LCHObjectDeallocate(void *object) {
     if (NULL != object) {
         free(object);
     }
 }
 
-void *_LCHObjectCreate(size_t size, LCHObjectDeallocate deallocator) {
+void *__LCHObjectCreate(size_t size, LCHObjectDeallocate deallocator) {
     assert(0 != size);
     assert(NULL != deallocator);
     

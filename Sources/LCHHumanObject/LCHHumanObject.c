@@ -54,16 +54,15 @@ static
 LCHHuman *LCHHumanWithStatusMaster(LCHHuman *object, LCHHuman *partner);
 
 #pragma mark -
-#pragma mark Initealizations and Deallocation
-// check spell!
+#pragma mark Initializations and Deallocation
 
-void _LCHHumanDeallocate(void *object) {
+void __LCHHumanDeallocate(void *object) {
     LCHHumanSetName(object, NULL);
     LCHHumanSetSurname(object, NULL);
     LCHHumanDivorce(object);
     LCHHumanRemoveChildren(object);
 
-    _LCHObjectDeallocate(object);
+    __LCHObjectDeallocate(object);
 }
 
 LCHHuman *LCHHumanCreate(LCHHumanGenderType gender) {
@@ -95,7 +94,7 @@ LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender,
 LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
                                            LCHHuman *mother,
                                            LCHHuman *father,
-                                           char*name)
+                                           char *name)
 {
     LCHHuman *child = NULL;
     
@@ -116,39 +115,7 @@ LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
 }
 
 #pragma mark -
-#pragma mark Public Implementations
-
-void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
-    if (NULL != object && NULL != partner) {
-        if (true == LCHHumanShouldBeMarried(object, partner)) {
-            LCHHuman *master = LCHHumanWithStatusMaster(object, partner);
-            LCHHuman *slave = master == object ? partner : object;
-            
-            LCHHumanDivorce(object);
-            LCHHumanDivorce(partner);
-            
-            slave->_partner = master;
-            LCHObjectRetain(slave);
-            master->_partner = slave;
-        }
-    }
-}
-
-// Improve this with screenshot!
-void LCHHumanDivorce(LCHHuman *object) {
-    if (NULL != object && NULL != LCHHumanPartner(object)) {
-        LCHHuman *master = LCHHumanWithStatusMaster(object, object->_partner);
-        LCHHuman *slave = master == object ? object->_partner : object;
-        
-        slave->_partner = NULL;
-        LCHObjectRelease(slave);
-        master->_partner = NULL;
-    }
-}
-
-#pragma mark -
 #pragma mark Accessors
-// initializations, accessors, public, private
 
 char *LCHHumanName(LCHHuman *object) {
     return NULL != object ? object->_name : NULL;
@@ -206,18 +173,6 @@ void LCHHumanSetAge(LCHHuman *object, uint8_t age) {
     }
 }
 
-uint8_t LCHHumanChildrenCount(LCHHuman *object) {
-    uint8_t childrenCount = 0;
-    
-    for (uint8_t count = 0; count < kLCHChildrenLimit; count++) {
-        if (NULL != object->_children[count]) {
-            childrenCount++;
-        }
-    }
-    
-    return childrenCount;
-}
-
 LCHHuman *LCHHumanPartner(LCHHuman *object) {
     return NULL != object ? object->_partner : NULL;
 }
@@ -253,6 +208,50 @@ LCHHuman *LCHHumanFather(LCHHuman *object) {
 void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
     if (NULL != object) {
         object->_father = father;
+    }
+}
+
+#pragma mark -
+#pragma mark Public Implementations
+
+uint8_t LCHHumanChildrenCount(LCHHuman *object) {
+    uint8_t childrenCount = 0;
+    
+    for (uint8_t count = 0; count < kLCHChildrenLimit; count++) {
+        if (NULL != object->_children[count]) {
+            childrenCount++;
+        }
+    }
+    
+    return childrenCount;
+}
+
+void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
+    if (NULL != object && NULL != partner) {
+        if (true == LCHHumanShouldBeMarried(object, partner)) {
+            LCHHuman *master = LCHHumanWithStatusMaster(object, partner);
+            LCHHuman *slave = master == object ? partner : object;
+            
+            LCHHumanDivorce(object);
+            LCHHumanDivorce(partner);
+            
+            slave->_partner = master;
+            LCHObjectRetain(slave);
+            master->_partner = slave;
+        }
+    }
+}
+
+void LCHHumanDivorce(LCHHuman *object) {
+    LCHHuman *partner = LCHHumanPartner(object);
+    
+    if (NULL != object && NULL != partner) {
+        LCHHuman *master = LCHHumanWithStatusMaster(object, partner);
+        LCHHuman *slave = master == object ? partner : object;
+        
+        slave->_partner = NULL;
+        LCHObjectRelease(slave);
+        master->_partner = NULL;
     }
 }
 
@@ -319,14 +318,17 @@ LCHHuman *LCHHumanWithStatusMaster(LCHHuman *object, LCHHuman *partner) {
     uint8_t objectRank = LCHHumanRank(object);
     uint8_t partnerRank = LCHHumanRank(partner);
     
-    // Change to if statements!
-    return objectRank > partnerRank
-            ? object
-            : objectRank < partnerRank
-            ? partner
-            : kLCHHumanGenderMale == LCHHumanGender(object)
-            ? object
-            : partner;
+    LCHHuman *master = NULL;
+    
+    if (objectRank > partnerRank) {
+        master = object;
+    } else if (objectRank < partnerRank) {
+        master = partner;
+    } else {
+        master = kLCHHumanGenderMale == LCHHumanGender(object) ? object : partner;
+    }
+    
+    return master;
 }
 
 bool LCHHumanIsAgeValid(LCHHuman *object) {

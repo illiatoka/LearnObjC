@@ -24,6 +24,8 @@ void LCHPerformHumanObjectTests(void) {
     LCHHumanObjectCreateWithParametersTests();
     LCHHumanObjectCreateChildTests();
     LCHHumanObjectMarriedTests();
+    
+    // TODO: Perform tests with bad scenario
 }
 
 void LCHHumanObjectCreateTests(void) {
