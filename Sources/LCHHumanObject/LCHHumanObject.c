@@ -118,7 +118,7 @@ LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
 #pragma mark Accessors
 
 char *LCHHumanName(LCHHuman *object) {
-    return NULL != object ? object->_name : NULL;
+    LCHObjectIvarGetterSynthesize(object, _name, NULL);
 }
 
 void LCHHumanSetName(LCHHuman *object, char *name) {
@@ -135,7 +135,7 @@ void LCHHumanSetName(LCHHuman *object, char *name) {
 }
 
 char *LCHHumanSurname(LCHHuman *object) {
-    return NULL != object ? object->_surname : NULL;
+    LCHObjectIvarGetterSynthesize(object, _surname, NULL);
 }
 
 void LCHHumanSetSurname(LCHHuman *object, char *surname) {
@@ -152,7 +152,7 @@ void LCHHumanSetSurname(LCHHuman *object, char *surname) {
 }
 
 LCHHumanGenderType LCHHumanGender(LCHHuman *object) {
-    return NULL != object ? object->_gender : 0;
+    LCHObjectIvarGetterSynthesize(object, _gender, 0);
 }
 
 void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender) {
@@ -162,7 +162,7 @@ void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender) {
 }
 
 uint8_t LCHHumanAge(LCHHuman *object) {
-    return NULL != object ? object->_age : 0;
+    LCHObjectIvarGetterSynthesize(object, _age, 0);
 }
 
 void LCHHumanSetAge(LCHHuman *object, uint8_t age) {
@@ -174,7 +174,7 @@ void LCHHumanSetAge(LCHHuman *object, uint8_t age) {
 }
 
 LCHHuman *LCHHumanPartner(LCHHuman *object) {
-    return NULL != object ? object->_partner : NULL;
+    LCHObjectIvarGetterSynthesize(object, _partner, NULL);
 }
 
 bool LCHHumanIsMarried(LCHHuman *object) {
@@ -182,7 +182,7 @@ bool LCHHumanIsMarried(LCHHuman *object) {
 }
 
 uint8_t LCHHumanRank(LCHHuman *object) {
-    return NULL != object ? object->_rankOfAwesomeness : 0;
+    LCHObjectIvarGetterSynthesize(object, _rankOfAwesomeness, 0);
 }
 
 void LCHHumanSetRank(LCHHuman *object, uint8_t rank) {
@@ -192,7 +192,7 @@ void LCHHumanSetRank(LCHHuman *object, uint8_t rank) {
 }
 
 LCHHuman *LCHHumanMother(LCHHuman *object) {
-    return NULL != object ? object->_mother : NULL;
+    LCHObjectIvarGetterSynthesize(object, _mother, NULL);
 }
 
 void LCHHumanSetMother(LCHHuman *object, LCHHuman *mother) {
@@ -202,7 +202,7 @@ void LCHHumanSetMother(LCHHuman *object, LCHHuman *mother) {
 }
 
 LCHHuman *LCHHumanFather(LCHHuman *object) {
-    return NULL != object ? object->_father : NULL;
+    LCHObjectIvarGetterSynthesize(object, _father, NULL);
 }
 
 void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {

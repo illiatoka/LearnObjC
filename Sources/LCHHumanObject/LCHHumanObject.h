@@ -9,6 +9,10 @@
 
 #include "LCHObject.h"
 
+// TODO: Create macros for setter. Check if elements not equal inside macro
+
+#define LCHObjectIvarGetterSynthesize(object, iVar, returnValue) return NULL != object ? object->iVar : returnValue;
+
 typedef struct LCHHuman LCHHuman;
 
 typedef enum {
@@ -22,8 +26,6 @@ extern const uint8_t kLCHChildrenLimit;
 extern const uint8_t kLCHAgeInitial;
 extern const uint8_t kLCHAgeLimitMin;
 extern const uint8_t kLCHAgeLimitMax;
-
-// Create macros for getter!!! and check if elements not equal
 
 extern
 void __LCHHumanDeallocate(void *object);
