@@ -9,9 +9,12 @@
 
 #include "LCHObject.h"
 
-#define LCHObjectIvarSetterSynthesize(object, iVar, value) if (NULL != object) { object->iVar = value; }
-
 #define LCHObjectIvarGetterSynthesize(object, iVar, returnValue) return NULL != object ? object->iVar : returnValue;
+
+#define LCHObjectIvarSetterSynthesize(object, iVar, value) \
+    if (NULL != object && value != object->iVar) { \
+        object->iVar = value; \
+    }
 
 #define LCHObjectIvarStringSetterSynthesize(object, iVar, value) \
     if (NULL != object && value != object->iVar) { \
