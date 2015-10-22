@@ -257,6 +257,7 @@ void LCHHumanRemoveChildren(LCHHuman *object) {
     if (NULL != object) {
         for (uint8_t index = 0; index < kLCHChildrenLimit; index++) {
             LCHHuman *child = object->_children[index];
+            
             if (NULL != child) {
                 if (kLCHHumanGenderFemale == LCHHumanGender(object)) {
                     LCHHumanSetMother(child, NULL);
