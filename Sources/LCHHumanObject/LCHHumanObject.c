@@ -65,7 +65,7 @@ void __LCHHumanDeallocate(void *object) {
     __LCHObjectDeallocate(object);
 }
 
-LCHHuman *LCHHumanCreate(LCHHumanGenderType gender) {
+LCHHuman *LCHHumanCreateWithGender(LCHHumanGenderType gender) {
     LCHHuman *object = LCHObjectCreateOfType(LCHHuman);
     
     LCHHumanSetGender(object, gender);
@@ -81,7 +81,7 @@ LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender,
                                        uint8_t age,
                                        uint8_t rank)
 {
-    LCHHuman *object = LCHHumanCreate(gender);
+    LCHHuman *object = LCHHumanCreateWithGender(gender);
 
     LCHHumanSetName(object, name);
     LCHHumanSetSurname(object, surname);

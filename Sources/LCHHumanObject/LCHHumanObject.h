@@ -42,7 +42,7 @@ extern
 void __LCHHumanDeallocate(void *object);
 
 extern
-LCHHuman *LCHHumanCreate(LCHHumanGenderType gender);
+LCHHuman *LCHHumanCreateWithGender(LCHHumanGenderType gender);
 
 extern
 LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender,

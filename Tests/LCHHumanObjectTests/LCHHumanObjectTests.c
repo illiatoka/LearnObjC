@@ -31,7 +31,7 @@ void LCHPerformHumanObjectTests(void) {
 
 void LCHHumanObjectCreateTests(void) {
     // Create default Human object with gender Male
-    LCHHuman *male = LCHHumanCreate(kLCHHumanGenderMale);
+    LCHHuman *male = LCHHumanCreateWithGender(kLCHHumanGenderMale);
     
     // After Human male object was created:
     // Object must not be NULL
@@ -115,8 +115,8 @@ void LCHHumanObjectCreateWithParametersTests(void) {
 }
 
 void LCHHumanObjectMarriedTests(void) {
-    LCHHuman *male = LCHHumanCreate(kLCHHumanGenderMale);
-    LCHHuman *female = LCHHumanCreate(kLCHHumanGenderFemale);
+    LCHHuman *male = LCHHumanCreateWithGender(kLCHHumanGenderMale);
+    LCHHuman *female = LCHHumanCreateWithGender(kLCHHumanGenderFemale);
     LCHHumanSetAge(male, 34);
     LCHHumanSetAge(female, 31);
     
@@ -162,8 +162,8 @@ void LCHHumanObjectMarriedTests(void) {
 
 void LCHHumanObjectCreateChildTests(void) {
     char *maleSurname = "Doe";
-    LCHHuman *male = LCHHumanCreate(kLCHHumanGenderMale);
-    LCHHuman *female = LCHHumanCreate(kLCHHumanGenderFemale);
+    LCHHuman *male = LCHHumanCreateWithGender(kLCHHumanGenderMale);
+    LCHHuman *female = LCHHumanCreateWithGender(kLCHHumanGenderFemale);
     LCHHumanSetAge(male, 34);
     LCHHumanSetAge(female, 31);
     LCHHumanSetSurname(male, maleSurname);
@@ -219,10 +219,10 @@ void LCHHumanObjectCreateChildTests(void) {
 }
 
 void LCHHumanObjectRandomTests(void) {
-    LCHHuman *male = LCHHumanCreate(kLCHHumanGenderMale);
+    LCHHuman *male = LCHHumanCreateWithGender(kLCHHumanGenderMale);
     LCHHuman *mrNull = NULL;
-    LCHHuman *female = LCHHumanCreate(kLCHHumanGenderFemale);
-    LCHHuman *anotherFemale = LCHHumanCreate(kLCHHumanGenderFemale);
+    LCHHuman *female = LCHHumanCreateWithGender(kLCHHumanGenderFemale);
+    LCHHuman *anotherFemale = LCHHumanCreateWithGender(kLCHHumanGenderFemale);
     LCHHumanSetAge(male, 34);
     LCHHumanSetAge(female, 31);
     LCHHumanSetAge(anotherFemale, 17);
