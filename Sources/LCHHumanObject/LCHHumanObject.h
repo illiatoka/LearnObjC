@@ -9,9 +9,20 @@
 
 #include "LCHObject.h"
 
-// TODO: Create macros for setter. Check if elements not equal inside macro
+#define LCHObjectIvarSetterSynthesize(object, iVar, value) if (NULL != object) { object->iVar = value; }
 
 #define LCHObjectIvarGetterSynthesize(object, iVar, returnValue) return NULL != object ? object->iVar : returnValue;
+
+#define LCHObjectIvarStringSetterSynthesize(object, iVar, value) \
+    if (NULL != object && value != object->iVar) { \
+        if (NULL != object->iVar) { \
+            free(object->iVar); \
+            object->iVar = NULL; \
+        } \
+        if (value) { \
+            object->iVar = strdup(value); \
+        } \
+    }
 
 typedef struct LCHHuman LCHHuman;
 

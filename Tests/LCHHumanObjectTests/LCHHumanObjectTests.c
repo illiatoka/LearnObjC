@@ -1,5 +1,4 @@
 #include "LCHHumanObjectTests.h"
-#include "LCHHumanObject.h"
 
 #pragma mark -
 #pragma mark Private Declarations
@@ -16,6 +15,9 @@ void LCHHumanObjectMarriedTests(void);
 static
 void LCHHumanObjectCreateChildTests(void);
 
+static
+void LCHHumanObjectRandomTests(void);
+
 #pragma mark -
 #pragma mark Public Implementations
 
@@ -24,8 +26,7 @@ void LCHPerformHumanObjectTests(void) {
     LCHHumanObjectCreateWithParametersTests();
     LCHHumanObjectCreateChildTests();
     LCHHumanObjectMarriedTests();
-    
-    // TODO: Perform tests with bad scenario
+    LCHHumanObjectRandomTests();
 }
 
 void LCHHumanObjectCreateTests(void) {
@@ -215,4 +216,46 @@ void LCHHumanObjectCreateChildTests(void) {
     
     LCHObjectRelease(male);
     LCHObjectRelease(female);
+}
+
+void LCHHumanObjectRandomTests(void) {
+    LCHHuman *male = LCHHumanCreate(kLCHHumanGenderMale);
+    LCHHuman *mrNull = NULL;
+    LCHHuman *female = LCHHumanCreate(kLCHHumanGenderFemale);
+    LCHHuman *anotherFemale = LCHHumanCreate(kLCHHumanGenderFemale);
+    LCHHumanSetAge(male, 34);
+    LCHHumanSetAge(female, 31);
+    LCHHumanSetAge(anotherFemale, 17);
+    
+    // After Human objects was married
+    LCHHumanMarry(male, female);
+    
+    // Try to marry with another object
+    LCHHumanMarry(male, anotherFemale);
+    
+    // Male and female must be marry
+    assert(true == LCHHumanIsMarried(male));
+    assert(true == LCHHumanIsMarried(female));
+    
+    // AnotherFemale must not be marry
+    assert(false == LCHHumanIsMarried(anotherFemale));
+    
+    // Try to marry with mr. NULL
+    LCHHumanMarry(mrNull, female);
+    
+    // Female partner must be equal to male
+    assert(LCHHumanPartner(female) == male);
+    
+    // Try to create child object with mr. NULL as a partner
+    char *childName = "Marry";
+    LCHHuman *child = LCHHumanCreateChildWithParameters(kLCHHumanGenderFemale, female, mrNull, childName);
+    
+    // Child must be NULL
+    assert(NULL == child);
+    
+    LCHHumanDivorce(male);
+    LCHObjectRelease(male);
+    LCHObjectRelease(female);
+    LCHObjectRelease(anotherFemale);
+    LCHObjectRelease(child);
 }

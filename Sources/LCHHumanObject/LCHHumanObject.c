@@ -118,51 +118,31 @@ LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
 #pragma mark Accessors
 
 char *LCHHumanName(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _name, NULL);
+    LCHObjectIvarGetterSynthesize(object, _name, NULL)
 }
 
 void LCHHumanSetName(LCHHuman *object, char *name) {
-    if (NULL != object) {
-        if (NULL != object->_name) {
-            free(object->_name);
-            object->_name = NULL;
-        }
-        
-        if (name) {
-            object->_name = strdup(name);
-        }
-    }
+    LCHObjectIvarStringSetterSynthesize(object, _name, name)
 }
 
 char *LCHHumanSurname(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _surname, NULL);
+    LCHObjectIvarGetterSynthesize(object, _surname, NULL)
 }
 
 void LCHHumanSetSurname(LCHHuman *object, char *surname) {
-    if (NULL != object) {
-        if (NULL != object->_surname) {
-            free(object->_surname);
-            object->_surname = NULL;
-        }
-        
-        if (surname) {
-            object->_surname = strdup(surname);
-        }
-    }
+    LCHObjectIvarStringSetterSynthesize(object, _surname, surname)
 }
 
 LCHHumanGenderType LCHHumanGender(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _gender, 0);
+    LCHObjectIvarGetterSynthesize(object, _gender, 0)
 }
 
 void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender) {
-    if (NULL != object) {
-        object->_gender = gender;
-    }
+    LCHObjectIvarSetterSynthesize(object, _gender, gender)
 }
 
 uint8_t LCHHumanAge(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _age, 0);
+    LCHObjectIvarGetterSynthesize(object, _age, 0)
 }
 
 void LCHHumanSetAge(LCHHuman *object, uint8_t age) {
@@ -174,7 +154,7 @@ void LCHHumanSetAge(LCHHuman *object, uint8_t age) {
 }
 
 LCHHuman *LCHHumanPartner(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _partner, NULL);
+    LCHObjectIvarGetterSynthesize(object, _partner, NULL)
 }
 
 bool LCHHumanIsMarried(LCHHuman *object) {
@@ -182,7 +162,7 @@ bool LCHHumanIsMarried(LCHHuman *object) {
 }
 
 uint8_t LCHHumanRank(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _rankOfAwesomeness, 0);
+    LCHObjectIvarGetterSynthesize(object, _rankOfAwesomeness, 0)
 }
 
 void LCHHumanSetRank(LCHHuman *object, uint8_t rank) {
@@ -192,23 +172,19 @@ void LCHHumanSetRank(LCHHuman *object, uint8_t rank) {
 }
 
 LCHHuman *LCHHumanMother(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _mother, NULL);
+    LCHObjectIvarGetterSynthesize(object, _mother, NULL)
 }
 
 void LCHHumanSetMother(LCHHuman *object, LCHHuman *mother) {
-    if (NULL != object) {
-        object->_mother = mother;
-    }
+    LCHObjectIvarSetterSynthesize(object, _mother, mother)
 }
 
 LCHHuman *LCHHumanFather(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _father, NULL);
+    LCHObjectIvarGetterSynthesize(object, _father, NULL)
 }
 
 void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
-    if (NULL != object) {
-        object->_father = father;
-    }
+    LCHObjectIvarSetterSynthesize(object, _father, father)
 }
 
 #pragma mark -
