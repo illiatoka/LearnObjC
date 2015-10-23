@@ -13,11 +13,12 @@ const uint8_t kLCHAgeLimitMax          = 75;
 
 struct LCHHuman {
     LCHObject _super;
-    LCHString *_fullname;
+    LCHString *_name;
+    LCHString *_surname;
     LCHHuman *_partner;
     LCHHuman *_mother;
     LCHHuman *_father;
-    LCHHuman *_children[kLCHChildrenLimit];
+    LCHArray *_children;
     uint8_t _age;
     uint8_t _rankOfAwesomeness;
     LCHHumanGenderType _gender;
@@ -28,9 +29,6 @@ void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender);
 
 static
 void LCHHumanSetRank(LCHHuman *object, uint8_t rank);
-
-extern
-void LCHHumanSetFullname(LCHHuman *object, char *name, char *fullname);
 
 static
 bool LCHHumanIsAgeValid(LCHHuman *object);
@@ -60,7 +58,8 @@ LCHHuman *LCHHumanWithStatusMaster(LCHHuman *object, LCHHuman *partner);
 #pragma mark Initializations and Deallocation
 
 void __LCHHumanDeallocate(void *object) {
-    LCHHumanSetFullname(object, NULL, NULL);
+    LCHHumanSetName(object, NULL);
+    LCHHumanSetSurname(object, NULL);
     LCHHumanDivorce(object);
     LCHHumanRemoveChildren(object);
 
@@ -120,45 +119,50 @@ LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
 #pragma mark Accessors
 
 char *LCHHumanName(LCHHuman *object) {
-    return LCHStringName(object->_fullname);
+    return LCHStringValue(object->_name);
 }
 
 void LCHHumanSetName(LCHHuman *object, char *name) {
     if (NULL != object) {
-        LCHString *string = object->_fullname;
-
-        if (NULL == string) {
-            string = LCHStringCreate();
-            object->_fullname = string;
-        }
+        LCHString *string = object->_name;
         
-        LCHStringSetName(string, name);
+        if (NULL != name) {
+            if (NULL == string) {
+                string = LCHStringCreate();
+                object->_name = string;
+            }
+            
+            LCHStringSetValue(string, name);
+        } else {
+            if (NULL != string) {
+                LCHObjectRelease(string);
+                object->_name = NULL;
+            }
+        }
     }
 }
 
 char *LCHHumanSurname(LCHHuman *object) {
-    return LCHStringSurname(object->_fullname);
+    return LCHStringValue(object->_surname);
 }
 
 void LCHHumanSetSurname(LCHHuman *object, char *surname) {
     if (NULL != object) {
-        LCHString *string = object->_fullname;
+        LCHString *string = object->_surname;
         
-        if (NULL == string) {
-            string = LCHStringCreate();
-            object->_fullname = string;
+        if (NULL != surname) {
+            if (NULL == string) {
+                string = LCHStringCreate();
+                object->_surname = string;
+            }
+            
+            LCHStringSetValue(string, surname);
+        } else {
+            if (NULL != string) {
+                LCHObjectRelease(string);
+                object->_surname = NULL;
+            }
         }
-        
-        LCHStringSetSurname(string, surname);
-    }
-}
-
-void LCHHumanSetFullname(LCHHuman *object, char *name, char *surname) {
-    if (NULL != object) {
-        LCHHumanSetName(object, name);
-        LCHHumanSetSurname(object, surname);
-        
-        LCHObjectRelease(object->_fullname);
     }
 }
 
@@ -180,6 +184,10 @@ void LCHHumanSetAge(LCHHuman *object, uint8_t age) {
             object->_age = age;
         }
     }
+}
+
+uint8_t LCHHumanChildrenCount(LCHHuman *object) {
+    return LCHArrayCount(object->_children);
 }
 
 LCHHuman *LCHHumanPartner(LCHHuman *object) {
@@ -219,18 +227,7 @@ void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
 #pragma mark -
 #pragma mark Public Implementations
 
-uint8_t LCHHumanChildrenCount(LCHHuman *object) {
-    uint8_t childrenCount = 0;
-    
-    for (uint8_t count = 0; count < kLCHChildrenLimit; count++) {
-        if (NULL != object->_children[count]) {
-            childrenCount++;
-        }
-    }
-    
-    return childrenCount;
-}
-
+// TODO: Move memory control to SetPartner method
 void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
     if (NULL != object && NULL != partner) {
         if (true == LCHHumanShouldBeMarried(object, partner)) {
@@ -247,6 +244,7 @@ void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
     }
 }
 
+// TODO: Move memory control to SetPartner method
 void LCHHumanDivorce(LCHHuman *object) {
     LCHHuman *partner = LCHHumanPartner(object);
     
@@ -265,27 +263,25 @@ void LCHHumanDivorce(LCHHuman *object) {
 
 void LCHHumanAddChild(LCHHuman *object, LCHHuman *child) {
     if (object != NULL && child != NULL) {
+        LCHArray *array = LCHArrayCreate();
+        
         if (kLCHHumanGenderFemale == LCHHumanGender(object)) {
             LCHHumanSetMother(child, object);
         } else {
             LCHHumanSetFather(child, object);
         }
         
-        for (uint8_t index = 0; index < kLCHChildrenLimit; index++) {
-            if (NULL == object->_children[index]) {
-                object->_children[index] = child;
-                LCHObjectRetain(child);
-                
-                return;
-            }
-        }
+        LCHArrayAddElement(array, child);
+        object->_children = array;
     }
 }
 
 void LCHHumanRemoveChildren(LCHHuman *object) {
     if (NULL != object) {
+        LCHArray *array = object->_children;
+        
         for (uint8_t index = 0; index < kLCHChildrenLimit; index++) {
-            LCHHuman *child = object->_children[index];
+            LCHHuman *child = LCHArrayElement(array, index);
             
             if (NULL != child) {
                 if (kLCHHumanGenderFemale == LCHHumanGender(object)) {
@@ -294,10 +290,12 @@ void LCHHumanRemoveChildren(LCHHuman *object) {
                     LCHHumanSetFather(child, NULL);
                 }
                 
-                LCHObjectRelease(child);
-                object->_children[index] = NULL;
+                LCHArrayRemoveElement(array, index);
             }
         }
+        
+        LCHObjectRelease(array);
+        object->_children = NULL;
     }
 }
 

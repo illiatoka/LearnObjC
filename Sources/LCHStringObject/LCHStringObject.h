@@ -14,19 +14,10 @@ extern
 LCHString *LCHStringCreate(void);
 
 extern
-char *LCHStringName(LCHString *object);
+char *LCHStringValue(LCHString *object);
 
 extern
-void LCHStringSetName(LCHString *object, char *value);
-
-extern
-char *LCHStringSurname(LCHString *object);
-
-extern
-void LCHStringSetSurname(LCHString *object, char *value);
-
-extern
-char *LCHStringFullname(LCHString *object);
+void LCHStringSetValue(LCHString *object, char *value);
 
 extern
 void LCHStringPrintValue(char *value);

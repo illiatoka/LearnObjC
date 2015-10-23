@@ -5,17 +5,14 @@
 
 struct LCHString {
     LCHObject _super;
-    char *_name;
-    char *_surname;
+    char *_value;
 };
 
 #pragma mark -
 #pragma mark Initializations and Deallocation
 
 void __LCHStringDeallocate(void *object) {
-    LCHStringSetName(object, NULL);
-    LCHStringSetSurname(object, NULL);
-    
+    LCHStringSetValue(object, NULL);
     __LCHObjectDeallocate(object);
 }
 
@@ -26,20 +23,12 @@ LCHString *LCHStringCreate(void) {
 #pragma mark -
 #pragma mark Accessors
 
-char *LCHStringName(LCHString *object) {
-    LCHObjectIvarGetterSynthesize(object, _name, NULL)
+char *LCHStringValue(LCHString *object) {
+    LCHObjectIvarGetterSynthesize(object, _value, NULL)
 }
 
-void LCHStringSetName(LCHString *object, char *name) {
-    LCHObjectIvarStringSetterSynthesize(object, _name, name)
-}
-
-char *LCHStringSurname(LCHString *object) {
-    LCHObjectIvarGetterSynthesize(object, _surname, NULL)
-}
-
-void LCHStringSetSurname(LCHString *object, char *surname) {
-    LCHObjectIvarStringSetterSynthesize(object, _surname, surname)
+void LCHStringSetValue(LCHString *object, char *value) {
+    LCHObjectIvarStringSetterSynthesize(object, _value, value)
 }
 
 #pragma mark -

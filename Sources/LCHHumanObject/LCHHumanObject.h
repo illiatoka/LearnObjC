@@ -9,6 +9,7 @@
 
 #include "LCHObject.h"
 #include "LCHStringObject.h"
+#include "LCHArrayObject.h"
 
 typedef struct LCHHuman LCHHuman;
 
