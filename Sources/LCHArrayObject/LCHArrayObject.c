@@ -1,4 +1,6 @@
 #include "LCHArrayObject.h"
+#include "LCHHumanObject.h"
+#include "LCHObject.h"
 
 #pragma mark -
 #pragma mark Private Declarations

@@ -1,4 +1,8 @@
+#include <assert.h>
+
 #include "LCHArrayObjectTests.h"
+#include "LCHArrayObject.h"
+#include "LCHObject.h"
 
 #pragma mark -
 #pragma mark Private Declarations

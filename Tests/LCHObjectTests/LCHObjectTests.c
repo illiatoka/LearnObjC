@@ -1,6 +1,7 @@
 #include <assert.h>
 
 #include "LCHObjectTests.h"
+#include "LCHObject.h"
 
 #pragma mark -
 #pragma mark Private Declarations

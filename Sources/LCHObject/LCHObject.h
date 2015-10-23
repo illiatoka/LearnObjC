@@ -2,8 +2,6 @@
 #define LCHObject_h
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
 
 #define LCHObjectCreateOfType(type) __LCHObjectCreate(sizeof(type), __ ## type ## Deallocate)
 

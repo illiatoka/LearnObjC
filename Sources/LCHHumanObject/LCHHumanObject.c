@@ -1,6 +1,11 @@
+#include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 #include "LCHHumanObject.h"
+#include "LCHObject.h"
+#include "LCHStringObject.h"
+#include "LCHArrayObject.h"
 
 #pragma mark -
 #pragma mark Private Declarations

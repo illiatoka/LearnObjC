@@ -1,4 +1,9 @@
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "LCHStringObject.h"
+#include "LCHObject.h"
 
 #pragma mark -
 #pragma mark Private Declarations

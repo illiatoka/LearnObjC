@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "LCHPrintValueOfDataTests.h"
 #include "LCHPrintValueOfData.h"
 

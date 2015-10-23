@@ -1,8 +1,7 @@
 #ifndef LCHArrayObject_h
 #define LCHArrayObject_h
 
-#include "LCHObject.h"
-#include "LCHHumanObject.h"
+#include <stdio.h>
 
 typedef struct LCHArray LCHArray;
 

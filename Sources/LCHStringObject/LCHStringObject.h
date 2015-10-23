@@ -1,10 +1,6 @@
 #ifndef LCHStringObject_h
 #define LCHStringObject_h
 
-#include <string.h>
-
-#include "LCHObject.h"
-
 typedef struct LCHString LCHString;
 
 extern

@@ -1,4 +1,8 @@
+#include <assert.h>
+
 #include "LCHStringObjectTests.h"
+#include "LCHStringObject.h"
+#include "LCHObject.h"
 
 #pragma mark -
 #pragma mark Private Declarations
