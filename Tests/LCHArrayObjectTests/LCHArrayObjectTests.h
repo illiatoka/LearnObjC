@@ -3,4 +3,7 @@
 
 #include "LCHArrayObject.h"
 
+extern
+void LCHPerformArrayTests(void);
+
 #endif

@@ -46,6 +46,9 @@ static
 void LCHHumanSetFather(LCHHuman *object, LCHHuman *father);
 
 static
+void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner, bool beMarried);
+
+static
 bool LCHHumanShouldBeMarried(LCHHuman *object, LCHHuman *partner);
 
 static
@@ -119,7 +122,7 @@ LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
 #pragma mark Accessors
 
 char *LCHHumanName(LCHHuman *object) {
-    return LCHStringValue(object->_name);
+    LCHObjectIvarGetterSynthesize(object, LCHStringValue(object->_name), NULL)
 }
 
 void LCHHumanSetName(LCHHuman *object, char *name) {
@@ -143,7 +146,7 @@ void LCHHumanSetName(LCHHuman *object, char *name) {
 }
 
 char *LCHHumanSurname(LCHHuman *object) {
-    return LCHStringValue(object->_surname);
+    LCHObjectIvarGetterSynthesize(object, LCHStringValue(object->_surname), NULL)
 }
 
 void LCHHumanSetSurname(LCHHuman *object, char *surname) {
@@ -167,7 +170,7 @@ void LCHHumanSetSurname(LCHHuman *object, char *surname) {
 }
 
 LCHHumanGenderType LCHHumanGender(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _gender, 0)
+    LCHObjectIvarGetterSynthesize(object, object->_gender, 0)
 }
 
 void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender) {
@@ -175,7 +178,7 @@ void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender) {
 }
 
 uint8_t LCHHumanAge(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _age, 0)
+    LCHObjectIvarGetterSynthesize(object, object->_age, 0)
 }
 
 void LCHHumanSetAge(LCHHuman *object, uint8_t age) {
@@ -187,11 +190,11 @@ void LCHHumanSetAge(LCHHuman *object, uint8_t age) {
 }
 
 uint8_t LCHHumanChildrenCount(LCHHuman *object) {
-    return LCHArrayCount(object->_children);
+    LCHObjectIvarGetterSynthesize(object, LCHArrayCount(object->_children), 0)
 }
 
 LCHHuman *LCHHumanPartner(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _partner, NULL)
+    LCHObjectIvarGetterSynthesize(object, object->_partner, NULL)
 }
 
 bool LCHHumanIsMarried(LCHHuman *object) {
@@ -199,7 +202,7 @@ bool LCHHumanIsMarried(LCHHuman *object) {
 }
 
 uint8_t LCHHumanRank(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _rankOfAwesomeness, 0)
+    LCHObjectIvarGetterSynthesize(object, object->_rankOfAwesomeness, 0)
 }
 
 void LCHHumanSetRank(LCHHuman *object, uint8_t rank) {
@@ -209,7 +212,7 @@ void LCHHumanSetRank(LCHHuman *object, uint8_t rank) {
 }
 
 LCHHuman *LCHHumanMother(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _mother, NULL)
+    LCHObjectIvarGetterSynthesize(object, object->_mother, NULL)
 }
 
 void LCHHumanSetMother(LCHHuman *object, LCHHuman *mother) {
@@ -217,44 +220,47 @@ void LCHHumanSetMother(LCHHuman *object, LCHHuman *mother) {
 }
 
 LCHHuman *LCHHumanFather(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _father, NULL)
+    LCHObjectIvarGetterSynthesize(object, object->_father, NULL)
 }
 
 void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
     LCHObjectIvarSetterSynthesize(object, _father, father)
 }
 
+void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner, bool beMarried) {
+    LCHHuman *master = LCHHumanWithStatusMaster(object, partner);
+    LCHHuman *slave = master == object ? partner : object;
+    
+    if (true == beMarried) {
+        slave->_partner = master;
+        LCHObjectRetain(slave);
+        master->_partner = slave;
+    } else {
+        slave->_partner = NULL;
+        LCHObjectRelease(slave);
+        master->_partner = NULL;
+    }
+}
+
 #pragma mark -
 #pragma mark Public Implementations
 
-// TODO: Move memory control to SetPartner method
 void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
     if (NULL != object && NULL != partner) {
         if (true == LCHHumanShouldBeMarried(object, partner)) {
-            LCHHuman *master = LCHHumanWithStatusMaster(object, partner);
-            LCHHuman *slave = master == object ? partner : object;
-            
             LCHHumanDivorce(object);
             LCHHumanDivorce(partner);
             
-            slave->_partner = master;
-            LCHObjectRetain(slave);
-            master->_partner = slave;
+            LCHHumanSetPartner(object, partner, true);
         }
     }
 }
 
-// TODO: Move memory control to SetPartner method
 void LCHHumanDivorce(LCHHuman *object) {
     LCHHuman *partner = LCHHumanPartner(object);
     
     if (NULL != object && NULL != partner) {
-        LCHHuman *master = LCHHumanWithStatusMaster(object, partner);
-        LCHHuman *slave = master == object ? partner : object;
-        
-        slave->_partner = NULL;
-        LCHObjectRelease(slave);
-        master->_partner = NULL;
+        LCHHumanSetPartner(object, partner, false);
     }
 }
 

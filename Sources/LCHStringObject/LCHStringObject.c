@@ -24,7 +24,7 @@ LCHString *LCHStringCreate(void) {
 #pragma mark Accessors
 
 char *LCHStringValue(LCHString *object) {
-    LCHObjectIvarGetterSynthesize(object, _value, NULL)
+    LCHObjectIvarGetterSynthesize(object, object->_value, NULL)
 }
 
 void LCHStringSetValue(LCHString *object, char *value) {

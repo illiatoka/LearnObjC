@@ -4,6 +4,6 @@
 #include "LCHObject.h"
 
 extern
-void LCHObjectTests(void);
+void LCHPerformObjectTests(void);
 
 #endif

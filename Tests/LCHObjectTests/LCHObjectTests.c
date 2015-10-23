@@ -1,3 +1,5 @@
+#include <assert.h>
+
 #include "LCHObjectTests.h"
 
 #pragma mark -
@@ -9,7 +11,7 @@ void LCHObjectCreateTests(void);
 #pragma mark -
 #pragma mark Public Implementations
 
-void LCHObjectTests(void) {
+void LCHPerformObjectTests(void) {
     LCHObjectCreateTests();
 }
 
@@ -17,5 +19,18 @@ void LCHObjectTests(void) {
 #pragma mark Private Implementations
 
 void LCHObjectCreateTests(void) {
+    // Create object
+    LCHObject *object = LCHObjectCreateOfType(LCHObject);
     
+    // After object was created
+    // Object must not be NULL
+    assert(NULL != object);
+    
+    // Object reference count must be equal to 1
+    assert(1 == LCHObjectReferenceCount(object));
+    
+    // Object deallocator must not be NULL
+    assert(NULL != LCHObjectDeallocator(object));
+    
+    LCHObjectRelease(object);
 }

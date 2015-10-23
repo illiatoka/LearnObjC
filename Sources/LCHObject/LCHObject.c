@@ -18,7 +18,7 @@ void *__LCHObjectCreate(size_t size, LCHObjectDeallocate deallocator) {
     assert(NULL != object);
     
     object->_referenceCount = 1;
-    object->_deallocateFunction = deallocator;
+    object->_deallocator = deallocator;
     
     return object;
 }
@@ -35,7 +35,7 @@ void LCHObjectRetain(void *object) {
 void LCHObjectRelease(void *object) {
     if (NULL != object) {
         if (0 == --(((LCHObject *)object)->_referenceCount)) {
-            LCHObjectDeallocate deallocator = ((LCHObject *)object)->_deallocateFunction;
+            LCHObjectDeallocate deallocator = ((LCHObject *)object)->_deallocator;
             
             deallocator(object);
         }
@@ -43,5 +43,9 @@ void LCHObjectRelease(void *object) {
 }
 
 uint64_t LCHObjectReferenceCount(void *object) {
-    return NULL != object ? ((LCHObject *)object)->_referenceCount : 0;
+    LCHObjectIvarGetterSynthesize(object, ((LCHObject *)object)->_referenceCount, 0)
+}
+
+void *LCHObjectDeallocator(void *object) {
+    LCHObjectIvarGetterSynthesize(object, ((LCHObject *)object)->_deallocator, NULL)
 }

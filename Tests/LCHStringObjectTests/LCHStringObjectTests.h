@@ -3,4 +3,7 @@
 
 #include "LCHStringObject.h"
 
+extern
+void LCHPerformStringTests(void);
+
 #endif

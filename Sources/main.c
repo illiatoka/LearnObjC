@@ -16,6 +16,9 @@ int main(int argc, const char * argv[]) {
     // LCHPrintBytesOfValueTests();
     
     LCHPerformHumanObjectTests();
+    LCHPerformObjectTests();
+    LCHPerformStringTests();
+    LCHPerformArrayTests();
     
     return 0;
 }

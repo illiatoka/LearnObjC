@@ -7,7 +7,7 @@
 
 #define LCHObjectCreateOfType(type) __LCHObjectCreate(sizeof(type), __ ## type ## Deallocate)
 
-#define LCHObjectIvarGetterSynthesize(object, iVar, returnValue) return NULL != object ? object->iVar : returnValue;
+#define LCHObjectIvarGetterSynthesize(object, iVar, returnValue) return NULL != object ? iVar : returnValue;
 
 #define LCHObjectIvarSetterSynthesize(object, iVar, value) \
     if (NULL != object && value != object->iVar) { \
@@ -29,7 +29,7 @@ typedef void (*LCHObjectDeallocate)(void *object);
 
 typedef struct {
     uint64_t _referenceCount;
-    LCHObjectDeallocate _deallocateFunction;
+    LCHObjectDeallocate _deallocator;
 } LCHObject;
 
 extern
@@ -46,5 +46,8 @@ void LCHObjectRelease(void *object);
 
 extern
 uint64_t LCHObjectReferenceCount(void *object);
+
+extern
+void *LCHObjectDeallocator(void *object);
 
 #endif
