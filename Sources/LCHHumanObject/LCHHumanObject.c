@@ -1,3 +1,5 @@
+#include <assert.h>
+
 #include "LCHHumanObject.h"
 
 #pragma mark -
@@ -11,9 +13,7 @@ const uint8_t kLCHAgeLimitMax          = 75;
 
 struct LCHHuman {
     LCHObject _super;
-    
-    char *_name;
-    char *_surname;
+    LCHString *_fullname;
     LCHHuman *_partner;
     LCHHuman *_mother;
     LCHHuman *_father;
@@ -28,6 +28,9 @@ void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender);
 
 static
 void LCHHumanSetRank(LCHHuman *object, uint8_t rank);
+
+extern
+void LCHHumanSetFullname(LCHHuman *object, char *name, char *fullname);
 
 static
 bool LCHHumanIsAgeValid(LCHHuman *object);
@@ -57,8 +60,7 @@ LCHHuman *LCHHumanWithStatusMaster(LCHHuman *object, LCHHuman *partner);
 #pragma mark Initializations and Deallocation
 
 void __LCHHumanDeallocate(void *object) {
-    LCHHumanSetName(object, NULL);
-    LCHHumanSetSurname(object, NULL);
+    LCHHumanSetFullname(object, NULL, NULL);
     LCHHumanDivorce(object);
     LCHHumanRemoveChildren(object);
 
@@ -118,19 +120,46 @@ LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
 #pragma mark Accessors
 
 char *LCHHumanName(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _name, NULL)
+    return LCHStringName(object->_fullname);
 }
 
 void LCHHumanSetName(LCHHuman *object, char *name) {
-    LCHObjectIvarStringSetterSynthesize(object, _name, name)
+    if (NULL != object) {
+        LCHString *string = object->_fullname;
+
+        if (NULL == string) {
+            string = LCHStringCreate();
+            object->_fullname = string;
+        }
+        
+        LCHStringSetName(string, name);
+    }
 }
 
 char *LCHHumanSurname(LCHHuman *object) {
-    LCHObjectIvarGetterSynthesize(object, _surname, NULL)
+    return LCHStringSurname(object->_fullname);
 }
 
 void LCHHumanSetSurname(LCHHuman *object, char *surname) {
-    LCHObjectIvarStringSetterSynthesize(object, _surname, surname)
+    if (NULL != object) {
+        LCHString *string = object->_fullname;
+        
+        if (NULL == string) {
+            string = LCHStringCreate();
+            object->_fullname = string;
+        }
+        
+        LCHStringSetSurname(string, surname);
+    }
+}
+
+void LCHHumanSetFullname(LCHHuman *object, char *name, char *surname) {
+    if (NULL != object) {
+        LCHHumanSetName(object, name);
+        LCHHumanSetSurname(object, surname);
+        
+        LCHObjectRelease(object->_fullname);
+    }
 }
 
 LCHHumanGenderType LCHHumanGender(LCHHuman *object) {
