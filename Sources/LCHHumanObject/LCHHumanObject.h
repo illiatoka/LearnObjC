@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+#include "LCHStringObject.h"
+#include "LCHArrayObject.h"
+
 typedef struct LCHHuman LCHHuman;
 
 typedef enum {
@@ -26,8 +29,8 @@ LCHHuman *LCHHumanCreateWithGender(LCHHumanGenderType gender);
 
 extern
 LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender,
-                                       char *name,
-                                       char *surname,
+                                       LCHString *name,
+                                       LCHString *surname,
                                        uint8_t age,
                                        uint8_t rank);
 
@@ -35,19 +38,21 @@ extern
 LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
                                            LCHHuman *mother,
                                            LCHHuman *father,
-                                           char *name);
+                                           LCHString *name,
+                                           LCHArray *motherChildren,
+                                           LCHArray *fatherChildren);
 
 extern
-char *LCHHumanName(LCHHuman *object);
+LCHString *LCHHumanName(LCHHuman *object);
 
 extern
-void LCHHumanSetName(LCHHuman *object, char *name);
+void LCHHumanSetName(LCHHuman *object, LCHString *name);
 
 extern
-char *LCHHumanSurname(LCHHuman *object);
+LCHString *LCHHumanSurname(LCHHuman *object);
 
 extern
-void LCHHumanSetSurname(LCHHuman *object, char *surname);
+void LCHHumanSetSurname(LCHHuman *object, LCHString *surname);
 
 extern
 LCHHumanGenderType LCHHumanGender(LCHHuman *object);
@@ -59,7 +64,7 @@ extern
 void LCHHumanSetAge(LCHHuman *object, uint8_t age);
 
 extern
-uint8_t LCHHumanChildrenCount(LCHHuman *object);
+LCHArray *LCHHumanChildren(LCHHuman *object);
 
 extern
 LCHHuman *LCHHumanPartner(LCHHuman *object);

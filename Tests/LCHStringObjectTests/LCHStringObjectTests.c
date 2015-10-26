@@ -22,14 +22,14 @@ void LCHPerformStringTests(void) {
 
 void LCHStringCreateTests(void) {
     // Create object
-    LCHString *string = LCHStringCreate();
+    LCHString *string = LCHStringCreate("Test value");
     
     // After string was created
     // string must not be NULL
     assert(NULL != string);
     
-    // String value must be equal to NULL
-    assert(NULL == LCHStringValue(string));
+    // String value must not be NULL
+    assert(NULL != LCHStringValue(string));
     
     // After string value was set
     char *value = "Hello World";

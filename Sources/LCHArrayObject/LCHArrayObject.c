@@ -12,10 +12,14 @@ struct LCHArray {
     void *_array[kLCHArrayElementsLimit];
 };
 
+static
+void LCHArrayRemoveAllElements(LCHArray *object);
+
 #pragma mark -
 #pragma mark Initializations and Deallocation
 
 void __LCHArrayDeallocate(void *object) {
+    LCHArrayRemoveAllElements(object);
     __LCHObjectDeallocate(object);
 }
 
@@ -41,7 +45,7 @@ uint8_t LCHArrayCount(LCHArray *object) {
 }
 
 void *LCHArrayElement(LCHArray *object, uint8_t index) {
-    return NULL != object ? object->_array[index] : NULL;
+    LCHObjectIvarGetterSynthesize(object, object->_array[index], NULL)
 }
 
 #pragma mark -
@@ -64,5 +68,20 @@ void LCHArrayRemoveElement(LCHArray *object, uint8_t index) {
     if (NULL != object) {
         LCHObjectRelease(object->_array[index]);
         object->_array[index] = NULL;
+    }
+}
+
+#pragma mark -
+#pragma mark Private Implementations
+
+void LCHArrayRemoveAllElements(LCHArray *object) {
+    if (NULL != object) {
+        for (uint8_t index = 0; index < kLCHArrayElementsLimit; index++) {
+            void *element = LCHArrayElement(object, index);
+            
+            if (NULL != element) {
+                LCHArrayRemoveElement(object, index);
+            }
+        }
     }
 }

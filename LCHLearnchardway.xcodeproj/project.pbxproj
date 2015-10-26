@@ -64,6 +64,7 @@
 		A65AC4541BAD8EE500244B08 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		A65AC45A1BAD8EE500244B08 /* LCHPerformParentTypeTests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHPerformParentTypeTests.c; sourceTree = "<group>"; };
 		A65AC45B1BAD8EE500244B08 /* LCHPerformParentTypeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPerformParentTypeTests.h; sourceTree = "<group>"; };
+		A67B45741BDD3C640025DA21 /* LCHMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHMacro.h; sourceTree = "<group>"; };
 		A6BA2A491BBDCDE10061F2A9 /* LCHHumanObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHHumanObject.c; sourceTree = "<group>"; };
 		A6BA2A4A1BBDCDE10061F2A9 /* LCHHumanObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHHumanObject.h; sourceTree = "<group>"; };
 		A6BA2A4D1BBDCED60061F2A9 /* LCHHumanObjectTests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHHumanObjectTests.c; sourceTree = "<group>"; };
@@ -212,6 +213,7 @@
 				A64B225E1BD93C6A00F686D7 /* LCHStringObject */,
 				A64B225F1BD93C9C00F686D7 /* LCHArrayObject */,
 				A6E473451BD40D6300516DF8 /* LCHObject */,
+				A67B45731BDD3C390025DA21 /* LCHMacro */,
 				A65AC4541BAD8EE500244B08 /* main.c */,
 			);
 			path = Sources;
@@ -249,6 +251,14 @@
 				A65AC45A1BAD8EE500244B08 /* LCHPerformParentTypeTests.c */,
 			);
 			path = LCHPerformParentTypeTests;
+			sourceTree = "<group>";
+		};
+		A67B45731BDD3C390025DA21 /* LCHMacro */ = {
+			isa = PBXGroup;
+			children = (
+				A67B45741BDD3C640025DA21 /* LCHMacro.h */,
+			);
+			path = LCHMacro;
 			sourceTree = "<group>";
 		};
 		A6BA2A481BBDCDA70061F2A9 /* LCHHumanObject */ = {

@@ -7,7 +7,7 @@ extern
 void __LCHStringDeallocate(void *object);
 
 extern
-LCHString *LCHStringCreate(void);
+LCHString *LCHStringCreate(char *value);
 
 extern
 char *LCHStringValue(LCHString *object);

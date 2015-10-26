@@ -21,8 +21,11 @@ void __LCHStringDeallocate(void *object) {
     __LCHObjectDeallocate(object);
 }
 
-LCHString *LCHStringCreate(void) {
-    return LCHObjectCreateOfType(LCHString);
+LCHString *LCHStringCreate(char *value) {
+    LCHString *object = LCHObjectCreateOfType(LCHString);
+    LCHStringSetValue(object, value);
+    
+    return object;
 }
 
 #pragma mark -
@@ -33,7 +36,16 @@ char *LCHStringValue(LCHString *object) {
 }
 
 void LCHStringSetValue(LCHString *object, char *value) {
-    LCHObjectIvarStringSetterSynthesize(object, _value, value)
+    if (NULL != object && value != object->_value) {
+        if (NULL != object->_value) {
+            free(object->_value);
+            object->_value = NULL;
+        }
+        
+        if (value) {
+            object->_value = strdup(value);
+        }
+    }
 }
 
 #pragma mark -
