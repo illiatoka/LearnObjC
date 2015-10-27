@@ -15,12 +15,12 @@ extern
 uint8_t LCHArrayCount(LCHArray *object);
 
 extern
-void *LCHArrayElement(LCHArray *object, uint8_t index);
+void *LCHArrayElementAtIndex(LCHArray *object, uint8_t index);
 
 extern
 void LCHArrayAddElement(LCHArray *object, void *element);
 
 extern
-void LCHArrayRemoveElement(LCHArray *object, uint8_t index);
+void LCHArrayRemoveElementAtIndex(LCHArray *object, uint8_t index);
 
 #endif

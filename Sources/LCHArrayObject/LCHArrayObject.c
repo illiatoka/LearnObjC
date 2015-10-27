@@ -44,7 +44,7 @@ uint8_t LCHArrayCount(LCHArray *object) {
     return elementCount;
 }
 
-void *LCHArrayElement(LCHArray *object, uint8_t index) {
+void *LCHArrayElementAtIndex(LCHArray *object, uint8_t index) {
     LCHObjectIvarGetterSynthesize(object, object->_array[index], NULL)
 }
 
@@ -64,7 +64,7 @@ void LCHArrayAddElement(LCHArray *object, void *element) {
     }
 }
 
-void LCHArrayRemoveElement(LCHArray *object, uint8_t index) {
+void LCHArrayRemoveElementAtIndex(LCHArray *object, uint8_t index) {
     if (NULL != object) {
         LCHObjectRelease(object->_array[index]);
         object->_array[index] = NULL;
@@ -77,10 +77,10 @@ void LCHArrayRemoveElement(LCHArray *object, uint8_t index) {
 void LCHArrayRemoveAllElements(LCHArray *object) {
     if (NULL != object) {
         for (uint8_t index = 0; index < kLCHArrayElementsLimit; index++) {
-            void *element = LCHArrayElement(object, index);
+            void *element = LCHArrayElementAtIndex(object, index);
             
             if (NULL != element) {
-                LCHArrayRemoveElement(object, index);
+                LCHArrayRemoveElementAtIndex(object, index);
             }
         }
     }

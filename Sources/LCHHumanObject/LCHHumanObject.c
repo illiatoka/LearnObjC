@@ -267,7 +267,7 @@ void LCHHumanRemoveChildren(LCHHuman *object) {
         
         if (NULL != array) {
             for (uint8_t index = 0; index < kLCHChildrenLimit; index++) {
-                LCHHuman *child = LCHArrayElement(array, index);
+                LCHHuman *child = LCHArrayElementAtIndex(array, index);
                 
                 if (NULL != child) {
                     LCHHumanSetParent(child, NULL);

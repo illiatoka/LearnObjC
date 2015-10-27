@@ -38,10 +38,10 @@ void LCHArrayCreateTests(void) {
     assert(1 == LCHArrayCount(array));
     
     // Result must not be NULL of array getter
-    assert(NULL != LCHArrayElement(array, 0));
+    assert(NULL != LCHArrayElementAtIndex(array, 0));
     
     // After remove 1 element
-    LCHArrayRemoveElement(array, 0);
+    LCHArrayRemoveElementAtIndex(array, 0);
     
     // Array count must be equal to 0
     assert(0 == LCHArrayCount(array));
