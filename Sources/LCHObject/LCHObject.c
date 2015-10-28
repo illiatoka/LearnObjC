@@ -46,9 +46,9 @@ void LCHObjectRelease(void *object) {
 }
 
 uint64_t LCHObjectReferenceCount(void *object) {
-    LCHObjectIvarGetterSynthesize(object, ((LCHObject *)object)->_referenceCount, 0)
+    LCHObjectIvarGetter(object, ((LCHObject *)object)->_referenceCount, 0);
 }
 
 void *LCHObjectDeallocator(void *object) {
-    LCHObjectIvarGetterSynthesize(object, ((LCHObject *)object)->_deallocator, NULL)
+    LCHObjectIvarGetter(object, ((LCHObject *)object)->_deallocator, NULL);
 }

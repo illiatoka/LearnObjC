@@ -1,7 +1,7 @@
 #ifndef LCHMacro_h
 #define LCHMacro_h
 
-#define LCHObjectIvarGetterSynthesize(object, iVar, returnValue) return NULL != object ? iVar : returnValue;
+#define LCHObjectIvarGetter(object, iVar, returnValue) return NULL != object ? iVar : returnValue
 
 #define LCHObjectAssignSetter(object, iVar, value) \
     if (NULL != object && value != object->iVar) { \

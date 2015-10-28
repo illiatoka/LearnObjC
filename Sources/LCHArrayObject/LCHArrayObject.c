@@ -45,7 +45,7 @@ uint8_t LCHArrayCount(LCHArray *object) {
 }
 
 void *LCHArrayElementAtIndex(LCHArray *object, uint8_t index) {
-    LCHObjectIvarGetterSynthesize(object, object->_array[index], NULL)
+    LCHObjectIvarGetter(object, object->_array[index], NULL);
 }
 
 #pragma mark -
