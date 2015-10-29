@@ -171,15 +171,13 @@ void LCHHumanObjectCreateChildTests(void) {
     LCHString *maleSurname = LCHStringCreate("Doe");
     LCHHuman *male = LCHHumanCreateWithGender(kLCHHumanGenderMale);
     LCHHuman *female = LCHHumanCreateWithGender(kLCHHumanGenderFemale);
-    LCHArray *maleArray = LCHArrayCreate();
-    LCHArray *femaleArray = LCHArrayCreate();
     LCHHumanSetAge(male, 34);
     LCHHumanSetAge(female, 31);
     LCHHumanSetSurname(male, maleSurname);
     
     // Create Human object with gender female and parameters
     LCHString *childName = LCHStringCreate("Marry");
-    LCHHuman *child = LCHHumanCreateChildWithParameters(kLCHHumanGenderFemale, female, male, childName, maleArray, femaleArray);
+    LCHHuman *child = LCHHumanCreateChildWithParameters(kLCHHumanGenderFemale, female, male, childName);
     
     // After Human child object was created:
     // Object must not be NULL
@@ -207,7 +205,7 @@ void LCHHumanObjectCreateChildTests(void) {
     assert(male == LCHHumanFather(child));
     
     // Object age must be equal to initial age
-    assert(1 == LCHHumanAge(child));
+    assert(kLCHAgeInitial == LCHHumanAge(child));
     
     // Object children count must be equal to 0
     assert(0 == LCHArrayCount(LCHHumanChildren(child)));
@@ -227,8 +225,6 @@ void LCHHumanObjectCreateChildTests(void) {
     LCHObjectRelease(male);
     LCHObjectRelease(female);
     LCHObjectRelease(maleSurname);
-    LCHObjectRelease(maleArray);
-    LCHObjectRelease(femaleArray);
 }
 
 void LCHHumanObjectRandomTests(void) {
@@ -236,8 +232,6 @@ void LCHHumanObjectRandomTests(void) {
     LCHHuman *mrNull = NULL;
     LCHHuman *female = LCHHumanCreateWithGender(kLCHHumanGenderFemale);
     LCHHuman *anotherFemale = LCHHumanCreateWithGender(kLCHHumanGenderFemale);
-    LCHArray *maleArray = LCHArrayCreate();
-    LCHArray *femaleArray = LCHArrayCreate();
     LCHHumanSetAge(male, 34);
     LCHHumanSetAge(female, 31);
     LCHHumanSetAge(anotherFemale, 17);
@@ -263,7 +257,7 @@ void LCHHumanObjectRandomTests(void) {
     
     // Try to create child object with mr. NULL as a partner
     LCHString *childName = LCHStringCreate("Marry");
-    LCHHuman *child = LCHHumanCreateChildWithParameters(kLCHHumanGenderFemale, female, mrNull, childName, maleArray, femaleArray);
+    LCHHuman *child = LCHHumanCreateChildWithParameters(kLCHHumanGenderFemale, female, mrNull, childName);
     
     // Child must be NULL
     assert(NULL == child);
@@ -273,6 +267,4 @@ void LCHHumanObjectRandomTests(void) {
     LCHObjectRelease(female);
     LCHObjectRelease(anotherFemale);
     LCHObjectRelease(child);
-    LCHObjectRelease(maleArray);
-    LCHObjectRelease(femaleArray);
 }

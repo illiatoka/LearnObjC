@@ -38,9 +38,7 @@ extern
 LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
                                            LCHHuman *mother,
                                            LCHHuman *father,
-                                           LCHString *name,
-                                           LCHArray *motherChildren,
-                                           LCHArray *fatherChildren);
+                                           LCHString *name);
 
 extern
 LCHString *LCHHumanName(LCHHuman *object);

@@ -51,6 +51,8 @@ void LCHStringSetValue(LCHString *object, char *value) {
 #pragma mark -
 #pragma mark Public Implementations
 
-void LCHStringPrintValue(char *value) {
-    puts(value);
+void LCHStringPrintValue(LCHString *object) {
+    if (NULL != object) {
+        puts(LCHStringValue(object));
+    }
 }

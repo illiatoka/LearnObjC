@@ -38,7 +38,10 @@ static
 bool LCHHumanIsAgeValid(LCHHuman *object);
 
 static
-void LCHHumanAddChild(LCHHuman *object, LCHHuman *child, LCHArray *children);
+void LCHHumanAddChild(LCHHuman *object, LCHHuman *child);
+
+static
+void LCHHumanSetChildren(LCHHuman *object, LCHArray *array);
 
 static
 void LCHHumanRemoveChildren(LCHHuman *object);
@@ -78,10 +81,14 @@ void __LCHHumanDeallocate(void *object) {
 
 LCHHuman *LCHHumanCreateWithGender(LCHHumanGenderType gender) {
     LCHHuman *object = LCHObjectCreateOfType(LCHHuman);
+    LCHArray *array = LCHArrayCreate();
     
+    LCHHumanSetChildren(object, array);
     LCHHumanSetGender(object, gender);
     LCHHumanSetAge(object, kLCHAgeInitial);
     LCHHumanSetRank(object, arc4random_uniform(kLCHRankOfAwesomenessMax));
+    
+    LCHObjectRelease(array);
     
     return object;
 }
@@ -105,9 +112,7 @@ LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender,
 LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
                                            LCHHuman *mother,
                                            LCHHuman *father,
-                                           LCHString *name,
-                                           LCHArray *motherChildren,
-                                           LCHArray *fatherChildren)
+                                           LCHString *name)
 {
     LCHHuman *child = NULL;
     
@@ -120,8 +125,8 @@ LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
                                              kLCHAgeInitial,
                                              (LCHHumanRank(mother) + LCHHumanRank(father)) / 2);
         
-        LCHHumanAddChild(mother, child, motherChildren);
-        LCHHumanAddChild(father, child, fatherChildren);
+        LCHHumanAddChild(mother, child);
+        LCHHumanAddChild(father, child);
     }
     
     return child;
@@ -151,7 +156,7 @@ LCHHumanGenderType LCHHumanGender(LCHHuman *object) {
 }
 
 void LCHHumanSetGender(LCHHuman *object, LCHHumanGenderType gender) {
-    LCHObjectAssignSetter(object, _gender, gender)
+    LCHObjectAssignSetter(object, _gender, gender);
 }
 
 uint8_t LCHHumanAge(LCHHuman *object) {
@@ -160,14 +165,16 @@ uint8_t LCHHumanAge(LCHHuman *object) {
 
 void LCHHumanSetAge(LCHHuman *object, uint8_t age) {
     if (NULL != object) {
-        if (age > object->_age && age <= kLCHAgeLimitMax ? age : kLCHAgeLimitMax) {
-            object->_age = age;
-        }
+        object->_age = (age >= object->_age && age <= kLCHAgeLimitMax) ? age : kLCHAgeLimitMax;
     }
 }
 
 LCHArray *LCHHumanChildren(LCHHuman *object) {
     LCHObjectIvarGetter(object, object->_children, NULL);
+}
+
+void LCHHumanSetChildren(LCHHuman *object, LCHArray *array) {
+    LCHObjectRetainSetter(object, _children, array);
 }
 
 LCHHuman *LCHHumanPartner(LCHHuman *object) {
@@ -193,7 +200,7 @@ LCHHuman *LCHHumanMother(LCHHuman *object) {
 }
 
 void LCHHumanSetMother(LCHHuman *object, LCHHuman *mother) {
-    LCHObjectAssignSetter(object, _mother, mother)
+    LCHObjectAssignSetter(object, _mother, mother);
 }
 
 LCHHuman *LCHHumanFather(LCHHuman *object) {
@@ -201,7 +208,7 @@ LCHHuman *LCHHumanFather(LCHHuman *object) {
 }
 
 void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
-    LCHObjectAssignSetter(object, _father, father)
+    LCHObjectAssignSetter(object, _father, father);
 }
 
 void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner, bool beMarried) {
@@ -246,18 +253,10 @@ void LCHHumanSetParent(LCHHuman *object, LCHHuman *parent) {
     }
 }
 
-void LCHHumanAddChild(LCHHuman *object, LCHHuman *child, LCHArray *children) {
+void LCHHumanAddChild(LCHHuman *object, LCHHuman *child) {
     if (object != NULL && child != NULL) {
-        LCHArray *objectArray = LCHHumanChildren(object);
-        LCHArray *array = NULL == objectArray ? children : objectArray;
-        
-        if (NULL == objectArray) {
-            LCHObjectRetain(array);
-            object->_children = array;
-        }
-
         LCHHumanSetParent(child, object);
-        LCHArrayAddElement(array, child);
+        LCHArrayAddElement(LCHHumanChildren(object), child);
     }
 }
 
@@ -274,8 +273,7 @@ void LCHHumanRemoveChildren(LCHHuman *object) {
                 }
             }
             
-            LCHObjectRelease(array);
-            object->_children = NULL;
+            LCHHumanSetChildren(object, NULL);
         }
     }
 }
