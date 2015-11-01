@@ -44,10 +44,10 @@ static
 void LCHHumanSetChildren(LCHHuman *object, LCHArray *array);
 
 static
-void LCHHumanRemoveChildren(LCHHuman *object);
+void LCHHumanRemoveAllChildren(LCHHuman *object);
 
 static
-void LCHHumanSetParent(LCHHuman *object, LCHHuman *parent);
+void LCHHumanSetParent(LCHHuman *object, LCHHuman *parent, LCHHuman *value);
 
 static
 void LCHHumanSetFather(LCHHuman *object, LCHHuman *father);
@@ -74,7 +74,7 @@ void __LCHHumanDeallocate(void *object) {
     LCHHumanSetName(object, NULL);
     LCHHumanSetSurname(object, NULL);
     LCHHumanDivorce(object);
-    LCHHumanRemoveChildren(object);
+    LCHHumanRemoveAllChildren(object);
 
     __LCHObjectDeallocate(object);
 }
@@ -181,6 +181,21 @@ LCHHuman *LCHHumanPartner(LCHHuman *object) {
     LCHObjectIvarGetter(object, object->_partner, NULL);
 }
 
+void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner, bool beMarried) {
+    LCHHuman *master = LCHHumanWithStatusMaster(object, partner);
+    LCHHuman *slave = master == object ? partner : object;
+    
+    if (beMarried) {
+        slave->_partner = master;
+        LCHObjectRetain(slave);
+        master->_partner = slave;
+    } else {
+        slave->_partner = NULL;
+        LCHObjectRelease(slave);
+        master->_partner = NULL;
+    }
+}
+
 bool LCHHumanIsMarried(LCHHuman *object) {
     return NULL != object && NULL != object->_partner;
 }
@@ -211,21 +226,6 @@ void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
     LCHObjectAssignSetter(object, _father, father);
 }
 
-void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner, bool beMarried) {
-    LCHHuman *master = LCHHumanWithStatusMaster(object, partner);
-    LCHHuman *slave = master == object ? partner : object;
-    
-    if (beMarried) {
-        slave->_partner = master;
-        LCHObjectRetain(slave);
-        master->_partner = slave;
-    } else {
-        slave->_partner = NULL;
-        LCHObjectRelease(slave);
-        master->_partner = NULL;
-    }
-}
-
 #pragma mark -
 #pragma mark Public Implementations
 
@@ -251,36 +251,37 @@ void LCHHumanDivorce(LCHHuman *object) {
 #pragma mark -
 #pragma mark Private Implementations
 
-void LCHHumanSetParent(LCHHuman *object, LCHHuman *parent) {
+void LCHHumanSetParent(LCHHuman *object, LCHHuman *parent, LCHHuman *value) {
     if (kLCHHumanGenderMale == LCHHumanGender(parent)) {
-        LCHHumanSetFather(object, parent);
+        LCHHumanSetFather(object, value);
     } else {
-        LCHHumanSetMother(object, parent);
+        LCHHumanSetMother(object, value);
+    }
+}
+
+void LCHHumanRemoveParentOfAllChildren(LCHHuman *object) {
+    LCHArray *array = LCHHumanChildren(object);
+    
+    if (NULL != object && NULL != array) {
+        for (uint8_t index = 0; index < LCHArrayCount(array); index++) {
+            LCHHuman *child = LCHArrayElementAtIndex(array, index);
+            
+            LCHHumanSetParent(child, object, NULL);
+        }
     }
 }
 
 void LCHHumanAddChild(LCHHuman *object, LCHHuman *child) {
     if (object != NULL && child != NULL) {
-        LCHHumanSetParent(child, object);
         LCHArrayAddElement(LCHHumanChildren(object), child);
+        LCHHumanSetParent(child, object, object);
     }
 }
 
-void LCHHumanRemoveChildren(LCHHuman *object) {
+void LCHHumanRemoveAllChildren(LCHHuman *object) {
     if (NULL != object) {
-        LCHArray *array = LCHHumanChildren(object);
-        
-        if (NULL != array) {
-            for (uint8_t index = 0; index < kLCHChildrenLimit; index++) {
-                LCHHuman *child = LCHArrayElementAtIndex(array, index);
-                
-                if (NULL != child) {
-                    LCHHumanSetParent(child, NULL);
-                }
-            }
-            
-            LCHHumanSetChildren(object, NULL);
-        }
+        LCHHumanRemoveParentOfAllChildren(object);
+        LCHHumanSetChildren(object, NULL);
     }
 }
 
