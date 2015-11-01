@@ -215,9 +215,15 @@ void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner, bool beMarried) {
     LCHHuman *master = LCHHumanWithStatusMaster(object, partner);
     LCHHuman *slave = master == object ? partner : object;
     
-    slave->_partner = beMarried ? master : NULL;
-    beMarried ? LCHObjectRetain(slave) : LCHObjectRelease(slave);
-    master->_partner = beMarried ? slave : NULL;
+    if (beMarried) {
+        slave->_partner = master;
+        LCHObjectRetain(slave);
+        master->_partner = slave;
+    } else {
+        slave->_partner = NULL;
+        LCHObjectRelease(slave);
+        master->_partner = NULL;
+    }
 }
 
 #pragma mark -
