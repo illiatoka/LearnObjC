@@ -219,12 +219,19 @@ void LCHHumanObjectCreateChildTests(void) {
     // Father children count must be equal to 1
     assert(1 == LCHArrayCount(LCHHumanChildren(female)));
     
-    LCHObjectRelease(child);
-    LCHObjectRelease(childName);
-    
     LCHObjectRelease(male);
     LCHObjectRelease(female);
     LCHObjectRelease(maleSurname);
+    
+    // After parents was released
+    // Object must not have mother
+    assert(NULL == LCHHumanMother(child));
+    
+    // Object must not have father
+    assert(NULL == LCHHumanFather(child));
+    
+    LCHObjectRelease(child);
+    LCHObjectRelease(childName);
 }
 
 void LCHHumanObjectRandomTests(void) {
