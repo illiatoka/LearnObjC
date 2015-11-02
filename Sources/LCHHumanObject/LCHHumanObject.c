@@ -263,7 +263,7 @@ void LCHHumanRemoveParentOfAllChildren(LCHHuman *object) {
     LCHArray *array = LCHHumanChildren(object);
     
     if (NULL != object && NULL != array) {
-        for (uint8_t index = 0; index < LCHArrayCount(array); index++) {
+        for (uint8_t index = 0; index < LCHArrayElementsCount(array); index++) {
             LCHHuman *child = LCHArrayElementAtIndex(array, index);
             
             LCHHumanSetParent(child, object, NULL);
@@ -300,8 +300,8 @@ bool LCHHumanShouldCreateChild(LCHHuman *object, LCHHuman *partner) {
             && LCHHumanGender(object) != LCHHumanGender(partner)
             && LCHHumanIsAgeValid(object)
             && LCHHumanIsAgeValid(partner)
-            && kLCHChildrenLimit > LCHArrayCount(LCHHumanChildren(object))
-            && kLCHChildrenLimit > LCHArrayCount(LCHHumanChildren(partner)));
+            && kLCHChildrenLimit > LCHArrayElementsCount(LCHHumanChildren(object))
+            && kLCHChildrenLimit > LCHArrayElementsCount(LCHHumanChildren(partner)));
 }
 
 LCHHuman *LCHHumanWithStatusMaster(LCHHuman *object, LCHHuman *partner) {

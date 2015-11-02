@@ -67,7 +67,7 @@ void LCHHumanObjectCreateTests(void) {
     assert(kLCHAgeInitial == LCHHumanAge(male));
     
     // Object children count must be equal to 0
-    assert(0 == LCHArrayCount(LCHHumanChildren(male)));
+    assert(0 == LCHArrayElementsCount(LCHHumanChildren(male)));
     
     // Object reference count must be equal to 1
     assert(1 == LCHObjectReferenceCount(male));
@@ -111,7 +111,7 @@ void LCHHumanObjectCreateWithParametersTests(void) {
     assert(27 == LCHHumanAge(female));
     
     // Object children count must be equal to 0
-    assert(0 == LCHArrayCount(LCHHumanChildren(female)));
+    assert(0 == LCHArrayElementsCount(LCHHumanChildren(female)));
     
     // Object reference count must be equal to 1
     assert(1 == LCHObjectReferenceCount(female));
@@ -208,16 +208,16 @@ void LCHHumanObjectCreateChildTests(void) {
     assert(kLCHAgeInitial == LCHHumanAge(child));
     
     // Object children count must be equal to 0
-    assert(0 == LCHArrayCount(LCHHumanChildren(child)));
+    assert(0 == LCHArrayElementsCount(LCHHumanChildren(child)));
     
     // Object reference count must be equal to 3
     assert(3 == LCHObjectReferenceCount(child));
     
     // Father children count must be equal to 1
-    assert(1 == LCHArrayCount(LCHHumanChildren(male)));
+    assert(1 == LCHArrayElementsCount(LCHHumanChildren(male)));
     
     // Father children count must be equal to 1
-    assert(1 == LCHArrayCount(LCHHumanChildren(female)));
+    assert(1 == LCHArrayElementsCount(LCHHumanChildren(female)));
     
     LCHObjectRelease(male);
     LCHObjectRelease(female);
