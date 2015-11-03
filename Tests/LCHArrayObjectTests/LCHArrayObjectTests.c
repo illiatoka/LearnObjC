@@ -29,25 +29,25 @@ void LCHArrayCreateTests(void) {
     assert(NULL != array);
     
     // Array count must be equal to 0
-    assert(0 == LCHArrayElementsCount(array));
+    assert(0 == LCHArrayCount(array));
     
     // Array allocated count must be equal to kLCHAllocatedCountInitial
-    assert(kLCHAllocatedCountInitial == LCHArrayAllocatedCount(array));
+    assert(kLCHCapacityInitial == LCHArrayCapacity(array));
     
     // After add 1 element to array
-    LCHArrayAddElement(array, array);
+    LCHArrayAddObject(array, array);
     
     // Array count must be equal to 1
-    assert(1 == LCHArrayElementsCount(array));
+    assert(1 == LCHArrayCount(array));
     
     // Result must not be NULL of array getter
-    assert(NULL != LCHArrayElementAtIndex(array, 0));
+    assert(NULL != LCHArrayObjectAtIndex(array, 0));
     
     // After remove 1 element
-    LCHArrayRemoveElementAtIndex(array, 0);
+    LCHArrayRemoveObjectAtIndex(array, 0);
     
     // Array count must be equal to 0
-    assert(0 == LCHArrayElementsCount(array));
+    assert(0 == LCHArrayCount(array));
     
     // Array reference count must be equal to 1
     assert(1 == LCHObjectReferenceCount(array));

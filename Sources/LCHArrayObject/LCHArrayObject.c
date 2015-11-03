@@ -9,130 +9,143 @@
 #pragma mark -
 #pragma mark Private Declarations
 
-const uint8_t kLCHAllocatedCountInitial = 2;
+const uint8_t kLCHCapacityInitial = 2;
+const uint8_t kLCHObjectNotFound = UINT8_MAX;
 
 struct LCHArray {
     LCHObject _super;
     void **_data;
-    uint8_t _elementsCount;
-    uint8_t _allocatedCount;
+    uint8_t _count;
+    uint8_t _capacity;
 };
 
 static
-void **LCHArrayData(LCHArray *object);
+void **LCHArrayData(LCHArray *array);
 
 static
-void LCHArraySetData(LCHArray *object, void *data);
+void LCHArraySetData(LCHArray *array, void *data);
 
 static
-void LCHArraySetElementsCount(LCHArray *object, uint8_t elementsCount);
+void LCHArraySetCount(LCHArray *array, uint8_t count);
 
 static
-void LCHArraySetAllocatedCount(LCHArray *object, uint8_t allocatedCount);
+void LCHArraySetCapacity(LCHArray *array, uint8_t capacity);
 
 static
-void LCHArraySetElementAtIndex(LCHArray *object, void *element, uint8_t index);
+void LCHArraySetObjectAtIndex(LCHArray *array, void *object, uint8_t index);
 
 static
-void LCHArrayRemoveAllElements(LCHArray *object);
+void LCHArrayRemoveAllObjects(LCHArray *array);
 
 static
-void LCHArrayDataResort(LCHArray *object);
+void LCHArrayDataResort(LCHArray *array);
 
 static
-void LCHArrayResizeIfNeeded(LCHArray *object);
+void LCHArrayResizeIfNeeded(LCHArray *array);
 
 static
-void LCHArrayAllocateData(LCHArray *object, uint8_t allocatedCount);
+void LCHArrayAllocateData(LCHArray *array, uint8_t capacity);
 
 #pragma mark -
 #pragma mark Initializations and Deallocation
 
-void __LCHArrayDeallocate(void *object) {
-    LCHArrayRemoveAllElements(object);
-    LCHArrayAllocateData(object, 0);
-    __LCHObjectDeallocate(object);
+void __LCHArrayDeallocate(void *array) {
+    LCHArrayRemoveAllObjects(array);
+    LCHArrayAllocateData(array, 0);
+    __LCHObjectDeallocate(array);
 }
 
 LCHArray *LCHArrayCreate(void) {
-    LCHArray *object = LCHObjectCreateOfType(LCHArray);
-    LCHArraySetAllocatedCount(object, kLCHAllocatedCountInitial);
+    LCHArray *array = LCHObjectCreateOfType(LCHArray);
+    LCHArraySetCapacity(array, kLCHCapacityInitial);
     
-    return object;
+    return array;
 }
 
 #pragma mark -
 #pragma mark Accessors
 
-void **LCHArrayData(LCHArray *object) {
-    LCHObjectIvarGetter(object, object->_data, NULL);
+void **LCHArrayData(LCHArray *array) {
+    LCHObjectIvarGetter(array, array->_data, NULL);
 }
 
-void LCHArraySetData(LCHArray *object, void *data) {
-    LCHObjectAssignSetter(object, _data, data);
+void LCHArraySetData(LCHArray *array, void *data) {
+    LCHObjectAssignSetter(array, _data, data);
 }
 
-uint8_t LCHArrayElementsCount(LCHArray *object) {
-    LCHObjectIvarGetter(object, object->_elementsCount, 0);
+uint8_t LCHArrayCount(LCHArray *array) {
+    LCHObjectIvarGetter(array, array->_count, 0);
 }
 
-void LCHArraySetElementsCount(LCHArray *object, uint8_t elementsCount) {
-    LCHObjectAssignSetter(object, _elementsCount, elementsCount);
+void LCHArraySetCount(LCHArray *array, uint8_t count) {
+    LCHObjectAssignSetter(array, _count, count);
 }
 
-uint8_t LCHArrayAllocatedCount(LCHArray *object) {
-    LCHObjectIvarGetter(object, object->_allocatedCount, 0);
+uint8_t LCHArrayCapacity(LCHArray *array) {
+    LCHObjectIvarGetter(array, array->_capacity, 0);
 }
 
-void LCHArraySetAllocatedCount(LCHArray *object, uint8_t allocatedCount) {
-    LCHObjectAssignSetter(object, _allocatedCount, allocatedCount);
+void LCHArraySetCapacity(LCHArray *array, uint8_t capacity) {
+    LCHObjectAssignSetter(array, _capacity, capacity);
 }
 
-void *LCHArrayElementAtIndex(LCHArray *object, uint8_t index) {
-    LCHObjectIvarGetter(object, object->_data[index], NULL);
+void *LCHArrayObjectAtIndex(LCHArray *array, uint8_t index) {
+    LCHObjectIvarGetter(array, array->_data[index], NULL);
 }
 
-void LCHArraySetElementAtIndex(LCHArray *object, void *element, uint8_t index) {
-    LCHObjectRetainSetter(object, _data[index], element);
+void LCHArraySetObjectAtIndex(LCHArray *array, void *object, uint8_t index) {
+    LCHObjectRetainSetter(array, _data[index], object);
 }
-
 
 #pragma mark -
 #pragma mark Public Implementations
 
-void LCHArrayAddElement(LCHArray *object, void *element) {
-    if (NULL != object && NULL != element) {
+uint8_t LCHArrayIndexOfObject(LCHArray *array, void *object) {
+    uint8_t indexOfObject = kLCHObjectNotFound;
+    
+    if (NULL != array && NULL != object) {
+        for (uint8_t index = 0; index < LCHArrayCount(array); index++) {
+            void *objectAtIndex = LCHArrayObjectAtIndex(array, index);
+            
+            if (objectAtIndex == object) {
+                indexOfObject = index;
+            }
+        }
+    }
+    
+    return indexOfObject;
+}
+
+void LCHArrayAddObject(LCHArray *array, void *object) {
+    if (NULL != array && NULL != object) {
         
-        uint8_t elementsCount = LCHArrayElementsCount(object);
+        uint8_t index = LCHArrayCount(array);
         
-        LCHArrayResizeIfNeeded(object);
-        LCHArraySetElementAtIndex(object, element, elementsCount);
-        LCHArraySetElementsCount(object, elementsCount + 1);
+        LCHArrayResizeIfNeeded(array);
+        LCHArraySetObjectAtIndex(array, object, index);
+        LCHArraySetCount(array, index + 1);
     }
 }
 
-void LCHArrayRemoveElement(LCHArray *object, void *element) {
-    if (NULL != object && NULL != element) {
-        for (uint8_t index = 0; index < LCHArrayElementsCount(object); index++) {
-            void *elementAtIndex = LCHArrayElementAtIndex(object, index);
-            if (elementAtIndex == element) {
-                LCHArrayRemoveElementAtIndex(object, index);
-                
-                return;
-            }
+void LCHArrayRemoveObject(LCHArray *array, void *object) {
+    if (NULL != array && NULL != object) {
+        uint8_t indexOfObject = LCHArrayIndexOfObject(array, object);
+        
+        if (kLCHObjectNotFound != indexOfObject) {
+            LCHArrayRemoveObjectAtIndex(array, indexOfObject);
         }
     }
 }
 
-void LCHArrayRemoveElementAtIndex(LCHArray *object, uint8_t index) {
-    if (NULL != object) {
-        uint8_t elementsCount = LCHArrayElementsCount(object);
+void LCHArrayRemoveObjectAtIndex(LCHArray *array, uint8_t index) {
+    if (NULL != array) {
+        uint8_t count = LCHArrayCount(array);
         
-        if (elementsCount > index) {
-            LCHArraySetElementAtIndex(object, NULL, index);
-            LCHArrayDataResort(object);
-            LCHArrayResizeIfNeeded(object);
-            LCHArraySetElementsCount(object, elementsCount - 1);
+        if (index < count) {
+            LCHArraySetObjectAtIndex(array, NULL, index);
+            LCHArrayDataResort(array);
+            LCHArrayResizeIfNeeded(array);
+            LCHArraySetCount(array, count - 1);
         }
     }
 }
@@ -140,63 +153,61 @@ void LCHArrayRemoveElementAtIndex(LCHArray *object, uint8_t index) {
 #pragma mark -
 #pragma mark Private Implementations
 
-void LCHArrayRemoveAllElements(LCHArray *object) {
-    if (NULL != object) {
-        for (uint8_t index = 0; index < LCHArrayElementsCount(object); index++) {
-            void *element = LCHArrayElementAtIndex(object, index);
+void LCHArrayRemoveAllObjects(LCHArray *array) {
+    if (NULL != array) {
+        for (uint8_t index = 0; index < LCHArrayCount(array); index++) {
+            LCHArrayRemoveObjectAtIndex(array, index);
+        }
+    }
+}
+
+void LCHArrayDataResort(LCHArray *array) {
+    if (NULL != array) {
+        for (uint8_t index = 0; index < LCHArrayCount(array) - 1; index++) {
+            void *object = LCHArrayObjectAtIndex(array, index);
             
-            if (NULL != element) {
-                LCHArrayRemoveElementAtIndex(object, index);
+            if (NULL == object) {
+                array->_data[index] = LCHArrayObjectAtIndex(array, index + 1);
+                array->_data[index + 1] = NULL;
             }
         }
     }
 }
 
-void LCHArrayDataResort(LCHArray *object) {
-    if (NULL != object) {
-        for (uint8_t index = 0; index < LCHArrayElementsCount(object) - 1; index++) {
-            void *element = LCHArrayElementAtIndex(object, index);
-            
-            if (NULL == element) {
-                object->_data[index] = LCHArrayElementAtIndex(object, index + 1);
-                object->_data[index + 1] = NULL;
-            }
-        }
-    }
-}
-
-void LCHArrayResizeIfNeeded(LCHArray *object) {
-    if (NULL != object) {
-        LCHArrayAllocateData(object, kLCHAllocatedCountInitial);
-    }
-}
-
-void LCHArrayAllocateData(LCHArray *object, uint8_t allocatedCount) {
-    if (NULL != object) {
-        uint8_t elementsCount = LCHArrayElementsCount(object);
+void LCHArrayResizeIfNeeded(LCHArray *array) {
+    if (NULL != array) {
+        // TODO: Resize strategy goes here!
         
-        if (elementsCount == allocatedCount) {
+        LCHArrayAllocateData(array, kLCHCapacityInitial);
+    }
+}
+
+void LCHArrayAllocateData(LCHArray *array, uint8_t capacity) {
+    if (NULL != array) {
+        uint8_t count = LCHArrayCount(array);
+        
+        if (count == capacity) {
             return;
         }
         
-        if (0 == allocatedCount) {
-            free(LCHArrayData(object));
-            LCHArraySetData(object, NULL);
+        if (0 == capacity) {
+            free(LCHArrayData(array));
+            LCHArraySetData(array, NULL);
         } else {
-            void **currentData = LCHArrayData(object);
+            void **currentData = LCHArrayData(array);
             size_t dataSize = sizeof(*currentData);
-            size_t allocatedSize = allocatedCount * dataSize;
-            size_t fullDataSize = elementsCount * dataSize;
+            size_t capacitySize = capacity * dataSize;
+            size_t fullDataSize = count * dataSize;
             
-            void *data = realloc(currentData, allocatedSize);
+            void *data = realloc(currentData, capacitySize);
             assert(data);
-            LCHArraySetData(object, data);
+            LCHArraySetData(array, data);
             
-            if (elementsCount < allocatedCount) {
-                memset(LCHArrayData(object) + fullDataSize, 0, allocatedSize - fullDataSize);
+            if (count < capacity) {
+                memset(LCHArrayData(array) + fullDataSize, 0, capacitySize - fullDataSize);
             }
         }
         
-        LCHArraySetAllocatedCount(object, allocatedCount);
+        LCHArraySetCapacity(array, capacity);
     }
 }
