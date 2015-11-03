@@ -51,7 +51,6 @@ void LCHArrayAllocateData(LCHArray *array, uint8_t capacity);
 
 void __LCHArrayDeallocate(void *array) {
     LCHArrayRemoveAllObjects(array);
-    LCHArrayAllocateData(array, 0);
     __LCHObjectDeallocate(array);
 }
 
@@ -90,7 +89,15 @@ void LCHArraySetCapacity(LCHArray *array, uint8_t capacity) {
 }
 
 void *LCHArrayObjectAtIndex(LCHArray *array, uint8_t index) {
-    LCHObjectIvarGetter(array, array->_data[index], NULL);
+    void *object = NULL;
+    
+    if (NULL != array) {
+        if (index < LCHArrayCount(array)) {
+            object = array->_data[index];
+        }
+    }
+    
+    return object;
 }
 
 void LCHArraySetObjectAtIndex(LCHArray *array, void *object, uint8_t index) {
@@ -116,14 +123,18 @@ uint8_t LCHArrayIndexOfObject(LCHArray *array, void *object) {
     return indexOfObject;
 }
 
+bool LCHArrayContainsObject(LCHArray *array, void *object) {
+    return NULL != array && NULL != object && kLCHObjectNotFound != LCHArrayIndexOfObject(array, object);
+}
+
 void LCHArrayAddObject(LCHArray *array, void *object) {
     if (NULL != array && NULL != object) {
         
-        uint8_t index = LCHArrayCount(array);
+        uint8_t count = LCHArrayCount(array);
         
         LCHArrayResizeIfNeeded(array);
-        LCHArraySetObjectAtIndex(array, object, index);
-        LCHArraySetCount(array, index + 1);
+        LCHArraySetObjectAtIndex(array, object, count);
+        LCHArraySetCount(array, count + 1);
     }
 }
 
@@ -158,6 +169,8 @@ void LCHArrayRemoveAllObjects(LCHArray *array) {
         for (uint8_t index = 0; index < LCHArrayCount(array); index++) {
             LCHArrayRemoveObjectAtIndex(array, index);
         }
+        
+        LCHArrayAllocateData(array, 0);
     }
 }
 

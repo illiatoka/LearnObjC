@@ -2,6 +2,7 @@
 #define LCHArrayObject_h
 
 #include <stdio.h>
+#include <stdbool.h>
 
 typedef struct LCHArray LCHArray;
 
@@ -22,6 +23,9 @@ uint8_t LCHArrayCapacity(LCHArray *array);
 
 extern
 uint8_t LCHArrayIndexOfObject(LCHArray *array, void *object);
+
+extern
+bool LCHArrayContainsObject(LCHArray *array, void *object);
 
 extern
 void LCHArrayAddObject(LCHArray *array, void *object);
