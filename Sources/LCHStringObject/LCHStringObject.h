@@ -16,6 +16,6 @@ extern
 void LCHStringSetValue(LCHString *object, char *value);
 
 extern
-void LCHStringPrintValue(LCHString *object);
+uint16_t LCHStringLength(LCHString *object);
 
 #endif

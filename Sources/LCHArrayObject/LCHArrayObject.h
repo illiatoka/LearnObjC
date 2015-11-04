@@ -6,8 +6,8 @@
 
 typedef struct LCHArray LCHArray;
 
-extern const uint8_t kLCHCapacityInitial;
-extern const uint8_t kLCHObjectNotFound;
+extern const uint64_t kLCHCapacityInitial;
+extern const uint64_t kLCHObjectNotFound;
 
 extern
 void __LCHArrayDeallocate(void *array);
@@ -16,13 +16,13 @@ extern
 LCHArray *LCHArrayCreate(void);
 
 extern
-uint8_t LCHArrayCount(LCHArray *array);
+uint64_t LCHArrayCount(LCHArray *array);
 
 extern
-uint8_t LCHArrayCapacity(LCHArray *array);
+uint64_t LCHArrayCapacity(LCHArray *array);
 
 extern
-uint8_t LCHArrayIndexOfObject(LCHArray *array, void *object);
+uint64_t LCHArrayIndexOfObject(LCHArray *array, void *object);
 
 extern
 bool LCHArrayContainsObject(LCHArray *array, void *object);
@@ -34,9 +34,9 @@ extern
 void LCHArrayRemoveObject(LCHArray *array, void *object);
 
 extern
-void *LCHArrayObjectAtIndex(LCHArray *array, uint8_t index);
+void *LCHArrayObjectAtIndex(LCHArray *array, uint64_t index);
 
 extern
-void LCHArrayRemoveObjectAtIndex(LCHArray *array, uint8_t index);
+void LCHArrayRemoveObjectAtIndex(LCHArray *array, uint64_t index);
 
 #endif

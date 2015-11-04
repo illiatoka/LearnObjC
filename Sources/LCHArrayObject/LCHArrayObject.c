@@ -9,14 +9,14 @@
 #pragma mark -
 #pragma mark Private Declarations
 
-const uint8_t kLCHCapacityInitial = 2;
-const uint8_t kLCHObjectNotFound = UINT8_MAX;
+const uint64_t kLCHCapacityInitial = 2;
+const uint64_t kLCHObjectNotFound = UINT64_MAX;
 
 struct LCHArray {
     LCHObject _super;
     void **_data;
-    uint8_t _count;
-    uint8_t _capacity;
+    uint64_t _count;
+    uint64_t _capacity;
 };
 
 static
@@ -26,13 +26,13 @@ static
 void LCHArraySetData(LCHArray *array, void *data);
 
 static
-void LCHArraySetCount(LCHArray *array, uint8_t count);
+void LCHArraySetCount(LCHArray *array, uint64_t count);
 
 static
-void LCHArraySetCapacity(LCHArray *array, uint8_t capacity);
+void LCHArraySetCapacity(LCHArray *array, uint64_t capacity);
 
 static
-void LCHArraySetObjectAtIndex(LCHArray *array, void *object, uint8_t index);
+void LCHArraySetObjectAtIndex(LCHArray *array, void *object, uint64_t index);
 
 static
 void LCHArrayRemoveAllObjects(LCHArray *array);
@@ -44,7 +44,7 @@ static
 void LCHArrayResizeIfNeeded(LCHArray *array);
 
 static
-void LCHArrayAllocateData(LCHArray *array, uint8_t capacity);
+void LCHArrayAllocateData(LCHArray *array, uint64_t capacity);
 
 #pragma mark -
 #pragma mark Initializations and Deallocation
@@ -72,23 +72,23 @@ void LCHArraySetData(LCHArray *array, void *data) {
     LCHObjectAssignSetter(array, _data, data);
 }
 
-uint8_t LCHArrayCount(LCHArray *array) {
+uint64_t LCHArrayCount(LCHArray *array) {
     LCHObjectIvarGetter(array, array->_count, 0);
 }
 
-void LCHArraySetCount(LCHArray *array, uint8_t count) {
+void LCHArraySetCount(LCHArray *array, uint64_t count) {
     LCHObjectAssignSetter(array, _count, count);
 }
 
-uint8_t LCHArrayCapacity(LCHArray *array) {
+uint64_t LCHArrayCapacity(LCHArray *array) {
     LCHObjectIvarGetter(array, array->_capacity, 0);
 }
 
-void LCHArraySetCapacity(LCHArray *array, uint8_t capacity) {
+void LCHArraySetCapacity(LCHArray *array, uint64_t capacity) {
     LCHObjectAssignSetter(array, _capacity, capacity);
 }
 
-void *LCHArrayObjectAtIndex(LCHArray *array, uint8_t index) {
+void *LCHArrayObjectAtIndex(LCHArray *array, uint64_t index) {
     void *object = NULL;
     
     if (NULL != array) {
@@ -100,27 +100,33 @@ void *LCHArrayObjectAtIndex(LCHArray *array, uint8_t index) {
     return object;
 }
 
-void LCHArraySetObjectAtIndex(LCHArray *array, void *object, uint8_t index) {
-    LCHObjectRetainSetter(array, _data[index], object);
+void LCHArraySetObjectAtIndex(LCHArray *array, void *object, uint64_t index) {
+    if (NULL != array) {
+        assert(index <= LCHArrayCount(array));
+        
+        LCHObjectRetainSetter(array, _data[index], object);
+    }
 }
 
 #pragma mark -
 #pragma mark Public Implementations
 
-uint8_t LCHArrayIndexOfObject(LCHArray *array, void *object) {
-    uint8_t indexOfObject = kLCHObjectNotFound;
+uint64_t LCHArrayIndexOfObject(LCHArray *array, void *object) {
+    uint64_t result = 0;
     
     if (NULL != array && NULL != object) {
-        for (uint8_t index = 0; index < LCHArrayCount(array); index++) {
+        for (uint64_t index = 0; index < LCHArrayCount(array); index++) {
             void *objectAtIndex = LCHArrayObjectAtIndex(array, index);
             
+            result = kLCHObjectNotFound;
+            
             if (objectAtIndex == object) {
-                indexOfObject = index;
+                return index;
             }
         }
     }
     
-    return indexOfObject;
+    return result;
 }
 
 bool LCHArrayContainsObject(LCHArray *array, void *object) {
@@ -130,7 +136,7 @@ bool LCHArrayContainsObject(LCHArray *array, void *object) {
 void LCHArrayAddObject(LCHArray *array, void *object) {
     if (NULL != array && NULL != object) {
         
-        uint8_t count = LCHArrayCount(array);
+        uint64_t count = LCHArrayCount(array);
         
         LCHArrayResizeIfNeeded(array);
         LCHArraySetObjectAtIndex(array, object, count);
@@ -140,7 +146,7 @@ void LCHArrayAddObject(LCHArray *array, void *object) {
 
 void LCHArrayRemoveObject(LCHArray *array, void *object) {
     if (NULL != array && NULL != object) {
-        uint8_t indexOfObject = LCHArrayIndexOfObject(array, object);
+        uint64_t indexOfObject = LCHArrayIndexOfObject(array, object);
         
         if (kLCHObjectNotFound != indexOfObject) {
             LCHArrayRemoveObjectAtIndex(array, indexOfObject);
@@ -148,9 +154,9 @@ void LCHArrayRemoveObject(LCHArray *array, void *object) {
     }
 }
 
-void LCHArrayRemoveObjectAtIndex(LCHArray *array, uint8_t index) {
+void LCHArrayRemoveObjectAtIndex(LCHArray *array, uint64_t index) {
     if (NULL != array) {
-        uint8_t count = LCHArrayCount(array);
+        uint64_t count = LCHArrayCount(array);
         
         if (index < count) {
             LCHArraySetObjectAtIndex(array, NULL, index);
@@ -166,7 +172,7 @@ void LCHArrayRemoveObjectAtIndex(LCHArray *array, uint8_t index) {
 
 void LCHArrayRemoveAllObjects(LCHArray *array) {
     if (NULL != array) {
-        for (uint8_t index = 0; index < LCHArrayCount(array); index++) {
+        for (uint64_t index = 0; index < LCHArrayCount(array); index++) {
             LCHArrayRemoveObjectAtIndex(array, index);
         }
         
@@ -176,7 +182,7 @@ void LCHArrayRemoveAllObjects(LCHArray *array) {
 
 void LCHArrayDataResort(LCHArray *array) {
     if (NULL != array) {
-        for (uint8_t index = 0; index < LCHArrayCount(array) - 1; index++) {
+        for (uint64_t index = 0; index < LCHArrayCount(array) - 1; index++) {
             void *object = LCHArrayObjectAtIndex(array, index);
             
             if (NULL == object) {
@@ -195,9 +201,9 @@ void LCHArrayResizeIfNeeded(LCHArray *array) {
     }
 }
 
-void LCHArrayAllocateData(LCHArray *array, uint8_t capacity) {
+void LCHArrayAllocateData(LCHArray *array, uint64_t capacity) {
     if (NULL != array) {
-        uint8_t count = LCHArrayCount(array);
+        uint64_t count = LCHArrayCount(array);
         
         if (count == capacity) {
             return;

@@ -196,7 +196,7 @@ void LCHHumanSetPartner(LCHHuman *object, LCHHuman *partner) {
 }
 
 bool LCHHumanIsMarried(LCHHuman *object) {
-    return NULL != object && NULL != object->_partner;
+    return NULL != object && LCHHumanPartner(object);
 }
 
 uint8_t LCHHumanRank(LCHHuman *object) {
@@ -229,23 +229,17 @@ void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
 #pragma mark Public Implementations
 
 void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
-    if (NULL != object && NULL != partner) {
-        if (true == LCHHumanShouldBeMarried(object, partner)) {
-            LCHHumanDivorce(object);
-            LCHHumanDivorce(partner);
-            
-            LCHHumanSetPartner(object, partner);
-        }
+    if (object && partner && LCHHumanShouldBeMarried(object, partner)) {
+        LCHHumanDivorce(object);
+        LCHHumanDivorce(partner);
+        
+        LCHHumanSetPartner(object, partner);
     }
 }
 
 void LCHHumanDivorce(LCHHuman *object) {
-    if (NULL != object) {
-        LCHHuman *partner = LCHHumanPartner(object);
-        
-        if (NULL != partner) {
-            LCHHumanSetPartner(object, NULL);
-        }
+    if (object && LCHHumanPartner(object)) {
+        LCHHumanSetPartner(object, NULL);
     }
 }
 
@@ -253,7 +247,7 @@ void LCHHumanDivorce(LCHHuman *object) {
 #pragma mark Private Implementations
 
 void LCHHumanAddChild(LCHHuman *object, LCHHuman *child) {
-    if (object != NULL && child != NULL) {
+    if (object && child) {
         LCHArrayAddObject(LCHHumanChildren(object), child);
         
         if (kLCHHumanGenderMale == LCHHumanGender(object)) {
@@ -265,7 +259,7 @@ void LCHHumanAddChild(LCHHuman *object, LCHHuman *child) {
 }
 
 void LCHHumanRemoveChild(LCHHuman *object, LCHHuman *child) {
-    if (NULL != object && child != NULL) {
+    if (object && child) {
         LCHArrayRemoveObject(LCHHumanChildren(object), child);
         
         if (kLCHHumanGenderMale == LCHHumanGender(object)) {
@@ -280,10 +274,8 @@ void LCHHumanRemoveAllChildren(LCHHuman *object) {
     if (NULL != object) {
         LCHArray *children = LCHHumanChildren(object);
         
-        for (uint8_t index = 0; index < LCHArrayCount(children); index++) {
-            LCHHuman *child = LCHArrayObjectAtIndex(children, index);
-            
-            LCHHumanRemoveChild(object, child);
+        for (uint64_t index = 0; index < LCHArrayCount(children); index++) {
+            LCHHumanRemoveChild(object, LCHArrayObjectAtIndex(children, index));
         }
     }
 }

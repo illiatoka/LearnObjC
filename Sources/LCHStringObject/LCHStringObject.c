@@ -36,8 +36,8 @@ char *LCHStringValue(LCHString *object) {
 }
 
 void LCHStringSetValue(LCHString *object, char *value) {
-    if (NULL != object && value != object->_value) {
-        if (NULL != object->_value) {
+    if (object && value != object->_value) {
+        if (object->_value) {
             free(object->_value);
             object->_value = NULL;
         }
@@ -51,8 +51,6 @@ void LCHStringSetValue(LCHString *object, char *value) {
 #pragma mark -
 #pragma mark Public Implementations
 
-void LCHStringPrintValue(LCHString *object) {
-    if (NULL != object) {
-        puts(LCHStringValue(object));
-    }
+uint16_t LCHStringLength(LCHString *object) {
+    return NULL != object ? strlen(LCHStringValue(object)) : 0;
 }
