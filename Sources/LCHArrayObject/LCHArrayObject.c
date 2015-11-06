@@ -9,7 +9,6 @@
 #pragma mark -
 #pragma mark Private Declarations
 
-const uint64_t kLCHCapacityInitial = 2;
 const uint64_t kLCHObjectNotFound = UINT64_MAX;
 
 struct LCHArray {
@@ -56,7 +55,6 @@ void __LCHArrayDeallocate(void *array) {
 
 LCHArray *LCHArrayCreate(void) {
     LCHArray *array = LCHObjectCreateOfType(LCHArray);
-    LCHArraySetCapacity(array, kLCHCapacityInitial);
     
     return array;
 }
@@ -87,24 +85,22 @@ uint64_t LCHArrayCapacity(LCHArray *array) {
 
 void LCHArraySetCapacity(LCHArray *array, uint64_t capacity) {
     if (NULL != array) {
-        uint64_t count = LCHArrayCount(array);
+        void **currentData = LCHArrayData(array);
         
-        if (0 == capacity) {
-            // TODO: Check if data not NULL
+        if (0 == capacity && NULL != currentData) {
             free(LCHArrayData(array));
             LCHArraySetData(array, NULL);
         } else {
-            void **currentData = LCHArrayData(array);
+            uint64_t currentCapacity = LCHArrayCapacity(array);
             size_t dataSize = sizeof(*currentData);
             size_t capacitySize = capacity * dataSize;
-            size_t fullDataSize = count * dataSize;
+            size_t fullDataSize = currentCapacity * dataSize;
             
             void *data = realloc(currentData, capacitySize);
             assert(data);
             LCHArraySetData(array, data);
             
-            // TODO: Remove count from this method and work only with capacity
-            if (count < capacity) {
+            if (currentCapacity < capacity) {
                 memset(LCHArrayData(array) + fullDataSize, 0, capacitySize - fullDataSize);
             }
         }
@@ -137,12 +133,10 @@ void LCHArraySetObjectAtIndex(LCHArray *array, void *object, uint64_t index) {
 #pragma mark Public Implementations
 
 uint64_t LCHArrayIndexOfObject(LCHArray *array, void *object) {
-    uint64_t result = 0;
+    uint64_t result = array ? kLCHObjectNotFound : 0;
     uint64_t count = LCHArrayCount(array);
     
     if (NULL != array && NULL != object) {
-        result = kLCHObjectNotFound;
-        
         for (uint64_t index = 0; index < count; index++) {
             if (LCHArrayObjectAtIndex(array, index) == object) {
                 result = index;
@@ -161,7 +155,6 @@ bool LCHArrayContainsObject(LCHArray *array, void *object) {
 
 void LCHArrayAddObject(LCHArray *array, void *object) {
     if (NULL != array && NULL != object) {
-        
         uint64_t count = LCHArrayCount(array);
         
         LCHArraySetCount(array, count + 1);
@@ -170,12 +163,8 @@ void LCHArrayAddObject(LCHArray *array, void *object) {
 }
 
 void LCHArrayRemoveObject(LCHArray *array, void *object) {
-    if (NULL != array && NULL != object) {
-        uint64_t indexOfObject = LCHArrayIndexOfObject(array, object);
-        
-        if (kLCHObjectNotFound != indexOfObject) {
-            LCHArrayRemoveObjectAtIndex(array, indexOfObject);
-        }
+    if (LCHArrayContainsObject(array, object)) {
+        LCHArrayRemoveObjectAtIndex(array, LCHArrayIndexOfObject(array, object));
     }
 }
 

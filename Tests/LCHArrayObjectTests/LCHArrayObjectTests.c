@@ -31,8 +31,8 @@ void LCHArrayCreateTests(void) {
     // Array count must be equal to 0
     assert(0 == LCHArrayCount(array));
     
-    // Array capacity must be equal to kLCHCapacityInitial
-    assert(kLCHCapacityInitial == LCHArrayCapacity(array));
+    // Array capacity must be equal to 0
+    assert(0 == LCHArrayCapacity(array));
     
     // After add 1 element to array
     LCHArrayAddObject(array, array);
