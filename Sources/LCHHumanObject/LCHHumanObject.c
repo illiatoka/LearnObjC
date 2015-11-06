@@ -73,7 +73,7 @@ void __LCHHumanDeallocate(void *object) {
     LCHHumanDivorce(object);
     LCHHumanRemoveAllChildren(object);
     LCHHumanSetChildren(object, NULL);
-
+    
     __LCHObjectDeallocate(object);
 }
 
@@ -108,9 +108,9 @@ LCHHuman *LCHHumanCreateWithParameters(LCHHumanGenderType gender,
 }
 
 LCHHuman *LCHHumanCreateChildWithParameters(LCHHumanGenderType gender,
-                                           LCHHuman *mother,
-                                           LCHHuman *father,
-                                           LCHString *name)
+                                            LCHHuman *mother,
+                                            LCHHuman *father,
+                                            LCHString *name)
 {
     LCHHuman *child = NULL;
     
@@ -229,7 +229,7 @@ void LCHHumanSetFather(LCHHuman *object, LCHHuman *father) {
 #pragma mark Public Implementations
 
 void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
-    if (object && partner && LCHHumanShouldBeMarried(object, partner)) {
+    if (NULL != object && NULL != partner && true == LCHHumanShouldBeMarried(object, partner)) {
         LCHHumanDivorce(object);
         LCHHumanDivorce(partner);
         
@@ -238,7 +238,7 @@ void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
 }
 
 void LCHHumanDivorce(LCHHuman *object) {
-    if (object && LCHHumanPartner(object)) {
+    if (NULL != object && NULL != LCHHumanPartner(object)) {
         LCHHumanSetPartner(object, NULL);
     }
 }
@@ -247,7 +247,7 @@ void LCHHumanDivorce(LCHHuman *object) {
 #pragma mark Private Implementations
 
 void LCHHumanAddChild(LCHHuman *object, LCHHuman *child) {
-    if (object && child) {
+    if (NULL != object && NULL != child) {
         LCHArrayAddObject(LCHHumanChildren(object), child);
         
         if (kLCHHumanGenderMale == LCHHumanGender(object)) {
@@ -259,7 +259,7 @@ void LCHHumanAddChild(LCHHuman *object, LCHHuman *child) {
 }
 
 void LCHHumanRemoveChild(LCHHuman *object, LCHHuman *child) {
-    if (object && child) {
+    if (NULL != object && NULL != child) {
         LCHArrayRemoveObject(LCHHumanChildren(object), child);
         
         if (kLCHHumanGenderMale == LCHHumanGender(object)) {

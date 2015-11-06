@@ -31,12 +31,8 @@ void LCHStringCreateTests(void) {
     // String value must not be NULL
     assert(NULL != LCHStringValue(string));
     
-    // After string value was set
-    char *value = "Hello World";
-    LCHStringSetValue(string, value);
-    
-    // String value must not be equal to NULL
-    assert(NULL != LCHStringValue(string));
+    // String value must be equal to Test value
+    assert("Test value" != LCHStringValue(string));
     
     // String reference count must be equal to 1
     assert(1 == LCHObjectReferenceCount(string));

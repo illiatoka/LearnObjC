@@ -13,6 +13,9 @@ struct LCHString {
     char *_value;
 };
 
+static
+void LCHStringSetValue(LCHString *object, char *value);
+
 #pragma mark -
 #pragma mark Initializations and Deallocation
 
