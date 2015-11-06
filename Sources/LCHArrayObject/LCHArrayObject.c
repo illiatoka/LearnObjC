@@ -10,6 +10,7 @@
 #pragma mark Private Declarations
 
 const uint64_t kLCHObjectNotFound = UINT64_MAX;
+static const uint64_t kLCHMaximumCapacity = UINT64_MAX - 1;
 
 struct LCHArray {
     LCHObject _super;
@@ -85,6 +86,8 @@ uint64_t LCHArrayCapacity(LCHArray *array) {
 
 void LCHArraySetCapacity(LCHArray *array, uint64_t capacity) {
     if (NULL != array) {
+        assert(kLCHMaximumCapacity >= capacity);
+        
         void **currentData = LCHArrayData(array);
         
         if (0 == capacity && NULL != currentData) {
@@ -97,10 +100,10 @@ void LCHArraySetCapacity(LCHArray *array, uint64_t capacity) {
             size_t fullDataSize = currentCapacity * dataSize;
             
             void *data = realloc(currentData, capacitySize);
-            assert(data);
+            assert(NULL != data);
             LCHArraySetData(array, data);
             
-            if (currentCapacity < capacity) {
+            if (capacity > currentCapacity) {
                 memset(LCHArrayData(array) + fullDataSize, 0, capacitySize - fullDataSize);
             }
         }
@@ -211,7 +214,7 @@ uint64_t LCHArrayProposedCapacityForCount(LCHArray *array, uint64_t newCount) {
         uint64_t currentCapacity = LCHArrayCapacity(array);
         
         if (newCount > currentCount) {
-            if (newCount >= currentCapacity) {
+            if (newCount > currentCapacity) {
                 proposedCapacity = (newCount *3)/2 + 1;
             } else {
                 proposedCapacity = currentCapacity;

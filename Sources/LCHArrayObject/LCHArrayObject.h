@@ -6,7 +6,6 @@
 
 typedef struct LCHArray LCHArray;
 
-extern const uint64_t kLCHCapacityInitial;
 extern const uint64_t kLCHObjectNotFound;
 
 extern
