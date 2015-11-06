@@ -92,6 +92,8 @@ void *LCHArrayObjectAtIndex(LCHArray *array, uint64_t index) {
     void *object = NULL;
     
     if (NULL != array) {
+        assert(index < LCHArrayCount(array));
+        
         if (index < LCHArrayCount(array)) {
             object = array->_data[index];
         }
