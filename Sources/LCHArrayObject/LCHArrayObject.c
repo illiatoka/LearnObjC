@@ -29,6 +29,9 @@ static
 void LCHArraySetCount(LCHArray *array, uint64_t count);
 
 static
+uint64_t LCHArrayCapacity(LCHArray *array);
+
+static
 void LCHArraySetCapacity(LCHArray *array, uint64_t capacity);
 
 static

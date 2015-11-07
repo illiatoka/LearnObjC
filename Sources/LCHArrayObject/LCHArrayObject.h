@@ -18,9 +18,6 @@ extern
 uint64_t LCHArrayCount(LCHArray *array);
 
 extern
-uint64_t LCHArrayCapacity(LCHArray *array);
-
-extern
 uint64_t LCHArrayIndexOfObject(LCHArray *array, void *object);
 
 extern

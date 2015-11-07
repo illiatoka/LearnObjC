@@ -31,9 +31,6 @@ void LCHArrayCreateTests(void) {
     // Array count must be equal to 0
     assert(0 == LCHArrayCount(array));
     
-    // Array capacity must be equal to 0
-    assert(0 == LCHArrayCapacity(array));
-    
     // After add 1 element to array
     LCHArrayAddObject(array, array);
     
@@ -51,9 +48,6 @@ void LCHArrayCreateTests(void) {
     
     // Array reference count must be equal to 1
     assert(1 == LCHObjectReferenceCount(array));
-    
-    // Capacity must be equal to 0
-    assert(0 == LCHArrayCapacity(array));
     
     // Object deallocator must not be NULL
     assert(NULL != LCHObjectDeallocator(array));
