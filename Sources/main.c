@@ -6,6 +6,7 @@
 #include "LCHHumanObjectTests.h"
 #include "LCHStringObjectTests.h"
 #include "LCHArrayObjectTests.h"
+#include "LCHLinkedListTests.h"
 #include "LCHObjectTests.h"
 
 int main(int argc, const char * argv[]) {
@@ -19,6 +20,7 @@ int main(int argc, const char * argv[]) {
     LCHPerformObjectTests();
     LCHPerformStringTests();
     LCHPerformArrayTests();
+    LCHPerformLinkedListTests();
     
     return 0;
 }
