@@ -10,8 +10,8 @@
 
 #define LCHObjectRetainSetter(object, iVar, value) \
     if (NULL != object && value != object->iVar) { \
-        LCHObjectRelease(object->iVar); \
         LCHObjectRetain(value); \
+        LCHObjectRelease(object->iVar); \
         object->iVar = value; \
     }
 

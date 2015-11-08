@@ -4,18 +4,21 @@
 typedef struct LCHLinkedListNode LCHLinkedListNode;
 
 extern
-LCHLinkedListNode LCHLinkedListNodeCreateWithObject(void *object);
+void __LCHLinkedListNodeDeallocate(void *node);
 
 extern
-LCHLinkedListNode LCHLinkedListNodeNextNode(LCHLinkedListNode *node);
+LCHLinkedListNode *LCHLinkedListNodeCreateWithObject(void *object);
 
 extern
-LCHLinkedListNode LCHLinkedListNodeSetNextNode(LCHLinkedListNode *node);
+LCHLinkedListNode *LCHLinkedListNodeNextNode(LCHLinkedListNode *node);
+
+extern
+void LCHLinkedListNodeSetNextNode(LCHLinkedListNode *node, LCHLinkedListNode *nextNode);
 
 extern
 void *LCHLinkedListNodeObject(LCHLinkedListNode *node);
 
 extern
-void LCHLinkedListNodeSetObject(void *object);
+void LCHLinkedListNodeSetObject(LCHLinkedListNode *node, void *object);
 
 #endif
