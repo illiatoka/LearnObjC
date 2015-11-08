@@ -1,7 +1,7 @@
 #include "LCHLinkedList.h"
-#include "LCHMacro.h"
-#include "LCHObject.h"
 #include "LCHLinkedListNode.h"
+#include "LCHObject.h"
+#include "LCHMacro.h"
 
 #pragma mark -
 #pragma mark Private Declarations
@@ -46,7 +46,7 @@ void LCHLinkedListSetHead(LCHLinkedList *list, LCHLinkedListNode *node) {
     LCHObjectRetainSetter(list, _head, node);
 }
 
-uint64_t LCHHLinkedListCount(LCHLinkedList *list) {
+uint64_t LCHLinkedListCount(LCHLinkedList *list) {
     LCHObjectIvarGetter(list, list->_count, 0);
 }
 
@@ -58,11 +58,17 @@ void LCHLinkedListSetCount(LCHLinkedList *list, uint64_t count) {
 #pragma mark Public Implementations
 
 bool LCHLinkedListContainsObject(LCHLinkedList *list, void *object) {
-    return false;
+    bool result = false;
+    
+    if (NULL != list && NULL != object) {
+        // Enumerator
+    }
+    
+    return result;
 }
 
 void LCHLinkedListAddObject(LCHLinkedList *list, void *object) {
-    if (NULL != list) {
+    if (NULL != list && NULL != object) {
         LCHLinkedListNode *node = LCHLinkedListNodeCreateWithObject(object);
         
         LCHLinkedListNodeSetNextNode(node, LCHLinkedListHead(list));
@@ -74,7 +80,16 @@ void LCHLinkedListAddObject(LCHLinkedList *list, void *object) {
 }
 
 void LCHLinkedListRemoveObject(LCHLinkedList *list, void *object) {
-    
+    if (NULL != list && NULL != object) {
+        // Enumerator
+    }
+}
+
+void LCHLinkedListRemoveAllObjects(LCHLinkedList *list) {
+    if (NULL != list) {
+        LCHLinkedListSetHead(list, NULL);
+        LCHLinkedListSetCount(list, 0);
+    }
 }
 
 #pragma mark -

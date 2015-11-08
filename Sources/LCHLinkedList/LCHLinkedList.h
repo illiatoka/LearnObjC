@@ -24,4 +24,7 @@ void LCHLinkedListAddObject(LCHLinkedList *list, void *object);
 extern
 void LCHLinkedListRemoveObject(LCHLinkedList *list, void *object);
 
+extern
+void LCHLinkedListRemoveAllObjects(LCHLinkedList *list);
+
 #endif
