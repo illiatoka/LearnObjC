@@ -12,6 +12,7 @@
 		A602CCF11BB70D69004946B3 /* LCHPrintValueOfDataTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A602CCEF1BB70D69004946B3 /* LCHPrintValueOfDataTests.c */; };
 		A602CCFB1BB73013004946B3 /* LCHPerformStructuresTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A602CCF91BB73013004946B3 /* LCHPerformStructuresTests.c */; };
 		A6321DD01BECDE6600832FC3 /* LCHLinkedListNode.c in Sources */ = {isa = PBXBuildFile; fileRef = A6321DCE1BECDE6500832FC3 /* LCHLinkedListNode.c */; };
+		A6321DD41BEF8D2C00832FC3 /* LCHLinkedListEnumerator.c in Sources */ = {isa = PBXBuildFile; fileRef = A6321DD21BEF8D2C00832FC3 /* LCHLinkedListEnumerator.c */; };
 		A642C8A91BB43BDE00013A88 /* LCHPrintBytesOfValue.c in Sources */ = {isa = PBXBuildFile; fileRef = A642C8A71BB43BDE00013A88 /* LCHPrintBytesOfValue.c */; };
 		A642C8AD1BB6F61700013A88 /* LCHPrintBytesOfValueTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A642C8AB1BB6F61700013A88 /* LCHPrintBytesOfValueTests.c */; };
 		A64B22641BD93DC800F686D7 /* LCHStringObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A64B22621BD93DC800F686D7 /* LCHStringObject.c */; };
@@ -52,6 +53,9 @@
 		A602CCFA1BB73013004946B3 /* LCHPerformStructuresTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPerformStructuresTests.h; sourceTree = "<group>"; };
 		A6321DCE1BECDE6500832FC3 /* LCHLinkedListNode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHLinkedListNode.c; sourceTree = "<group>"; };
 		A6321DCF1BECDE6500832FC3 /* LCHLinkedListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHLinkedListNode.h; sourceTree = "<group>"; };
+		A6321DD21BEF8D2C00832FC3 /* LCHLinkedListEnumerator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHLinkedListEnumerator.c; sourceTree = "<group>"; };
+		A6321DD31BEF8D2C00832FC3 /* LCHLinkedListEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHLinkedListEnumerator.h; sourceTree = "<group>"; };
+		A6321DD61BEFDC0E00832FC3 /* LCHLinkedListPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHLinkedListPrivate.h; sourceTree = "<group>"; };
 		A636F9171BBC0AE000FDE577 /* LCHPerformStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPerformStructures.h; sourceTree = "<group>"; };
 		A63D36891BA9809E00A68CF9 /* LCHLearnchardway */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHLearnchardway; sourceTree = BUILT_PRODUCTS_DIR; };
 		A642C8A71BB43BDE00013A88 /* LCHPrintBytesOfValue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHPrintBytesOfValue.c; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 		983862111BEBCC8B00FBB733 /* LCHLinkedList */ = {
 			isa = PBXGroup;
 			children = (
+				A6321DD11BEF8CFE00832FC3 /* LCHLinkedListEnumerator */,
+				A6321DD51BEFDBE500832FC3 /* LCHLinkedListPrivate */,
 				A6321DCD1BECDE2700832FC3 /* LCHLinkedListNode */,
 				983862131BEBCD0D00FBB733 /* LCHLinkedList.h */,
 				983862121BEBCD0D00FBB733 /* LCHLinkedList.c */,
@@ -148,6 +154,23 @@
 				A6321DCE1BECDE6500832FC3 /* LCHLinkedListNode.c */,
 			);
 			path = LCHLinkedListNode;
+			sourceTree = "<group>";
+		};
+		A6321DD11BEF8CFE00832FC3 /* LCHLinkedListEnumerator */ = {
+			isa = PBXGroup;
+			children = (
+				A6321DD31BEF8D2C00832FC3 /* LCHLinkedListEnumerator.h */,
+				A6321DD21BEF8D2C00832FC3 /* LCHLinkedListEnumerator.c */,
+			);
+			path = LCHLinkedListEnumerator;
+			sourceTree = "<group>";
+		};
+		A6321DD51BEFDBE500832FC3 /* LCHLinkedListPrivate */ = {
+			isa = PBXGroup;
+			children = (
+				A6321DD61BEFDC0E00832FC3 /* LCHLinkedListPrivate.h */,
+			);
+			path = LCHLinkedListPrivate;
 			sourceTree = "<group>";
 		};
 		A636F9151BBC0A8800FDE577 /* LCHPerformStructures */ = {
@@ -402,6 +425,7 @@
 			files = (
 				A6321DD01BECDE6600832FC3 /* LCHLinkedListNode.c in Sources */,
 				A6FCD3EA1BBAA23100454D21 /* LCHPrintSizeOfDataTypeTests.c in Sources */,
+				A6321DD41BEF8D2C00832FC3 /* LCHLinkedListEnumerator.c in Sources */,
 				A642C8A91BB43BDE00013A88 /* LCHPrintBytesOfValue.c in Sources */,
 				983862181BEBCD6900FBB733 /* LCHLinkedListTests.c in Sources */,
 				A64B22711BD9405300F686D7 /* LCHObjectTests.c in Sources */,

@@ -16,10 +16,11 @@ int main(int argc, const char * argv[]) {
     // LCHPerfomStructuresTests();
     // LCHPrintBytesOfValueTests();
     
-    LCHPerformHumanObjectTests();
-    LCHPerformObjectTests();
-    LCHPerformStringTests();
-    LCHPerformArrayTests();
+    // LCHPerformHumanObjectTests();
+    // LCHPerformObjectTests();
+    // LCHPerformStringTests();
+    // LCHPerformArrayTests();
+    
     LCHPerformLinkedListTests();
     
     return 0;
