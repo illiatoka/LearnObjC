@@ -59,5 +59,7 @@ void LCHStringSetValue(LCHString *object, char *value) {
 #pragma mark Public Implementations
 
 uint16_t LCHStringLength(LCHString *object) {
-    return NULL != object ? strlen(LCHStringValue(object)) : 0;
+    char *value = LCHStringValue(object);
+    
+    return NULL != object && NULL != value ? strlen(LCHStringValue(object)) : 0;
 }
