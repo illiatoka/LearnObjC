@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #include "LCHStringObject.h"
 #include "LCHObject.h"
@@ -46,7 +47,10 @@ void LCHStringSetValue(LCHString *object, char *value) {
         }
         
         if (value) {
-            object->_value = strdup(value);
+            char *copiedString = strdup(value);
+            assert(NULL != copiedString);
+            
+            object->_value = copiedString;
         }
     }
 }
