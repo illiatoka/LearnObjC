@@ -1,3 +1,5 @@
+#include <assert.h>
+
 #include "LCHLinkedListEnumerator.h"
 #include "LCHLinkedListPrivate.h"
 #include "LCHLinkedListNode.h"
@@ -9,7 +11,7 @@
 struct LCHLinkedListEnumerator {
     LCHObject _super;
     LCHLinkedList *_list;
-    LCHLinkedListNode *_node;
+    LCHLinkedListNode *_currentNode;
     uint64_t _mutationsCount;
     bool _valid;
 };
@@ -21,7 +23,7 @@ static
 void LCHLinkedListEnumeratorSetList(LCHLinkedListEnumerator *enumerator, LCHLinkedList *list);
 
 static
-void LCHLinkedListEnumeratorSetNode(LCHLinkedListEnumerator *enumerator, LCHLinkedListNode *node);
+void LCHLinkedListEnumeratorSetCurrentNode(LCHLinkedListEnumerator *enumerator, LCHLinkedListNode *currentNode);
 
 static
 uint64_t LCHLinkedListEnumeratorMutationsCount(LCHLinkedListEnumerator *enumerator);
@@ -30,7 +32,7 @@ static
 void LCHLinkedListEnumeratorSetMutationsCount(LCHLinkedListEnumerator *enumerator, uint64_t mutationsCount);
 
 static
-void LCHLinkedListEnumeratorSetIsValid(LCHLinkedListEnumerator *enumerator, bool valid);
+void LCHLinkedListEnumeratorSetValid(LCHLinkedListEnumerator *enumerator, bool valid);
 
 static
 bool LCHLinkedListEnumeratorValidate(LCHLinkedListEnumerator *enumerator);
@@ -40,7 +42,7 @@ bool LCHLinkedListEnumeratorValidate(LCHLinkedListEnumerator *enumerator);
 
 void __LCHLinkedListEnumeratorDeallocate(void *enumerator) {
     LCHLinkedListEnumeratorSetList(enumerator, NULL);
-    LCHLinkedListEnumeratorSetNode(enumerator, NULL);
+    LCHLinkedListEnumeratorSetCurrentNode(enumerator, NULL);
     __LCHObjectDeallocate(enumerator);
 }
 
@@ -51,7 +53,7 @@ LCHLinkedListEnumerator *LCHLinkedListEnumeratorCreateWithList(LCHLinkedList *li
         enumerator = LCHObjectCreateOfType(LCHLinkedListEnumerator);
         LCHLinkedListEnumeratorSetList(enumerator, list);
         LCHLinkedListEnumeratorSetMutationsCount(enumerator, LCHLinkedListMutationsCount(list));
-        LCHLinkedListEnumeratorSetIsValid(enumerator, true);
+        LCHLinkedListEnumeratorSetValid(enumerator, true);
     }
     
     return enumerator;
@@ -69,11 +71,11 @@ void LCHLinkedListEnumeratorSetList(LCHLinkedListEnumerator *enumerator, LCHLink
 }
 
 LCHLinkedListNode *LCHLinkedListEnumeratorNode(LCHLinkedListEnumerator *enumerator) {
-    LCHObjectIvarGetter(enumerator, enumerator->_node, NULL);
+    LCHObjectIvarGetter(enumerator, enumerator->_currentNode, NULL);
 }
 
-void LCHLinkedListEnumeratorSetNode(LCHLinkedListEnumerator *enumerator, LCHLinkedListNode *node) {
-    LCHObjectRetainSetter(enumerator, _node, node);
+void LCHLinkedListEnumeratorSetCurrentNode(LCHLinkedListEnumerator *enumerator, LCHLinkedListNode *currentNode) {
+    LCHObjectRetainSetter(enumerator, _currentNode, currentNode);
 }
 
 uint64_t LCHLinkedListEnumeratorMutationsCount(LCHLinkedListEnumerator *enumerator) {
@@ -85,10 +87,19 @@ void LCHLinkedListEnumeratorSetMutationsCount(LCHLinkedListEnumerator *enumerato
 }
 
 bool LCHLinkedListEnumeratorIsValid(LCHLinkedListEnumerator *enumerator) {
-    return NULL != enumerator && enumerator->_valid;
+    bool result = false;
+    
+    if (NULL != enumerator) {
+        LCHLinkedList *list = LCHLinkedListEnumeratorList(enumerator);
+
+        result = (true == enumerator->_valid
+                 && LCHLinkedListMutationsCount(list) == LCHLinkedListEnumeratorMutationsCount(enumerator));
+    }
+    
+    return result;
 }
 
-void LCHLinkedListEnumeratorSetIsValid(LCHLinkedListEnumerator *enumerator, bool valid) {
+void LCHLinkedListEnumeratorSetValid(LCHLinkedListEnumerator *enumerator, bool valid) {
     LCHObjectAssignSetter(enumerator, _valid, valid);
 }
 
@@ -102,15 +113,15 @@ void *LCHLinkedListEnumeratorNextObject(LCHLinkedListEnumerator *enumerator) {
         LCHLinkedList *list = LCHLinkedListEnumeratorList(enumerator);
         LCHLinkedListNode *node = LCHLinkedListEnumeratorNode(enumerator);
         
-        if (NULL != node) {
-            node = LCHLinkedListNodeNextNode(node);
-        } else {
-            node = LCHLinkedListHead(list);
-        }
+        node = (NULL != node ? LCHLinkedListNodeNextNode(node) : LCHLinkedListHead(list));
         
-        LCHLinkedListEnumeratorSetNode(enumerator, node);
+        LCHLinkedListEnumeratorSetCurrentNode(enumerator, node);
         
         object = LCHLinkedListNodeObject(node);
+        
+        if (NULL == node) {
+            LCHLinkedListEnumeratorSetValid(enumerator, false);
+        }
     }
     
     return object;
@@ -120,15 +131,9 @@ void *LCHLinkedListEnumeratorNextObject(LCHLinkedListEnumerator *enumerator) {
 #pragma mark Private Implementations
 
 bool LCHLinkedListEnumeratorValidate(LCHLinkedListEnumerator *enumerator) {
-    bool valid = false;
+    bool valid = LCHLinkedListEnumeratorIsValid(enumerator);
     
-    if (LCHLinkedListEnumeratorIsValid(enumerator)) {
-        LCHLinkedList *list = LCHLinkedListEnumeratorList(enumerator);
-        
-        if (LCHLinkedListMutationsCount(list) == LCHLinkedListEnumeratorMutationsCount(enumerator)) {
-            valid = true;
-        }
-    }
+    assert(valid);
     
     return valid;
 }

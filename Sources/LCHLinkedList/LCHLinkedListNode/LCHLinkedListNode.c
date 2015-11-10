@@ -36,9 +36,7 @@ LCHLinkedListNode *LCHLinkedListNodeNextNode(LCHLinkedListNode *node) {
 }
 
 void LCHLinkedListNodeSetNextNode(LCHLinkedListNode *node, LCHLinkedListNode *nextNode) {
-    if (NULL != node) {
-        assert(node != nextNode);
-    }
+    assert(NULL != node || node != nextNode);
     
     LCHObjectRetainSetter(node, _object, nextNode);
 }
@@ -48,9 +46,7 @@ void *LCHLinkedListNodeObject(LCHLinkedListNode *node) {
 }
 
 void LCHLinkedListNodeSetObject(LCHLinkedListNode *node, void *object) {
-    if (NULL != node) {
-        assert(node != object);
-    }
+    assert(NULL != node || node != object);
     
     LCHObjectRetainSetter(node, _object, object);
 }

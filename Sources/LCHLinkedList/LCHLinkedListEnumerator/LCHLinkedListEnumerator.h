@@ -14,9 +14,6 @@ extern
 LCHLinkedListEnumerator *LCHLinkedListEnumeratorCreateWithList(LCHLinkedList *list);
 
 extern
-LCHLinkedListNode *LCHLinkedListEnumeratorNode(LCHLinkedListEnumerator *enumerator);
-
-extern
 bool LCHLinkedListEnumeratorIsValid(LCHLinkedListEnumerator *enumerator);
 
 extern

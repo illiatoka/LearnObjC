@@ -31,7 +31,7 @@ void LCHLinkedListMutate(LCHLinkedList *list);
 #pragma mark Initializations and Deallocation
 
 void __LCHLinkedListDeallocate(void *list) {
-    LCHLinkedListSetHead(list, NULL);
+    LCHLinkedListRemoveAllObjects(list);
     __LCHObjectDeallocate(list);
 }
 
@@ -78,47 +78,31 @@ bool LCHLinkedListContainsObject(LCHLinkedList *list, void *object) {
     bool result = false;
     
     if (NULL != list) {
-        LCHLinkedListNode *node = LCHLinkedListHead(list);
+        LCHLinkedListEnumerator *enumerator = LCHLinkedListEnumeratorCreateWithList(list);
         
-        while (NULL != node) {
-            if (object == LCHLinkedListNodeObject(node)) {
+        while (LCHLinkedListEnumeratorIsValid(enumerator)) {
+            if (LCHLinkedListEnumeratorNextObject(enumerator) == object) {
                 result = true;
-
+                
                 break;
             }
-            
-            node = LCHLinkedListNodeNextNode(node);
         }
     }
-    
-//    if (NULL != list) {
-//        uint64_t count = LCHLinkedListCount(list);
-//        
-//        while (count--) {
-//            LCHLinkedListEnumerator *enumerator = LCHLinkedListEnumeratorCreateWithList(list);
-//            
-//            if (LCHLinkedListEnumeratorNextObject(enumerator) == object) {
-//                result = true;
-//                
-//                break;
-//            }
-//            
-//            LCHObjectRelease(enumerator);
-//        }
-//    }
     
     return result;
 }
 
 void LCHLinkedListAddObject(LCHLinkedList *list, void *object) {
     if (NULL != list && NULL != object) {
-        LCHLinkedListNode *node = LCHLinkedListNodeCreateWithObject(object);
-        
-        LCHLinkedListNodeSetNextNode(node, LCHLinkedListHead(list));
-        LCHLinkedListSetHead(list, node);
-        LCHLinkedListSetCount(list, LCHLinkedListCount(list) + 1);
-        
-        LCHObjectRelease(node);
+        if (false == LCHLinkedListContainsObject(list, object)) {
+            LCHLinkedListNode *node = LCHLinkedListNodeCreateWithObject(object);
+            
+            LCHLinkedListNodeSetNextNode(node, LCHLinkedListHead(list));
+            LCHLinkedListSetHead(list, node);
+            LCHLinkedListSetCount(list, LCHLinkedListCount(list) + 1);
+            
+            LCHObjectRelease(node);
+        }
     }
 }
 
