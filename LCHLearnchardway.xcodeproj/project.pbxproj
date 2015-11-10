@@ -51,6 +51,7 @@
 		A602CCF31BB70EC6004946B3 /* LCHPrintValueOfData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPrintValueOfData.h; sourceTree = "<group>"; };
 		A602CCF91BB73013004946B3 /* LCHPerformStructuresTests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHPerformStructuresTests.c; sourceTree = "<group>"; };
 		A602CCFA1BB73013004946B3 /* LCHPerformStructuresTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHPerformStructuresTests.h; sourceTree = "<group>"; };
+		A60E24F01BF2201D00B30A20 /* LCHLinkedListEnumeratorPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHLinkedListEnumeratorPrivate.h; sourceTree = "<group>"; };
 		A6321DCE1BECDE6500832FC3 /* LCHLinkedListNode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHLinkedListNode.c; sourceTree = "<group>"; };
 		A6321DCF1BECDE6500832FC3 /* LCHLinkedListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHLinkedListNode.h; sourceTree = "<group>"; };
 		A6321DD21BEF8D2C00832FC3 /* LCHLinkedListEnumerator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHLinkedListEnumerator.c; sourceTree = "<group>"; };
@@ -159,6 +160,7 @@
 		A6321DD11BEF8CFE00832FC3 /* LCHLinkedListEnumerator */ = {
 			isa = PBXGroup;
 			children = (
+				A60E24F01BF2201D00B30A20 /* LCHLinkedListEnumeratorPrivate.h */,
 				A6321DD31BEF8D2C00832FC3 /* LCHLinkedListEnumerator.h */,
 				A6321DD21BEF8D2C00832FC3 /* LCHLinkedListEnumerator.c */,
 			);

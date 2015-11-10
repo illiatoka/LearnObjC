@@ -70,7 +70,7 @@ void LCHLinkedListEnumeratorSetList(LCHLinkedListEnumerator *enumerator, LCHLink
     LCHObjectRetainSetter(enumerator, _list, list);
 }
 
-LCHLinkedListNode *LCHLinkedListEnumeratorNode(LCHLinkedListEnumerator *enumerator) {
+LCHLinkedListNode *LCHLinkedListEnumeratorCurrentNode(LCHLinkedListEnumerator *enumerator) {
     LCHObjectIvarGetter(enumerator, enumerator->_currentNode, NULL);
 }
 
@@ -111,7 +111,7 @@ void *LCHLinkedListEnumeratorNextObject(LCHLinkedListEnumerator *enumerator) {
     
     if (NULL != enumerator && LCHLinkedListEnumeratorValidate(enumerator)) {
         LCHLinkedList *list = LCHLinkedListEnumeratorList(enumerator);
-        LCHLinkedListNode *node = LCHLinkedListEnumeratorNode(enumerator);
+        LCHLinkedListNode *node = LCHLinkedListEnumeratorCurrentNode(enumerator);
         
         node = (NULL != node ? LCHLinkedListNodeNextNode(node) : LCHLinkedListHead(list));
         

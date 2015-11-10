@@ -4,7 +4,6 @@
 #include <stdbool.h>
 
 typedef struct LCHLinkedList LCHLinkedList;
-typedef struct LCHLinkedListNode LCHLinkedListNode;
 typedef struct LCHLinkedListEnumerator LCHLinkedListEnumerator;
 
 extern

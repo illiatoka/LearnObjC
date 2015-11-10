@@ -1,7 +1,10 @@
+#include <string.h>
+
 #include "LCHLinkedList.h"
 #include "LCHLinkedListPrivate.h"
 #include "LCHLinkedListNode.h"
 #include "LCHLinkedListEnumerator.h"
+#include "LCHLinkedListEnumeratorPrivate.h"
 #include "LCHObject.h"
 #include "LCHMacro.h"
 
@@ -77,16 +80,13 @@ void LCHLinkedListSetMutationsCount(LCHLinkedList *list, uint64_t mutationsCount
 bool LCHLinkedListContainsObject(LCHLinkedList *list, void *object) {
     bool result = false;
     
-    if (NULL != list) {
-        LCHLinkedListEnumerator *enumerator = LCHLinkedListEnumeratorCreateWithList(list);
+    if (NULL != list && NULL !=object) {
+        LCHLinkedListNodeContext context;
         
-        while (LCHLinkedListEnumeratorIsValid(enumerator)) {
-            if (LCHLinkedListEnumeratorNextObject(enumerator) == object) {
-                result = true;
-                
-                break;
-            }
-        }
+        memset(&context, 0, sizeof(context));
+        context.object = object;
+    
+        result = NULL != LCHLinkedListFindNodeWithContext(list, LCHLinkedListNodeContainsObject, &context);
     }
     
     return result;
@@ -108,26 +108,21 @@ void LCHLinkedListAddObject(LCHLinkedList *list, void *object) {
 
 void LCHLinkedListRemoveObject(LCHLinkedList *list, void *object) {
     if (NULL != list && NULL != object) {
-        LCHLinkedListNode *node = LCHLinkedListHead(list);
-        LCHLinkedListNode *previousNode = NULL;
+        LCHLinkedListNodeContext context;
         
-        while (NULL != node) {
-            LCHLinkedListNode *nextNode = LCHLinkedListNodeNextNode(node);
-            
-            if (object == LCHLinkedListNodeObject(node)) {
-                if (node == LCHLinkedListHead(list)) {
-                    LCHLinkedListSetHead(list, nextNode);
-                } else {
-                    LCHLinkedListNodeSetNextNode(previousNode, nextNode);
-                }
-                
-                LCHLinkedListSetCount(list, LCHLinkedListCount(list) - 1);
-                
-                break;
+        memset(&context, 0, sizeof(context));
+        context.object = object;
+        
+        LCHLinkedListNode *node = LCHLinkedListFindNodeWithContext(list, LCHLinkedListNodeContainsObject, &context);
+        
+        if (NULL != node) {
+            if (node == LCHLinkedListHead(list)) {
+                LCHLinkedListSetHead(list, LCHLinkedListNodeNextNode(context.node));
+            } else {
+                LCHLinkedListNodeSetNextNode(context.previousNode, LCHLinkedListNodeNextNode(context.node));
             }
             
-            previousNode = node;
-            node = nextNode;
+            LCHLinkedListSetCount(list, LCHLinkedListCount(list) - 1);
         }
     }
 }
@@ -144,4 +139,36 @@ void LCHLinkedListRemoveAllObjects(LCHLinkedList *list) {
 
 void LCHLinkedListMutate(LCHLinkedList *list) {
     LCHLinkedListSetMutationsCount(list, LCHLinkedListMutationsCount(list) + 1);
+}
+
+LCHLinkedListNode *LCHLinkedListFindNodeWithContext(LCHLinkedList *list,
+                                                LCHLinkedListNodeComparison comparator,
+                                                LCHLinkedListNodeContext *context)
+{
+    LCHLinkedListNode *result = NULL;
+    
+    if (NULL != list) {
+        LCHLinkedListEnumerator *enumerator = LCHLinkedListEnumeratorCreateWithList(list);
+        
+        while (true == LCHLinkedListEnumeratorIsValid(enumerator)) {
+            LCHLinkedListNode *node = LCHLinkedListEnumeratorCurrentNode(enumerator);
+            context->node = node;
+            
+            if (true == comparator(node, *context)) {
+                result = node;
+                
+                break;
+            }
+            
+            context->previousNode = node;
+        }
+        
+        LCHObjectRelease(enumerator);
+    }
+    
+    return result;
+}
+
+bool LCHLinkedListNodeContainsObject(LCHLinkedListNode *node, LCHLinkedListNodeContext context) {
+    return NULL != node && context.object == LCHLinkedListNodeObject(node);
 }
