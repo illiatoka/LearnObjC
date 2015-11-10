@@ -154,6 +154,10 @@ LCHLinkedListNode *LCHLinkedListFindNodeWithContext(LCHLinkedList *list,
             LCHLinkedListNode *node = LCHLinkedListEnumeratorCurrentNode(enumerator);
             context->node = node;
             
+            if (NULL == node) {
+                break;
+            }
+            
             if (true == comparator(node, *context)) {
                 result = node;
                 

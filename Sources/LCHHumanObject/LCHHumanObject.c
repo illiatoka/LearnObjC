@@ -238,7 +238,7 @@ void LCHHumanMarry(LCHHuman *object, LCHHuman *partner) {
 }
 
 void LCHHumanDivorce(LCHHuman *object) {
-    if (NULL != object && NULL != LCHHumanPartner(object)) {
+    if (true == LCHHumanIsMarried(object)) {
         LCHHumanSetPartner(object, NULL);
     }
 }
