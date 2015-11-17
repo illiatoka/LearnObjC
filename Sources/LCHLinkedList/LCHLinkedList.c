@@ -142,7 +142,7 @@ void LCHLinkedListMutate(LCHLinkedList *list) {
 }
 
 LCHLinkedListNode *LCHLinkedListFindNodeWithContext(LCHLinkedList *list,
-                                                LCHLinkedListNodeComparison comparator,
+                                                LCHLinkedListNodeComparisonFunction comparator,
                                                 LCHLinkedListNodeContext *context)
 {
     LCHLinkedListNode *result = NULL;

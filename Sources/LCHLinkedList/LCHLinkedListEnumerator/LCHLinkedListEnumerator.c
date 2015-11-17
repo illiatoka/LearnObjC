@@ -48,10 +48,12 @@ void __LCHLinkedListEnumeratorDeallocate(void *enumerator) {
 
 LCHLinkedListEnumerator *LCHLinkedListEnumeratorCreateWithList(LCHLinkedList *list) {
     LCHLinkedListEnumerator *enumerator = NULL;
+    LCHLinkedListNode *headNode = LCHLinkedListHead(list);
     
-    if (NULL != LCHLinkedListHead(list)) {
+    if (NULL != headNode) {
         enumerator = LCHObjectCreateOfType(LCHLinkedListEnumerator);
         LCHLinkedListEnumeratorSetList(enumerator, list);
+        LCHLinkedListEnumeratorSetCurrentNode(enumerator, headNode);
         LCHLinkedListEnumeratorSetMutationsCount(enumerator, LCHLinkedListMutationsCount(list));
         LCHLinkedListEnumeratorSetValid(enumerator, true);
     }

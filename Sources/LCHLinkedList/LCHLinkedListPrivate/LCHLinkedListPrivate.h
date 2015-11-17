@@ -12,7 +12,7 @@ typedef struct {
     void *object;
 } LCHLinkedListNodeContext;
 
-typedef bool (*LCHLinkedListNodeComparison)(LCHLinkedListNode *node, LCHLinkedListNodeContext context);
+typedef bool (*LCHLinkedListNodeComparisonFunction)(LCHLinkedListNode *node, LCHLinkedListNodeContext context);
 
 extern
 LCHLinkedListNode *LCHLinkedListHead(LCHLinkedList *list);
@@ -22,7 +22,7 @@ uint64_t LCHLinkedListMutationsCount(LCHLinkedList *list);
 
 extern
 LCHLinkedListNode *LCHLinkedListFindNodeWithContext(LCHLinkedList *list,
-                                                LCHLinkedListNodeComparison comparator,
+                                                LCHLinkedListNodeComparisonFunction comparator,
                                                 LCHLinkedListNodeContext *context);
 
 extern
