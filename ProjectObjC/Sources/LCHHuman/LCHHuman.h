@@ -8,7 +8,7 @@ typedef enum {
 
 @interface LCHHuman : NSObject
 
-@property   (nonatomic, readonly, retain)    NSString              *firstName;
+@property   (nonatomic, readonly, copy)      NSString              *firstName;
 @property   (nonatomic, readonly, retain)    NSSet                 *children;
 
 @property   (nonatomic, assign)              uint8_t               age;
