@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A64C5E921BFF4F0000E52BDF /* LCHHumanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5E911BFF4F0000E52BDF /* LCHHumanTests.m */; };
 		A690504B1BFF49CA00120215 /* LCHArrayObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050061BFF49CA00120215 /* LCHArrayObject.c */; };
 		A690504C1BFF49CA00120215 /* LCHHumanObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050091BFF49CA00120215 /* LCHHumanObject.c */; };
 		A690504D1BFF49CA00120215 /* LCHLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = A690500C1BFF49CA00120215 /* LCHLinkedList.c */; };
@@ -56,7 +55,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A64C5E911BFF4F0000E52BDF /* LCHHumanTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHHumanTests.m; sourceTree = "<group>"; };
 		A69050061BFF49CA00120215 /* LCHArrayObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHArrayObject.c; sourceTree = "<group>"; };
 		A69050071BFF49CA00120215 /* LCHArrayObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHArrayObject.h; sourceTree = "<group>"; };
 		A69050091BFF49CA00120215 /* LCHHumanObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHHumanObject.c; sourceTree = "<group>"; };
@@ -460,7 +458,6 @@
 		A69050791BFF4B6100120215 /* LCHHumanTests */ = {
 			isa = PBXGroup;
 			children = (
-				A64C5E911BFF4F0000E52BDF /* LCHHumanTests.m */,
 			);
 			path = LCHHumanTests;
 			sourceTree = "<group>";
@@ -596,7 +593,6 @@
 				A690507E1BFF4B6100120215 /* LCHWoman.m in Sources */,
 				A690507F1BFF4B6100120215 /* main.m in Sources */,
 				A690507C1BFF4B6100120215 /* LCHHuman.m in Sources */,
-				A64C5E921BFF4F0000E52BDF /* LCHHumanTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
