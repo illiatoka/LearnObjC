@@ -55,6 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A64C5E981C03AFAB00E52BDF /* LCHHumanProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHHumanProtocol.h; sourceTree = "<group>"; };
 		A69050061BFF49CA00120215 /* LCHArrayObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHArrayObject.c; sourceTree = "<group>"; };
 		A69050071BFF49CA00120215 /* LCHArrayObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHArrayObject.h; sourceTree = "<group>"; };
 		A69050091BFF49CA00120215 /* LCHHumanObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHHumanObject.c; sourceTree = "<group>"; };
@@ -136,6 +137,14 @@
 				A69050031BFF49CA00120215 /* ProjectC */,
 				A69050651BFF4A7F00120215 /* ProjectObjC */,
 			);
+			sourceTree = "<group>";
+		};
+		A64C5E971C03AF4E00E52BDF /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A64C5E981C03AFAB00E52BDF /* LCHHumanProtocol.h */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		A69050031BFF49CA00120215 /* ProjectC */ = {
@@ -421,6 +430,7 @@
 		A690506E1BFF4B6100120215 /* LCHHuman */ = {
 			isa = PBXGroup;
 			children = (
+				A64C5E971C03AF4E00E52BDF /* Protocol */,
 				A690506F1BFF4B6100120215 /* LCHHuman.h */,
 				A69050701BFF4B6100120215 /* LCHHuman.m */,
 			);

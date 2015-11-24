@@ -1,9 +1,9 @@
 #import "LCHHuman.h"
 
 @interface LCHHuman ()
-@property (nonatomic, readwrite, copy)      NSString            *firstName;
-@property (nonatomic, readwrite, retain)    NSMutableArray      *mutableChildren;
-@property (nonatomic, readwrite, assign)    LCHHumanGenderType  gender;
+@property (nonatomic, readwrite, retain)    NSMutableSet    *mutableChildren;
+@property (nonatomic, readwrite, assign)    LCHHumanGender  gender;
+
 @end
 
 @implementation LCHHuman
@@ -13,19 +13,15 @@
 #pragma mark -
 #pragma mark Class methods
 
-+ (instancetype)human {
-    return [[[self alloc] init] autorelease];
-}
-
-+ (instancetype)humanWithFirstName:(NSString *)name gender:(LCHHumanGenderType)gender {
-    return [[[self alloc] initWithFirstName:name gender:gender] autorelease];
++ (instancetype)humanWithGender:(LCHHumanGender)gender {
+    return [[[self alloc] initWithGender:gender] autorelease];
 }
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.firstName = nil;
+    self.name = nil;
     self.mutableChildren = nil;
     
     [super dealloc];
@@ -35,19 +31,16 @@
     self = [super init];
     
     if (self) {
-        self.firstName = nil;
-        self.mutableChildren = [NSMutableArray array];
-        self.gender = kLCHHumanUnknown;
+        self.mutableChildren = [NSMutableSet set];
     }
     
     return self;
 }
 
-- (instancetype)initWithFirstName:(NSString *)name gender:(LCHHumanGenderType)gender {
+- (instancetype)initWithGender:(LCHHumanGender)gender {
     self = [self init];
     
     if (self) {
-        self.firstName = name;
         self.gender = gender;
     }
     
@@ -57,7 +50,7 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (NSArray *)children {
+- (NSSet *)children {
     return [[self.mutableChildren copy] autorelease];
 }
 
@@ -66,6 +59,10 @@
 
 - (void)sayHello {
     NSLog(@"Hello from %@", self);
+    
+    for (LCHHuman *child in self.children) {
+        NSLog(@"Hello from child %@", child);
+    }
 }
 
 - (void)fight {
@@ -73,21 +70,26 @@
 }
 
 - (instancetype)reproduce {
-    return [LCHHuman human];
+    LCHHumanGender randomGender = (arc4random_uniform(kLCHHumanUnknown));
+
+    return [[self class] humanWithGender:randomGender];
 }
 
-- (void)addChild:(LCHHuman *)child {
-    NSMutableArray *children = self.mutableChildren;
-    
-    if (YES == [child isKindOfClass:[LCHHuman class]]) {
-        if (NO == [children containsObject:child]) {
-            [children addObject:child];
-        }
+- (void)addChild:(id<LCHHumanProtocol>)child {
+    if ([child conformsToProtocol:@protocol(LCHHumanProtocol)]) {
+        [self.mutableChildren addObject:child];
     }
 }
 
-- (void)removeChild:(LCHHuman *)child {
+- (void)removeChild:(id<LCHHumanProtocol>)child {
     [self.mutableChildren removeObject:child];
+}
+
+#pragma mark -
+#pragma mark LCHHumanProtocol
+
+- (void)performGenderSpecificOperation {
+    
 }
 
 @end

@@ -5,7 +5,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        LCHHuman *human = [LCHHuman human];
+        LCHHuman *human = [LCHHuman humanWithGender:kLCHGenderFemale];
         [human sayHello];
         [human fight];
         [human reproduce];
@@ -13,7 +13,7 @@ int main(int argc, const char * argv[]) {
         NSLog(@"Human class is %@", [human class]);
         NSLog(@"Human is instance of class %@", [human className]);
         
-        LCHMan *man = [LCHMan human];
+        LCHMan *man = [LCHMan humanWithGender:kLCHGenderMale];
         
         NSLog(@"Man class is %@", [man class]);
         NSLog(@"Man is instance of class %@", [man className]);
@@ -23,8 +23,9 @@ int main(int argc, const char * argv[]) {
         }
         
         LCHMan *child = [man reproduce];
-        [man addChild:child];
+        NSLog(@"Child is instance of class %@", [child className]);
         
+        [man addChild:child];
         NSLog(@"Children count = %lu", (unsigned long)[man.children count]);
     }
     

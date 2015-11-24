@@ -1,33 +1,25 @@
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, LCHHumanGenderType) {
-    kLCHHumanUnknown,
-    kLCHHumanMale,
-    kLCHHumanFemale
+#import "LCHHumanProtocol.h"
+
+typedef NS_ENUM(NSUInteger, LCHHumanGender) {
+    kLCHGenderMale,
+    kLCHGenderFemale,
+    kLCHHumanUnknown
 };
 
-@interface LCHHuman : NSObject
-
-@property (nonatomic, readonly, copy)   NSString    *firstName;
-@property (nonatomic, readonly)         NSArray     *children;
+@interface LCHHuman : NSObject <LCHHumanProtocol>
+@property (nonatomic, copy)     NSString    *name;
+@property (nonatomic, readonly) NSSet       *children;
 
 @property (nonatomic, assign)   uint8_t     age;
 @property (nonatomic, assign)   uint8_t     weight;
 
-@property (nonatomic, readonly) LCHHumanGenderType  gender;
++ (instancetype)humanWithGender:(LCHHumanGender)gender;
 
-+ (instancetype)human;
-+ (instancetype)humanWithFirstName:(NSString *)name gender:(LCHHumanGenderType)gender;
+- (instancetype)initWithGender:(LCHHumanGender)gender;
 
-- (instancetype)init;
-- (instancetype)initWithFirstName:(NSString *)name gender:(LCHHumanGenderType)gender;
-
-- (void)sayHello;
-
-- (void)fight;
-- (instancetype)reproduce;
-
-- (void)addChild:(LCHHuman *)child;
-- (void)removeChild:(LCHHuman *)child;
+- (void)addChild:(id<LCHHumanProtocol>)child;
+- (void)removeChild:(id<LCHHumanProtocol>)child;
 
 @end
