@@ -1,19 +1,27 @@
 #import "LCHHuman.h"
+#import "LCHMan.h"
+#import "LCHWoman.h"
 
 @interface LCHHuman ()
 @property (nonatomic, readwrite, retain)    NSMutableSet    *mutableChildren;
-@property (nonatomic, readwrite, assign)    LCHHumanGender  gender;
+
++ (NSMutableDictionary *)genderClasses;
++ (Class)classForGender:(LCHHumanGenderType)gender;
 
 @end
 
 @implementation LCHHuman
+
+@synthesize name = _name;
+@synthesize age = _age;
+@synthesize weight = _weight;
 
 @dynamic children;
 
 #pragma mark -
 #pragma mark Class methods
 
-+ (instancetype)humanWithGender:(LCHHumanGender)gender {
++ (instancetype)humanWithGender:(LCHHumanGenderType)gender {
     return [[[self alloc] initWithGender:gender] autorelease];
 }
 
@@ -37,12 +45,14 @@
     return self;
 }
 
-- (instancetype)initWithGender:(LCHHumanGender)gender {
-    self = [self init];
+- (instancetype)initWithGender:(LCHHumanGenderType)gender {
+    Class objectClass = [LCHHuman classForGender:gender];
     
-    if (self) {
-        self.gender = gender;
+    if (objectClass) {
+        [self release];
     }
+    
+    self = [[objectClass alloc] init];
     
     return self;
 }
@@ -65,16 +75,6 @@
     }
 }
 
-- (void)fight {
-    NSLog(@"%@ Went to fight", self);
-}
-
-- (instancetype)reproduce {
-    LCHHumanGender randomGender = (arc4random_uniform(kLCHHumanUnknown));
-
-    return [[self class] humanWithGender:randomGender];
-}
-
 - (void)addChild:(id<LCHHumanProtocol>)child {
     if ([child conformsToProtocol:@protocol(LCHHumanProtocol)]) {
         [self.mutableChildren addObject:child];
@@ -83,6 +83,29 @@
 
 - (void)removeChild:(id<LCHHumanProtocol>)child {
     [self.mutableChildren removeObject:child];
+}
+
+#pragma mark -
+#pragma mark Private Implementations
+
++ (NSMutableDictionary *)genderClasses {
+    static NSMutableDictionary *__genderClasses = nil;
+    
+    if (nil == __genderClasses) {
+        __genderClasses = [NSMutableDictionary dictionaryWithDictionary:@{@(kLCHGenderMale)     : [LCHMan class],
+                                                                          @(kLCHGenderFemale)   : [LCHWoman class]}];
+    }
+    
+    return __genderClasses;
+}
+
++ (Class)classForGender:(LCHHumanGenderType)gender {
+    NSMutableDictionary *genderClasses = [self genderClasses];
+    Class result = genderClasses[@(gender)];
+    
+    NSAssert(result, @"Class isn't register for gender %lu", (unsigned long)gender);
+    
+    return result;
 }
 
 #pragma mark -

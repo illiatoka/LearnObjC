@@ -2,22 +2,17 @@
 
 #import "LCHHumanProtocol.h"
 
-typedef NS_ENUM(NSUInteger, LCHHumanGender) {
+typedef NS_ENUM(NSUInteger, LCHHumanGenderType) {
     kLCHGenderMale,
     kLCHGenderFemale,
     kLCHHumanUnknown
 };
 
 @interface LCHHuman : NSObject <LCHHumanProtocol>
-@property (nonatomic, copy)     NSString    *name;
-@property (nonatomic, readonly) NSSet       *children;
 
-@property (nonatomic, assign)   uint8_t     age;
-@property (nonatomic, assign)   uint8_t     weight;
++ (instancetype)humanWithGender:(LCHHumanGenderType)gender;
 
-+ (instancetype)humanWithGender:(LCHHumanGender)gender;
-
-- (instancetype)initWithGender:(LCHHumanGender)gender;
+- (instancetype)initWithGender:(LCHHumanGenderType)gender;
 
 - (void)addChild:(id<LCHHumanProtocol>)child;
 - (void)removeChild:(id<LCHHumanProtocol>)child;

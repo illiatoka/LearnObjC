@@ -2,31 +2,40 @@
 
 #import "LCHHuman.h"
 #import "LCHMan.h"
+#import "LCHWoman.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        LCHHuman *human = [LCHHuman humanWithGender:kLCHGenderFemale];
-        [human sayHello];
-        [human fight];
-        [human reproduce];
-        
-        NSLog(@"Human class is %@", [human class]);
-        NSLog(@"Human is instance of class %@", [human className]);
-        
-        LCHMan *man = [LCHMan humanWithGender:kLCHGenderMale];
+        id man = [LCHHuman humanWithGender:kLCHGenderMale];
         
         NSLog(@"Man class is %@", [man class]);
         NSLog(@"Man is instance of class %@", [man className]);
         
-        if ([man isKindOfClass:[human class]]) {
-            NSLog(@"Man is kind of class LCHHuman");
-        }
+        id woman = [LCHHuman humanWithGender:kLCHGenderFemale];
+        [woman sayHello];
+        [woman reproduce];
         
-        LCHMan *child = [man reproduce];
+        NSLog(@"Human class is %@", [woman class]);
+        NSLog(@"Human is instance of class %@", [woman className]);
+        
+        id child = [woman reproduce];
         NSLog(@"Child is instance of class %@", [child className]);
         
-        [man addChild:child];
-        NSLog(@"Children count = %lu", (unsigned long)[man.children count]);
+        [woman addChild:child];
+        NSLog(@"Children count = %lu", (unsigned long)[[woman children] count]);
+        
+        NSMutableArray *array = [[[NSMutableArray alloc] init] autorelease];
+        
+        for (uint8_t count = 0; count < 20; count++) {
+            id man = [LCHHuman humanWithGender:kLCHGenderMale];
+            id woman = [LCHHuman humanWithGender:kLCHGenderFemale];
+            [array addObject:man];
+            [array addObject:woman];
+        }
+        
+        for (LCHHuman *human in array) {
+            [human performGenderSpecificOperation];
+        }
     }
     
     return 0;
