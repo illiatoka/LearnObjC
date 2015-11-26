@@ -1,12 +1,7 @@
 #import <Foundation/Foundation.h>
 
 #import "LCHHumanProtocol.h"
-
-typedef NS_ENUM(NSUInteger, LCHHumanGenderType) {
-    kLCHGenderMale,
-    kLCHGenderFemale,
-    kLCHHumanUnknown
-};
+#import "LCHTypeDefs.h"
 
 @interface LCHHuman : NSObject <LCHHumanProtocol>
 

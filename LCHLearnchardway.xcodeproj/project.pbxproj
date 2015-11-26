@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A64C5E9D1C0603E400E52BDF /* LCHMan.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5E9C1C0603E400E52BDF /* LCHMan.m */; };
 		A64C5EA11C0603F100E52BDF /* LCHWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5EA01C0603F100E52BDF /* LCHWoman.m */; };
+		A64C5EA61C06F89300E52BDF /* NSObject+LCHObjectCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5EA51C06F89300E52BDF /* NSObject+LCHObjectCreate.m */; };
+		A64C5EAC1C06FC7B00E52BDF /* LCHHumanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5EAB1C06FC7B00E52BDF /* LCHHumanTests.m */; };
 		A690504B1BFF49CA00120215 /* LCHArrayObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050061BFF49CA00120215 /* LCHArrayObject.c */; };
 		A690504C1BFF49CA00120215 /* LCHHumanObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050091BFF49CA00120215 /* LCHHumanObject.c */; };
 		A690504D1BFF49CA00120215 /* LCHLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = A690500C1BFF49CA00120215 /* LCHLinkedList.c */; };
@@ -60,6 +62,11 @@
 		A64C5E9C1C0603E400E52BDF /* LCHMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHMan.m; sourceTree = "<group>"; };
 		A64C5E9F1C0603F100E52BDF /* LCHWoman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHWoman.h; sourceTree = "<group>"; };
 		A64C5EA01C0603F100E52BDF /* LCHWoman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHWoman.m; sourceTree = "<group>"; };
+		A64C5EA41C06F89300E52BDF /* NSObject+LCHObjectCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LCHObjectCreate.h"; sourceTree = "<group>"; };
+		A64C5EA51C06F89300E52BDF /* NSObject+LCHObjectCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCHObjectCreate.m"; sourceTree = "<group>"; };
+		A64C5EA71C06F93100E52BDF /* LCHTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHTypeDefs.h; sourceTree = "<group>"; };
+		A64C5EAA1C06FC7B00E52BDF /* LCHHumanTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHHumanTests.h; sourceTree = "<group>"; };
+		A64C5EAB1C06FC7B00E52BDF /* LCHHumanTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHHumanTests.m; sourceTree = "<group>"; };
 		A69050061BFF49CA00120215 /* LCHArrayObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHArrayObject.c; sourceTree = "<group>"; };
 		A69050071BFF49CA00120215 /* LCHArrayObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHArrayObject.h; sourceTree = "<group>"; };
 		A69050091BFF49CA00120215 /* LCHHumanObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHHumanObject.c; sourceTree = "<group>"; };
@@ -172,6 +179,23 @@
 				A64C5EA01C0603F100E52BDF /* LCHWoman.m */,
 			);
 			path = LCHWoman;
+			sourceTree = "<group>";
+		};
+		A64C5EA21C06F57A00E52BDF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A64C5EA41C06F89300E52BDF /* NSObject+LCHObjectCreate.h */,
+				A64C5EA51C06F89300E52BDF /* NSObject+LCHObjectCreate.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		A64C5EA31C06F69B00E52BDF /* Declarations */ = {
+			isa = PBXGroup;
+			children = (
+				A64C5EA71C06F93100E52BDF /* LCHTypeDefs.h */,
+			);
+			path = Declarations;
 			sourceTree = "<group>";
 		};
 		A69050031BFF49CA00120215 /* ProjectC */ = {
@@ -446,6 +470,8 @@
 		A690506D1BFF4B6100120215 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A64C5EA31C06F69B00E52BDF /* Declarations */,
+				A64C5EA21C06F57A00E52BDF /* Categories */,
 				A690506E1BFF4B6100120215 /* LCHHuman */,
 				A69050771BFF4B6100120215 /* main.m */,
 			);
@@ -467,8 +493,6 @@
 			isa = PBXGroup;
 			children = (
 				A69050791BFF4B6100120215 /* LCHHumanTests */,
-				A690507A1BFF4B6100120215 /* LCHManTests */,
-				A690507B1BFF4B6100120215 /* LCHWomanTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -476,22 +500,10 @@
 		A69050791BFF4B6100120215 /* LCHHumanTests */ = {
 			isa = PBXGroup;
 			children = (
+				A64C5EAA1C06FC7B00E52BDF /* LCHHumanTests.h */,
+				A64C5EAB1C06FC7B00E52BDF /* LCHHumanTests.m */,
 			);
 			path = LCHHumanTests;
-			sourceTree = "<group>";
-		};
-		A690507A1BFF4B6100120215 /* LCHManTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LCHManTests;
-			sourceTree = "<group>";
-		};
-		A690507B1BFF4B6100120215 /* LCHWomanTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LCHWomanTests;
 			sourceTree = "<group>";
 		};
 		A69050831BFF4C4500120215 /* Products */ = {
@@ -608,9 +620,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A690507F1BFF4B6100120215 /* main.m in Sources */,
+				A64C5EAC1C06FC7B00E52BDF /* LCHHumanTests.m in Sources */,
 				A64C5E9D1C0603E400E52BDF /* LCHMan.m in Sources */,
 				A64C5EA11C0603F100E52BDF /* LCHWoman.m in Sources */,
 				A690507C1BFF4B6100120215 /* LCHHuman.m in Sources */,
+				A64C5EA61C06F89300E52BDF /* NSObject+LCHObjectCreate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@
 @dynamic children;
 
 #pragma mark -
-#pragma mark Class methods
+#pragma mark Class Methods
 
 + (instancetype)humanWithGender:(LCHHumanGenderType)gender {
     return [[[self alloc] initWithGender:gender] autorelease];
@@ -112,7 +112,7 @@
 #pragma mark LCHHumanProtocol
 
 - (void)performGenderSpecificOperation {
-    
+    // Do nothing if message sent to LCHHuman
 }
 
 @end
