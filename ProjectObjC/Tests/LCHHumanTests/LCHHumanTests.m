@@ -3,12 +3,13 @@
 #import "LCHMan.h"
 #import "LCHWoman.h"
 
-#import "NSObject+LCHObjectCreate.h"
+#import "NSObject+LCHExtensions.h"
 
 @interface LCHHumanTests ()
 
 - (void)performHumanObjectTests;
 - (void)performChildrenArrayTests;
+- (void)performSayHelloTests;
 - (void)performGenderSpecificOperationTests;
 
 @end
@@ -21,6 +22,7 @@
 - (void)performHumanTests {
     [self performHumanObjectTests];
     [self performChildrenArrayTests];
+    [self performSayHelloTests];
     [self performGenderSpecificOperationTests];
 }
 
@@ -77,8 +79,8 @@
     id woman = [LCHHuman humanWithGender:kLCHGenderFemale];
     
     // After test children created
-    id firstChild = [woman reproduce];
-    id secondChild = [woman reproduce];
+    id firstChild = [LCHHuman humanWithGender:kLCHGenderMale];
+    id secondChild = [LCHHuman humanWithGender:kLCHGenderMale];
     
         // firstChild must not be nil
         NSAssert(firstChild, @"Instance wasn't created");
@@ -135,6 +137,20 @@
         NSAssert([[man children] containsObject:secondChild], @"Children array doesn't contain firstChild");
 }
 
+- (void)performSayHelloTests {
+    // Create test instance
+    id man = [LCHHuman humanWithGender:kLCHGenderMale];
+    
+    // Create test instances and add to test array
+    for (uint8_t count = 0; count < 20; count++) {
+        id child = [LCHHuman humanWithGender:kLCHGenderMale];
+        [man addChild:child];
+    }
+    
+    // Say hello from everyone
+    [man sayHello];
+}
+
 - (void)performGenderSpecificOperationTests {
     // Create test array
     NSMutableArray *array = [NSMutableArray object];
@@ -148,9 +164,7 @@
     }
     
     // Send message performGenderSpecificOperation to all instances in array
-    for (LCHHuman *human in array) {
-        [human performGenderSpecificOperation];
-    }
+    [array makeObjectsPerformSelector:@selector(performGenderSpecificOperation)];
 }
 
 @end

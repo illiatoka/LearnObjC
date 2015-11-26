@@ -36,6 +36,8 @@
 }
 
 - (instancetype)init {
+    NSAssert(NO == [[self class] isKindOfClass:[LCHHuman class]], @"Don't initiate LCHHuman directly");
+                    
     self = [super init];
     
     if (self) {
@@ -112,7 +114,7 @@
 #pragma mark LCHHumanProtocol
 
 - (void)performGenderSpecificOperation {
-    // Do nothing if message sent to LCHHuman
+
 }
 
 @end

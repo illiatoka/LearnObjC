@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface NSObject (LCHObjectCreate)
+@interface NSObject (LCHExtensions)
 
 + (instancetype)object;
 

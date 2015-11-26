@@ -1,11 +1,11 @@
 #import <Foundation/Foundation.h>
 
-#import "NSObject+LCHObjectCreate.h"
+#import "NSObject+LCHExtensions.h"
 #import "LCHHumanTests.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        [[LCHHumanTests object] performHumanTests];
+        // [[LCHHumanTests object] performHumanTests];
     }
     
     return 0;

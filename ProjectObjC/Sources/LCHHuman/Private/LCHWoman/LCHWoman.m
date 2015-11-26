@@ -12,10 +12,8 @@
 #pragma mark -
 #pragma mark LCHHumanProtocol
 
-- (instancetype)reproduce {
-    LCHHumanGenderType randomGender = (arc4random_uniform(kLCHHumanUnknown));
-    
-    return [[self class] humanWithGender:randomGender];
+- (void)reproduce {
+    NSLog(@"Went to reproduce %@", self);
 }
 
 - (void)performGenderSpecificOperation {
