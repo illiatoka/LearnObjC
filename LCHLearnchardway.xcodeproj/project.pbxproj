@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		A64C5E9D1C0603E400E52BDF /* LCHMan.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5E9C1C0603E400E52BDF /* LCHMan.m */; };
 		A64C5EA11C0603F100E52BDF /* LCHWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5EA01C0603F100E52BDF /* LCHWoman.m */; };
-		A64C5EA61C06F89300E52BDF /* NSObject+LCHExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5EA51C06F89300E52BDF /* NSObject+LCHExtensions.m */; };
+		A64C5EA61C06F89300E52BDF /* NSObject+LCHObjectExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5EA51C06F89300E52BDF /* NSObject+LCHObjectExtensions.m */; };
 		A64C5EAC1C06FC7B00E52BDF /* LCHHumanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5EAB1C06FC7B00E52BDF /* LCHHumanTests.m */; };
+		A67297841C0899F400195DA6 /* NSString+LCHStringExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A67297831C0899F400195DA6 /* NSString+LCHStringExtensions.m */; };
+		A672978B1C08A90600195DA6 /* LCHRandomStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A672978A1C08A90600195DA6 /* LCHRandomStringTests.m */; };
 		A690504B1BFF49CA00120215 /* LCHArrayObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050061BFF49CA00120215 /* LCHArrayObject.c */; };
 		A690504C1BFF49CA00120215 /* LCHHumanObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050091BFF49CA00120215 /* LCHHumanObject.c */; };
 		A690504D1BFF49CA00120215 /* LCHLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = A690500C1BFF49CA00120215 /* LCHLinkedList.c */; };
@@ -57,16 +59,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A64C5E981C03AFAB00E52BDF /* LCHHumanProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHHumanProtocol.h; sourceTree = "<group>"; };
 		A64C5E9B1C0603E400E52BDF /* LCHMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHMan.h; sourceTree = "<group>"; };
 		A64C5E9C1C0603E400E52BDF /* LCHMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHMan.m; sourceTree = "<group>"; };
 		A64C5E9F1C0603F100E52BDF /* LCHWoman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHWoman.h; sourceTree = "<group>"; };
 		A64C5EA01C0603F100E52BDF /* LCHWoman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHWoman.m; sourceTree = "<group>"; };
-		A64C5EA41C06F89300E52BDF /* NSObject+LCHExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LCHExtensions.h"; sourceTree = "<group>"; };
-		A64C5EA51C06F89300E52BDF /* NSObject+LCHExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCHExtensions.m"; sourceTree = "<group>"; };
+		A64C5EA41C06F89300E52BDF /* NSObject+LCHObjectExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LCHObjectExtensions.h"; sourceTree = "<group>"; };
+		A64C5EA51C06F89300E52BDF /* NSObject+LCHObjectExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCHObjectExtensions.m"; sourceTree = "<group>"; };
 		A64C5EA71C06F93100E52BDF /* LCHTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHTypeDefs.h; sourceTree = "<group>"; };
 		A64C5EAA1C06FC7B00E52BDF /* LCHHumanTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHHumanTests.h; sourceTree = "<group>"; };
 		A64C5EAB1C06FC7B00E52BDF /* LCHHumanTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHHumanTests.m; sourceTree = "<group>"; };
+		A67297821C0899F400195DA6 /* NSString+LCHStringExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LCHStringExtensions.h"; sourceTree = "<group>"; };
+		A67297831C0899F400195DA6 /* NSString+LCHStringExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LCHStringExtensions.m"; sourceTree = "<group>"; };
+		A67297861C08A74800195DA6 /* LCHHumanProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHHumanProtocol.h; sourceTree = "<group>"; };
+		A67297871C08A78900195DA6 /* LCHSourceStringProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHSourceStringProtocol.h; sourceTree = "<group>"; };
+		A67297891C08A90600195DA6 /* LCHRandomStringTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHRandomStringTests.h; sourceTree = "<group>"; };
+		A672978A1C08A90600195DA6 /* LCHRandomStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHRandomStringTests.m; sourceTree = "<group>"; };
 		A69050061BFF49CA00120215 /* LCHArrayObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHArrayObject.c; sourceTree = "<group>"; };
 		A69050071BFF49CA00120215 /* LCHArrayObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHArrayObject.h; sourceTree = "<group>"; };
 		A69050091BFF49CA00120215 /* LCHHumanObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHHumanObject.c; sourceTree = "<group>"; };
@@ -146,14 +153,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		A64C5E971C03AF4E00E52BDF /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				A64C5E981C03AFAB00E52BDF /* LCHHumanProtocol.h */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		A64C5E991C06038500E52BDF /* Private */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,8 +183,10 @@
 		A64C5EA21C06F57A00E52BDF /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				A64C5EA41C06F89300E52BDF /* NSObject+LCHExtensions.h */,
-				A64C5EA51C06F89300E52BDF /* NSObject+LCHExtensions.m */,
+				A64C5EA41C06F89300E52BDF /* NSObject+LCHObjectExtensions.h */,
+				A64C5EA51C06F89300E52BDF /* NSObject+LCHObjectExtensions.m */,
+				A67297821C0899F400195DA6 /* NSString+LCHStringExtensions.h */,
+				A67297831C0899F400195DA6 /* NSString+LCHStringExtensions.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -196,6 +197,25 @@
 				A64C5EA71C06F93100E52BDF /* LCHTypeDefs.h */,
 			);
 			path = Declarations;
+			sourceTree = "<group>";
+		};
+		A67297851C08A74800195DA6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A67297871C08A78900195DA6 /* LCHSourceStringProtocol.h */,
+				A67297861C08A74800195DA6 /* LCHHumanProtocol.h */,
+			);
+			name = Protocols;
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A67297881C08A8AA00195DA6 /* LCHRandomStringTests */ = {
+			isa = PBXGroup;
+			children = (
+				A67297891C08A90600195DA6 /* LCHRandomStringTests.h */,
+				A672978A1C08A90600195DA6 /* LCHRandomStringTests.m */,
+			);
+			path = LCHRandomStringTests;
 			sourceTree = "<group>";
 		};
 		A69050031BFF49CA00120215 /* ProjectC */ = {
@@ -472,6 +492,7 @@
 			children = (
 				A64C5EA31C06F69B00E52BDF /* Declarations */,
 				A64C5EA21C06F57A00E52BDF /* Categories */,
+				A67297851C08A74800195DA6 /* Protocols */,
 				A690506E1BFF4B6100120215 /* LCHHuman */,
 				A69050771BFF4B6100120215 /* main.m */,
 			);
@@ -481,7 +502,6 @@
 		A690506E1BFF4B6100120215 /* LCHHuman */ = {
 			isa = PBXGroup;
 			children = (
-				A64C5E971C03AF4E00E52BDF /* Protocol */,
 				A64C5E991C06038500E52BDF /* Private */,
 				A690506F1BFF4B6100120215 /* LCHHuman.h */,
 				A69050701BFF4B6100120215 /* LCHHuman.m */,
@@ -493,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				A69050791BFF4B6100120215 /* LCHHumanTests */,
+				A67297881C08A8AA00195DA6 /* LCHRandomStringTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -622,9 +643,11 @@
 				A690507F1BFF4B6100120215 /* main.m in Sources */,
 				A64C5EAC1C06FC7B00E52BDF /* LCHHumanTests.m in Sources */,
 				A64C5E9D1C0603E400E52BDF /* LCHMan.m in Sources */,
+				A672978B1C08A90600195DA6 /* LCHRandomStringTests.m in Sources */,
 				A64C5EA11C0603F100E52BDF /* LCHWoman.m in Sources */,
 				A690507C1BFF4B6100120215 /* LCHHuman.m in Sources */,
-				A64C5EA61C06F89300E52BDF /* NSObject+LCHExtensions.m in Sources */,
+				A64C5EA61C06F89300E52BDF /* NSObject+LCHObjectExtensions.m in Sources */,
+				A67297841C0899F400195DA6 /* NSString+LCHStringExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

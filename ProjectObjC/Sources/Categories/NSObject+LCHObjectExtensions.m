@@ -1,6 +1,6 @@
-#import "NSObject+LCHExtensions.h"
+#import "NSObject+LCHObjectExtensions.h"
 
-@implementation NSObject (LCHExtensions)
+@implementation NSObject (LCHObjectExtensions)
 
 #pragma mark -
 #pragma mark Class Methods

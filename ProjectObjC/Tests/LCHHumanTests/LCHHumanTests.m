@@ -3,7 +3,7 @@
 #import "LCHMan.h"
 #import "LCHWoman.h"
 
-#import "NSObject+LCHExtensions.h"
+#import "NSObject+LCHObjectExtensions.h"
 
 @interface LCHHumanTests ()
 
