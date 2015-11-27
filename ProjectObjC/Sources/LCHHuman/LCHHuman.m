@@ -113,8 +113,8 @@
 #pragma mark -
 #pragma mark LCHHumanProtocol
 
-- (void)performGenderSpecificOperation {
-
+- (id)performGenderSpecificOperation {
+    return nil;
 }
 
 @end

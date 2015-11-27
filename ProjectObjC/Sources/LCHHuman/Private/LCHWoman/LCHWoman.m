@@ -12,12 +12,10 @@
 #pragma mark -
 #pragma mark LCHHumanProtocol
 
-- (void)reproduce {
-    NSLog(@"Went to reproduce %@", self);
-}
-
-- (void)performGenderSpecificOperation {
-    [self reproduce];
+- (id)performGenderSpecificOperation {
+    LCHHumanGenderType randomGender = (arc4random_uniform(kLCHHumanUnknown));
+        
+    return [[self class] humanWithGender:randomGender];
 }
 
 @end

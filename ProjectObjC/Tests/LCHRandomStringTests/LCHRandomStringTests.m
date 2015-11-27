@@ -6,7 +6,7 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)performRandomStringTests {
+- (void)perform {
     uint32_t length = 4;
     NSString *sourceString = @"Hello world";
     NSString *randomString = [NSString randomStringWithLength:length source:sourceString];

@@ -12,12 +12,10 @@
 #pragma mark -
 #pragma mark LCHHumanProtocol
 
-- (void)fight {
+- (id)performGenderSpecificOperation {
     NSLog(@"%@ Went to fight", self);
-}
-
-- (void)performGenderSpecificOperation {
-    [self fight];
+    
+    return nil;
 }
 
 @end

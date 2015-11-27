@@ -7,7 +7,7 @@
 @property (nonatomic, assign)   uint8_t     age;
 @property (nonatomic, assign)   uint8_t     weight;
 
-- (void)performGenderSpecificOperation;
+- (id)performGenderSpecificOperation;
 
 @optional
 

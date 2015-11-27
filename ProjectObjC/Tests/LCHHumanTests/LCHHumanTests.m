@@ -7,10 +7,9 @@
 
 @interface LCHHumanTests ()
 
-- (void)performHumanObjectTests;
-- (void)performChildrenArrayTests;
-- (void)performSayHelloTests;
-- (void)performGenderSpecificOperationTests;
+- (void)testHuman;
+- (void)testChildrenArray;
+- (void)testGenderSpecificOperation;
 
 @end
 
@@ -19,17 +18,16 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)performHumanTests {
-    [self performHumanObjectTests];
-    [self performChildrenArrayTests];
-    [self performSayHelloTests];
-    [self performGenderSpecificOperationTests];
+- (void)perform {
+    [self testHuman];
+    [self testChildrenArray];
+    [self testGenderSpecificOperation];
 }
 
 #pragma mark -
 #pragma mark Private Implementations
 
-- (void)performHumanObjectTests {
+- (void)testHuman {
     // Create instance of class LCHHuman with gender Male
     id man = [LCHHuman humanWithGender:kLCHGenderMale];
     
@@ -73,7 +71,7 @@
         NSAssert(0 == [[woman children] count], @"Children array isn't empty");
 }
 
-- (void)performChildrenArrayTests {
+- (void)testChildrenArray {
     // Create test instances
     id man = [LCHHuman humanWithGender:kLCHGenderMale];
     id woman = [LCHHuman humanWithGender:kLCHGenderFemale];
@@ -135,28 +133,33 @@
         
         // Children array must contain secondChild
         NSAssert([[man children] containsObject:secondChild], @"Children array doesn't contain firstChild");
+    
+    // After remove secondChild from children array
+    [man removeChild:secondChild];
+    
+        // Children count must not be 0
+        NSAssert(0 != [[man children] count], @"Children array is empty");
+        
+        // Children count must be 1
+        NSAssert(1 == [[man children] count], @"Child was not removed");
+        
+        // Children array must not contain secondChild
+        NSAssert(NO == [[man children] containsObject:secondChild], @"Children array contains secondChild");
 }
 
-- (void)performSayHelloTests {
-    // Create test instance
-    id man = [LCHHuman humanWithGender:kLCHGenderMale];
-    
-    // Create test instances and add to test array
-    for (uint8_t count = 0; count < 20; count++) {
-        id child = [LCHHuman humanWithGender:kLCHGenderMale];
-        [man addChild:child];
-    }
-    
-    // Say hello from everyone
-    [man sayHello];
-}
-
-- (void)performGenderSpecificOperationTests {
+- (void)testGenderSpecificOperation {
     // Create test array
     NSMutableArray *array = [NSMutableArray object];
     
+    // Count of gender specific invocation
+    NSUInteger countOfWomanSpecificOperation = 0;
+    NSUInteger countOfManSpecificOperation = 0;
+    
+    // Count of human created
+    NSUInteger humanCount = 20;
+    
     // Create test instances and add to test array
-    for (uint8_t count = 0; count < 20; count++) {
+    for (uint8_t count = 0; count < humanCount; count++) {
         id man = [LCHHuman humanWithGender:kLCHGenderMale];
         id woman = [LCHHuman humanWithGender:kLCHGenderFemale];
         [array addObject:man];
@@ -164,7 +167,25 @@
     }
     
     // Send message performGenderSpecificOperation to all instances in array
-    [array makeObjectsPerformSelector:@selector(performGenderSpecificOperation)];
+    for (LCHHuman *human in array) {
+        id result = [human performGenderSpecificOperation];
+        
+        if ([result isKindOfClass:[LCHHuman class]]) {
+            [human addChild:result];
+            countOfWomanSpecificOperation++;
+        }
+        
+        if (nil == result) {
+            countOfManSpecificOperation++;
+        }
+    }
+    
+    NSAssert(countOfWomanSpecificOperation == humanCount, @"Some woman doesn't perform their specific operation");
+    
+    NSAssert(countOfManSpecificOperation == humanCount, @"Some man doesn't perform their specific operation");
+    
+    // Say hello from everyone
+    [array makeObjectsPerformSelector:@selector(sayHello)];
 }
 
 @end

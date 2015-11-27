@@ -2,6 +2,6 @@
 
 @interface LCHHumanTests : NSObject
 
-- (void)performHumanTests;
+- (void)perform;
 
 @end

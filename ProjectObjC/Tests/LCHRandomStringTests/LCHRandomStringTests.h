@@ -2,6 +2,6 @@
 
 @interface LCHRandomStringTests : NSObject
 
-- (void)performRandomStringTests;
+- (void)perform;
 
 @end
