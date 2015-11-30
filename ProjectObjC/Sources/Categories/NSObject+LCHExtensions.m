@@ -1,4 +1,4 @@
-#import "NSObject+LCHObjectExtensions.h"
+#import "NSObject+LCHExtensions.h"
 
 @implementation NSObject (LCHObjectExtensions)
 
