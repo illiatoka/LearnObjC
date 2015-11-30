@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A62547501C0B740A0096A349 /* NSObject+LCHExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A625474D1C0B740A0096A349 /* NSObject+LCHExtensions.m */; };
-		A62547511C0B740A0096A349 /* NSString+LCHExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A625474F1C0B740A0096A349 /* NSString+LCHExtensions.m */; };
+		A60C33271C0C992700C9FAC7 /* NSObject+LCHExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A60C33231C0C992700C9FAC7 /* NSObject+LCHExtensions.m */; };
+		A60C33281C0C992700C9FAC7 /* NSString+LCHExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A60C33261C0C992700C9FAC7 /* NSString+LCHExtensions.m */; };
+		A60C332B1C0C9A7B00C9FAC7 /* LCHAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A60C332A1C0C9A7B00C9FAC7 /* LCHAlphabet.m */; };
 		A64C5E9D1C0603E400E52BDF /* LCHMan.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5E9C1C0603E400E52BDF /* LCHMan.m */; };
 		A64C5EA11C0603F100E52BDF /* LCHWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5EA01C0603F100E52BDF /* LCHWoman.m */; };
 		A64C5EAC1C06FC7B00E52BDF /* LCHHumanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C5EAB1C06FC7B00E52BDF /* LCHHumanTests.m */; };
@@ -35,6 +36,7 @@
 		A690505E1BFF49CA00120215 /* LCHStringObjectTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050491BFF49CA00120215 /* LCHStringObjectTests.c */; };
 		A690507C1BFF4B6100120215 /* LCHHuman.m in Sources */ = {isa = PBXBuildFile; fileRef = A69050701BFF4B6100120215 /* LCHHuman.m */; };
 		A690507F1BFF4B6100120215 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A69050771BFF4B6100120215 /* main.m */; };
+		CC2CAD46C88B9CE997FBE4AD /* libPods-ProjectObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB03B2D03DE1D33A887B35EC /* libPods-ProjectObjC.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,10 +61,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A625474C1C0B740A0096A349 /* NSObject+LCHExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LCHExtensions.h"; sourceTree = "<group>"; };
-		A625474D1C0B740A0096A349 /* NSObject+LCHExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCHExtensions.m"; sourceTree = "<group>"; };
-		A625474E1C0B740A0096A349 /* NSString+LCHExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LCHExtensions.h"; sourceTree = "<group>"; };
-		A625474F1C0B740A0096A349 /* NSString+LCHExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LCHExtensions.m"; sourceTree = "<group>"; };
+		4383A1A3C1B4501889CCC0C9 /* Pods-ProjectObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectObjC.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectObjC/Pods-ProjectObjC.release.xcconfig"; sourceTree = "<group>"; };
+		9FAF745C2B34AFF9A7D37847 /* Pods-ProjectObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectObjC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectObjC/Pods-ProjectObjC.debug.xcconfig"; sourceTree = "<group>"; };
+		A60C33221C0C992700C9FAC7 /* NSObject+LCHExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LCHExtensions.h"; sourceTree = "<group>"; };
+		A60C33231C0C992700C9FAC7 /* NSObject+LCHExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCHExtensions.m"; sourceTree = "<group>"; };
+		A60C33251C0C992700C9FAC7 /* NSString+LCHExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LCHExtensions.h"; sourceTree = "<group>"; };
+		A60C33261C0C992700C9FAC7 /* NSString+LCHExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LCHExtensions.m"; sourceTree = "<group>"; };
+		A60C33291C0C9A7B00C9FAC7 /* LCHAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHAlphabet.h; sourceTree = "<group>"; };
+		A60C332A1C0C9A7B00C9FAC7 /* LCHAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHAlphabet.m; sourceTree = "<group>"; };
 		A64C5E9B1C0603E400E52BDF /* LCHMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHMan.h; sourceTree = "<group>"; };
 		A64C5E9C1C0603E400E52BDF /* LCHMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHMan.m; sourceTree = "<group>"; };
 		A64C5E9F1C0603F100E52BDF /* LCHWoman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHWoman.h; sourceTree = "<group>"; };
@@ -124,6 +130,7 @@
 		A69050771BFF4B6100120215 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A69050801BFF4BB100120215 /* ProjectObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProjectObjC; sourceTree = BUILT_PRODUCTS_DIR; };
 		A69050811BFF4BD500120215 /* ProjectC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProjectC; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB03B2D03DE1D33A887B35EC /* libPods-ProjectObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ProjectObjC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,18 +145,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC2CAD46C88B9CE997FBE4AD /* libPods-ProjectObjC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D2533BDC35E441E113266FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB03B2D03DE1D33A887B35EC /* libPods-ProjectObjC.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A60C33201C0C992700C9FAC7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A60C33211C0C992700C9FAC7 /* NSObject+LCHExtensions */,
+				A60C33241C0C992700C9FAC7 /* NSString+LCHExtensions */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		A60C33211C0C992700C9FAC7 /* NSObject+LCHExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				A60C33221C0C992700C9FAC7 /* NSObject+LCHExtensions.h */,
+				A60C33231C0C992700C9FAC7 /* NSObject+LCHExtensions.m */,
+			);
+			path = "NSObject+LCHExtensions";
+			sourceTree = "<group>";
+		};
+		A60C33241C0C992700C9FAC7 /* NSString+LCHExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				A60C33251C0C992700C9FAC7 /* NSString+LCHExtensions.h */,
+				A60C33261C0C992700C9FAC7 /* NSString+LCHExtensions.m */,
+				A60C33291C0C9A7B00C9FAC7 /* LCHAlphabet.h */,
+				A60C332A1C0C9A7B00C9FAC7 /* LCHAlphabet.m */,
+			);
+			path = "NSString+LCHExtensions";
+			sourceTree = "<group>";
+		};
 		A63D36801BA9809E00A68CF9 = {
 			isa = PBXGroup;
 			children = (
+				0D2533BDC35E441E113266FD /* Frameworks */,
 				A69050831BFF4C4500120215 /* Products */,
-				A69050031BFF49CA00120215 /* ProjectC */,
+				E23625BC530C79D7D13E49FA /* Pods */,
 				A69050651BFF4A7F00120215 /* ProjectObjC */,
+				A69050031BFF49CA00120215 /* ProjectC */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,17 +225,6 @@
 				A64C5EA01C0603F100E52BDF /* LCHWoman.m */,
 			);
 			path = LCHWoman;
-			sourceTree = "<group>";
-		};
-		A64C5EA21C06F57A00E52BDF /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				A625474C1C0B740A0096A349 /* NSObject+LCHExtensions.h */,
-				A625474D1C0B740A0096A349 /* NSObject+LCHExtensions.m */,
-				A625474E1C0B740A0096A349 /* NSString+LCHExtensions.h */,
-				A625474F1C0B740A0096A349 /* NSString+LCHExtensions.m */,
-			);
-			path = Categories;
 			sourceTree = "<group>";
 		};
 		A64C5EA31C06F69B00E52BDF /* Declarations */ = {
@@ -491,7 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				A64C5EA31C06F69B00E52BDF /* Declarations */,
-				A64C5EA21C06F57A00E52BDF /* Categories */,
+				A60C33201C0C992700C9FAC7 /* Categories */,
 				A67297851C08A74800195DA6 /* Protocols */,
 				A690506E1BFF4B6100120215 /* LCHHuman */,
 				A69050771BFF4B6100120215 /* main.m */,
@@ -536,6 +572,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E23625BC530C79D7D13E49FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9FAF745C2B34AFF9A7D37847 /* Pods-ProjectObjC.debug.xcconfig */,
+				4383A1A3C1B4501889CCC0C9 /* Pods-ProjectObjC.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -560,9 +605,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A69050681BFF4A7F00120215 /* Build configuration list for PBXNativeTarget "ProjectObjC" */;
 			buildPhases = (
+				B3AA9422A02467409D1680FD /* Check Pods Manifest.lock */,
 				A69050601BFF4A7F00120215 /* Sources */,
 				A69050611BFF4A7F00120215 /* Frameworks */,
 				A69050621BFF4A7F00120215 /* CopyFiles */,
+				73BD1BED40AE51652D262ED9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -608,6 +655,39 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		73BD1BED40AE51652D262ED9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProjectObjC/Pods-ProjectObjC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3AA9422A02467409D1680FD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A63D36851BA9809E00A68CF9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -642,11 +722,12 @@
 			files = (
 				A690507F1BFF4B6100120215 /* main.m in Sources */,
 				A64C5EAC1C06FC7B00E52BDF /* LCHHumanTests.m in Sources */,
+				A60C332B1C0C9A7B00C9FAC7 /* LCHAlphabet.m in Sources */,
 				A64C5E9D1C0603E400E52BDF /* LCHMan.m in Sources */,
 				A672978B1C08A90600195DA6 /* LCHRandomStringTests.m in Sources */,
 				A64C5EA11C0603F100E52BDF /* LCHWoman.m in Sources */,
-				A62547511C0B740A0096A349 /* NSString+LCHExtensions.m in Sources */,
-				A62547501C0B740A0096A349 /* NSObject+LCHExtensions.m in Sources */,
+				A60C33281C0C992700C9FAC7 /* NSString+LCHExtensions.m in Sources */,
+				A60C33271C0C992700C9FAC7 /* NSObject+LCHExtensions.m in Sources */,
 				A690507C1BFF4B6100120215 /* LCHHuman.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -752,6 +833,7 @@
 		};
 		A69050691BFF4A7F00120215 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FAF745C2B34AFF9A7D37847 /* Pods-ProjectObjC.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "-";
@@ -761,6 +843,7 @@
 		};
 		A690506A1BFF4A7F00120215 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4383A1A3C1B4501889CCC0C9 /* Pods-ProjectObjC.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "-";

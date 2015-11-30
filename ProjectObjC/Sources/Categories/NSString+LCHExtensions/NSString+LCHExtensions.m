@@ -51,7 +51,7 @@ static const NSUInteger kLCHDefaultRandomStringLength = 31;
 #pragma mark Class Methods
 
 + (instancetype)randomString {
-    return [self randomStringWithLength:arc4random_uniform(kLCHDefaultRandomStringLength)];
+    return [self randomStringWithLength:kLCHDefaultRandomStringLength];
 }
 
 + (instancetype)randomStringWithLength:(NSUInteger)length {
