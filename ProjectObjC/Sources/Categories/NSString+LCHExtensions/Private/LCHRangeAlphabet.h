@@ -2,4 +2,6 @@
 
 @interface LCHRangeAlphabet : LCHAlphabet
 
+- (instancetype)initWithRange:(NSRange)range;
+
 @end

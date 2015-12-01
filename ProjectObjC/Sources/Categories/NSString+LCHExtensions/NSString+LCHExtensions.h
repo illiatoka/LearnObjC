@@ -16,4 +16,6 @@
 + (instancetype)randomStringWithLength:(NSUInteger)length;
 + (instancetype)randomStringWithLength:(NSUInteger)length alphabet:(id)alphabet;
 
+- (NSArray *)symbols;
+
 @end

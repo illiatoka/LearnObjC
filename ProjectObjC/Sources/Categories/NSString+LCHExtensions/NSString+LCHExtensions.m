@@ -68,4 +68,18 @@ static const NSUInteger kLCHDefaultRandomStringLength = 31;
     return [self stringWithString:result];
 }
 
+#pragma mark -
+#pragma mark Public Implementations
+
+- (NSArray *)symbols {
+    NSUInteger length = [self length];
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:length];
+    
+    for (NSUInteger index = 0; index < length; index++) {
+        [result addObject:[NSString stringWithFormat:@"%c", [self characterAtIndex:index]]];
+    }
+    
+    return [[result copy] autorelease];
+}
+
 @end
