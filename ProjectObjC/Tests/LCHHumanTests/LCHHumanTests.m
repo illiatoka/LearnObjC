@@ -164,7 +164,7 @@
     for (LCHHuman *human in array) {
         id result = [human performGenderSpecificOperation];
         
-        if ([result && result isKindOfClass:[LCHHuman class]]) {
+        if (result && [result isKindOfClass:[LCHHuman class]]) {
             [human addChild:result];
         }
     }

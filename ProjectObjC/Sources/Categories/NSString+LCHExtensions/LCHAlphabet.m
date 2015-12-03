@@ -31,7 +31,7 @@
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithRange:(NSRange)range {
-    [self release]
+    [self release];
     
     return [[LCHRangeAlphabet alloc] initWithRange:range];
 }
