@@ -12,7 +12,7 @@ describe(@"LCHAlphabet", ^{
     
     context(@"when initialized with +alphabetWithRange:('A' - 'G')", ^{
         beforeAll(^{
-            alphabet = [LCHAlphabet alphabetWithRange:NSMakeRange ('A', 'G' - 'A')];
+            alphabet = [LCHAlphabet alphabetWithRange:NSMakeRange('A', 'G' - 'A')];
         });
         
         afterAll(^{
