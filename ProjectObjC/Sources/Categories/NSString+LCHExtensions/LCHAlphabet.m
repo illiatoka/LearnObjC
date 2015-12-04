@@ -68,7 +68,17 @@
 }
 
 - (NSString *)objectAtIndexedSubscript:(NSUInteger)index {
-    return [self stringAtIndex:index ];
+    return [self stringAtIndex:index];
+}
+
+- (NSString *)string {
+    NSMutableString *string = [NSMutableString stringWithCapacity:[self count]];
+    
+    for (NSString *symbol in self) {
+        [string appendString:symbol];
+    }
+    
+    return [[string copy] autorelease];
 }
 
 #pragma mark -
@@ -78,7 +88,21 @@
                                   objects:(id _Nonnull [])stackbuf
                                     count:(NSUInteger)len
 {
-    return 0;
+    state->mutationsPtr = (unsigned long *)self;
+    
+    NSUInteger lenght = MIN(state->state + len, [self count]);
+    NSUInteger resultLenght = lenght - state->state;
+    
+    if (0 != resultLenght) {
+        for (NSUInteger index = 0; index < resultLenght; index++) {
+            stackbuf[index] = self[index + state->state];
+        }
+    }
+    
+    state->itemsPtr = stackbuf;
+    state->state = state->state + resultLenght;
+    
+    return resultLenght;
 }
 
 @end

@@ -13,8 +13,9 @@
 - (instancetype)initWithSymbols:(NSString *)string;
 
 - (NSUInteger)count;
-- (NSString *)stringAtIndex:(NSUInteger)index;
 
+- (NSString *)stringAtIndex:(NSUInteger)index;
 - (NSString *)objectAtIndexedSubscript:(NSUInteger)index;
+- (NSString *)string;
 
 @end
