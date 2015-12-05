@@ -2,4 +2,8 @@
 
 @protocol LCHAlphabetProtocol <NSObject>
 
+- (uint32_t)count;
+
+- (NSString *)stringAtIndex:(uint32_t)index;
+
 @end

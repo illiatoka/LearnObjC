@@ -5,6 +5,7 @@
 #import "LCHStringsAlphabet.h"
 
 #import "NSString+LCHExtensions.h"
+#import "LCHAlphabetRanges.h"
 
 @implementation LCHAlphabet
 
@@ -25,6 +26,29 @@
 
 + (instancetype)alphabetWithSymbols:(NSString *)string {
     return [self alphabetWithStrings:[string symbols]];
+}
+
+#pragma mark -
+#pragma mark Alphabets
+
++ (instancetype)alphanumericAlphabet {
+    return [self alphabetWithAlphabets:@[[self letterAlphabet], [self numericAlphabet]]];
+}
+
++ (instancetype)numericAlphabet {
+    return [self alphabetWithRange:LCHNumericAlphabet];
+}
+
++ (instancetype)lowercaseLetterAlphabet {
+    return [self alphabetWithRange:LCHLowercaseLetterAlphabet];
+}
+
++ (instancetype)capitalizedLetterAlphabet {
+    return [self alphabetWithRange:LCHCapitalizedLetterAlphabet];
+}
+
++ (instancetype)letterAlphabet {
+    return [self alphabetWithAlphabets:@[[self lowercaseLetterAlphabet], [self capitalizedLetterAlphabet]]];
 }
 
 #pragma mark -
@@ -90,12 +114,13 @@
 {
     state->mutationsPtr = (unsigned long *)self;
     
-    NSUInteger lenght = MIN(state->state + len, [self count]);
-    NSUInteger resultLenght = lenght - state->state;
+    NSUInteger currentOffset = state->state;
+    NSUInteger resultLenght = MIN(currentOffset + len, [self count]);
+    resultLenght = resultLenght - currentOffset;
     
     if (0 != resultLenght) {
         for (NSUInteger index = 0; index < resultLenght; index++) {
-            stackbuf[index] = self[index + state->state];
+            stackbuf[index] = self[index + currentOffset];
         }
     }
     

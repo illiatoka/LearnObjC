@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A60FAD7D1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A60FAD7C1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A60FAD7D1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A60FAD7C1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m */; };
 		A690504B1BFF49CA00120215 /* LCHArrayObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050061BFF49CA00120215 /* LCHArrayObject.c */; };
 		A690504C1BFF49CA00120215 /* LCHHumanObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050091BFF49CA00120215 /* LCHHumanObject.c */; };
 		A690504D1BFF49CA00120215 /* LCHLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = A690500C1BFF49CA00120215 /* LCHLinkedList.c */; };
@@ -28,30 +28,28 @@
 		A690505C1BFF49CA00120215 /* LCHPrintSizeOfDataTypeTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050431BFF49CA00120215 /* LCHPrintSizeOfDataTypeTests.c */; };
 		A690505D1BFF49CA00120215 /* LCHPrintValueOfDataTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050461BFF49CA00120215 /* LCHPrintValueOfDataTests.c */; };
 		A690505E1BFF49CA00120215 /* LCHStringObjectTests.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050491BFF49CA00120215 /* LCHStringObjectTests.c */; };
+		A69A75B11C13A1AD00D7F44C /* NSString+LCHExtansionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A69A75B01C13A1AD00D7F44C /* NSString+LCHExtansionsSpec.m */; };
+		A69A75B31C13A5FE00D7F44C /* LCHHumanSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A69A75B21C13A5FE00D7F44C /* LCHHumanSpec.m */; };
+		A69A75BE1C13A78100D7F44C /* LCHAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A69A75B61C13A78100D7F44C /* LCHAlphabet.m */; };
+		A69A75BF1C13A78100D7F44C /* LCHAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A69A75B61C13A78100D7F44C /* LCHAlphabet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A69A75C01C13A78100D7F44C /* LCHClasterAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A69A75B91C13A78100D7F44C /* LCHClasterAlphabet.m */; };
+		A69A75C11C13A78100D7F44C /* LCHClasterAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A69A75B91C13A78100D7F44C /* LCHClasterAlphabet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A69A75C21C13A78100D7F44C /* LCHRangeAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A69A75BB1C13A78100D7F44C /* LCHRangeAlphabet.m */; };
+		A69A75C31C13A78100D7F44C /* LCHRangeAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A69A75BB1C13A78100D7F44C /* LCHRangeAlphabet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A69A75C41C13A78100D7F44C /* LCHStringsAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A69A75BD1C13A78100D7F44C /* LCHStringsAlphabet.m */; };
+		A69A75C51C13A78100D7F44C /* LCHStringsAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A69A75BD1C13A78100D7F44C /* LCHStringsAlphabet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A6AEC4241C0FCC920003F972 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC3FC1C0FCC920003F972 /* main.m */; };
-		A6AEC4251C0FCC920003F972 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC3FC1C0FCC920003F972 /* main.m */; };
+		A6AEC4251C0FCC920003F972 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC3FC1C0FCC920003F972 /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A6AEC4261C0FCC920003F972 /* NSObject+LCHExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4011C0FCC920003F972 /* NSObject+LCHExtensions.m */; };
 		A6AEC4271C0FCC920003F972 /* NSObject+LCHExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4011C0FCC920003F972 /* NSObject+LCHExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A6AEC4281C0FCC920003F972 /* LCHAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4041C0FCC920003F972 /* LCHAlphabet.m */; };
-		A6AEC4291C0FCC920003F972 /* LCHAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4041C0FCC920003F972 /* LCHAlphabet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A6AEC42A1C0FCC920003F972 /* NSString+LCHExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4061C0FCC920003F972 /* NSString+LCHExtensions.m */; };
 		A6AEC42B1C0FCC920003F972 /* NSString+LCHExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4061C0FCC920003F972 /* NSString+LCHExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A6AEC42C1C0FCC920003F972 /* LCHClasterAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4091C0FCC920003F972 /* LCHClasterAlphabet.m */; };
-		A6AEC42D1C0FCC920003F972 /* LCHClasterAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4091C0FCC920003F972 /* LCHClasterAlphabet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A6AEC42E1C0FCC920003F972 /* LCHRangeAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC40B1C0FCC920003F972 /* LCHRangeAlphabet.m */; };
-		A6AEC42F1C0FCC920003F972 /* LCHRangeAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC40B1C0FCC920003F972 /* LCHRangeAlphabet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A6AEC4301C0FCC920003F972 /* LCHStringsAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC40D1C0FCC920003F972 /* LCHStringsAlphabet.m */; };
-		A6AEC4311C0FCC920003F972 /* LCHStringsAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC40D1C0FCC920003F972 /* LCHStringsAlphabet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A6AEC4321C0FCC920003F972 /* LCHHuman.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4121C0FCC920003F972 /* LCHHuman.m */; };
 		A6AEC4331C0FCC920003F972 /* LCHHuman.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4121C0FCC920003F972 /* LCHHuman.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A6AEC4341C0FCC920003F972 /* LCHMan.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4161C0FCC920003F972 /* LCHMan.m */; };
 		A6AEC4351C0FCC920003F972 /* LCHMan.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4161C0FCC920003F972 /* LCHMan.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A6AEC4361C0FCC920003F972 /* LCHWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4191C0FCC920003F972 /* LCHWoman.m */; };
 		A6AEC4371C0FCC920003F972 /* LCHWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4191C0FCC920003F972 /* LCHWoman.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A6AEC4381C0FCC920003F972 /* LCHHumanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4201C0FCC920003F972 /* LCHHumanTests.m */; };
-		A6AEC4391C0FCC920003F972 /* LCHHumanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4201C0FCC920003F972 /* LCHHumanTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A6AEC43A1C0FCC920003F972 /* LCHRandomStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4231C0FCC920003F972 /* LCHRandomStringTests.m */; };
-		A6AEC43B1C0FCC920003F972 /* LCHRandomStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC4231C0FCC920003F972 /* LCHRandomStringTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A83FBE03FF46C1CE4ADBCE61 /* libPods-ProjectObjCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E494D0ACDE1E329AFA546E75 /* libPods-ProjectObjCTests.a */; };
 /* End PBXBuildFile section */
 
@@ -126,21 +124,24 @@
 		A690504A1BFF49CA00120215 /* LCHStringObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHStringObjectTests.h; sourceTree = "<group>"; };
 		A69050801BFF4BB100120215 /* ProjectObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProjectObjC; sourceTree = BUILT_PRODUCTS_DIR; };
 		A69050811BFF4BD500120215 /* ProjectC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProjectC; sourceTree = BUILT_PRODUCTS_DIR; };
+		A69A75B01C13A1AD00D7F44C /* NSString+LCHExtansionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LCHExtansionsSpec.m"; sourceTree = "<group>"; };
+		A69A75B21C13A5FE00D7F44C /* LCHHumanSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHHumanSpec.m; sourceTree = "<group>"; };
+		A69A75B51C13A78100D7F44C /* LCHAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHAlphabet.h; sourceTree = "<group>"; };
+		A69A75B61C13A78100D7F44C /* LCHAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHAlphabet.m; sourceTree = "<group>"; };
+		A69A75B81C13A78100D7F44C /* LCHClasterAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHClasterAlphabet.h; sourceTree = "<group>"; };
+		A69A75B91C13A78100D7F44C /* LCHClasterAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHClasterAlphabet.m; sourceTree = "<group>"; };
+		A69A75BA1C13A78100D7F44C /* LCHRangeAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHRangeAlphabet.h; sourceTree = "<group>"; };
+		A69A75BB1C13A78100D7F44C /* LCHRangeAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHRangeAlphabet.m; sourceTree = "<group>"; };
+		A69A75BC1C13A78100D7F44C /* LCHStringsAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHStringsAlphabet.h; sourceTree = "<group>"; };
+		A69A75BD1C13A78100D7F44C /* LCHStringsAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHStringsAlphabet.m; sourceTree = "<group>"; };
+		A69DCCB71C139491008FDE51 /* LCHAlphabetRanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHAlphabetRanges.h; sourceTree = "<group>"; };
 		A6AEC3F31C0FCB640003F972 /* ProjectObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectObjCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6AEC3F71C0FCB640003F972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6AEC3FC1C0FCC920003F972 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6AEC4001C0FCC920003F972 /* NSObject+LCHExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LCHExtensions.h"; sourceTree = "<group>"; };
 		A6AEC4011C0FCC920003F972 /* NSObject+LCHExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCHExtensions.m"; sourceTree = "<group>"; };
-		A6AEC4031C0FCC920003F972 /* LCHAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHAlphabet.h; sourceTree = "<group>"; };
-		A6AEC4041C0FCC920003F972 /* LCHAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHAlphabet.m; sourceTree = "<group>"; };
 		A6AEC4051C0FCC920003F972 /* NSString+LCHExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LCHExtensions.h"; sourceTree = "<group>"; };
 		A6AEC4061C0FCC920003F972 /* NSString+LCHExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LCHExtensions.m"; sourceTree = "<group>"; };
-		A6AEC4081C0FCC920003F972 /* LCHClasterAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHClasterAlphabet.h; sourceTree = "<group>"; };
-		A6AEC4091C0FCC920003F972 /* LCHClasterAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHClasterAlphabet.m; sourceTree = "<group>"; };
-		A6AEC40A1C0FCC920003F972 /* LCHRangeAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHRangeAlphabet.h; sourceTree = "<group>"; };
-		A6AEC40B1C0FCC920003F972 /* LCHRangeAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHRangeAlphabet.m; sourceTree = "<group>"; };
-		A6AEC40C1C0FCC920003F972 /* LCHStringsAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHStringsAlphabet.h; sourceTree = "<group>"; };
-		A6AEC40D1C0FCC920003F972 /* LCHStringsAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHStringsAlphabet.m; sourceTree = "<group>"; };
 		A6AEC40F1C0FCC920003F972 /* LCHTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHTypeDefs.h; sourceTree = "<group>"; };
 		A6AEC4111C0FCC920003F972 /* LCHHuman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHHuman.h; sourceTree = "<group>"; };
 		A6AEC4121C0FCC920003F972 /* LCHHuman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHHuman.m; sourceTree = "<group>"; };
@@ -150,10 +151,6 @@
 		A6AEC4191C0FCC920003F972 /* LCHWoman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHWoman.m; sourceTree = "<group>"; };
 		A6AEC41B1C0FCC920003F972 /* LCHAlphabetProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHAlphabetProtocol.h; sourceTree = "<group>"; };
 		A6AEC41C1C0FCC920003F972 /* LCHHumanProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHHumanProtocol.h; sourceTree = "<group>"; };
-		A6AEC41F1C0FCC920003F972 /* LCHHumanTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHHumanTests.h; sourceTree = "<group>"; };
-		A6AEC4201C0FCC920003F972 /* LCHHumanTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHHumanTests.m; sourceTree = "<group>"; };
-		A6AEC4221C0FCC920003F972 /* LCHRandomStringTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHRandomStringTests.h; sourceTree = "<group>"; };
-		A6AEC4231C0FCC920003F972 /* LCHRandomStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHRandomStringTests.m; sourceTree = "<group>"; };
 		E494D0ACDE1E329AFA546E75 /* libPods-ProjectObjCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ProjectObjCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7B19DA7E68B23D9C51D2AB /* Pods-ProjectObjCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectObjCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectObjCTests/Pods-ProjectObjCTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,7 +184,9 @@
 		A60FAD7B1C0FCE6D00E4A5F5 /* Specs */ = {
 			isa = PBXGroup;
 			children = (
+				A69A75B01C13A1AD00D7F44C /* NSString+LCHExtansionsSpec.m */,
 				A60FAD7C1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m */,
+				A69A75B21C13A5FE00D7F44C /* LCHHumanSpec.m */,
 			);
 			path = Specs;
 			sourceTree = "<group>";
@@ -482,6 +481,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A69A75B41C13A71800D7F44C /* LCHAlphabet */ = {
+			isa = PBXGroup;
+			children = (
+				A69A75B71C13A78100D7F44C /* Private */,
+				A69A75B51C13A78100D7F44C /* LCHAlphabet.h */,
+				A69A75B61C13A78100D7F44C /* LCHAlphabet.m */,
+			);
+			path = LCHAlphabet;
+			sourceTree = "<group>";
+		};
+		A69A75B71C13A78100D7F44C /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				A69A75B81C13A78100D7F44C /* LCHClasterAlphabet.h */,
+				A69A75B91C13A78100D7F44C /* LCHClasterAlphabet.m */,
+				A69A75BA1C13A78100D7F44C /* LCHRangeAlphabet.h */,
+				A69A75BB1C13A78100D7F44C /* LCHRangeAlphabet.m */,
+				A69A75BC1C13A78100D7F44C /* LCHStringsAlphabet.h */,
+				A69A75BD1C13A78100D7F44C /* LCHStringsAlphabet.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		A6AEC3F41C0FCB640003F972 /* ProjectObjCTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,7 +517,6 @@
 			isa = PBXGroup;
 			children = (
 				A6AEC3FD1C0FCC920003F972 /* Sources */,
-				A6AEC41D1C0FCC920003F972 /* Tests */,
 				A6AEC3FC1C0FCC920003F972 /* main.m */,
 			);
 			path = ProjectObjC;
@@ -504,10 +525,11 @@
 		A6AEC3FD1C0FCC920003F972 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				A6AEC3FE1C0FCC920003F972 /* Categories */,
 				A6AEC40E1C0FCC920003F972 /* Declarations */,
-				A6AEC4101C0FCC920003F972 /* LCHHuman */,
+				A6AEC3FE1C0FCC920003F972 /* Categories */,
 				A6AEC41A1C0FCC920003F972 /* Protocol */,
+				A69A75B41C13A71800D7F44C /* LCHAlphabet */,
+				A6AEC4101C0FCC920003F972 /* LCHHuman */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -533,31 +555,16 @@
 		A6AEC4021C0FCC920003F972 /* NSString+LCHExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				A6AEC4031C0FCC920003F972 /* LCHAlphabet.h */,
-				A6AEC4041C0FCC920003F972 /* LCHAlphabet.m */,
 				A6AEC4051C0FCC920003F972 /* NSString+LCHExtensions.h */,
 				A6AEC4061C0FCC920003F972 /* NSString+LCHExtensions.m */,
-				A6AEC4071C0FCC920003F972 /* Private */,
 			);
 			path = "NSString+LCHExtensions";
-			sourceTree = "<group>";
-		};
-		A6AEC4071C0FCC920003F972 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				A6AEC4081C0FCC920003F972 /* LCHClasterAlphabet.h */,
-				A6AEC4091C0FCC920003F972 /* LCHClasterAlphabet.m */,
-				A6AEC40A1C0FCC920003F972 /* LCHRangeAlphabet.h */,
-				A6AEC40B1C0FCC920003F972 /* LCHRangeAlphabet.m */,
-				A6AEC40C1C0FCC920003F972 /* LCHStringsAlphabet.h */,
-				A6AEC40D1C0FCC920003F972 /* LCHStringsAlphabet.m */,
-			);
-			path = Private;
 			sourceTree = "<group>";
 		};
 		A6AEC40E1C0FCC920003F972 /* Declarations */ = {
 			isa = PBXGroup;
 			children = (
+				A69DCCB71C139491008FDE51 /* LCHAlphabetRanges.h */,
 				A6AEC40F1C0FCC920003F972 /* LCHTypeDefs.h */,
 			);
 			path = Declarations;
@@ -566,9 +573,9 @@
 		A6AEC4101C0FCC920003F972 /* LCHHuman */ = {
 			isa = PBXGroup;
 			children = (
+				A6AEC4131C0FCC920003F972 /* Private */,
 				A6AEC4111C0FCC920003F972 /* LCHHuman.h */,
 				A6AEC4121C0FCC920003F972 /* LCHHuman.m */,
-				A6AEC4131C0FCC920003F972 /* Private */,
 			);
 			path = LCHHuman;
 			sourceTree = "<group>";
@@ -607,33 +614,6 @@
 				A6AEC41C1C0FCC920003F972 /* LCHHumanProtocol.h */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		A6AEC41D1C0FCC920003F972 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				A6AEC41E1C0FCC920003F972 /* LCHHumanTests */,
-				A6AEC4211C0FCC920003F972 /* LCHRandomStringTests */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		A6AEC41E1C0FCC920003F972 /* LCHHumanTests */ = {
-			isa = PBXGroup;
-			children = (
-				A6AEC41F1C0FCC920003F972 /* LCHHumanTests.h */,
-				A6AEC4201C0FCC920003F972 /* LCHHumanTests.m */,
-			);
-			path = LCHHumanTests;
-			sourceTree = "<group>";
-		};
-		A6AEC4211C0FCC920003F972 /* LCHRandomStringTests */ = {
-			isa = PBXGroup;
-			children = (
-				A6AEC4221C0FCC920003F972 /* LCHRandomStringTests.h */,
-				A6AEC4231C0FCC920003F972 /* LCHRandomStringTests.m */,
-			);
-			path = LCHRandomStringTests;
 			sourceTree = "<group>";
 		};
 		DAF2F43580C1521491F5B85B /* Pods */ = {
@@ -839,18 +819,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A69A75BE1C13A78100D7F44C /* LCHAlphabet.m in Sources */,
 				A6AEC4241C0FCC920003F972 /* main.m in Sources */,
-				A6AEC4301C0FCC920003F972 /* LCHStringsAlphabet.m in Sources */,
-				A6AEC4381C0FCC920003F972 /* LCHHumanTests.m in Sources */,
-				A6AEC43A1C0FCC920003F972 /* LCHRandomStringTests.m in Sources */,
+				A69A75C01C13A78100D7F44C /* LCHClasterAlphabet.m in Sources */,
 				A6AEC42A1C0FCC920003F972 /* NSString+LCHExtensions.m in Sources */,
-				A6AEC42E1C0FCC920003F972 /* LCHRangeAlphabet.m in Sources */,
 				A6AEC4341C0FCC920003F972 /* LCHMan.m in Sources */,
+				A69A75C21C13A78100D7F44C /* LCHRangeAlphabet.m in Sources */,
 				A6AEC4261C0FCC920003F972 /* NSObject+LCHExtensions.m in Sources */,
 				A6AEC4321C0FCC920003F972 /* LCHHuman.m in Sources */,
-				A6AEC4281C0FCC920003F972 /* LCHAlphabet.m in Sources */,
+				A69A75C41C13A78100D7F44C /* LCHStringsAlphabet.m in Sources */,
 				A6AEC4361C0FCC920003F972 /* LCHWoman.m in Sources */,
-				A6AEC42C1C0FCC920003F972 /* LCHClasterAlphabet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,18 +836,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6AEC4291C0FCC920003F972 /* LCHAlphabet.m in Sources */,
-				A6AEC4391C0FCC920003F972 /* LCHHumanTests.m in Sources */,
-				A6AEC4311C0FCC920003F972 /* LCHStringsAlphabet.m in Sources */,
+				A69A75C51C13A78100D7F44C /* LCHStringsAlphabet.m in Sources */,
+				A69A75B31C13A5FE00D7F44C /* LCHHumanSpec.m in Sources */,
 				A6AEC4371C0FCC920003F972 /* LCHWoman.m in Sources */,
 				A6AEC4271C0FCC920003F972 /* NSObject+LCHExtensions.m in Sources */,
-				A6AEC42F1C0FCC920003F972 /* LCHRangeAlphabet.m in Sources */,
+				A69A75B11C13A1AD00D7F44C /* NSString+LCHExtansionsSpec.m in Sources */,
+				A69A75C11C13A78100D7F44C /* LCHClasterAlphabet.m in Sources */,
 				A6AEC4331C0FCC920003F972 /* LCHHuman.m in Sources */,
 				A6AEC4251C0FCC920003F972 /* main.m in Sources */,
-				A6AEC43B1C0FCC920003F972 /* LCHRandomStringTests.m in Sources */,
 				A6AEC42B1C0FCC920003F972 /* NSString+LCHExtensions.m in Sources */,
+				A69A75C31C13A78100D7F44C /* LCHRangeAlphabet.m in Sources */,
+				A69A75BF1C13A78100D7F44C /* LCHAlphabet.m in Sources */,
 				A6AEC4351C0FCC920003F972 /* LCHMan.m in Sources */,
-				A6AEC42D1C0FCC920003F972 /* LCHClasterAlphabet.m in Sources */,
 				A60FAD7D1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

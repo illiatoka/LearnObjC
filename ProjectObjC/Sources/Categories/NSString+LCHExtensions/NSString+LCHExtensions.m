@@ -1,51 +1,9 @@
 #import "NSString+LCHExtensions.h"
+#import "LCHAlphabet.h"
 
 @implementation NSString (LCHStringExtensions)
 
-static const NSUInteger kLCHDefaultRandomStringLength = 31;
-
-#pragma mark -
-#pragma mark Alphabets
-
-+ (instancetype)alphanumericAlphabet {
-    NSMutableString *result = [NSMutableString string];
-    
-    [result appendString:[self letterAlphabet]];
-    [result appendString:[self numericAlphabet]];
-    
-    return [self stringWithString:result];
-}
-
-+ (instancetype)numericAlphabet {
-    return [self alphabetWithUnicodeRange:NSMakeRange('0', '9' - '0' + 1)];
-}
-
-+ (instancetype)lowercaseLetterAlphabet {
-    return [self alphabetWithUnicodeRange:NSMakeRange('a', 'z' - 'a' + 1)];
-}
-
-+ (instancetype)capitalizedLetterAlphabet {
-    return [self alphabetWithUnicodeRange:NSMakeRange('A', 'Z' - 'A' + 1)];
-}
-
-+ (instancetype)letterAlphabet {
-    NSMutableString *result = [NSMutableString string];
-    
-    [result appendString:[self lowercaseLetterAlphabet]];
-    [result appendString:[self capitalizedLetterAlphabet]];
-    
-    return [self stringWithString:result];
-}
-
-+ (instancetype)alphabetWithUnicodeRange:(NSRange)range {
-    NSMutableString *result = [NSMutableString string];
-    
-    for (unichar character = range.location; character < NSMaxRange(range); character++) {
-        [result appendFormat:@"%c", character];
-    }
-    
-    return [self stringWithString:result];
-}
+const NSUInteger kLCHDefaultRandomStringLength = 31;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -55,14 +13,14 @@ static const NSUInteger kLCHDefaultRandomStringLength = 31;
 }
 
 + (instancetype)randomStringWithLength:(NSUInteger)length {
-    return [self randomStringWithLength:length alphabet:[self alphanumericAlphabet]];
+    return [self randomStringWithLength:length alphabet:[LCHAlphabet alphanumericAlphabet]];
 }
 
-+ (instancetype)randomStringWithLength:(NSUInteger)length alphabet:(id)alphabet {
++ (instancetype)randomStringWithLength:(NSUInteger)length alphabet:(id<LCHAlphabetProtocol>)alphabet {
     NSMutableString *result = [NSMutableString stringWithCapacity:length];
     
     for (NSUInteger index = 0; index < length; index++) {
-        [result appendFormat:@"%c", [alphabet characterAtIndex:arc4random_uniform((uint32_t)[alphabet length])]];
+        [result appendString:[alphabet stringAtIndex:arc4random_uniform((uint32_t)[alphabet count])]];
     }
     
     return [self stringWithString:result];
@@ -80,6 +38,17 @@ static const NSUInteger kLCHDefaultRandomStringLength = 31;
     }
     
     return [[result copy] autorelease];
+}
+
+#pragma mark -
+#pragma mark LCHAlphabetProtocol
+
+- (NSUInteger)count {
+    return [self length];
+}
+
+- (NSString *)stringAtIndex:(NSUInteger)index {
+    return [NSString stringWithFormat:@"%c", [self characterAtIndex:index]];
 }
 
 @end

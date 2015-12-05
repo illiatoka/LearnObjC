@@ -2,19 +2,13 @@
 
 #import "LCHAlphabetProtocol.h"
 
-@interface NSString (LCHStringExtensions)
+extern const NSUInteger kLCHDefaultRandomStringLength;
 
-+ (instancetype)alphanumericAlphabet;
-+ (instancetype)numericAlphabet;
-+ (instancetype)lowercaseLetterAlphabet;
-+ (instancetype)capitalizedLetterAlphabet;
-+ (instancetype)letterAlphabet;
-
-+ (instancetype)alphabetWithUnicodeRange:(NSRange)range;
+@interface NSString (LCHStringExtensions) <LCHAlphabetProtocol>
 
 + (instancetype)randomString;
 + (instancetype)randomStringWithLength:(NSUInteger)length;
-+ (instancetype)randomStringWithLength:(NSUInteger)length alphabet:(id)alphabet;
++ (instancetype)randomStringWithLength:(NSUInteger)length alphabet:(id<LCHAlphabetProtocol>)alphabet;
 
 - (NSArray *)symbols;
 

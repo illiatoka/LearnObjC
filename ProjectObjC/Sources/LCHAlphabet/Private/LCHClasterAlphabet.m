@@ -1,7 +1,7 @@
 #import "LCHClasterAlphabet.h"
 
 @interface LCHClasterAlphabet ()
-@property (nonatomic, retain, readwrite) NSArray *alphabets;
+@property (nonatomic, retain, readwrite) NSArray    *alphabets;
 @property (nonatomic, assign, readwrite) NSUInteger count;
 
 - (NSUInteger)countWithAlphabets:(NSArray *)alphabets;
@@ -36,23 +36,31 @@
 
 - (NSString *)stringAtIndex:(NSUInteger)index {
     NSUInteger count = self.count;
-    NSUInteger iteratedCount = count;
     NSUInteger iteratedIndex = index;
-    NSUInteger iterator = 0;
     
     NSAssert(index < count, NSRangeException);
     
     for (LCHAlphabet *alphabet in self.alphabets) {
-        if (iterator >= index) {
+        count = [alphabet count];
+        
+        if (iteratedIndex < count) {
             return alphabet[iteratedIndex];
         }
         
-        iteratedCount = [alphabet count];
-        iteratedIndex = iteratedIndex - iteratedCount;
-        iterator = iterator + iteratedCount;
+        iteratedIndex = iteratedIndex - count;
     }
     
-    return  nil;
+    return nil;
+}
+
+- (NSString *)string {
+    NSMutableString *string = [NSMutableString stringWithCapacity:[self count]];
+    
+    for (LCHAlphabet *alphabet in self.alphabets) {
+        [string appendString:[alphabet string]];
+    }
+    
+    return [[string copy] autorelease];
 }
 
 #pragma mark -
@@ -61,21 +69,11 @@
 - (NSUInteger)countWithAlphabets:(NSArray *)alphabets {
     NSUInteger count = 0;
     
-    for (LCHAlphabet *alphabet in self.alphabets) {
-        count = count + [alphabet count];
+    for (LCHAlphabet *alphabet in alphabets) {
+        count += [alphabet count];
     }
     
     return count;
-}
-
-#pragma mark -
-#pragma mark NSFastEnumeration
-
-- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
-                                  objects:(id _Nonnull [])stackbuf
-                                    count:(NSUInteger)len
-{
-    return [super countByEnumeratingWithState:state objects:stackbuf count:len];
 }
 
 @end

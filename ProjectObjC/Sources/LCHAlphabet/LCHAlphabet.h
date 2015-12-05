@@ -1,6 +1,13 @@
 #import <Foundation/Foundation.h>
+#import "LCHAlphabetProtocol.h"
 
-@interface LCHAlphabet : NSObject <NSFastEnumeration>
+@interface LCHAlphabet : NSObject <NSFastEnumeration, LCHAlphabetProtocol>
+
++ (instancetype)alphanumericAlphabet;
++ (instancetype)numericAlphabet;
++ (instancetype)lowercaseLetterAlphabet;
++ (instancetype)capitalizedLetterAlphabet;
++ (instancetype)letterAlphabet;
 
 + (instancetype)alphabetWithRange:(NSRange)range;
 + (instancetype)alphabetWithAlphabets:(NSArray *)alphabets;
