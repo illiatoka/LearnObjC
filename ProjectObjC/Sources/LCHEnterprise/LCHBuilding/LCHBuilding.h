@@ -1,13 +1,13 @@
-//
-//  LCHBuilding.h
-//  LCHLearnchardway
-//
-//  Created by ILYA Toka on 12/8/15.
-//  Copyright © 2015 ILYA Toka. All rights reserved.
-//
+#import <Foundation/Foundation.h>
 
-#import "LCHEnterprise.h"
+@class LCHOffice;
+@class LCHCarWash;
+@class LCHRoom;
 
-@interface LCHBuilding : LCHEnterprise
+@interface LCHBuilding : NSObject
+@property (nonatomic, readonly) NSSet *rooms;
+
+- (void)addRoom:(LCHRoom *)room;
+- (void)removeRoom:(LCHRoom *)room;
 
 @end

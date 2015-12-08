@@ -1,13 +1,11 @@
-//
-//  LCHRoom.h
-//  LCHLearnchardway
-//
-//  Created by ILYA Toka on 12/8/15.
-//  Copyright © 2015 ILYA Toka. All rights reserved.
-//
+#import <Foundation/Foundation.h>
 
-#import "LCHEnterprise.h"
+@class LCHEmployee;
 
-@interface LCHRoom : LCHEnterprise
+@interface LCHRoom : NSObject
+@property (nonatomic, readonly) NSSet *employees;
+
+- (void)addEmployee:(id)employee;
+- (void)removeEmployee:(id)employee;
 
 @end

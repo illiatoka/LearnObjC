@@ -1,13 +1,15 @@
-//
-//  LCHOffice.h
-//  LCHLearnchardway
-//
-//  Created by ILYA Toka on 12/8/15.
-//  Copyright © 2015 ILYA Toka. All rights reserved.
-//
-
 #import "LCHBuilding.h"
 
+@class LCHAdminRoom;
+
 @interface LCHOffice : LCHBuilding
+
++ (instancetype)building;
++ (instancetype)buildingWithAdminRoom:(LCHAdminRoom *)adminRoom;
+
+- (instancetype)initWithAdminRoom:(LCHAdminRoom *)adminRoom;
+
+- (void)addRoom:(LCHRoom *)room;
+- (void)removeRoom:(LCHRoom *)room;
 
 @end
