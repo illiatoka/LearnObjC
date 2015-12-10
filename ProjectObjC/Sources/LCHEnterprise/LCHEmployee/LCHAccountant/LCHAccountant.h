@@ -1,5 +1,5 @@
 #import "LCHEmployee.h"
 
-@interface LCHAccountant : LCHEmployee
+@interface LCHAccountant : LCHEmployee <LCHCashProtocol>
 
 @end

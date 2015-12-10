@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 
-@interface LCHEmployee : NSObject
+#import "LCHCashProtocol.h"
+
+@interface LCHEmployee : NSObject <LCHCashProtocol>
 @property (nonatomic, readonly) NSUInteger *salary;
 @property (nonatomic, readonly) NSUInteger *experience;
 

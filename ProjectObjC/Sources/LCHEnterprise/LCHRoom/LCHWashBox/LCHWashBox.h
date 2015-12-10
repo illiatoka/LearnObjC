@@ -1,13 +1,11 @@
 #import "LCHRoom.h"
 
 @interface LCHWashBox : LCHRoom
+@property (nonatomic, readonly) LCHContainerWithCapacity    *cars;
 
-+ (instancetype)room;
-+ (instancetype)roomWithEmployee:(LCHEmployee *)employee;
+@property (nonatomic, readonly, getter=isAbleToContainCars) BOOL    ableToContainCars;
 
-- (instancetype)initWithEmployee:(LCHEmployee *)employee;
-
-- (void)addEmployee:(id)employee;
-- (void)removeEmployee:(id)employee;
+- (void)addCar:(id)car;
+- (void)removeCar:(id)car;
 
 @end

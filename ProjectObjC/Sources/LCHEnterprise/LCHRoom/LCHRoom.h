@@ -1,9 +1,9 @@
 #import <Foundation/Foundation.h>
 
-@class LCHEmployee;
+@class LCHContainerWithCapacity;
 
 @interface LCHRoom : NSObject
-@property (nonatomic, readonly) NSSet *employees;
+@property (nonatomic, readonly) LCHContainerWithCapacity *employees;
 
 - (void)addEmployee:(id)employee;
 - (void)removeEmployee:(id)employee;
