@@ -30,13 +30,13 @@ int main(int argc, const char * argv[]) {
         
         NSSet *cars = [NSSet setWithObjects:[LCHCar car], [LCHCar car], [LCHCar car], [LCHCar car], nil];
         for (LCHCar *car in cars) {
-            NSLog(@"Cars is clean: %hhd Money is: %lu", car.isClean, car.wallet);
+            NSLog(@"Is car clean: %hhd Money is: %lu", car.isClean, car.wallet);
         }
         
         [enterprise performWorkWithCars:cars];
         
         for (LCHCar *car in cars) {
-            NSLog(@"Cars is clean: %hhd Money is: %lu", car.isClean, car.wallet);
+            NSLog(@"Is car clean: %hhd Money is: %lu", car.isClean, car.wallet);
         }
     }
     
