@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A60FAD7D1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A60FAD7C1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m */; };
+		A6814A051C1B8945000E5EE5 /* LCHCarWash.m in Sources */ = {isa = PBXBuildFile; fileRef = A6814A041C1B8945000E5EE5 /* LCHCarWash.m */; };
+		A6814A061C1B8945000E5EE5 /* LCHCarWash.m in Sources */ = {isa = PBXBuildFile; fileRef = A6814A041C1B8945000E5EE5 /* LCHCarWash.m */; };
 		A690504B1BFF49CA00120215 /* LCHArrayObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050061BFF49CA00120215 /* LCHArrayObject.c */; };
 		A690504C1BFF49CA00120215 /* LCHHumanObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050091BFF49CA00120215 /* LCHHumanObject.c */; };
 		A690504D1BFF49CA00120215 /* LCHLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = A690500C1BFF49CA00120215 /* LCHLinkedList.c */; };
@@ -70,10 +72,6 @@
 		A6B37E8E1C172CEE00208724 /* LCHEmployee.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B37E8C1C172CEE00208724 /* LCHEmployee.m */; };
 		A6D269E31C18A81700EFC50C /* LCHContainerWithCapacity.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D269E21C18A81700EFC50C /* LCHContainerWithCapacity.m */; };
 		A6D269E41C18A81700EFC50C /* LCHContainerWithCapacity.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D269E21C18A81700EFC50C /* LCHContainerWithCapacity.m */; };
-		A6ECB31A1C19C75200BB3C10 /* LCHCarWash.m in Sources */ = {isa = PBXBuildFile; fileRef = A6ECB3161C19C75200BB3C10 /* LCHCarWash.m */; };
-		A6ECB31B1C19C75200BB3C10 /* LCHCarWash.m in Sources */ = {isa = PBXBuildFile; fileRef = A6ECB3161C19C75200BB3C10 /* LCHCarWash.m */; };
-		A6ECB31C1C19C75200BB3C10 /* LCHOffice.m in Sources */ = {isa = PBXBuildFile; fileRef = A6ECB3191C19C75200BB3C10 /* LCHOffice.m */; };
-		A6ECB31D1C19C75200BB3C10 /* LCHOffice.m in Sources */ = {isa = PBXBuildFile; fileRef = A6ECB3191C19C75200BB3C10 /* LCHOffice.m */; };
 		A83FBE03FF46C1CE4ADBCE61 /* libPods-ProjectObjCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E494D0ACDE1E329AFA546E75 /* libPods-ProjectObjCTests.a */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +99,8 @@
 /* Begin PBXFileReference section */
 		4D64A9D0C32E4D54ED2D992E /* Pods-ProjectObjCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectObjCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectObjCTests/Pods-ProjectObjCTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A60FAD7C1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHAlphabetSpec.m; sourceTree = "<group>"; };
+		A6814A031C1B8945000E5EE5 /* LCHCarWash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHCarWash.h; sourceTree = "<group>"; };
+		A6814A041C1B8945000E5EE5 /* LCHCarWash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHCarWash.m; sourceTree = "<group>"; };
 		A69050061BFF49CA00120215 /* LCHArrayObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHArrayObject.c; sourceTree = "<group>"; };
 		A69050071BFF49CA00120215 /* LCHArrayObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHArrayObject.h; sourceTree = "<group>"; };
 		A69050091BFF49CA00120215 /* LCHHumanObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHHumanObject.c; sourceTree = "<group>"; };
@@ -196,10 +196,6 @@
 		A6D269E11C18A81700EFC50C /* LCHContainerWithCapacity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCHContainerWithCapacity.h; path = ProjectObjC/Sources/LCHEnterprise/Components/LCHContainerWithCapacity/LCHContainerWithCapacity.h; sourceTree = SOURCE_ROOT; };
 		A6D269E21C18A81700EFC50C /* LCHContainerWithCapacity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCHContainerWithCapacity.m; path = ProjectObjC/Sources/LCHEnterprise/Components/LCHContainerWithCapacity/LCHContainerWithCapacity.m; sourceTree = SOURCE_ROOT; };
 		A6D269E91C18B2F600EFC50C /* LCHCashProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHCashProtocol.h; sourceTree = "<group>"; };
-		A6ECB3151C19C75200BB3C10 /* LCHCarWash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHCarWash.h; sourceTree = "<group>"; };
-		A6ECB3161C19C75200BB3C10 /* LCHCarWash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHCarWash.m; sourceTree = "<group>"; };
-		A6ECB3181C19C75200BB3C10 /* LCHOffice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHOffice.h; sourceTree = "<group>"; };
-		A6ECB3191C19C75200BB3C10 /* LCHOffice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHOffice.m; sourceTree = "<group>"; };
 		E494D0ACDE1E329AFA546E75 /* libPods-ProjectObjCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ProjectObjCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7B19DA7E68B23D9C51D2AB /* Pods-ProjectObjCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectObjCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectObjCTests/Pods-ProjectObjCTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -259,6 +255,15 @@
 				A6AEC3FB1C0FCC920003F972 /* ProjectObjC */,
 				A69050031BFF49CA00120215 /* ProjectC */,
 			);
+			sourceTree = "<group>";
+		};
+		A6814A021C1B88EA000E5EE5 /* LCHCarWash */ = {
+			isa = PBXGroup;
+			children = (
+				A6814A031C1B8945000E5EE5 /* LCHCarWash.h */,
+				A6814A041C1B8945000E5EE5 /* LCHCarWash.m */,
+			);
+			path = LCHCarWash;
 			sourceTree = "<group>";
 		};
 		A69050031BFF49CA00120215 /* ProjectC */ = {
@@ -598,7 +603,7 @@
 		A69A76071C170C4100D7F44C /* LCHBuilding */ = {
 			isa = PBXGroup;
 			children = (
-				A6D269E61C18AE0400EFC50C /* Private */,
+				A6814A021C1B88EA000E5EE5 /* LCHCarWash */,
 				A69A76401C170E1100D7F44C /* LCHBuilding.h */,
 				A69A76411C170E1100D7F44C /* LCHBuilding.m */,
 			);
@@ -791,39 +796,12 @@
 			path = LCHContainerWithCapacity;
 			sourceTree = "<group>";
 		};
-		A6D269E61C18AE0400EFC50C /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				A6ECB3141C19C75200BB3C10 /* LCHCarWash */,
-				A6ECB3171C19C75200BB3C10 /* LCHOffice */,
-			);
-			path = Private;
-			sourceTree = "<group>";
-		};
 		A6D269E71C18B23700EFC50C /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				A6D269E91C18B2F600EFC50C /* LCHCashProtocol.h */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		A6ECB3141C19C75200BB3C10 /* LCHCarWash */ = {
-			isa = PBXGroup;
-			children = (
-				A6ECB3151C19C75200BB3C10 /* LCHCarWash.h */,
-				A6ECB3161C19C75200BB3C10 /* LCHCarWash.m */,
-			);
-			path = LCHCarWash;
-			sourceTree = "<group>";
-		};
-		A6ECB3171C19C75200BB3C10 /* LCHOffice */ = {
-			isa = PBXGroup;
-			children = (
-				A6ECB3181C19C75200BB3C10 /* LCHOffice.h */,
-				A6ECB3191C19C75200BB3C10 /* LCHOffice.m */,
-			);
-			path = LCHOffice;
 			sourceTree = "<group>";
 		};
 		DAF2F43580C1521491F5B85B /* Pods */ = {
@@ -1042,11 +1020,10 @@
 				A6AEC42A1C0FCC920003F972 /* NSString+LCHExtensions.m in Sources */,
 				A6AEC4341C0FCC920003F972 /* LCHMan.m in Sources */,
 				A69A76501C17119200D7F44C /* LCHCar.m in Sources */,
-				A6ECB31C1C19C75200BB3C10 /* LCHOffice.m in Sources */,
 				A69A75C21C13A78100D7F44C /* LCHRangeAlphabet.m in Sources */,
 				A6AEC4261C0FCC920003F972 /* NSObject+LCHExtensions.m in Sources */,
 				A6AEC4321C0FCC920003F972 /* LCHHuman.m in Sources */,
-				A6ECB31A1C19C75200BB3C10 /* LCHCarWash.m in Sources */,
+				A6814A051C1B8945000E5EE5 /* LCHCarWash.m in Sources */,
 				A69A75C41C13A78100D7F44C /* LCHStringsAlphabet.m in Sources */,
 				A69A76421C170E1100D7F44C /* LCHBuilding.m in Sources */,
 				A69A76341C170C4100D7F44C /* LCHManager.m in Sources */,
@@ -1065,12 +1042,11 @@
 				A69A76371C170C4100D7F44C /* LCHWasherman.m in Sources */,
 				A6AEC4371C0FCC920003F972 /* LCHWoman.m in Sources */,
 				A6AEC4271C0FCC920003F972 /* NSObject+LCHExtensions.m in Sources */,
-				A6ECB31B1C19C75200BB3C10 /* LCHCarWash.m in Sources */,
+				A6814A061C1B8945000E5EE5 /* LCHCarWash.m in Sources */,
 				A69A75B11C13A1AD00D7F44C /* NSString+LCHExtansionsSpec.m in Sources */,
 				A6B37E8A1C172C6700208724 /* LCHWashBox.m in Sources */,
 				A69A75C11C13A78100D7F44C /* LCHClasterAlphabet.m in Sources */,
 				A6AEC4331C0FCC920003F972 /* LCHHuman.m in Sources */,
-				A6ECB31D1C19C75200BB3C10 /* LCHOffice.m in Sources */,
 				A6AEC4251C0FCC920003F972 /* main.m in Sources */,
 				A6AEC42B1C0FCC920003F972 /* NSString+LCHExtensions.m in Sources */,
 				A69A75C31C13A78100D7F44C /* LCHRangeAlphabet.m in Sources */,

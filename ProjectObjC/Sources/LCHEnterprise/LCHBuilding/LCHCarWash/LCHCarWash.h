@@ -1,7 +1,9 @@
 #import "LCHBuilding.h"
 
-@class LCHWashBox;
-
 @interface LCHCarWash : LCHBuilding
+
++ (instancetype)building;
+
+- (BOOL)canContainCarWashRoom;
 
 @end

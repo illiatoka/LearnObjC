@@ -1,7 +1,6 @@
 #import <Foundation/Foundation.h>
 
 @class LCHBuilding;
-@class LCHOffice;
 @class LCHCarWash;
 @class LCHEmployee;
 @class LCHCar;
@@ -11,9 +10,9 @@
 @property (nonatomic, readonly) NSSet   *employees;
 
 + (instancetype)enterprise;
-+ (instancetype)enterpriseWithOffice:(LCHOffice *)office carWash:(LCHCarWash *)carWash;
++ (instancetype)enterpriseWithOffice:(LCHBuilding *)office carWash:(LCHCarWash *)carWash;
 
-- (instancetype)initWithOffice:(LCHOffice *)office carWash:(LCHCarWash *)carWash;
+- (instancetype)initWithOffice:(LCHBuilding *)office carWash:(LCHCarWash *)carWash;
 
 - (void)addBuilding:(LCHBuilding *)building;
 - (void)removeBuilding:(LCHBuilding *)building;

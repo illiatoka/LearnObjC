@@ -3,12 +3,11 @@
 #import "LCHCashProtocol.h"
 
 @interface LCHCar : NSObject <LCHCashProtocol>
-@property (nonatomic, readwrite, assign)                    NSUInteger  cash;
-@property (nonatomic, readwrite, assign, getter=isClean)    BOOL        clean;
+@property (nonatomic, readwrite, assign, getter=isClean)    BOOL    clean;
 
 + (instancetype)car;
-+ (instancetype)carWithCash:(NSUInteger)cash;
++ (instancetype)carWithMoney:(NSUInteger)money;
 
-- (instancetype)initWithCash:(NSUInteger)cash;
+- (instancetype)initWithMoney:(NSUInteger)money;
 
 @end

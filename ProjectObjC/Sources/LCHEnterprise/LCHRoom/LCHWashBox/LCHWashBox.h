@@ -5,7 +5,13 @@
 
 @property (nonatomic, readonly, getter=isAbleToContainCars) BOOL    ableToContainCars;
 
++ (instancetype)roomWithCapacity:(NSUInteger)capacity;
+
+- (instancetype)initWithCapacity:(NSUInteger)capacity;
+
 - (void)addCar:(id)car;
 - (void)removeCar:(id)car;
+
+- (BOOL)isFullOfCars;
 
 @end

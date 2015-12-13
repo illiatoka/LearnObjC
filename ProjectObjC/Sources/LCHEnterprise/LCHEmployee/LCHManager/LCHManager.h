@@ -2,4 +2,6 @@
 
 @interface LCHManager : LCHEmployee
 
+- (void)performEmployeeSpecificOperationWithPrise:(NSUInteger)price;
+
 @end
