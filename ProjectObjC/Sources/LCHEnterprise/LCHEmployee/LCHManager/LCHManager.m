@@ -5,7 +5,7 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)performEmployeeSpecificOperationWithPrise:(NSUInteger)price {
+- (void)performEmployeeSpecificOperationWithPrice:(NSUInteger)price {
     NSLog(@"Last income is: %lu", price);
     NSLog(@"Wallet count is: %lu", self.wallet);
 }

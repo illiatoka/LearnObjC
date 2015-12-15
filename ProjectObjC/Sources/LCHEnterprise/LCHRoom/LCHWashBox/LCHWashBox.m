@@ -2,7 +2,8 @@
 #import "LCHContainerWithCapacity.h"
 
 @interface LCHWashBox ()
-@property (nonatomic, readwrite, retain) LCHContainerWithCapacity *privateCars;
+// TODO: Give a proper name for this property
+@property (nonatomic, readwrite, retain) LCHContainerWithCapacity *blablaCars;
 
 @end
 
@@ -24,7 +25,7 @@
     self = [super initWithCapacity:capacity];
     
     if (self) {
-        self.privateCars = [LCHContainerWithCapacity containerWithCapacity:capacity];
+        self.blablaCars = [LCHContainerWithCapacity containerWithCapacity:capacity];
     }
     
     return self;
@@ -38,22 +39,22 @@
 }
 
 - (LCHContainerWithCapacity *)cars {
-    return self.privateCars;
+    return self.blablaCars;
 }
 
 #pragma mark -
 #pragma mark Public Implementations
 
 - (void)addCar:(id)car {
-    [self.privateCars addItem:car];
+    [self.blablaCars addItem:car];
 }
 
 - (void)removeCar:(id)car {
-    [self.privateCars removeItem:car];
+    [self.blablaCars removeItem:car];
 }
 
 - (BOOL)isFullOfCars {
-    return [self.privateCars isFull];
+    return [self.blablaCars isFull];
 }
 
 @end

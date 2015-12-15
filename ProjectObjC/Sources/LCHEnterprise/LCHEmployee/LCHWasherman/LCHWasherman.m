@@ -4,7 +4,8 @@
 #import "LCHCar.h"
 
 @interface LCHWasherman ()
-@property (nonatomic, readwrite, assign) BOOL privateAbleToWash;
+// TODO: Give a proper name for this property
+@property (nonatomic, readwrite, assign) BOOL blablaAbleToWash;
 
 @end
 
@@ -18,7 +19,7 @@
     self = [super init];
     
     if (self) {
-        self.privateAbleToWash = YES;
+        self.blablaAbleToWash = YES;
     }
     
     return self;
@@ -41,7 +42,7 @@
 #pragma mark Accessors
 
 - (BOOL)isAbleToWash {
-    return self.privateAbleToWash;
+    return self.blablaAbleToWash;
 }
 
 @end

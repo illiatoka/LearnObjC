@@ -3,8 +3,9 @@
 static const NSUInteger kLCHInitialMoney = 20;
 
 @interface LCHCar ()
-@property (nonatomic, readwrite, retain)    id          privateReceiver;
-@property (nonatomic, readwrite, assign)    NSUInteger  privateWallet;
+// TODO: Give a proper name for this properties
+@property (nonatomic, readwrite, retain)    id          blablaReceiver;
+@property (nonatomic, readwrite, assign)    NSUInteger  blablaWallet;
 
 @end
 
@@ -27,7 +28,7 @@ static const NSUInteger kLCHInitialMoney = 20;
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.privateReceiver = nil;
+    self.blablaReceiver = nil;
     
     [super dealloc];
 }
@@ -36,7 +37,7 @@ static const NSUInteger kLCHInitialMoney = 20;
     self = [self init];
     
     if (self) {
-        self.privateWallet = money;
+        self.blablaWallet = money;
     }
     
     return self;
@@ -46,11 +47,11 @@ static const NSUInteger kLCHInitialMoney = 20;
 #pragma mark Accessors
 
 - (NSUInteger)wallet {
-    return self.privateWallet;
+    return self.blablaWallet;
 }
 
 - (id)receiver {
-    return self.privateReceiver;
+    return self.blablaReceiver;
 }
 
 #pragma mark -
@@ -60,25 +61,25 @@ static const NSUInteger kLCHInitialMoney = 20;
     if ([self canGiveMoney:money]) {
         if (self.receiver) {
             [self.receiver takeMoney:money];
-            self.privateWallet = self.privateWallet - money;
+            self.blablaWallet = self.blablaWallet - money;
         }
     }
 }
 
 - (void)takeMoney:(NSUInteger)money {
-    self.privateWallet = self.privateWallet + money;
+    self.blablaWallet = self.blablaWallet + money;
 }
 
 - (BOOL)canGiveMoney:(NSUInteger)money {
-    return self.privateWallet > money;
+    return self.blablaWallet > money;
 }
 
 - (void)addMoneyReceiver:(id)receiver {
-    self.privateReceiver = receiver;
+    self.blablaReceiver = receiver;
 }
 
 - (void)removeMoneyReceiver {
-    self.privateReceiver = nil;
+    self.blablaReceiver = nil;
 }
 
 @end

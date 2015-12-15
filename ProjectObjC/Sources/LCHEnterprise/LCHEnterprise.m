@@ -4,6 +4,7 @@
 #import "LCHRoom.h"
 #import "LCHWashBox.h"
 #import "LCHEmployee.h"
+#import "LCHEmployee_Privat.h"
 #import "LCHManager.h"
 #import "LCHAccountant.h"
 #import "LCHWasherman.h"
@@ -99,7 +100,7 @@ static const NSUInteger kLCHDefaultPrice = 5;
     
     if (room) {
         [room addEmployee:employee];
-        [employee __addParrentRoom:room];
+        [employee addParentRoom:room];
         
         [self.mutableEmployees addObject:employee];
         [self updateMoneyReceivers];
@@ -108,7 +109,7 @@ static const NSUInteger kLCHDefaultPrice = 5;
 
 - (void)fireAnEmployee:(LCHEmployee *)employee {
     [[self roomWithEmployee:employee] removeEmployee:employee];
-    [employee __removeParrentRoom];
+    [employee removeParentRoom];
     
     [self.mutableEmployees removeObject:employee];
     [self updateMoneyReceivers];
@@ -136,9 +137,9 @@ static const NSUInteger kLCHDefaultPrice = 5;
         if (washBox && washerman) {
             [washBox addCar:car];
             [car addMoneyReceiver:washerman];
-            [washerman performEmployeeSpecificOperationWithPrise:kLCHDefaultPrice];
+            [washerman performEmployeeSpecificOperationWithPrice:kLCHDefaultPrice];
             [washBox removeCar:car];
-            [washerman.receiver performEmployeeSpecificOperationWithPrise:kLCHDefaultPrice];
+            [washerman.receiver performEmployeeSpecificOperationWithPrice:kLCHDefaultPrice];
         }
     }
 }

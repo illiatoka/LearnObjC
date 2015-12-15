@@ -2,9 +2,9 @@
 
 @implementation LCHAccountant
 
-- (void)performEmployeeSpecificOperationWithPrise:(NSUInteger)price {
+- (void)performEmployeeSpecificOperationWithPrice:(NSUInteger)price {
     [self.receiver takeMoney:price];
-    [self.receiver performEmployeeSpecificOperationWithPrise:price];
+    [self.receiver performEmployeeSpecificOperationWithPrice:price];
 }
 
 @end

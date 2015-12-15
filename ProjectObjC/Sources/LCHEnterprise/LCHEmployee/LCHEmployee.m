@@ -1,15 +1,17 @@
 #import "LCHEmployee.h"
+#import "LCHEmployee_Privat.h"
 
 static const NSUInteger kLCHInitialSalary = 20;
 static const NSUInteger kLCHInitialExperience = 1;
 
 @interface LCHEmployee ()
-@property (nonatomic, readwrite, assign)    NSUInteger  privateWallet;
+@property (nonatomic, readwrite, assign)    NSUInteger  blablaWallet;
 
-@property (nonatomic, readwrite, retain)    id  privateReceiver;
-@property (nonatomic, readwrite, assign)    id  privateParrentRoom;
+@property (nonatomic, readwrite, retain)    id  blablaReceiver;
+@property (nonatomic, readwrite, assign)    id  parentRoom;
 
 @end
+
 
 @implementation LCHEmployee
 @dynamic wallet;
@@ -31,7 +33,7 @@ static const NSUInteger kLCHInitialExperience = 1;
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.privateReceiver = nil;
+    self.blablaReceiver = nil;
     
     [super dealloc];
 }
@@ -51,30 +53,30 @@ static const NSUInteger kLCHInitialExperience = 1;
 #pragma mark Accessors
 
 - (NSUInteger)wallet {
-    return self.privateWallet;
+    return self.blablaWallet;
 }
 
 - (id)receiver {
-    return self.privateReceiver;
+    return self.blablaReceiver;
 }
 
 - (id)parrentRoom {
-    return self.privateParrentRoom;
+    return self.parentRoom;
 }
 
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)performEmployeeSpecificOperationWithPrise:(NSUInteger)price {
+- (void)performEmployeeSpecificOperationWithPrice:(NSUInteger)price {
     
 }
 
-- (void)__addParrentRoom:(id)room {
-    self.privateParrentRoom = room;
+- (void)addParentRoom:(id)room {
+    self.parentRoom = room;
 }
 
-- (void)__removeParrentRoom {
-    self.privateParrentRoom = nil;
+- (void)removeParentRoom {
+    self.parentRoom = nil;
 }
 
 #pragma mark -
@@ -84,25 +86,25 @@ static const NSUInteger kLCHInitialExperience = 1;
     if ([self canGiveMoney:money]) {
         if (self.receiver) {
             [self.receiver takeMoney:money];
-            self.privateWallet = self.privateWallet - money;
+            self.blablaWallet = self.blablaWallet - money;
         }
     }
 }
 
 - (void)takeMoney:(NSUInteger)money {
-    self.privateWallet = self.privateWallet + money;
+    self.blablaWallet = self.blablaWallet + money;
 }
 
 - (BOOL)canGiveMoney:(NSUInteger)money {
-    return self.privateWallet > money;
+    return self.blablaWallet > money;
 }
 
 - (void)addMoneyReceiver:(id)receiver {
-    self.privateReceiver = receiver;
+    self.blablaReceiver = receiver;
 }
 
 - (void)removeMoneyReceiver {
-    self.privateReceiver = nil;
+    self.blablaReceiver = nil;
 }
 
 @end

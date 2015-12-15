@@ -2,7 +2,9 @@
 
 @interface LCHContainerWithCapacity ()
 @property (nonatomic, readwrite, retain) NSMutableSet *mutableItems;
-@property (nonatomic, readwrite, assign) NSUInteger privateCapacity;
+
+// TODO: Give a proper name for this property
+@property (nonatomic, readwrite, assign) NSUInteger blablaCapacity;
 
 @end
 
@@ -40,7 +42,7 @@
     self = [self init];
     
     if (self) {
-        self.privateCapacity = capacity;
+        self.blablaCapacity = capacity;
     }
     
     return self;
@@ -50,7 +52,7 @@
 #pragma mark Accessors
 
 - (NSUInteger)capacity {
-    return self.privateCapacity;
+    return self.blablaCapacity;
 }
 
 - (NSSet *)items {
@@ -71,7 +73,7 @@
 }
 
 - (BOOL)isFull {
-    return [self.mutableItems count] >= self.privateCapacity;
+    return [self.mutableItems count] >= self.blablaCapacity;
 }
 
 @end

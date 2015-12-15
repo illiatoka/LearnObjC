@@ -13,9 +13,6 @@
 
 - (instancetype)initWithSalary:(NSUInteger)salary experience:(NSUInteger)experience;
 
-- (void)performEmployeeSpecificOperationWithPrise:(NSUInteger)price;
-
-- (void)__addParrentRoom:(id)room;
-- (void)__removeParrentRoom;
+- (void)performEmployeeSpecificOperationWithPrice:(NSUInteger)price;
 
 @end

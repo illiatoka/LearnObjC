@@ -2,6 +2,6 @@
 
 @interface LCHAccountant : LCHEmployee <LCHCashProtocol>
 
-- (void)performEmployeeSpecificOperationWithPrise:(NSUInteger)price;
+- (void)performEmployeeSpecificOperationWithPrice:(NSUInteger)price;
 
 @end
