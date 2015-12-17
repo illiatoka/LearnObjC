@@ -1,9 +1,6 @@
 #import "LCHBuilding.h"
 
 @interface LCHCarWash : LCHBuilding
-
-+ (instancetype)building;
-
-- (BOOL)canContainCarWashRoom;
+@property (nonatomic, readonly, getter=isAbleToContainCarWashRoom)  BOOL    ableToContainCarWashRoom;
 
 @end

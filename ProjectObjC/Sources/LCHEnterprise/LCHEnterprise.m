@@ -4,7 +4,6 @@
 #import "LCHRoom.h"
 #import "LCHWashBox.h"
 #import "LCHEmployee.h"
-#import "LCHEmployee_Privat.h"
 #import "LCHManager.h"
 #import "LCHAccountant.h"
 #import "LCHWasherman.h"
@@ -18,8 +17,6 @@ static const NSUInteger kLCHDefaultPrice = 5;
 
 - (id)emptyRoomForEmployee:(id)employee;
 - (id)roomWithEmployee:(id)employee;
-
-- (void)updateMoneyReceivers;
 
 @end
 
@@ -100,24 +97,22 @@ static const NSUInteger kLCHDefaultPrice = 5;
     
     if (room) {
         [room addEmployee:employee];
-        [employee addParentRoom:room];
         
         [self.mutableEmployees addObject:employee];
-        [self updateMoneyReceivers];
     }
 }
 
 - (void)fireAnEmployee:(LCHEmployee *)employee {
     [[self roomWithEmployee:employee] removeEmployee:employee];
-    [employee removeParentRoom];
     
     [self.mutableEmployees removeObject:employee];
-    [self updateMoneyReceivers];
 }
 
 - (void)performWorkWithCar:(LCHCar *)car {
     LCHWashBox *washBox = nil;
     LCHWasherman *washerman = nil;
+    LCHAccountant *accountant = nil;
+    LCHManager *manager = nil;
     
     for (id building in self.mutableBuildings) {
         for (id room in [building rooms]) {
@@ -130,16 +125,41 @@ static const NSUInteger kLCHDefaultPrice = 5;
     for (id employee in self.employees) {
         if ([employee respondsToSelector:@selector(isAbleToWash)]) {
             washerman = employee;
+            
+            break;
+        }
+    }
+    
+    for (id employee in self.employees) {
+        if ([employee respondsToSelector:@selector(isAbleToCountMoney)]) {
+            accountant = employee;
+            
+            break;
+        }
+    }
+    
+    for (id employee in self.employees) {
+        if ([employee respondsToSelector:@selector(isAbleToCountProfit)]) {
+            manager = employee;
+            
+            break;
         }
     }
     
     if ([car canGiveMoney:kLCHDefaultPrice]) {
         if (washBox && washerman) {
             [washBox addCar:car];
-            [car addMoneyReceiver:washerman];
-            [washerman performEmployeeSpecificOperationWithPrice:kLCHDefaultPrice];
+            
+            [car giveMoney:kLCHDefaultPrice toReceiver:washerman];
+            [washerman washCar:car];
+            
             [washBox removeCar:car];
-            [washerman.receiver performEmployeeSpecificOperationWithPrice:kLCHDefaultPrice];
+            [washerman giveAllMoneyToReceiver:accountant];
+            
+            [accountant countMoney];
+            [accountant giveAllMoneyToReceiver:manager];
+            
+            [manager countProfit];
         }
     }
 }
@@ -196,37 +216,6 @@ static const NSUInteger kLCHDefaultPrice = 5;
     }
     
     return emptyRoom;
-}
-
-- (void)updateMoneyReceivers {
-    NSSet *employees = self.employees;
-    NSMutableSet *washermans = [NSMutableSet set];
-    LCHAccountant *accountant = nil;
-    LCHManager *manager = nil;
-    
-    for (id employee in employees) {
-        if ([employee isKindOfClass:[LCHWasherman class]]) {
-            [washermans addObject:employee];
-        } else if ([employee isKindOfClass:[LCHAccountant class]]) {
-            accountant = employee;
-        } else if ([employee isKindOfClass:[LCHManager class]]) {
-            manager = employee;
-        }
-    }
-    
-    for (LCHWasherman *washerman in washermans) {
-        if (accountant) {
-            [washerman addMoneyReceiver:accountant];
-        } else {
-            [washerman removeMoneyReceiver];
-        }
-    }
-    
-    if (manager) {
-        [accountant addMoneyReceiver:manager];
-    } else {
-        [accountant removeMoneyReceiver];
-    }
 }
 
 @end

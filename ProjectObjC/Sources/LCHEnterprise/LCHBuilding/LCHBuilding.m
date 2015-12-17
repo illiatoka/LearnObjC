@@ -5,7 +5,7 @@
 static const NSUInteger kLCHInitialRoomCapacity = 2;
 
 @interface LCHBuilding ()
-@property (nonatomic, readwrite, retain) NSMutableSet *mutableRooms;
+@property (nonatomic, readwrite, retain)    NSMutableSet    *mutableRooms;
 
 @end
 
@@ -74,10 +74,6 @@ static const NSUInteger kLCHInitialRoomCapacity = 2;
     }
     
     [self.mutableRooms removeObject:room];
-}
-
-- (BOOL)canContainCarWashRoom {
-    return NO;
 }
 
 @end

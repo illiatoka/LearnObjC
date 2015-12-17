@@ -1,16 +1,15 @@
 #import "LCHWasherman.h"
-#import "LCHWashBox.h"
-#import "LCHContainerWithCapacity.h"
 #import "LCHCar.h"
 
 @interface LCHWasherman ()
-// TODO: Give a proper name for this property
-@property (nonatomic, readwrite, assign) BOOL blablaAbleToWash;
+@property (nonatomic, readwrite, getter=isAbleToWash)   BOOL    ableToWash;
+
+@property (nonatomic, readwrite, assign)    NSUInteger  wallet;
 
 @end
 
 @implementation LCHWasherman
-@dynamic ableToWash;
+@synthesize wallet = _wallet;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -19,7 +18,7 @@
     self = [super init];
     
     if (self) {
-        self.blablaAbleToWash = YES;
+        self.ableToWash = YES;
     }
     
     return self;
@@ -28,21 +27,20 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)performEmployeeSpecificOperationWithPrise:(NSUInteger)price {
-    NSSet *cars = [[self.parrentRoom cars] items];
-    
-    for (LCHCar *car in cars) {
-        [car giveMoney:price];
-        [car setClean:YES];
-        [self giveMoney:price];
-    }
+- (void)washCar:(LCHCar *)car {
+    [car setClean:YES];
 }
 
 #pragma mark -
-#pragma mark Accessors
+#pragma mark LCHCashProtocol
 
-- (BOOL)isAbleToWash {
-    return self.blablaAbleToWash;
+- (void)giveAllMoneyToReceiver:(id<LCHCashProtocol>)receiver {
+    NSUInteger money = self.wallet;
+    
+    if (0 < money) {
+        self.wallet -= money;
+        [receiver takeMoney:money];
+    }
 }
 
 @end

@@ -1,13 +1,17 @@
 #import "LCHManager.h"
 
+@interface LCHManager ()
+@property (nonatomic, readwrite, getter=isAbleToCountProfit)    BOOL    ableToCountProfit;
+
+@end
+
 @implementation LCHManager
 
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)performEmployeeSpecificOperationWithPrice:(NSUInteger)price {
-    NSLog(@"Last income is: %lu", price);
-    NSLog(@"Wallet count is: %lu", self.wallet);
+- (void)countProfit {
+    NSLog(@"Manager profit is %lu", self.wallet);
 }
 
 @end

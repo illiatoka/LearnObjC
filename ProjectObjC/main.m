@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 
 #import "LCHEnterprise.h"
+#import "LCHBuilding.h"
+#import "LCHCarWash.h"
 #import "LCHManager.h"
 #import "LCHAccountant.h"
 #import "LCHWasherman.h"
@@ -10,7 +12,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         LCHEnterprise *enterprise = [LCHEnterprise enterprise];
         NSLog(@"Enterprise is: %@", enterprise);
-        
+
         LCHManager *manager = [LCHManager employee];
         [enterprise hireAnEmployee:manager];
         NSLog(@"Manager is: %@", manager);
@@ -27,7 +29,7 @@ int main(int argc, const char * argv[]) {
         LCHWasherman *washerman = [LCHWasherman employee];
         [enterprise hireAnEmployee:washerman];
         NSLog(@"Washerman is: %@", washerman);
-        
+
         NSSet *cars = [NSSet setWithObjects:[LCHCar car], [LCHCar car], [LCHCar car], [LCHCar car], nil];
         for (LCHCar *car in cars) {
             NSLog(@"Is car clean: %hhd Money is: %lu", car.isClean, car.wallet);

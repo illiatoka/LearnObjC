@@ -1,8 +1,10 @@
 #import "LCHEmployee.h"
 
-@interface LCHWasherman : LCHEmployee <LCHCashProtocol>
-@property (nonatomic, readonly, getter=isAbleToWash) BOOL ableToWash;
+@class LCHCar;
 
-- (void)performEmployeeSpecificOperationWithPrise:(NSUInteger)price;
+@interface LCHWasherman : LCHEmployee <LCHCashProtocol>
+@property (nonatomic, readonly, getter=isAbleToWash)    BOOL    ableToWash;
+
+- (void)washCar:(LCHCar *)car;
 
 @end

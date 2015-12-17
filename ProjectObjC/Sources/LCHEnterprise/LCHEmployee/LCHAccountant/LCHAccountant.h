@@ -1,7 +1,8 @@
 #import "LCHEmployee.h"
 
 @interface LCHAccountant : LCHEmployee <LCHCashProtocol>
+@property (nonatomic, readonly, getter=isAbleToCountMoney)  BOOL    ableToCountMoney;
 
-- (void)performEmployeeSpecificOperationWithPrice:(NSUInteger)price;
+- (void)countMoney;
 
 @end

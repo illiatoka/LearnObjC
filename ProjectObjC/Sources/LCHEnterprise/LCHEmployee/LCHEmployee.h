@@ -3,8 +3,6 @@
 #import "LCHCashProtocol.h"
 
 @interface LCHEmployee : NSObject <LCHCashProtocol>
-@property (nonatomic, readonly) id  parrentRoom;
-
 @property (nonatomic, readwrite, assign)    NSUInteger  salary;
 @property (nonatomic, readwrite, assign)    NSUInteger  experience;
 
@@ -12,7 +10,5 @@
 + (instancetype)employeeWithSalary:(NSUInteger)salary experience:(NSUInteger)experience;
 
 - (instancetype)initWithSalary:(NSUInteger)salary experience:(NSUInteger)experience;
-
-- (void)performEmployeeSpecificOperationWithPrice:(NSUInteger)price;
 
 @end

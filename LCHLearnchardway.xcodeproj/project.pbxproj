@@ -196,7 +196,6 @@
 		A6D269E11C18A81700EFC50C /* LCHContainerWithCapacity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCHContainerWithCapacity.h; path = ProjectObjC/Sources/LCHEnterprise/Components/LCHContainerWithCapacity/LCHContainerWithCapacity.h; sourceTree = SOURCE_ROOT; };
 		A6D269E21C18A81700EFC50C /* LCHContainerWithCapacity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCHContainerWithCapacity.m; path = ProjectObjC/Sources/LCHEnterprise/Components/LCHContainerWithCapacity/LCHContainerWithCapacity.m; sourceTree = SOURCE_ROOT; };
 		A6D269E91C18B2F600EFC50C /* LCHCashProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHCashProtocol.h; sourceTree = "<group>"; };
-		A6F597441C201C3D0069AFD1 /* LCHEmployee_Privat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHEmployee_Privat.h; sourceTree = "<group>"; };
 		E494D0ACDE1E329AFA546E75 /* libPods-ProjectObjCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ProjectObjCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7B19DA7E68B23D9C51D2AB /* Pods-ProjectObjCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectObjCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectObjCTests/Pods-ProjectObjCTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -614,9 +613,8 @@
 		A69A76131C170C4100D7F44C /* LCHEmployee */ = {
 			isa = PBXGroup;
 			children = (
-				A6F597421C20199A0069AFD1 /* Private */,
-				A69A76141C170C4100D7F44C /* LCHAccountant */,
 				A69A76191C170C4100D7F44C /* LCHManager */,
+				A69A76141C170C4100D7F44C /* LCHAccountant */,
 				A69A761C1C170C4100D7F44C /* LCHWasherman */,
 				A6B37E8B1C172CEE00208724 /* LCHEmployee.h */,
 				A6B37E8C1C172CEE00208724 /* LCHEmployee.m */,
@@ -804,14 +802,6 @@
 				A6D269E91C18B2F600EFC50C /* LCHCashProtocol.h */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		A6F597421C20199A0069AFD1 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				A6F597441C201C3D0069AFD1 /* LCHEmployee_Privat.h */,
-			);
-			path = Private;
 			sourceTree = "<group>";
 		};
 		DAF2F43580C1521491F5B85B /* Pods */ = {

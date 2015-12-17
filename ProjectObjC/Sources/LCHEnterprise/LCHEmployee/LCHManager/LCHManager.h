@@ -1,7 +1,8 @@
 #import "LCHEmployee.h"
 
 @interface LCHManager : LCHEmployee
+@property (nonatomic, readonly, getter=isAbleToCountProfit) BOOL    ableToCountProfit;
 
-- (void)performEmployeeSpecificOperationWithPrice:(NSUInteger)price;
+- (void)countProfit;
 
 @end

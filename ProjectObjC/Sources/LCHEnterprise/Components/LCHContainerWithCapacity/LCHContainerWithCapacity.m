@@ -1,15 +1,12 @@
 #import "LCHContainerWithCapacity.h"
 
 @interface LCHContainerWithCapacity ()
-@property (nonatomic, readwrite, retain) NSMutableSet *mutableItems;
-
-// TODO: Give a proper name for this property
-@property (nonatomic, readwrite, assign) NSUInteger blablaCapacity;
+@property (nonatomic, readwrite, assign)    NSUInteger     capacity;
+@property (nonatomic, readwrite, retain)    NSMutableSet   *mutableItems;
 
 @end
 
 @implementation LCHContainerWithCapacity
-@dynamic capacity;
 @dynamic items;
 
 #pragma mark -
@@ -42,7 +39,7 @@
     self = [self init];
     
     if (self) {
-        self.blablaCapacity = capacity;
+        self.capacity = capacity;
     }
     
     return self;
@@ -50,10 +47,6 @@
 
 #pragma mark -
 #pragma mark Accessors
-
-- (NSUInteger)capacity {
-    return self.blablaCapacity;
-}
 
 - (NSSet *)items {
     return [[self.mutableItems copy] autorelease];
@@ -73,7 +66,7 @@
 }
 
 - (BOOL)isFull {
-    return [self.mutableItems count] >= self.blablaCapacity;
+    return [self.mutableItems count] >= self.capacity;
 }
 
 @end

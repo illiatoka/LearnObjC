@@ -3,6 +3,11 @@
 
 static const NSUInteger kLCHInitialRoomCapacity = 1;
 
+@interface LCHCarWash ()
+@property (nonatomic, readwrite, getter=isAbleToContainCarWashRoom)  BOOL    ableToContainCarWashRoom;
+
+@end
+
 @implementation LCHCarWash
 
 #pragma mark -
@@ -13,10 +18,16 @@ static const NSUInteger kLCHInitialRoomCapacity = 1;
 }
 
 #pragma mark -
-#pragma mark Public Implementations
+#pragma mark Initializations and Deallocations
 
-- (BOOL)canContainCarWashRoom {
-    return YES;
+- (instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        self.ableToContainCarWashRoom = YES;
+    }
+    
+    return self;
 }
 
 @end

@@ -2,13 +2,11 @@
 #import "LCHContainerWithCapacity.h"
 
 @interface LCHRoom ()
-// TODO: Give a proper name for this property
-@property (nonatomic, readwrite, retain) LCHContainerWithCapacity *blablaEmployees;
+@property (nonatomic, readwrite, retain)    LCHContainerWithCapacity    *employees;
 
 @end
 
 @implementation LCHRoom
-@dynamic employees;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -21,7 +19,7 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.blablaEmployees = nil;
+    self.employees = nil;
     
     [super dealloc];
 }
@@ -30,32 +28,25 @@
     self = [self init];
     
     if (self) {
-        self.blablaEmployees = [LCHContainerWithCapacity containerWithCapacity:capacity];
+        self.employees = [LCHContainerWithCapacity containerWithCapacity:capacity];
     }
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Accessors
-
-- (LCHContainerWithCapacity *)employees {
-    return self.blablaEmployees;
-}
-
-#pragma mark -
 #pragma mark Public Implementations
 
 - (void)addEmployee:(id)employee {
-    [self.blablaEmployees addItem:employee];
+    [self.employees addItem:employee];
 }
 
 - (void)removeEmployee:(id)employee {
-    [self.blablaEmployees removeItem:employee];
+    [self.employees removeItem:employee];
 }
 
 - (BOOL)isFull {
-    return [self.blablaEmployees isFull];
+    return [self.employees isFull];
 }
 
 @end

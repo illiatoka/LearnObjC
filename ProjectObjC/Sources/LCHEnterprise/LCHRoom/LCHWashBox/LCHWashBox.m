@@ -2,14 +2,13 @@
 #import "LCHContainerWithCapacity.h"
 
 @interface LCHWashBox ()
-// TODO: Give a proper name for this property
-@property (nonatomic, readwrite, retain) LCHContainerWithCapacity *blablaCars;
+@property (nonatomic, readwrite, retain)    LCHContainerWithCapacity    *cars;
+
+@property (nonatomic, readwrite, getter=isAbleToContainCars)    BOOL   ableToContainCars;
 
 @end
 
 @implementation LCHWashBox
-@dynamic cars;
-@dynamic ableToContainCars;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -21,40 +20,45 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
+- (void)dealloc {
+    self.cars = nil;
+    
+    [super dealloc];
+}
+
+- (instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        self.ableToContainCars = YES;
+    }
+    
+    return self;
+}
+
 - (instancetype)initWithCapacity:(NSUInteger)capacity {
     self = [super initWithCapacity:capacity];
     
     if (self) {
-        self.blablaCars = [LCHContainerWithCapacity containerWithCapacity:capacity];
+        self.cars = [LCHContainerWithCapacity containerWithCapacity:capacity];
     }
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Accessors
-
-- (BOOL)isAbleToContainCars {
-    return YES;
-}
-
-- (LCHContainerWithCapacity *)cars {
-    return self.blablaCars;
-}
-
-#pragma mark -
 #pragma mark Public Implementations
 
 - (void)addCar:(id)car {
-    [self.blablaCars addItem:car];
+    [self.cars addItem:car];
 }
 
 - (void)removeCar:(id)car {
-    [self.blablaCars removeItem:car];
+    [self.cars removeItem:car];
 }
 
 - (BOOL)isFullOfCars {
-    return [self.blablaCars isFull];
+    return [self.cars isFull];
 }
 
 @end

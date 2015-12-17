@@ -3,7 +3,7 @@
 @class LCHContainerWithCapacity;
 
 @interface LCHRoom : NSObject
-@property (nonatomic, readonly) LCHContainerWithCapacity *employees;
+@property (nonatomic, readonly) LCHContainerWithCapacity    *employees;
 
 + (instancetype)roomWithCapacity:(NSUInteger)capacity;
 
