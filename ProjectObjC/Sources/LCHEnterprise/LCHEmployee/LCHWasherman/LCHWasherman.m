@@ -1,46 +1,19 @@
 #import "LCHWasherman.h"
 #import "LCHCar.h"
-
-@interface LCHWasherman ()
-@property (nonatomic, readwrite, getter=isAbleToWash)   BOOL    ableToWash;
-
-@property (nonatomic, readwrite, assign)    NSUInteger  wallet;
-
-@end
+#import "LCHConstants.h"
 
 @implementation LCHWasherman
-@synthesize wallet = _wallet;
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (instancetype)init {
-    self = [super init];
-    
-    if (self) {
-        self.ableToWash = YES;
-    }
-    
-    return self;
-}
 
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)washCar:(LCHCar *)car {
-    [car setClean:YES];
+- (void)performEmployeeSpecificOperationWithObject:(LCHCar *)object {
+    [object giveMoney:kLCHDefaultPrice toReceiver:self];
+    [self washCar:object];
 }
 
-#pragma mark -
-#pragma mark LCHCashProtocol
-
-- (void)giveAllMoneyToReceiver:(id<LCHCashProtocol>)receiver {
-    NSUInteger money = self.wallet;
-    
-    if (0 < money) {
-        self.wallet -= money;
-        [receiver takeMoney:money];
-    }
+- (void)washCar:(LCHCar *)car {
+    [car setClean:YES];
 }
 
 @end

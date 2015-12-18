@@ -172,6 +172,7 @@
 		A69A76411C170E1100D7F44C /* LCHBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHBuilding.m; sourceTree = "<group>"; };
 		A69A764E1C17119200D7F44C /* LCHCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHCar.h; sourceTree = "<group>"; };
 		A69A764F1C17119200D7F44C /* LCHCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHCar.m; sourceTree = "<group>"; };
+		A69DB0591C244B32009FFE40 /* LCHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHConstants.h; sourceTree = "<group>"; };
 		A69DCCB71C139491008FDE51 /* LCHAlphabetRanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCHAlphabetRanges.h; path = ../Declarations/LCHAlphabetRanges.h; sourceTree = "<group>"; };
 		A6AEC3F31C0FCB640003F972 /* ProjectObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectObjCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6AEC3F71C0FCB640003F972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -588,6 +589,7 @@
 		A69A75C91C16326D00D7F44C /* LCHEnterprise */ = {
 			isa = PBXGroup;
 			children = (
+				A69DB0581C244B05009FFE40 /* Global */,
 				A6D269E71C18B23700EFC50C /* Protocol */,
 				A6D269E01C18A79C00EFC50C /* Components */,
 				A69A76071C170C4100D7F44C /* LCHBuilding */,
@@ -675,6 +677,14 @@
 				A69A764F1C17119200D7F44C /* LCHCar.m */,
 			);
 			path = LCHCar;
+			sourceTree = "<group>";
+		};
+		A69DB0581C244B05009FFE40 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				A69DB0591C244B32009FFE40 /* LCHConstants.h */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 		A6AEC3F41C0FCB640003F972 /* ProjectObjCTests */ = {

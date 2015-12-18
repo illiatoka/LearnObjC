@@ -11,4 +11,6 @@
 
 - (instancetype)initWithSalary:(NSUInteger)salary experience:(NSUInteger)experience;
 
+- (void)performEmployeeSpecificOperationWithObject:(id<LCHCashProtocol>)object;
+
 @end

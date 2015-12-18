@@ -8,15 +8,21 @@
 #import "LCHAccountant.h"
 #import "LCHWasherman.h"
 #import "LCHCar.h"
+#import "LCHContainerWithCapacity.h"
 
-static const NSUInteger kLCHDefaultPrice = 5;
+#import "LCHConstants.h"
 
 @interface LCHEnterprise ()
 @property (nonatomic, readwrite, retain) NSMutableSet *mutableBuildings;
 @property (nonatomic, readwrite, retain) NSMutableSet *mutableEmployees;
 
-- (id)emptyRoomForEmployee:(id)employee;
 - (id)roomWithEmployee:(id)employee;
+
+- (LCHBuilding *)buildingForEmployeeOfClass:(Class)class;
+- (LCHRoom *)emptyRoomForEmployeeOfClass:(Class)class;
+- (LCHWashBox *)emptyRoomForCars;
+
+- (NSSet *)roomsForEmployeeOfClass:(Class)class;
 
 @end
 
@@ -93,7 +99,7 @@ static const NSUInteger kLCHDefaultPrice = 5;
 }
 
 - (void)hireAnEmployee:(LCHEmployee *)employee {
-    id room = [self emptyRoomForEmployee:employee];
+    id room = [self emptyRoomForEmployeeOfClass:[employee class]];
     
     if (room) {
         [room addEmployee:employee];
@@ -109,21 +115,13 @@ static const NSUInteger kLCHDefaultPrice = 5;
 }
 
 - (void)performWorkWithCar:(LCHCar *)car {
-    LCHWashBox *washBox = nil;
+    LCHWashBox *washBox = [self emptyRoomForCars];
     LCHWasherman *washerman = nil;
     LCHAccountant *accountant = nil;
     LCHManager *manager = nil;
     
-    for (id building in self.mutableBuildings) {
-        for (id room in [building rooms]) {
-            if ([room respondsToSelector:@selector(isAbleToContainCars)] && ![room isFullOfCars]) {
-                washBox = room;
-            }
-        }
-    }
-    
     for (id employee in self.employees) {
-        if ([employee respondsToSelector:@selector(isAbleToWash)]) {
+        if ([employee respondsToSelector:@selector(washCar:)]) {
             washerman = employee;
             
             break;
@@ -131,7 +129,7 @@ static const NSUInteger kLCHDefaultPrice = 5;
     }
     
     for (id employee in self.employees) {
-        if ([employee respondsToSelector:@selector(isAbleToCountMoney)]) {
+        if ([employee respondsToSelector:@selector(countMoney)]) {
             accountant = employee;
             
             break;
@@ -139,7 +137,7 @@ static const NSUInteger kLCHDefaultPrice = 5;
     }
     
     for (id employee in self.employees) {
-        if ([employee respondsToSelector:@selector(isAbleToCountProfit)]) {
+        if ([employee respondsToSelector:@selector(countProfit)]) {
             manager = employee;
             
             break;
@@ -173,49 +171,64 @@ static const NSUInteger kLCHDefaultPrice = 5;
 #pragma mark -
 #pragma mark Private Implementations
 
-- (id)emptyRoomForEmployee:(id)employee {
-    BOOL isWasherman = [employee respondsToSelector:@selector(isAbleToWash)];
-    id emptyRoom = nil;
-    
-    for (id building in self.mutableBuildings) {
-        for (id room in [building rooms]) {
-            if (![room isFull]) {
-                if (isWasherman) {
-                    if ([room respondsToSelector:@selector(isAbleToContainCars)]) {
-                        emptyRoom = room;
-                        
-                        break;
-                    }
-                } else {
-                    if (![room respondsToSelector:@selector(isAbleToContainCars)]) {
-                        emptyRoom = room;
-                        
-                        break;
-                    }
-                }
+- (id)roomWithEmployee:(id)employee {
+    for (LCHRoom *room in [self roomsForEmployeeOfClass:[employee class]]) {
+        for (id item in [[room employees] items]) {
+            if (item == employee) {
+
+                return room;
             }
         }
     }
-
-    return emptyRoom;
+    
+    return nil;
 }
 
-- (id)roomWithEmployee:(id)employee {
-    id emptyRoom = nil;
+- (LCHBuilding *)buildingForEmployeeOfClass:(Class)class {
+    Class buildingClass = [LCHWasherman class] == class ? [LCHCarWash class] : [LCHBuilding class];
     
     for (id building in self.mutableBuildings) {
+        if ([building isMemberOfClass:buildingClass]) {
+            return building;
+        }
+    }
+    
+    return nil;
+}
+
+- (LCHRoom *)emptyRoomForEmployeeOfClass:(Class)class {
+    for (id room in [self roomsForEmployeeOfClass:class]) {
+        if (![room isFull]) {
+            return room;
+        }
+    }
+    
+    return nil;
+}
+
+- (LCHWashBox *)emptyRoomForCars {
+    for (id building in self.mutableBuildings) {
         for (id room in [building rooms]) {
-            for (id currentEmployee in [room employees]) {
-                if (currentEmployee == employee) {
-                    emptyRoom = room;
-                    
-                    break;
-                }
+            if ([room respondsToSelector:@selector(isAbleToContainCars)] && ![room isFullOfCars]) {
+                return room;
             }
         }
     }
     
-    return emptyRoom;
+    return nil;
+}
+
+- (NSSet *)roomsForEmployeeOfClass:(Class)class {
+    Class roomClass = [LCHWasherman class] == class ? [LCHWashBox class] : [LCHRoom class];
+    NSMutableSet *rooms = [NSMutableSet set];
+    
+    for (id room in [[self buildingForEmployeeOfClass:class] rooms]) {
+        if ([room isMemberOfClass:roomClass]) {
+            [rooms addObject:room];
+        }
+    }
+    
+    return rooms;
 }
 
 @end

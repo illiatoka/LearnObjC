@@ -38,12 +38,28 @@ static const NSUInteger kLCHInitialExperience = 1;
 }
 
 #pragma mark -
+#pragma mark Public Implementations
+
+- (void)performEmployeeSpecificOperationWithObject:(id<LCHCashProtocol>)object {
+    
+}
+
+#pragma mark -
 #pragma mark LCHCashProtocol
 
 - (void)giveMoney:(NSUInteger)money toReceiver:(id<LCHCashProtocol>)receiver {
     if ([self canGiveMoney:money]) {
         [receiver takeMoney:money];
         self.wallet -= money;
+    }
+}
+
+- (void)giveAllMoneyToReceiver:(id<LCHCashProtocol>)receiver {
+    NSUInteger money = self.wallet;
+    
+    if (0 < money) {
+        self.wallet -= money;
+        [receiver takeMoney:money];
     }
 }
 
