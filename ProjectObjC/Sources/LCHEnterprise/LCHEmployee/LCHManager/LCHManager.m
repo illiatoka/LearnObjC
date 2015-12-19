@@ -5,6 +5,13 @@
 #pragma mark -
 #pragma mark Public Implementations
 
+- (void)countProfit {
+    NSLog(@"Manager profit is %lu", self.wallet);
+}
+
+#pragma mark -
+#pragma mark LCHObserverProtocol
+
 - (void)performWorkWithObject:(LCHAccountant *)object {
     self.state = kLCHEmployeeIsWorking;
     
@@ -13,10 +20,6 @@
     
     [self countProfit];
     self.state = kLCHEmployeeIsFree;
-}
-
-- (void)countProfit {
-    NSLog(@"Manager profit is %lu", self.wallet);
 }
 
 @end

@@ -7,6 +7,13 @@
 #pragma mark -
 #pragma mark Public Implementations
 
+- (void)washCar:(LCHCar *)car {
+    [car setClean:YES];
+}
+
+#pragma mark -
+#pragma mark LCHObserverProtocol
+
 - (void)performWorkWithObject:(LCHCar *)object {
     self.state = kLCHEmployeeIsWorking;
     
@@ -16,10 +23,6 @@
     self.state = kLCHEmployeeIsOnHold;
     
     [self notifyWithSelector:@selector(performWorkWithObject:) withObject:self];
-}
-
-- (void)washCar:(LCHCar *)car {
-    [car setClean:YES];
 }
 
 @end

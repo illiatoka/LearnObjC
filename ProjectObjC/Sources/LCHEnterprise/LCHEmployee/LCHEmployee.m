@@ -38,13 +38,6 @@ static const NSUInteger kLCHInitialExperience = 1;
 }
 
 #pragma mark -
-#pragma mark Public Implementations
-
-- (void)performWorkWithObject:(id<LCHCashProtocol>)object {
-    [self doesNotRecognizeSelector:_cmd];
-}
-
-#pragma mark -
 #pragma mark LCHCashProtocol
 
 - (void)giveMoney:(NSUInteger)money toReceiver:(id<LCHCashProtocol>)receiver {
@@ -69,6 +62,13 @@ static const NSUInteger kLCHInitialExperience = 1;
 
 - (BOOL)canGiveMoney:(NSUInteger)money {
     return self.wallet > money;
+}
+
+#pragma mark -
+#pragma mark LCHObserverProtocol
+
+- (void)performWorkWithObject:(id<LCHCashProtocol>)object {
+    [self doesNotRecognizeSelector:_cmd];
 }
 
 @end
