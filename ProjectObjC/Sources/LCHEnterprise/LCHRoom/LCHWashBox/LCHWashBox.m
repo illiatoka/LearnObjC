@@ -1,10 +1,10 @@
 #import "LCHWashBox.h"
 #import "LCHContainerWithCapacity.h"
 
+static const NSUInteger kLCHDefaultCapacity = 1;
+
 @interface LCHWashBox ()
 @property (nonatomic, readwrite, retain)    LCHContainerWithCapacity    *cars;
-
-@property (nonatomic, readwrite, getter=isAbleToContainCars)    BOOL   ableToContainCars;
 
 @end
 
@@ -12,6 +12,10 @@
 
 #pragma mark -
 #pragma mark Class Methods
+
++ (instancetype)room {
+    return [[[self alloc] initWithCapacity:kLCHDefaultCapacity] autorelease];
+}
 
 + (instancetype)roomWithCapacity:(NSUInteger)capacity {
     return [[[self alloc] initWithCapacity:capacity] autorelease];
@@ -24,16 +28,6 @@
     self.cars = nil;
     
     [super dealloc];
-}
-
-- (instancetype)init {
-    self = [super init];
-    
-    if (self) {
-        self.ableToContainCars = YES;
-    }
-    
-    return self;
 }
 
 - (instancetype)initWithCapacity:(NSUInteger)capacity {

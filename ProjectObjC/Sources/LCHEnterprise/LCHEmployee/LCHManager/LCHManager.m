@@ -5,9 +5,14 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)performEmployeeSpecificOperationWithObject:(id<LCHCashProtocol>)object {
+- (void)performWorkWithObject:(LCHAccountant *)object {
+    self.state = kLCHEmployeeIsWorking;
+    
     [object giveAllMoneyToReceiver:self];
+    [object setState:kLCHEmployeeIsFree];
+    
     [self countProfit];
+    self.state = kLCHEmployeeIsFree;
 }
 
 - (void)countProfit {

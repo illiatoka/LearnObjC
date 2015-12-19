@@ -7,9 +7,15 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)performEmployeeSpecificOperationWithObject:(LCHCar *)object {
+- (void)performWorkWithObject:(LCHCar *)object {
+    self.state = kLCHEmployeeIsWorking;
+    
     [object giveMoney:kLCHDefaultPrice toReceiver:self];
     [self washCar:object];
+    
+    self.state = kLCHEmployeeIsOnHold;
+    
+    [self notifyWithSelector:@selector(performWorkWithObject:) withObject:self];
 }
 
 - (void)washCar:(LCHCar *)car {

@@ -1,6 +1,4 @@
 #import "LCHEnterprise.h"
-#import "LCHBuilding.h"
-#import "LCHCarWash.h"
 #import "LCHRoom.h"
 #import "LCHWashBox.h"
 #import "LCHEmployee.h"
@@ -9,42 +7,41 @@
 #import "LCHWasherman.h"
 #import "LCHCar.h"
 #import "LCHContainerWithCapacity.h"
-
 #import "LCHConstants.h"
 
 @interface LCHEnterprise ()
-@property (nonatomic, readwrite, retain) NSMutableSet *mutableBuildings;
+@property (nonatomic, readwrite, retain) NSMutableSet *mutableRooms;
 @property (nonatomic, readwrite, retain) NSMutableSet *mutableEmployees;
 
 - (id)roomWithEmployee:(id)employee;
 
-- (LCHBuilding *)buildingForEmployeeOfClass:(Class)class;
+- (id)freeEmployeeOfClass:(Class)class;
+
 - (LCHRoom *)emptyRoomForEmployeeOfClass:(Class)class;
-- (LCHWashBox *)emptyRoomForCars;
+- (LCHWashBox *)emptyRoomForCar;
 
 - (NSSet *)roomsForEmployeeOfClass:(Class)class;
 
 @end
 
 @implementation LCHEnterprise
-@dynamic buildings;
 @dynamic employees;
 
 #pragma mark -
 #pragma Class Methods
 + (instancetype)enterprise {
-    return [[self alloc ] initWithOffice:[LCHBuilding building] carWash:[LCHCarWash building]];
+    return [[self alloc ] initWithOffice:[LCHRoom room] washBox:[LCHWashBox room]];
 }
 
-+ (instancetype)enterpriseWithOffice:(LCHBuilding *)office carWash:(LCHCarWash *)carWash {
-    return [[self alloc ] initWithOffice:office carWash:carWash];
++ (instancetype)enterpriseWithOffice:(LCHRoom *)office washBox:(LCHWashBox *)washBox {
+    return [[self alloc ] initWithOffice:office washBox:washBox];
 }
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.mutableBuildings = nil;
+    self.mutableRooms = nil;
     self.mutableEmployees = nil;
     
     [super dealloc];
@@ -54,19 +51,19 @@
     self = [super init];
     
     if (self) {
-        self.mutableBuildings = [NSMutableSet set];
+        self.mutableRooms = [NSMutableSet set];
         self.mutableEmployees = [NSMutableSet set];
     }
     
     return self;
 }
 
-- (instancetype)initWithOffice:(LCHBuilding *)office carWash:(LCHCarWash *)carWash {
+- (instancetype)initWithOffice:(LCHRoom *)office washBox:(LCHWashBox *)washBox {
     self = [self init];
     
     if (self) {
-        [self.mutableBuildings addObject:office];
-        [self.mutableBuildings addObject:carWash];
+        [self.mutableRooms addObject:office];
+        [self.mutableRooms addObject:washBox];
     }
     
     return self;
@@ -75,8 +72,8 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (NSSet *)buildings {
-    return [[self.mutableBuildings copy] autorelease];
+- (NSSet *)rooms {
+    return [[self.mutableRooms copy] autorelease];
 }
 
 - (NSSet *)employees {
@@ -86,16 +83,8 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)addBuilding:(LCHBuilding *)building {
-    [self.mutableBuildings addObject:building];
-}
-
-- (void)removeBuilding:(LCHBuilding *)building {
-    for (id room in building.rooms) {
-        [building removeRoom:room];
-    }
-    
-    [self.mutableBuildings removeObject:building];
+- (void)addRoom:(LCHRoom *)room {
+    [self.mutableRooms addObject:room];
 }
 
 - (void)hireAnEmployee:(LCHEmployee *)employee {
@@ -115,56 +104,25 @@
 }
 
 - (void)performWorkWithCar:(LCHCar *)car {
-    LCHWashBox *washBox = [self emptyRoomForCars];
-    LCHWasherman *washerman = nil;
-    LCHAccountant *accountant = nil;
-    LCHManager *manager = nil;
-    
-    for (id employee in self.employees) {
-        if ([employee respondsToSelector:@selector(washCar:)]) {
-            washerman = employee;
-            
-            break;
-        }
-    }
-    
-    for (id employee in self.employees) {
-        if ([employee respondsToSelector:@selector(countMoney)]) {
-            accountant = employee;
-            
-            break;
-        }
-    }
-    
-    for (id employee in self.employees) {
-        if ([employee respondsToSelector:@selector(countProfit)]) {
-            manager = employee;
-            
-            break;
-        }
-    }
+    LCHWashBox *washBox = [self emptyRoomForCar];
+    LCHWasherman *washerman = [self freeEmployeeOfClass:[LCHWasherman class]];
+    LCHAccountant *accountant = [self freeEmployeeOfClass:[LCHAccountant class]];
+    LCHManager *manager = [self freeEmployeeOfClass:[LCHManager class]];
     
     if ([car canGiveMoney:kLCHDefaultPrice]) {
         if (washBox && washerman) {
+            [washerman addObserver:accountant];
+            [accountant addObserver:manager];
+            
             [washBox addCar:car];
             
-            [car giveMoney:kLCHDefaultPrice toReceiver:washerman];
-            [washerman washCar:car];
+            [washerman performWorkWithObject:car];
             
             [washBox removeCar:car];
-            [washerman giveAllMoneyToReceiver:accountant];
             
-            [accountant countMoney];
-            [accountant giveAllMoneyToReceiver:manager];
-            
-            [manager countProfit];
+            [washerman removeObserver:accountant];
+            [accountant removeObserver:manager];
         }
-    }
-}
-
-- (void)performWorkWithCars:(NSSet *)cars {
-    for (LCHCar *car in cars) {
-        [self performWorkWithCar:car];
     }
 }
 
@@ -184,12 +142,10 @@
     return nil;
 }
 
-- (LCHBuilding *)buildingForEmployeeOfClass:(Class)class {
-    Class buildingClass = [LCHWasherman class] == class ? [LCHCarWash class] : [LCHBuilding class];
-    
-    for (id building in self.mutableBuildings) {
-        if ([building isMemberOfClass:buildingClass]) {
-            return building;
+- (id)freeEmployeeOfClass:(Class)class {
+    for (id employee in self.employees) {
+        if ([employee isMemberOfClass:class] && kLCHEmployeeIsFree == [employee state]) {
+            return employee;
         }
     }
     
@@ -198,7 +154,8 @@
 
 - (LCHRoom *)emptyRoomForEmployeeOfClass:(Class)class {
     for (id room in [self roomsForEmployeeOfClass:class]) {
-        if (![room isFull]) {
+        if (![room isFullOfEmployees]) {
+            
             return room;
         }
     }
@@ -206,12 +163,11 @@
     return nil;
 }
 
-- (LCHWashBox *)emptyRoomForCars {
-    for (id building in self.mutableBuildings) {
-        for (id room in [building rooms]) {
-            if ([room respondsToSelector:@selector(isAbleToContainCars)] && ![room isFullOfCars]) {
-                return room;
-            }
+- (LCHWashBox *)emptyRoomForCar {
+    for (id room in self.mutableRooms) {
+        if ([room respondsToSelector:@selector(addCar:)] && ![room isFullOfCars]) {
+            
+            return room;
         }
     }
     
@@ -222,7 +178,7 @@
     Class roomClass = [LCHWasherman class] == class ? [LCHWashBox class] : [LCHRoom class];
     NSMutableSet *rooms = [NSMutableSet set];
     
-    for (id room in [[self buildingForEmployeeOfClass:class] rooms]) {
+    for (id room in self.mutableRooms) {
         if ([room isMemberOfClass:roomClass]) {
             [rooms addObject:room];
         }

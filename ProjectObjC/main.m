@@ -1,12 +1,12 @@
 #import <Foundation/Foundation.h>
 
 #import "LCHEnterprise.h"
-#import "LCHBuilding.h"
-#import "LCHCarWash.h"
 #import "LCHManager.h"
 #import "LCHAccountant.h"
 #import "LCHWasherman.h"
 #import "LCHCar.h"
+
+#import "LCHObservable.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -35,7 +35,9 @@ int main(int argc, const char * argv[]) {
             NSLog(@"Is car clean: %hhd Money is: %lu", car.isClean, car.wallet);
         }
         
-        [enterprise performWorkWithCars:cars];
+        for (LCHCar *car in cars) {
+            [enterprise performWorkWithCar:car];
+        }
         
         for (LCHCar *car in cars) {
             NSLog(@"Is car clean: %hhd Money is: %lu", car.isClean, car.wallet);

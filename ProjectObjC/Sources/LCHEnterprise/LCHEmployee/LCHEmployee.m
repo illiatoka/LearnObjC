@@ -40,8 +40,8 @@ static const NSUInteger kLCHInitialExperience = 1;
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)performEmployeeSpecificOperationWithObject:(id<LCHCashProtocol>)object {
-    
+- (void)performWorkWithObject:(id<LCHCashProtocol>)object {
+    [self doesNotRecognizeSelector:_cmd];
 }
 
 #pragma mark -

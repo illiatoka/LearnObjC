@@ -1,6 +1,8 @@
 #import "LCHRoom.h"
 #import "LCHContainerWithCapacity.h"
 
+static const NSUInteger kLCHDefaultCapacity = 2;
+
 @interface LCHRoom ()
 @property (nonatomic, readwrite, retain)    LCHContainerWithCapacity    *employees;
 
@@ -10,6 +12,10 @@
 
 #pragma mark -
 #pragma mark Class Methods
+
++ (instancetype)room {
+    return [[[self alloc] initWithCapacity:kLCHDefaultCapacity] autorelease];
+}
 
 + (instancetype)roomWithCapacity:(NSUInteger)capacity {
     return [[[self alloc] initWithCapacity:capacity] autorelease];
@@ -45,7 +51,7 @@
     [self.employees removeItem:employee];
 }
 
-- (BOOL)isFull {
+- (BOOL)isFullOfEmployees {
     return [self.employees isFull];
 }
 
