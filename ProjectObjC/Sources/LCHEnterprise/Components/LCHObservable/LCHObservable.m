@@ -1,7 +1,8 @@
 #import "LCHObservable.h"
+#import "LCHContainer.h"
 
 @interface LCHObservable ()
-@property (nonatomic, readwrite, retain) NSMutableSet *mutableObservers;
+@property (nonatomic, readwrite, retain) LCHContainer *mutableObservers;
 
 @end
 
@@ -21,7 +22,7 @@
     self = [super init];
     
     if (self) {
-        self.mutableObservers = [NSMutableSet set];
+        self.mutableObservers = [LCHContainer container];
     }
     
     return self;
@@ -31,7 +32,7 @@
 #pragma mark Accessors
 
 - (NSArray *)observers {
-    NSMutableSet *objects = self.mutableObservers;
+    NSSet *objects = self.mutableObservers.items;
     NSMutableSet *observers = [NSMutableSet set];
     
     for (NSValue *object in objects) {
@@ -47,16 +48,16 @@
 - (void)addObserver:(id)observer {
     if (![self containsObserver:observer]) {
         NSValue *object = [NSValue valueWithNonretainedObject:observer];
-        [self.mutableObservers addObject:object];
+        [self.mutableObservers addItem:object];
     }
 }
 
 - (void)removeObserver:(id)observer {
-    NSMutableSet *objects = self.mutableObservers;
+    NSSet *objects = self.mutableObservers.items;
     
     for (NSValue *object in objects) {
         if ([object pointerValue] == observer) {
-            [self.mutableObservers removeObject:object];
+            [self.mutableObservers removeItem:object];
             
             break;
         }
