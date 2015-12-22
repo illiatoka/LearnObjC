@@ -17,6 +17,8 @@
 
 - (id)freeEmployeeOfClass:(Class)class;
 
+- (void)performWorkInBackgroundWithCar:(LCHCar *)car;
+
 @end
 
 @implementation LCHEnterprise
@@ -75,13 +77,7 @@
 }
 
 - (void)performWorkWithCar:(LCHCar *)car {
-    LCHWasherman *washerman = [self freeEmployeeOfClass:[LCHWasherman class]];
-    
-    if ([car canGiveMoney:kLCHDefaultPrice]) {
-        if (washerman) {
-            [washerman performWorkWithObject:car];
-        }
-    }
+    [self performSelectorInBackground:@selector(performWorkInBackgroundWithCar:) withObject:car];
 }
 
 - (void)performWorkWithCars:(NSSet *)cars {
@@ -105,6 +101,28 @@
     }
     
     return nil;
+}
+
+- (void)performWorkInBackgroundWithCar:(LCHCar *)car {
+    NSLog(@"Method invoked");
+    sleep(arc4random_uniform(3));
+    
+    LCHWasherman *washerman = [self freeEmployeeOfClass:[LCHWasherman class]];
+   
+    
+    @synchronized(washerman) {
+        NSLog(@"Washerman %@ locked", washerman);
+        
+        sleep(1);
+        
+        if (kLCHEmployeeIsFree == [washerman state]) {
+            if ([car canGiveMoney:kLCHDefaultPrice]) {
+                [washerman performWorkWithObject:car];
+                
+                NSLog(@"Is car clean: %hhd Money is: %lu", car.isClean, car.wallet);
+            }
+        }
+    }
 }
 
 @end

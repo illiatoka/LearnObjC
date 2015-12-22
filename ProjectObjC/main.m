@@ -22,8 +22,8 @@ int main(int argc, const char * argv[]) {
             [enterprise performWorkWithCar:car];
         }
         
-        for (LCHCar *car in cars) {
-            NSLog(@"Is car clean: %hhd Money is: %lu", car.isClean, car.wallet);
+        while (true) {
+            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate distantFuture]];
         }
     }
     
