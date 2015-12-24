@@ -1,5 +1,4 @@
 #import "LCHContainer.h"
-#import "NSObject+LCHExtensions.h"
 
 @interface LCHContainer ()
 @property (nonatomic, readwrite, retain)    NSMutableSet   *mutableItems;
@@ -8,13 +7,6 @@
 
 @implementation LCHContainer
 @dynamic items;
-
-#pragma mark -
-#pragma mark Class Methods
-
-+ (instancetype)container {
-    return [self object];
-}
 
 #pragma mark -
 #pragma mark Initializations and Deallocations

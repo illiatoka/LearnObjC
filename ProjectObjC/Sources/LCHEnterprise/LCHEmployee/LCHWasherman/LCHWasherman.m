@@ -8,6 +8,8 @@
 #pragma mark Public Implementations
 
 - (void)washCar:(LCHCar *)car {
+    sleep(arc4random_uniform(3));
+    
     [car setClean:YES];
 }
 

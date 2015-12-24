@@ -11,6 +11,6 @@
 - (void)hireBasicStuff;
 
 - (void)performWorkWithCar:(LCHCar *)car;
-- (void)performWorkWithCars:(NSSet *)cars;
+- (void)performWorkWithCars:(NSArray *)cars;
 
 @end

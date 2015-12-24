@@ -22,7 +22,7 @@
     self = [super init];
     
     if (self) {
-        self.mutableObservers = [LCHContainer container];
+        self.mutableObservers = [LCHContainer object];
     }
     
     return self;

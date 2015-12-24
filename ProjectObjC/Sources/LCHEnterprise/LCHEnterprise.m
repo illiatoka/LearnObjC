@@ -1,7 +1,7 @@
 #import "LCHEnterprise.h"
 
-#import "NSObject+LCHExtensions.h"
 #import "LCHContainer.h"
+#import "LCHQueue.h"
 #import "LCHConstants.h"
 
 #import "LCHEmployee.h"
@@ -11,13 +11,15 @@
 #import "LCHCar.h"
 
 @interface LCHEnterprise ()
-@property (nonatomic, readwrite, retain) LCHContainer *mutableEmployees;
+@property (nonatomic, readwrite, retain) LCHContainer   *mutableEmployees;
+@property (nonatomic, readwrite, retain) LCHQueue       *queue;
 
 - (void)hireAnEmployee:(LCHEmployee *)employee;
 
 - (id)freeEmployeeOfClass:(Class)class;
 
-- (void)performWorkInBackgroundWithCar:(LCHCar *)car;
+- (void)performBackgroundWorkWithCar:(LCHCar *)car;
+- (void)performBackgroundWorkWithCars:(NSSet *)cars;
 
 @end
 
@@ -43,7 +45,8 @@
     self = [super init];
     
     if (self) {
-        self.mutableEmployees = [LCHContainer container];
+        self.mutableEmployees = [LCHContainer object];
+        self.queue = [LCHQueue object];
     }
     
     return self;
@@ -77,12 +80,56 @@
 }
 
 - (void)performWorkWithCar:(LCHCar *)car {
-    [self performSelectorInBackground:@selector(performWorkInBackgroundWithCar:) withObject:car];
+    [self performSelectorInBackground:@selector(performBackgroundWorkWithCar:) withObject:car];
 }
 
-- (void)performWorkWithCars:(NSSet *)cars {
-    for (LCHCar *car in cars) {
-        [self performWorkWithCar:car];
+- (void)performWorkWithCars:(NSArray *)cars {
+    NSUInteger index = 0;
+    
+    NSUInteger count = [cars count];
+    NSUInteger chunk = 20;
+    
+    NSUInteger chunkCount = 0 == count % chunk ? chunk : count / chunk;
+    NSUInteger chunkGroupCount = 0 == count % chunk ? count / chunk : count % chunk;
+    
+    NSUInteger chunkRestCount = count / chunk + 1;
+    NSUInteger chunkGroupRestCount = count % chunk;
+    
+    NSLog(@"Chunk count is: %lu", chunkCount);
+    NSLog(@"Chunk group count is: %lu", chunkGroupCount);
+    
+    NSLog(@"Chunk rest count is: %lu", chunkRestCount);
+    NSLog(@"Chunk group rest count is: %lu", chunkGroupRestCount);
+    
+    for (NSUInteger chunkIndex = 0; chunkIndex < chunkGroupCount; chunkIndex++) {
+        NSMutableArray *result = [NSMutableArray arrayWithCapacity:chunkCount];
+        
+        for (NSUInteger itemIndex = 0; itemIndex < chunkCount; itemIndex++) {
+            NSLog(@"Index is: %lu", index);
+            [result addObject:[cars objectAtIndex:index]];
+            index ++;
+            
+            NSLog(@"Index is: %lu", index);
+        }
+        
+        [self performSelectorInBackground:@selector(performBackgroundWorkWithCars:) withObject:result];
+    }
+    
+    if (chunkGroupRestCount) {
+        for (NSUInteger chunkIndex = 0; chunkIndex < chunkGroupRestCount; chunkIndex++) {
+            NSMutableArray *result = [NSMutableArray arrayWithCapacity:chunkRestCount];
+            
+            for (NSUInteger itemIndex = 0; itemIndex < chunkRestCount; itemIndex++) {
+                NSLog(@"Index is: %lu", index);
+                [result addObject:[cars objectAtIndex:index]];
+                index ++;
+                
+                NSLog(@"Index is: %lu", index);
+            }
+            
+            [self performSelectorInBackground:@selector(performBackgroundWorkWithCars:) withObject:result];
+        }
+
     }
 }
 
@@ -103,24 +150,38 @@
     return nil;
 }
 
-- (void)performWorkInBackgroundWithCar:(LCHCar *)car {
-    NSLog(@"Method invoked");
-    sleep(arc4random_uniform(3));
-    
-    LCHWasherman *washerman = [self freeEmployeeOfClass:[LCHWasherman class]];
-   
-    
-    @synchronized(washerman) {
-        NSLog(@"Washerman %@ locked", washerman);
+- (void)performBackgroundWorkWithCar:(LCHCar *)car {
+    @autoreleasepool {
+        NSLog(@"Method invoked");
         
-        sleep(1);
-        
-        if (kLCHEmployeeIsFree == [washerman state]) {
-            if ([car canGiveMoney:kLCHDefaultPrice]) {
-                [washerman performWorkWithObject:car];
+        LCHWasherman *washerman = [self freeEmployeeOfClass:[LCHWasherman class]];
+       
+        if (washerman) {
+            @synchronized(washerman) {
+                NSLog(@"Washerman %@ locked", washerman);
                 
-                NSLog(@"Is car clean: %hhd Money is: %lu", car.isClean, car.wallet);
+                if (kLCHEmployeeIsFree == [washerman state]) {
+                    if ([car canGiveMoney:kLCHDefaultPrice]) {
+                        [washerman performWorkWithObject:car];
+                        
+                        NSLog(@"Is car clean: %hhd Money is: %lu", car.isClean, car.wallet);
+                    }
+                } else {
+                    [self.queue addToQueue:car];
+                    NSLog(@"Car %@ added to Queue", car);
+                }
             }
+        } else {
+            NSLog(@"Car %@ added to Queue", car);
+            [self.queue addToQueue:car];
+        }
+    }
+}
+
+- (void)performBackgroundWorkWithCars:(NSArray *)cars {
+    @autoreleasepool {
+        for (LCHCar *car in cars) {
+            [self performBackgroundWorkWithCar:car];
         }
     }
 }
