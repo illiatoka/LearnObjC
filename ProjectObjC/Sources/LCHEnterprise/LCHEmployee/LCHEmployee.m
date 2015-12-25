@@ -67,7 +67,7 @@ static const NSUInteger kLCHInitialExperience = 1;
 #pragma mark -
 #pragma mark LCHObserverProtocol
 
-- (void)performWorkWithObject:(id<LCHCashProtocol>)object {
+- (void)performAsyncWorkWithObject:(id<LCHCashProtocol>)object {
     [self doesNotRecognizeSelector:_cmd];
 }
 

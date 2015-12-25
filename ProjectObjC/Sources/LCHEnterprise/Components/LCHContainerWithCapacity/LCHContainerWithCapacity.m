@@ -18,7 +18,7 @@
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithCapacity:(NSUInteger)capacity {
-    self = [super init];
+    self = [self init];
     
     if (self) {
         self.capacity = capacity;
@@ -30,17 +30,20 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-#pragma mark -
-#pragma mark Public Implementations
-
 - (void)addItem:(id)item {
-    if (![self isFull]) {
-        [self addItem:item];
+    @synchronized(self) {
+        if (![self isFull]) {
+            [super addItem:item];
+        }
     }
 }
 
 - (BOOL)isFull {
-    return [self.items count] >= self.capacity;
+    @synchronized(self) {
+        return [self.items count] >= self.capacity;
+    }
+    
+    return YES;
 }
 
 @end

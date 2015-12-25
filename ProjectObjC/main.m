@@ -10,17 +10,17 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSUInteger carCount = 10010;
+        NSUInteger carCount = 10100;
         
-        LCHEnterprise *enterprise = [LCHEnterprise enterprise];
+        LCHEnterprise *enterprise = [LCHEnterprise object];
         [enterprise hireBasicStuff];
 
-        NSMutableArray *cars = [NSMutableArray arrayWithCapacity:carCount];
+        NSMutableSet *cars = [NSMutableSet setWithCapacity:carCount];
         for (NSUInteger count = 0; count < carCount; count++) {
             [cars addObject:[LCHCar car]];
         }
         
-        [enterprise performWorkWithCars:cars];
+        [enterprise performAsyncWorkWithCars:cars];
         
         while (true) {
             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate distantFuture]];

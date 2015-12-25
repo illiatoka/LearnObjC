@@ -12,7 +12,7 @@
 #pragma mark -
 #pragma mark LCHObserverProtocol
 
-- (void)performWorkWithObject:(LCHAccountant *)object {
+- (void)performAsyncWorkWithObject:(LCHAccountant *)object {
     self.state = kLCHEmployeeIsWorking;
     
     [object giveAllMoneyToReceiver:self];

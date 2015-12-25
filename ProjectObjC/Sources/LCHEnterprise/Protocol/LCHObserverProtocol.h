@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol LCHObserverProtocol <NSObject>
-- (void)performWorkWithObject:(id<LCHCashProtocol>)object;
+- (void)performAsyncWorkWithObject:(id<LCHCashProtocol>)object;
 
 @end

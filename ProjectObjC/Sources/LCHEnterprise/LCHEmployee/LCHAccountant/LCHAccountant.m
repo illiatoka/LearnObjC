@@ -12,7 +12,7 @@
 #pragma mark -
 #pragma mark LCHObserverProtocol
 
-- (void)performWorkWithObject:(LCHWasherman *)object {
+- (void)performAsyncWorkWithObject:(LCHWasherman *)object {
     self.state = kLCHEmployeeIsWorking;
     
     [object giveAllMoneyToReceiver:self];
@@ -22,7 +22,7 @@
     
     self.state = kLCHEmployeeIsOnHold;
     
-    [self notifyWithSelector:@selector(performWorkWithObject:) withObject:self];
+    [self notifyWithSelector:@selector(performAsyncWorkWithObject:) withObject:self];
 }
 
 @end

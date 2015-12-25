@@ -6,11 +6,9 @@
 @interface LCHEnterprise : NSObject
 @property (nonatomic, readonly) NSSet   *employees;
 
-+ (instancetype)enterprise;
-
 - (void)hireBasicStuff;
 
-- (void)performWorkWithCar:(LCHCar *)car;
-- (void)performWorkWithCars:(NSArray *)cars;
+- (void)performAsyncWorkWithCar:(LCHCar *)car;
+- (void)performAsyncWorkWithCars:(NSSet *)cars;
 
 @end

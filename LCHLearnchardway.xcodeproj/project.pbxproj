@@ -760,10 +760,10 @@
 		A6D269E01C18A79C00EFC50C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A6FB99EA1C2B674A002629F0 /* LCHQueue */,
 				A69DB05B1C2599FA009FFE40 /* LCHObservable */,
 				A6FB99E31C2978A3002629F0 /* LCHContainer */,
 				A6D269E51C18AD4700EFC50C /* LCHContainerWithCapacity */,
+				A6FB99EA1C2B674A002629F0 /* LCHQueue */,
 			);
 			path = Components;
 			sourceTree = "<group>";

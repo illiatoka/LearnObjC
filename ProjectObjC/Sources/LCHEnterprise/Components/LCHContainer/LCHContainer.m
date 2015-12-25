@@ -32,9 +32,10 @@
 
 - (NSSet *)items {
     NSSet *items = nil;
+    NSMutableSet *mutableItems = self.mutableItems;
     
-    @synchronized(self.mutableItems) {
-        items = [[self.mutableItems copy] autorelease];
+    @synchronized(mutableItems) {
+        items = [[mutableItems copy] autorelease];
     }
     
     return items;
@@ -44,14 +45,18 @@
 #pragma mark Public Implementations
 
 - (void)addItem:(id)item {
-    @synchronized(self.mutableItems) {
-        [self.mutableItems addObject:item];
+    NSMutableSet *mutableItems = self.mutableItems;
+    
+    @synchronized(mutableItems) {
+        [mutableItems addObject:item];
     }
 }
 
 - (void)removeItem:(id)item {
-    @synchronized(self.mutableItems) {
-        [self.mutableItems removeObject:item];
+    NSMutableSet *mutableItems = self.mutableItems;
+    
+    @synchronized(mutableItems) {
+        [mutableItems removeObject:item];
     }
 }
 

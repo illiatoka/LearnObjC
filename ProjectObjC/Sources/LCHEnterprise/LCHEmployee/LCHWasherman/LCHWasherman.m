@@ -16,7 +16,7 @@
 #pragma mark -
 #pragma mark LCHObserverProtocol
 
-- (void)performWorkWithObject:(LCHCar *)object {
+- (void)performAsyncWorkWithObject:(LCHCar *)object {
     self.state = kLCHEmployeeIsWorking;
     
     [object giveMoney:kLCHDefaultPrice toReceiver:self];
@@ -24,7 +24,7 @@
     
     self.state = kLCHEmployeeIsOnHold;
     
-    [self notifyWithSelector:@selector(performWorkWithObject:) withObject:self];
+    [self notifyWithSelector:@selector(performAsyncWorkWithObject:) withObject:self];
 }
 
 @end

@@ -32,34 +32,48 @@
 #pragma mark Accessors
 
 - (NSArray *)observers {
-    NSSet *objects = self.mutableObservers.items;
-    NSMutableSet *observers = [NSMutableSet set];
+    LCHContainer *mutableObservers = self.mutableObservers;
     
-    for (NSValue *object in objects) {
-        [observers addObject:[object pointerValue]];
+    @synchronized(mutableObservers) {
+        NSSet *objects = mutableObservers.items;
+        NSMutableSet *observers = [NSMutableSet set];
+        
+        for (NSValue *object in objects) {
+            [observers addObject:[object pointerValue]];
+        }
+        
+        return [observers allObjects];
     }
     
-    return [observers allObjects];
+    return nil;
 }
 
 #pragma mark -
 #pragma mark Public Implementations
 
 - (void)addObserver:(id)observer {
-    if (![self containsObserver:observer]) {
-        NSValue *object = [NSValue valueWithNonretainedObject:observer];
-        [self.mutableObservers addItem:object];
+    LCHContainer *mutableObservers = self.mutableObservers;
+    
+    @synchronized(mutableObservers) {
+        if (![self containsObserver:observer]) {
+            NSValue *object = [NSValue valueWithNonretainedObject:observer];
+            [mutableObservers addItem:object];
+        }
     }
 }
 
 - (void)removeObserver:(id)observer {
-    NSSet *objects = self.mutableObservers.items;
+    LCHContainer *mutableObservers = self.mutableObservers;
     
-    for (NSValue *object in objects) {
-        if ([object pointerValue] == observer) {
-            [self.mutableObservers removeItem:object];
-            
-            break;
+    @synchronized(mutableObservers) {
+        NSSet *objects = mutableObservers.items;
+        
+        for (NSValue *object in objects) {
+            if ([object pointerValue] == observer) {
+                [mutableObservers removeItem:object];
+                
+                break;
+            }
         }
     }
 }
@@ -79,7 +93,11 @@
 - (BOOL)containsObserver:(id)observer {
     NSArray *observers = self.observers;
     
-    return [observers containsObject:observer];
+    @synchronized(observers) {
+        return [observers containsObject:observer];
+    }
+    
+    return NO;
 }
 
 @end
