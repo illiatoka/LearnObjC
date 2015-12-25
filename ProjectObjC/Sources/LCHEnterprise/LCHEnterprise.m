@@ -132,12 +132,8 @@
 
 - (void)performBackgroundWorkWithCars:(NSSet *)cars {
     @autoreleasepool {
-        NSUInteger testCount = 0;
-        
         for (LCHCar *car in cars) {
             LCHWasherman *washerman = [self freeEmployeeOfClass:[LCHWasherman class]];
-            
-            testCount++;
             
             if (washerman) {
                 [self performAsyncWorkWithCar:car];
