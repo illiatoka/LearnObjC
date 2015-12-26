@@ -6,7 +6,7 @@
 #pragma mark Public Implementations
 
 - (void)countProfit {
-    sleep(arc4random_uniform(2));
+    sleep(arc4random_uniform(3));
     
     NSLog(@"Manager profit is %lu", self.wallet);
 }

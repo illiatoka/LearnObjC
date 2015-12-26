@@ -10,7 +10,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSUInteger carCount = 25000;
+        NSUInteger carCount = 4000;
         
         LCHEnterprise *enterprise = [LCHEnterprise object];
         [enterprise hireBasicStuff];

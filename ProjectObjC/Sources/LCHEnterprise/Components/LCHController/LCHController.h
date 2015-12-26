@@ -4,7 +4,7 @@
 @class LCHCar;
 
 @interface LCHController : NSObject
-@property (nonatomic, readonly) LCHEnterprise *enterprise;
+@property (nonatomic, readonly) LCHEnterprise   *enterprise;
 
 + (instancetype)controllerWithEnterprise:(LCHEnterprise *)enterprise;
 

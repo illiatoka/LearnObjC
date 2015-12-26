@@ -48,6 +48,7 @@
 #pragma mark Public Implementations
 
 - (void)hireBasicStuff {
+    // TODO: Do something with this shit!
     LCHManager *manager = [LCHManager employee];
     LCHAccountant *accountant = [LCHAccountant employee];
     LCHWasherman *washerman = [LCHWasherman employee];

@@ -2,7 +2,7 @@
 #import "LCHContainer.h"
 
 @interface LCHObservable ()
-@property (nonatomic, readwrite, retain) LCHContainer *mutableObservers;
+@property (nonatomic, readwrite, retain)    LCHContainer    *mutableObservers;
 
 @end
 

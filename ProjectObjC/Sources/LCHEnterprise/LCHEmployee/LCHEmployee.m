@@ -1,7 +1,7 @@
 #import "LCHEmployee.h"
 
-static const NSUInteger kLCHInitialSalary = 20;
-static const NSUInteger kLCHInitialExperience = 1;
+static const NSUInteger kLCHInitialSalary       = 20;
+static const NSUInteger kLCHInitialExperience   = 1;
 
 @interface LCHEmployee ()
 @property (nonatomic, readwrite, assign)    NSUInteger          wallet;
@@ -12,7 +12,6 @@ static const NSUInteger kLCHInitialExperience = 1;
 - (void)notifyObservesOnMainThredWithObject:(id)object;
 
 @end
-
 
 @implementation LCHEmployee
 @synthesize wallet = _wallet;
