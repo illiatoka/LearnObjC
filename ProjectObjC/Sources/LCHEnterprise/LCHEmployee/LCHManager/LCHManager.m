@@ -6,20 +6,21 @@
 #pragma mark Public Implementations
 
 - (void)countProfit {
+    sleep(arc4random_uniform(2));
+    
     NSLog(@"Manager profit is %lu", self.wallet);
 }
 
 #pragma mark -
-#pragma mark LCHObserverProtocol
+#pragma mark Private Implementations
 
-- (void)performAsyncWorkWithObject:(LCHAccountant *)object {
-    self.state = kLCHEmployeeIsWorking;
-    
-    [object giveAllMoneyToReceiver:self];
-    [object setState:kLCHEmployeeIsFree];
-    
-    [self countProfit];
-    self.state = kLCHEmployeeIsFree;
+- (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object {
+    @autoreleasepool {
+        @synchronized(self) {
+            [object giveAllMoneyToReceiver:self];
+            [self countProfit];
+        }
+    }
 }
 
 @end

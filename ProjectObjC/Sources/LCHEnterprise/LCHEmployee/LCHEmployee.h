@@ -2,16 +2,10 @@
 
 #import "LCHObservable.h"
 #import "LCHCashProtocol.h"
+#import "LCHStateProtocol.h"
 #import "LCHObserverProtocol.h"
 
-typedef NS_ENUM(NSUInteger, LCHEmployeeState) {
-    kLCHEmployeeIsFree,
-    kLCHEmployeeIsWorking,
-    kLCHEmployeeIsOnHold,
-};
-
-@interface LCHEmployee : LCHObservable <LCHCashProtocol, LCHObserverProtocol>
-@property (nonatomic, readwrite, assign)    LCHEmployeeState    state;
+@interface LCHEmployee : LCHObservable <LCHCashProtocol, LCHStateProtocol, LCHObserverProtocol>
 @property (nonatomic, readwrite, assign)    NSUInteger          salary;
 @property (nonatomic, readwrite, assign)    NSUInteger          experience;
 

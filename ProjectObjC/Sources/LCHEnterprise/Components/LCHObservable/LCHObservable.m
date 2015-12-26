@@ -83,10 +83,16 @@
 }
 
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object {
+    [self notifyWithSelector:selector withObject:object withObject:nil];
+}
+
+- (void)notifyWithSelector:(SEL)selector withObject:(id)object withObject:(id)object2 {
     NSArray *observers = self.observers;
     
     for (id observer in observers) {
-        [observer performSelector:selector withObject:object];
+        if ([observer respondsToSelector:selector]) {
+            [observer performSelector:selector withObject:object withObject:object2];
+        }
     }
 }
 

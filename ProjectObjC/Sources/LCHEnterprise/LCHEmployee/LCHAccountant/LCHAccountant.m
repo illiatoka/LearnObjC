@@ -1,4 +1,5 @@
 #import "LCHAccountant.h"
+#import "LCHWasherman.h"
 
 @implementation LCHAccountant
 
@@ -6,23 +7,34 @@
 #pragma mark Public Implementations
 
 - (void)countMoney {
+    sleep(arc4random_uniform(2));
+    
     NSLog(@"Accountant money count is: %lu", self.wallet);
 }
 
 #pragma mark -
-#pragma mark LCHObserverProtocol
+#pragma mark Private Implementations
 
-- (void)performAsyncWorkWithObject:(LCHWasherman *)object {
-    self.state = kLCHEmployeeIsWorking;
+- (void)performBackgroundWorkWithObject:(LCHWasherman *)object {
+    @autoreleasepool {
+        @synchronized(self) {
+            [object giveAllMoneyToReceiver:self];
+            [self countMoney];
+            
+            [self employeeDidFinishWithObject:object];
+        }
+    }
+}
+
+#pragma mark -
+#pragma mark LCHStateProtocol
+
+- (SEL)selectorForState:(LCHEmployeeState)state {
+    if (kLCHEmployeeProcessingNeeded == state) {
+        return @selector(accountant:didFinishWithObject:);
+    }
     
-    [object giveAllMoneyToReceiver:self];
-    [object setState:kLCHEmployeeIsFree];
-    
-    [self countMoney];
-    
-    self.state = kLCHEmployeeIsOnHold;
-    
-    [self notifyWithSelector:@selector(performAsyncWorkWithObject:) withObject:self];
+    return NULL;
 }
 
 @end

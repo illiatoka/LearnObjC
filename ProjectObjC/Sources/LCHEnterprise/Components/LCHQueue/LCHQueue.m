@@ -15,8 +15,12 @@
     id object = nil;
     
     @synchronized(self) {
-        object = [[[[[self items] allObjects] firstObject] retain] autorelease];
-        [self removeItem:object];
+        object = [[[self items] allObjects] firstObject];
+        
+        if (object) {
+            [[object retain] autorelease];
+            [self removeItem:object];
+        }
     }
     
     return object;

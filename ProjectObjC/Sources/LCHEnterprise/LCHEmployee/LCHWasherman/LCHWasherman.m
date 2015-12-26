@@ -1,6 +1,5 @@
 #import "LCHWasherman.h"
 #import "LCHCar.h"
-#import "LCHConstants.h"
 
 @implementation LCHWasherman
 
@@ -8,23 +7,32 @@
 #pragma mark Public Implementations
 
 - (void)washCar:(LCHCar *)car {
-    sleep(arc4random_uniform(3));
-    
     [car setClean:YES];
 }
 
 #pragma mark -
-#pragma mark LCHObserverProtocol
+#pragma mark Private Implementations
 
-- (void)performAsyncWorkWithObject:(LCHCar *)object {
-    self.state = kLCHEmployeeIsWorking;
+- (void)performBackgroundWorkWithObject:(LCHCar *)object {
+    @autoreleasepool {
+        if ([object canGiveMoney:kLCHDefaultPrice]) {
+            [self washCar:object];
+            [object giveMoney:kLCHDefaultPrice toReceiver:self];
+        }
+        
+        [self employeeDidFinishWithObject:object];
+    }
+}
+
+#pragma mark -
+#pragma mark LCHStateProtocol
+
+- (SEL)selectorForState:(LCHEmployeeState)state {
+    if (kLCHEmployeeProcessingNeeded == state) {
+        return @selector(washerman:didFinishWithObject:);
+    }
     
-    [object giveMoney:kLCHDefaultPrice toReceiver:self];
-    [self washCar:object];
-    
-    self.state = kLCHEmployeeIsOnHold;
-    
-    [self notifyWithSelector:@selector(performAsyncWorkWithObject:) withObject:self];
+    return NULL;
 }
 
 @end

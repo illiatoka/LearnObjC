@@ -2,7 +2,7 @@
 
 @class LCHWasherman;
 
-@interface LCHAccountant : LCHEmployee <LCHCashProtocol>
+@interface LCHAccountant : LCHEmployee
 
 - (void)countMoney;
 

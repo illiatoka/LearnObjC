@@ -2,7 +2,7 @@
 
 @class LCHCar;
 
-@interface LCHWasherman : LCHEmployee <LCHCashProtocol>
+@interface LCHWasherman : LCHEmployee
 
 - (void)washCar:(LCHCar *)car;
 
