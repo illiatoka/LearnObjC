@@ -13,7 +13,6 @@ int main(int argc, const char * argv[]) {
         NSUInteger carCount = 4000;
         
         LCHEnterprise *enterprise = [LCHEnterprise object];
-        [enterprise hireBasicStuff];
 
         NSMutableSet *cars = [NSMutableSet setWithCapacity:carCount];
         NSMutableSet *cars2 = [NSMutableSet setWithCapacity:carCount];
