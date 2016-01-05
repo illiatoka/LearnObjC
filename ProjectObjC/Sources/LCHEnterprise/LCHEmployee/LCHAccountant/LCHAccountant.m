@@ -26,15 +26,4 @@
     }
 }
 
-#pragma mark -
-#pragma mark LCHStateProtocol
-
-- (SEL)selectorForState:(LCHEmployeeState)state {
-    if (kLCHEmployeeProcessingNeeded == state) {
-        return @selector(accountant:didFinishWithObject:);
-    }
-    
-    return NULL;
-}
-
 @end

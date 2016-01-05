@@ -1,32 +1,16 @@
 #import "LCHEmployee.h"
 
-static const NSUInteger kLCHInitialSalary       = 20;
-static const NSUInteger kLCHInitialExperience   = 1;
-
 @interface LCHEmployee ()
-@property (nonatomic, readwrite, assign)    NSUInteger          wallet;
-@property (nonatomic, readwrite, assign)    LCHEmployeeState    state;
+@property (nonatomic, readwrite, assign)    NSUInteger  wallet;
 
 - (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object;
 
-- (void)notifyObservesOnMainThredWithObject:(id)object;
+- (void)notifyObserversOnMainThredWithObject:(id)object;
 
 @end
 
 @implementation LCHEmployee
-@synthesize wallet = _wallet;
 @synthesize state = _state;
-
-#pragma mark -
-#pragma mark Class Methods
-
-+ (instancetype)employee {
-    return [[[self alloc] initWithSalary:kLCHInitialSalary experience:kLCHInitialExperience] autorelease];
-}
-
-+ (instancetype)employeeWithSalary:(NSUInteger)salary experience:(NSUInteger)experience {
-    return [[[self alloc] initWithSalary:salary experience:experience] autorelease];
-}
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -35,21 +19,17 @@ static const NSUInteger kLCHInitialExperience   = 1;
     self = [super init];
     
     if (self) {
-        self.state = kLCHEmployeeIsReadyToWork;
+        self.state = kLCHEmployeeIsFree;
     }
     
     return self;
 }
 
-- (instancetype)initWithSalary:(NSUInteger)salary experience:(NSUInteger)experience {
-    self = [self init];
-    
-    if (self) {
-        self.salary = salary;
-        self.experience = experience;
-    }
-    
-    return self;
+#pragma mark -
+#pragma mark Public Imlementations
+
+- (void)performAsyncWorkWithObject:(id<LCHCashProtocol>)object {
+    [self performSelectorInBackground:@selector(performBackgroundWorkWithObject:) withObject:object];
 }
 
 #pragma mark -
@@ -59,7 +39,7 @@ static const NSUInteger kLCHInitialExperience   = 1;
     [self doesNotRecognizeSelector:_cmd];
 }
 
-- (void)notifyObservesOnMainThredWithObject:(id)object {
+- (void)notifyObserversOnMainThredWithObject:(id)object {
     [self notifyWithSelector:[self selectorForState:kLCHEmployeeProcessingNeeded] withObject:self withObject:object];
 }
 
@@ -94,35 +74,30 @@ static const NSUInteger kLCHInitialExperience   = 1;
 #pragma mark LCHStateProtocol
 
 - (void)employeeDidFinishWithObject:(id<LCHCashProtocol>)object {
-    [self performSelectorOnMainThread:@selector(notifyObservesOnMainThredWithObject:)
+    [self performSelectorOnMainThread:@selector(notifyObserversOnMainThredWithObject:)
                            withObject:object
                         waitUntilDone:YES];
 }
 
 - (SEL)selectorForState:(LCHEmployeeState)state {
-    [self doesNotRecognizeSelector:_cmd];
+    if (kLCHEmployeeProcessingNeeded == state) {
+        return @selector(employeeProcessingNeeded:);
+    }
     
     return NULL;
 }
 
-- (void)setStateIsWorking {
-    self.state = kLCHEmployeeIsWorking;
-}
-
-- (void)setStateProcessingNeeded {
-    self.state = kLCHEmployeeProcessingNeeded;
-    [self notifyWithSelector:@selector(performAsyncWorkWithObject:) withObject:self];
-}
-
-- (void)setStateIsReadyToWork {
-    self.state = kLCHEmployeeIsReadyToWork;
-}
-
-#pragma mark -
-#pragma mark LCHObserverProtocol
-
-- (void)performAsyncWorkWithObject:(id<LCHCashProtocol>)object {
-    [self performSelectorInBackground:@selector(performBackgroundWorkWithObject:) withObject:object];
+- (void)setState:(LCHEmployeeState)state {
+    if (_state != state) {
+        if (kLCHEmployeeIsWorking == state) {
+            _state = state;
+        } else if (kLCHEmployeeProcessingNeeded == state) {
+            _state = state;
+            [self notifyWithSelector:@selector(performAsyncWorkWithObject:) withObject:self];
+        } else if (kLCHEmployeeIsFree == state) {
+            _state = state;
+        }
+    }
 }
 
 @end

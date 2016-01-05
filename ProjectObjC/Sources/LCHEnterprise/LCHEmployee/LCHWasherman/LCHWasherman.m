@@ -24,15 +24,4 @@
     }
 }
 
-#pragma mark -
-#pragma mark LCHStateProtocol
-
-- (SEL)selectorForState:(LCHEmployeeState)state {
-    if (kLCHEmployeeProcessingNeeded == state) {
-        return @selector(washerman:didFinishWithObject:);
-    }
-    
-    return NULL;
-}
-
 @end

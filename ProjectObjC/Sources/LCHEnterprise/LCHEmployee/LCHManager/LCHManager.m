@@ -19,6 +19,8 @@
         @synchronized(self) {
             [object giveAllMoneyToReceiver:self];
             [self countProfit];
+            
+            [self employeeDidFinishWithObject:object];
         }
     }
 }

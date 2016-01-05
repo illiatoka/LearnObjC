@@ -3,15 +3,9 @@
 #import "LCHObservable.h"
 #import "LCHCashProtocol.h"
 #import "LCHStateProtocol.h"
-#import "LCHObserverProtocol.h"
 
-@interface LCHEmployee : LCHObservable <LCHCashProtocol, LCHStateProtocol, LCHObserverProtocol>
-@property (nonatomic, readwrite, assign)    NSUInteger  salary;
-@property (nonatomic, readwrite, assign)    NSUInteger  experience;
+@interface LCHEmployee : LCHObservable <LCHCashProtocol, LCHStateProtocol>
 
-+ (instancetype)employee;
-+ (instancetype)employeeWithSalary:(NSUInteger)salary experience:(NSUInteger)experience;
-
-- (instancetype)initWithSalary:(NSUInteger)salary experience:(NSUInteger)experience;
+- (void)performAsyncWorkWithObject:(id<LCHCashProtocol>)object;
 
 @end
