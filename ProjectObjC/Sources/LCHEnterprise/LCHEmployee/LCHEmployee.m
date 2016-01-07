@@ -5,7 +5,9 @@
 
 - (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object;
 
-- (void)notifyObserversOnMainThredWithObject:(id)object;
+- (void)stateDidChange;
+
+- (void)notifyObserversOnMainThred;
 
 @end
 
@@ -39,7 +41,13 @@
     [self doesNotRecognizeSelector:_cmd];
 }
 
-- (void)notifyObserversOnMainThredWithObject:(id)object {
+- (void)stateDidChange {
+    [self performSelectorOnMainThread:@selector(notifyObserversOnMainThred)
+                           withObject:nil
+                        waitUntilDone:YES];
+}
+
+- (void)notifyObserversOnMainThred {
     [self notifyWithSelector:[self selectorForState:self.state] withObject:self];
 }
 
@@ -59,20 +67,17 @@
 - (void)giveAllMoneyToReceiver:(id<LCHCashProtocol>)receiver {
     @synchronized(self) {
         NSUInteger money = self.wallet;
-        
         if (0 < money) {
             self.wallet -= money;
             [receiver takeMoney:money];
         }
     }
-    
 }
 
 - (void)takeMoney:(NSUInteger)money {
     @synchronized(self) {
         self.wallet += money;
     }
-    
 }
 
 - (BOOL)canGiveMoney:(NSUInteger)money {
@@ -98,9 +103,7 @@
     if (_state != state) {
         _state = state;
         
-        [self performSelectorOnMainThread:@selector(notifyObserversOnMainThredWithObject:)
-                               withObject:self
-                            waitUntilDone:YES];
+        [self stateDidChange];
     }
 }
 
