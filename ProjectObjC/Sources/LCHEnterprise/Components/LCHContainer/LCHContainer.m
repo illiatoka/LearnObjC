@@ -6,6 +6,7 @@
 @end
 
 @implementation LCHContainer
+
 @dynamic items;
 
 #pragma mark -
@@ -19,7 +20,6 @@
 
 - (instancetype)init {
     self = [super init];
-    
     if (self) {
         self.mutableItems = [NSMutableSet set];
     }
@@ -30,12 +30,12 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (NSSet *)items {
-    NSSet *items = nil;
+- (NSArray *)items {
+    NSArray *items = nil;
     NSMutableSet *mutableItems = self.mutableItems;
     
     @synchronized(mutableItems) {
-        items = [[mutableItems copy] autorelease];
+        items = mutableItems.allObjects;
     }
     
     return items;

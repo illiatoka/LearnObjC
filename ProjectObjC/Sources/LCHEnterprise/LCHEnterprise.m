@@ -9,11 +9,12 @@
 #import "LCHWasherman.h"
 
 @interface LCHEnterprise () <LCHObserverProtocol>
-@property (nonatomic, readwrite, retain) LCHContainer   *employees;
-@property (nonatomic, readwrite, retain) LCHQueue       *queueOfCars;
+@property (nonatomic, retain)   LCHContainer    *employees;
+@property (nonatomic, retain)   LCHQueue        *carsQueue;
+@property (nonatomic, retain)   LCHQueue        *washermanQueue;
+@property (nonatomic, retain)   LCHQueue        *accountantQueue;
 
-- (void)hireBasicStuff;
-- (void)fireBasicStuff;
+- (void)hireStaff;
 
 - (id)freeEmployeeOfClass:(Class)class;
 
@@ -28,22 +29,23 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [self fireBasicStuff];
-    
     self.employees = nil;
-    self.queueOfCars = nil;
+    self.carsQueue = nil;
+    self.washermanQueue = nil;
+    self.accountantQueue = nil;
     
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
-    
     if (self) {
         self.employees = [LCHContainer object];
-        self.queueOfCars = [LCHQueue object];
+        self.carsQueue = [LCHQueue object];
+        self.washermanQueue = [LCHQueue object];
+        self.accountantQueue = [LCHQueue object];
         
-        [self hireBasicStuff];
+        [self hireStaff];
     }
     
     return self;
@@ -52,80 +54,50 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)performAsyncWorkWithCar:(LCHCar *)car {
+- (void)performWorkWithCar:(LCHCar *)car {
     [self performSelectorInBackground:@selector(performBackgroundWorkWithCar:) withObject:car];
 }
 
-- (void)performAsyncWorkWithCars:(NSSet *)cars {
+- (void)performWorkWithCars:(NSSet *)cars {
     [self performSelectorInBackground:@selector(performBackgroundWorkWithCars:) withObject:cars];
 }
 
 #pragma mark -
 #pragma mark Private Implementations
 
-- (void)hireBasicStuff {
-    NSArray *washermans = @[[LCHWasherman object], [LCHWasherman object]];
-    LCHAccountant *accountant = [LCHAccountant object];
-    LCHManager *manager = [LCHManager object];
-    
-    for (id washerman in washermans) {
-        [washerman addObserver:accountant];
-        [washerman addObserver:self];
-        [self.employees addItem:washerman];
-    }
-    
-    [accountant addObserver:manager];
-    [accountant addObserver:self];
-    
-    [self.employees addItem:accountant];
-    [self.employees addItem:manager];
-}
-
-- (void)fireBasicStuff {
-    NSSet *employees = self.employees.items;
+- (void)hireStaff {
+    LCHContainer *employeesContainer = self.employees;
+    NSArray *employees = @[[LCHWasherman object], [LCHWasherman object], [LCHAccountant object], [LCHManager object]];
     
     for (id employee in employees) {
-        for (id observer in employees) {
-            [employee removeObserver:observer];
-            [employee removeObserver:self];
-        }
-    }
-    
-    for (id employee in employees) {
-        [self.employees removeItem:employee];
+        [employee addObserver:self];
+        [employeesContainer addItem:employee];
     }
 }
 
 - (id)freeEmployeeOfClass:(Class)class {
-    NSSet *employees = self.employees.items;
-    id result = nil;
-    
-    @synchronized(employees) {
-        for (id employee in employees) {
-            if ([employee isMemberOfClass:class] && kLCHEmployeeIsFree == [employee state]) {
-                result = employee;
+    for (id employee in self.employees.items) {
+        if ([employee isMemberOfClass:class] && kLCHEmployeeIsFree == [employee state]) {
+            @synchronized(employee) {
+                if (kLCHEmployeeIsFree == [employee state]) {
+                    [employee setState:kLCHEmployeeIsWorking];
+                    
+                    return employee;
+                }
             }
         }
     }
     
-    return result;
+    return nil;
 }
 
 - (void)performBackgroundWorkWithCar:(id<LCHCashProtocol>)car {
     @autoreleasepool {
         LCHWasherman *washerman = [self freeEmployeeOfClass:[LCHWasherman class]];
-        
         if (washerman) {
-            @synchronized(washerman) {
-                if (kLCHEmployeeIsFree == [washerman state]) {
-                    [washerman setState:kLCHEmployeeIsWorking];
-                    [washerman performAsyncWorkWithObject:car];
-                } else {
-                    [self.queueOfCars addToQueue:car];
-                }
-            }
+            [washerman performWorkWithObject:car];
         } else {
-            [self.queueOfCars addToQueue:car];
+            [self.carsQueue addToQueue:car];
         }
     }
 }
@@ -141,16 +113,48 @@
 #pragma mark -
 #pragma mark LCHObserverProtocol
 
-- (void)employeeIsFree:(id)employee {
-
+- (void)employeeDidFinishWork:(id)employee {
+    if ([employee class] == [LCHWasherman class]) {
+        LCHAccountant *accountant = [self freeEmployeeOfClass:[LCHAccountant class]];
+        if (accountant) {
+            [accountant performWorkWithObject:employee];
+        } else {
+            [self.washermanQueue addItem:employee];
+        }
+    } else if ([employee class] == [LCHAccountant class]) {
+        LCHManager *manager = [self freeEmployeeOfClass:[LCHManager class]];
+        if (manager) {
+            [manager performWorkWithObject:employee];
+        } else {
+            [self.accountantQueue addItem:employee];
+        }
+    }
 }
 
-- (void)employeeIsWorking:(id)employee {
-
-}
-
-- (void)employeeProcessingNeeded:(id)employee {
-    [employee setState:kLCHEmployeeProcessingNeeded];
+- (void)employeeDidBecomeFree:(id)employee {
+    if ([employee class] == [LCHWasherman class]) {
+        if (kLCHEmployeeIsFree == [employee state]) {
+            @synchronized(employee) {
+                if (kLCHEmployeeIsFree == [employee state]) {
+                    LCHCar *car = [self.carsQueue nextObjectFromQueue];
+                    if (car) {
+                        [employee setState:kLCHEmployeeIsWorking];
+                        [employee performWorkWithObject:(id<LCHCashProtocol>)car];
+                    }
+                }
+            }
+        }
+    } else if ([employee class] == [LCHAccountant class]) {
+        LCHWasherman *washerman = [self.washermanQueue nextObjectFromQueue];
+        if (washerman) {
+            [employee performWorkWithObject:washerman];
+        }
+    } else if ([employee class] == [LCHManager class]) {
+        LCHAccountant *accountant = [self.accountantQueue nextObjectFromQueue];
+        if (accountant) {
+            [employee performWorkWithObject:accountant];
+        }
+    }
 }
 
 @end

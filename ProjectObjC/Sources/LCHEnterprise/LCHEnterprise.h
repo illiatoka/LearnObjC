@@ -4,7 +4,7 @@
 
 @interface LCHEnterprise : NSObject
 
-- (void)performAsyncWorkWithCar:(LCHCar *)car;
-- (void)performAsyncWorkWithCars:(NSSet *)cars;
+- (void)performWorkWithCar:(LCHCar *)car;
+- (void)performWorkWithCars:(NSSet *)cars;
 
 @end

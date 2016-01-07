@@ -3,9 +3,10 @@
 #import "LCHObservable.h"
 #import "LCHCashProtocol.h"
 #import "LCHStateProtocol.h"
+#import "LCHObserverProtocol.h"
 
-@interface LCHEmployee : LCHObservable <LCHCashProtocol, LCHStateProtocol>
+@interface LCHEmployee : LCHObservable <LCHCashProtocol, LCHStateProtocol, LCHObserverProtocol>
 
-- (void)performAsyncWorkWithObject:(id<LCHCashProtocol>)object;
+- (void)performWorkWithObject:(id<LCHCashProtocol>)object;
 
 @end

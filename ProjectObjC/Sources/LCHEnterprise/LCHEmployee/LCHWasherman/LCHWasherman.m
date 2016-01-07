@@ -20,7 +20,7 @@
             [object giveMoney:kLCHDefaultPrice toReceiver:self];
         }
         
-        [self employeeDidFinishWithObject:object];
+        self.state = kLCHEmployeeIsFinished;
     }
 }
 

@@ -3,11 +3,12 @@
 static const NSUInteger kLCHInitialMoney = 20;
 
 @interface LCHCar ()
-@property (nonatomic, readwrite, assign)    NSUInteger  wallet;
+@property (nonatomic, readwrite)    NSUInteger  wallet;
 
 @end
 
 @implementation LCHCar
+
 @synthesize wallet = _wallet;
 
 #pragma mark -
@@ -26,7 +27,6 @@ static const NSUInteger kLCHInitialMoney = 20;
 
 - (instancetype)initWithMoney:(NSUInteger)money {
     self = [self init];
-    
     if (self) {
         self.wallet = money;
     }
@@ -38,14 +38,18 @@ static const NSUInteger kLCHInitialMoney = 20;
 #pragma mark LCHCashProtocol
 
 - (void)giveMoney:(NSUInteger)money toReceiver:(id<LCHCashProtocol>)receiver {
-    if ([self canGiveMoney:money]) {
-        [receiver takeMoney:money];
-        self.wallet -= money;
+    @synchronized(self) {
+        if ([self canGiveMoney:money]) {
+            [receiver takeMoney:money];
+            self.wallet -= money;
+        }
     }
 }
 
 - (void)takeMoney:(NSUInteger)money {
-    self.wallet += money;
+    @synchronized(self) {
+        self.wallet += money;
+    }
 }
 
 - (BOOL)canGiveMoney:(NSUInteger)money {

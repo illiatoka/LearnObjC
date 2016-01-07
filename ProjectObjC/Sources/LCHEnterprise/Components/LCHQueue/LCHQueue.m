@@ -15,7 +15,7 @@
     id object = nil;
     
     @synchronized(self) {
-        object = [[[self items] allObjects] firstObject];
+        object = [[self items] firstObject];
         
         if (object) {
             [[object retain] autorelease];

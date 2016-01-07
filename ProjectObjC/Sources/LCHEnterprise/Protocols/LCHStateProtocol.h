@@ -2,14 +2,12 @@
 
 typedef NS_ENUM(NSUInteger, LCHEmployeeState) {
     kLCHEmployeeIsWorking,
-    kLCHEmployeeProcessingNeeded,
+    kLCHEmployeeIsFinished,
     kLCHEmployeeIsFree
 };
 
 @protocol LCHStateProtocol <NSObject>
-@property (nonatomic, assign)     LCHEmployeeState    state;
-
-- (void)employeeDidFinishWithObject:(id<LCHCashProtocol>)object;
+@property (nonatomic, assign)   LCHEmployeeState    state;
 
 - (SEL)selectorForState:(LCHEmployeeState)state;
 

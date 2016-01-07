@@ -1,4 +1,5 @@
 #import "LCHManager.h"
+#import "LCHAccountant.h"
 
 @implementation LCHManager
 
@@ -6,22 +7,19 @@
 #pragma mark Public Implementations
 
 - (void)countProfit {
-    sleep(arc4random_uniform(3));
-    
     NSLog(@"Manager profit is %lu", self.wallet);
 }
 
 #pragma mark -
 #pragma mark Private Implementations
 
-- (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object {
+- (void)performBackgroundWorkWithObject:(LCHAccountant *)object {
     @autoreleasepool {
-        @synchronized(self) {
-            [object giveAllMoneyToReceiver:self];
-            [self countProfit];
-            
-            [self employeeDidFinishWithObject:object];
-        }
+        [object giveAllMoneyToReceiver:self];
+        object.state = kLCHEmployeeIsFree;
+        
+        [self countProfit];
+        self.state = kLCHEmployeeIsFree;
     }
 }
 

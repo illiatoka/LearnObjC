@@ -7,8 +7,6 @@
 #pragma mark Public Implementations
 
 - (void)countMoney {
-    sleep(arc4random_uniform(2));
-    
     NSLog(@"Accountant money count is: %lu", self.wallet);
 }
 
@@ -17,12 +15,11 @@
 
 - (void)performBackgroundWorkWithObject:(LCHWasherman *)object {
     @autoreleasepool {
-        @synchronized(self) {
-            [object giveAllMoneyToReceiver:self];
-            [self countMoney];
-            
-            [self employeeDidFinishWithObject:object];
-        }
+        [object giveAllMoneyToReceiver:self];
+        object.state = kLCHEmployeeIsFree;
+        
+        [self countMoney];
+        self.state = kLCHEmployeeIsFinished;
     }
 }
 

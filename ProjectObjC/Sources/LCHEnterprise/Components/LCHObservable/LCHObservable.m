@@ -2,27 +2,27 @@
 #import "LCHContainer.h"
 
 @interface LCHObservable ()
-@property (nonatomic, readwrite, retain)    LCHContainer    *mutableObservers;
+@property (nonatomic, readwrite, retain)    LCHContainer    *observersContainer;
 
 @end
 
 @implementation LCHObservable
+
 @dynamic observers;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.mutableObservers = nil;
+    self.observersContainer = nil;
     
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
-    
     if (self) {
-        self.mutableObservers = [LCHContainer object];
+        self.observersContainer = [LCHContainer object];
     }
     
     return self;
@@ -32,17 +32,17 @@
 #pragma mark Accessors
 
 - (NSArray *)observers {
-    LCHContainer *mutableObservers = self.mutableObservers;
+    LCHContainer *observersContainer = self.observersContainer;
     
-    @synchronized(mutableObservers) {
-        NSSet *objects = mutableObservers.items;
-        NSMutableSet *observers = [NSMutableSet set];
+    @synchronized(observersContainer) {
+        NSArray *objects = observersContainer.items;
+        NSMutableArray *observers = [NSMutableArray array];
         
         for (NSValue *object in objects) {
-            [observers addObject:[object pointerValue]];
+            [observers addObject:object.pointerValue];
         }
         
-        return [observers allObjects];
+        return [[observers copy] autorelease];
     }
     
     return nil;
@@ -52,25 +52,26 @@
 #pragma mark Public Implementations
 
 - (void)addObserver:(id)observer {
-    LCHContainer *mutableObservers = self.mutableObservers;
+    LCHContainer *mutableObservers = self.observersContainer;
     
     @synchronized(mutableObservers) {
         if (![self containsObserver:observer]) {
             NSValue *object = [NSValue valueWithNonretainedObject:observer];
+            
             [mutableObservers addItem:object];
         }
     }
 }
 
 - (void)removeObserver:(id)observer {
-    LCHContainer *mutableObservers = self.mutableObservers;
+    LCHContainer *observersContainer = self.observersContainer;
     
-    @synchronized(mutableObservers) {
-        NSSet *objects = mutableObservers.items;
+    @synchronized(observersContainer) {
+        NSArray *objects = observersContainer.items;
         
         for (NSValue *object in objects) {
             if ([object pointerValue] == observer) {
-                [mutableObservers removeItem:object];
+                [observersContainer removeItem:object];
                 
                 break;
             }

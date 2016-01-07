@@ -25,8 +25,8 @@ int main(int argc, const char * argv[]) {
             [cars2 addObject:[LCHCar car]];
         }
         
-        [enterprise performAsyncWorkWithCars:cars];
-        [enterprise performAsyncWorkWithCars:cars2];
+        [enterprise performWorkWithCars:cars];
+        [enterprise performWorkWithCars:cars2];
         
         while (true) {
             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate distantFuture]];
