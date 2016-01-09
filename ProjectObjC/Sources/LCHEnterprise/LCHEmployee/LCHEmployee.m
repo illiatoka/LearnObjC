@@ -4,10 +4,10 @@
 @property (nonatomic, readwrite)    NSUInteger  wallet;
 
 - (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object;
+- (void)finishProcessingWithObjectOnMainThred:(id<LCHCashProtocol>)object;
 
 - (void)processWithObject:(id<LCHCashProtocol>)object;
 - (void)finishWithObject:(id<LCHCashProtocol>)object;
-- (void)updateStateWithObject:(id<LCHCashProtocol>)object;
 
 @end
 
@@ -37,7 +37,7 @@
 
 - (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object {
     [self processWithObject:object];
-    [self updateStateWithObject:object];
+    [self finishProcessingWithObjectOnMainThred:object];
 }
 
 - (void)processWithObject:(id<LCHCashProtocol>)object {
@@ -48,7 +48,7 @@
     [self doesNotRecognizeSelector:_cmd];
 }
 
-- (void)updateStateWithObject:(id<LCHCashProtocol>)object {
+- (void)finishProcessingWithObjectOnMainThred:(id<LCHCashProtocol>)object {
     [self performSelectorOnMainThread:@selector(finishWithObject:) withObject:object waitUntilDone:YES];
 }
 
