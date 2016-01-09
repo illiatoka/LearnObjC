@@ -142,7 +142,6 @@
 		A690504A1BFF49CA00120215 /* LCHStringObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHStringObjectTests.h; sourceTree = "<group>"; };
 		A69050801BFF4BB100120215 /* ProjectObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProjectObjC; sourceTree = BUILT_PRODUCTS_DIR; };
 		A69050811BFF4BD500120215 /* ProjectC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProjectC; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6932F731C2F166D00A9D7EA /* LCHStateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCHStateProtocol.h; path = ../Protocols/LCHStateProtocol.h; sourceTree = "<group>"; };
 		A69A75B01C13A1AD00D7F44C /* NSString+LCHExtansionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LCHExtansionsSpec.m"; sourceTree = "<group>"; };
 		A69A75B21C13A5FE00D7F44C /* LCHHumanSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHHumanSpec.m; sourceTree = "<group>"; };
 		A69A75B51C13A78100D7F44C /* LCHAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHAlphabet.h; sourceTree = "<group>"; };
@@ -769,7 +768,6 @@
 			children = (
 				A6D269E91C18B2F600EFC50C /* LCHCashProtocol.h */,
 				A69DB0611C259AD0009FFE40 /* LCHObserverProtocol.h */,
-				A6932F731C2F166D00A9D7EA /* LCHStateProtocol.h */,
 			);
 			name = Protocols;
 			path = Protocol;

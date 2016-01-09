@@ -13,8 +13,6 @@
 
 @implementation LCHEmployee
 
-@synthesize state = _state;
-
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
@@ -25,6 +23,17 @@
     }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setState:(LCHEmployeeState)state {
+    if (super.state != state) {
+        super.state = state;
+        
+        [self stateDidChange];
+    }
 }
 
 #pragma mark -
@@ -77,29 +86,6 @@
 
 - (void)takeMoney:(NSUInteger)money {
     self.wallet += money;
-}
-
-#pragma mark -
-#pragma mark LCHStateProtocol
-
-- (SEL)selectorForState:(LCHEmployeeState)state {
-    if (kLCHEmployeeIsWorking == state) {
-        return @selector(employeeDidStartWork:);
-    } else if (kLCHEmployeeIsFinished == state) {
-        return @selector(employeeDidFinishWork:);
-    } else if (kLCHEmployeeIsFree) {
-        return @selector(employeeDidBecomeFree:);
-    }
-    
-    return NULL;
-}
-
-- (void)setState:(LCHEmployeeState)state {
-    if (_state != state) {
-        _state = state;
-        
-        [self stateDidChange];
-    }
 }
 
 @end

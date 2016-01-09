@@ -33,11 +33,9 @@
 
 - (NSArray *)observers {
     LCHContainer *observersContainer = self.observersContainer;
-    
     @synchronized(observersContainer) {
         NSArray *objects = observersContainer.items;
         NSMutableArray *observers = [NSMutableArray array];
-        
         for (NSValue *object in objects) {
             [observers addObject:object.pointerValue];
         }
@@ -53,11 +51,9 @@
 
 - (void)addObserver:(id)observer {
     LCHContainer *mutableObservers = self.observersContainer;
-    
     @synchronized(mutableObservers) {
         if (![self containsObserver:observer]) {
             NSValue *object = [NSValue valueWithNonretainedObject:observer];
-            
             [mutableObservers addItem:object];
         }
     }
@@ -65,10 +61,8 @@
 
 - (void)removeObserver:(id)observer {
     LCHContainer *observersContainer = self.observersContainer;
-    
     @synchronized(observersContainer) {
         NSArray *objects = observersContainer.items;
-        
         for (NSValue *object in objects) {
             if ([object pointerValue] == observer) {
                 [observersContainer removeItem:object];
@@ -89,7 +83,6 @@
 
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object withObject:(id)object2 {
     NSArray *observers = self.observers;
-    
     for (id observer in observers) {
         if ([observer respondsToSelector:selector]) {
             [observer performSelector:selector withObject:object withObject:object2];
@@ -97,9 +90,20 @@
     }
 }
 
+- (SEL)selectorForState:(LCHEmployeeState)state {
+    if (kLCHEmployeeIsWorking == state) {
+        return @selector(employeeDidStartWork:);
+    } else if (kLCHEmployeeIsFinished == state) {
+        return @selector(employeeDidFinishWork:);
+    } else if (kLCHEmployeeIsFree) {
+        return @selector(employeeDidBecomeFree:);
+    }
+    
+    return NULL;
+}
+
 - (BOOL)containsObserver:(id)observer {
     NSArray *observers = self.observers;
-    
     @synchronized(observers) {
         return [observers containsObject:observer];
     }
