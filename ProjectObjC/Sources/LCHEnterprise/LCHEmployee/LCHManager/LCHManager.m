@@ -15,14 +15,18 @@
 
 - (void)processWithObject:(LCHAccountant *)object {
     @autoreleasepool {
-        [object giveAllMoneyToReceiver:self];
-        [self countProfit];
+        @synchronized(self) {
+            [object giveAllMoneyToReceiver:self];
+            [self countProfit];
+        }
     }
 }
 
 - (void)finishWithObject:(LCHAccountant *)object {
-    object.state = kLCHEmployeeIsFree;
-    self.state = kLCHEmployeeIsFree;
+    @synchronized(self) {
+        object.state = kLCHObjectIsFree;
+        self.state = kLCHObjectIsFree;
+    }
 }
 
 @end

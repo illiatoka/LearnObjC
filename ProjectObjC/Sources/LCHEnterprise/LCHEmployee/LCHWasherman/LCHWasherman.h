@@ -1,9 +1,7 @@
 #import "LCHEmployee.h"
 
-@class LCHCar;
-
 @interface LCHWasherman : LCHEmployee
 
-- (void)washCar:(LCHCar *)car;
+- (void)washCar:(id<LCHCashProtocol>)car;
 
 @end

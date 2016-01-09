@@ -19,7 +19,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.state = kLCHEmployeeIsFree;
+        self.state = kLCHObjectIsFree;
     }
     
     return self;

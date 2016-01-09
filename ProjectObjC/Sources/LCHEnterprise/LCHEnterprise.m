@@ -77,10 +77,10 @@
 
 - (id)freeEmployeeOfClass:(Class)class {
     for (id employee in self.employees.items) {
-        if ([employee isMemberOfClass:class] && kLCHEmployeeIsFree == [employee state]) {
+        if ([employee isMemberOfClass:class]) {
             @synchronized(employee) {
-                if (kLCHEmployeeIsFree == [employee state]) {
-                    [employee setState:kLCHEmployeeIsWorking];
+                if (kLCHObjectIsFree == [employee state]) {
+                    [employee setState:kLCHObjectProcessed];
                     
                     return employee;
                 }
@@ -133,14 +133,12 @@
 
 - (void)employeeDidBecomeFree:(id)employee {
     if ([employee class] == [LCHWasherman class]) {
-        if (kLCHEmployeeIsFree == [employee state]) {
-            @synchronized(employee) {
-                if (kLCHEmployeeIsFree == [employee state]) {
-                    LCHCar *car = [self.carsQueue nextObjectFromQueue];
-                    if (car) {
-                        [employee setState:kLCHEmployeeIsWorking];
-                        [employee performWorkWithObject:(id<LCHCashProtocol>)car];
-                    }
+        @synchronized(employee) {
+            if (kLCHObjectIsFree == [employee state]) {
+                LCHCar *car = [self.carsQueue nextObjectFromQueue];
+                if (car) {
+                    [employee setState:kLCHObjectProcessed];
+                    [employee performWorkWithObject:(id<LCHCashProtocol>)car];
                 }
             }
         }

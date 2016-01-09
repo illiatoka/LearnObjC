@@ -15,13 +15,17 @@
 
 - (void)processWithObject:(LCHCar *)object {
     @autoreleasepool {
-        [self washCar:object];
-        [object giveMoney:kLCHDefaultPrice toReceiver:self];
+        @synchronized(self) {
+            [self washCar:object];
+            [object giveMoney:kLCHDefaultPrice toReceiver:self];
+        }
     }
 }
 
 - (void)finishWithObject:(LCHCar *)object {
-    self.state = kLCHEmployeeIsFinished;
+    @synchronized(self) {
+        self.state = kLCHObjectFinished;
+    }
 }
 
 @end

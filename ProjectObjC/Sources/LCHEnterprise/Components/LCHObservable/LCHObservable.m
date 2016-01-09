@@ -46,7 +46,7 @@
     return nil;
 }
 
-- (void)setState:(LCHEmployeeState)state {
+- (void)setState:(LCHObjectState)state {
     if (_state != state) {
         _state = state;
         [self notifyWithSelector:[self selectorForState:state] withObject:self];
@@ -97,12 +97,12 @@
     }
 }
 
-- (SEL)selectorForState:(LCHEmployeeState)state {
-    if (kLCHEmployeeIsWorking == state) {
+- (SEL)selectorForState:(LCHObjectState)state {
+    if (kLCHObjectProcessed == state) {
         return @selector(employeeDidStartWork:);
-    } else if (kLCHEmployeeIsFinished == state) {
+    } else if (kLCHObjectFinished == state) {
         return @selector(employeeDidFinishWork:);
-    } else if (kLCHEmployeeIsFree) {
+    } else if (kLCHObjectIsFree) {
         return @selector(employeeDidBecomeFree:);
     }
     

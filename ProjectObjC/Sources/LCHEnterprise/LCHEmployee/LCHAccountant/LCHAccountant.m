@@ -15,14 +15,18 @@
 
 - (void)processWithObject:(LCHWasherman *)object {
     @autoreleasepool {
-        [object giveAllMoneyToReceiver:self];
-        [self countMoney];
+        @synchronized(self) {
+            [object giveAllMoneyToReceiver:self];
+            [self countMoney];
+        }
     }
 }
 
 - (void)finishWithObject:(LCHWasherman *)object {
-    object.state = kLCHEmployeeIsFree;
-    self.state = kLCHEmployeeIsFinished;
+    @synchronized(self) {
+        object.state = kLCHObjectIsFree;
+        self.state = kLCHObjectFinished;
+    }
 }
 
 @end

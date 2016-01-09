@@ -2,7 +2,6 @@
 
 #import "LCHObservable.h"
 #import "LCHCashProtocol.h"
-#import "LCHObserverProtocol.h"
 
 @interface LCHEmployee : LCHObservable <LCHCashProtocol>
 
