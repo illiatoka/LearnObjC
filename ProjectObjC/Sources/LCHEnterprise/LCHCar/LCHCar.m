@@ -9,8 +9,6 @@ static const NSUInteger kLCHInitialMoney = 20;
 
 @implementation LCHCar
 
-@synthesize wallet = _wallet;
-
 #pragma mark -
 #pragma mark Class Methods
 
@@ -39,21 +37,17 @@ static const NSUInteger kLCHInitialMoney = 20;
 
 - (void)giveMoney:(NSUInteger)money toReceiver:(id<LCHCashProtocol>)receiver {
     @synchronized(self) {
-        if ([self canGiveMoney:money]) {
-            [receiver takeMoney:money];
-            self.wallet -= money;
-        }
+        [self giveMoney:money];
+        [receiver takeMoney:money];
     }
+}
+
+- (void)giveMoney:(NSUInteger)money {
+    self.wallet -= money;
 }
 
 - (void)takeMoney:(NSUInteger)money {
-    @synchronized(self) {
-        self.wallet += money;
-    }
-}
-
-- (BOOL)canGiveMoney:(NSUInteger)money {
-    return self.wallet > money;
+    self.wallet += money;
 }
 
 @end

@@ -56,32 +56,27 @@
 
 - (void)giveMoney:(NSUInteger)money toReceiver:(id<LCHCashProtocol>)receiver {
     @synchronized(self) {
-        if ([self canGiveMoney:money]) {
-            [receiver takeMoney:money];
-            self.wallet -= money;
-        }
+        [self giveMoney:money];
+        [receiver takeMoney:money];
     }
-    
 }
 
 - (void)giveAllMoneyToReceiver:(id<LCHCashProtocol>)receiver {
     @synchronized(self) {
         NSUInteger money = self.wallet;
         if (0 < money) {
-            self.wallet -= money;
+            [self giveMoney:money];
             [receiver takeMoney:money];
         }
     }
 }
 
-- (void)takeMoney:(NSUInteger)money {
-    @synchronized(self) {
-        self.wallet += money;
-    }
+- (void)giveMoney:(NSUInteger)money {
+    self.wallet -= money;
 }
 
-- (BOOL)canGiveMoney:(NSUInteger)money {
-    return self.wallet > money;
+- (void)takeMoney:(NSUInteger)money {
+    self.wallet += money;
 }
 
 #pragma mark -

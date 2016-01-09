@@ -7,7 +7,7 @@
 #pragma mark Public Implementations
 
 - (void)washCar:(LCHCar *)car {
-    [car setClean:YES];
+    car.clean = YES;
 }
 
 #pragma mark -
@@ -15,10 +15,8 @@
 
 - (void)performBackgroundWorkWithObject:(LCHCar *)object {
     @autoreleasepool {
-        if ([object canGiveMoney:kLCHDefaultPrice]) {
-            [self washCar:object];
-            [object giveMoney:kLCHDefaultPrice toReceiver:self];
-        }
+        [self washCar:object];
+        [object giveMoney:kLCHDefaultPrice toReceiver:self];
         
         self.state = kLCHEmployeeIsFinished;
     }
