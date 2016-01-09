@@ -46,6 +46,13 @@
     return nil;
 }
 
+- (void)setState:(LCHEmployeeState)state {
+    if (_state != state) {
+        _state = state;
+        [self notifyWithSelector:[self selectorForState:state] withObject:self];
+    }
+}
+
 #pragma mark -
 #pragma mark Public Implementations
 

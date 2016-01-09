@@ -5,9 +5,9 @@
 
 - (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object;
 
-- (void)stateDidChange;
-
-- (void)notifyObserversOnMainThred;
+- (void)processWithObject:(id<LCHCashProtocol>)object;
+- (void)finishWithObject:(id<LCHCashProtocol>)object;
+- (void)updateStateWithObject:(id<LCHCashProtocol>)object;
 
 @end
 
@@ -26,17 +26,6 @@
 }
 
 #pragma mark -
-#pragma mark Accessors
-
-- (void)setState:(LCHEmployeeState)state {
-    if (super.state != state) {
-        super.state = state;
-        
-        [self stateDidChange];
-    }
-}
-
-#pragma mark -
 #pragma mark Public Imlementations
 
 - (void)performWorkWithObject:(id<LCHCashProtocol>)object {
@@ -47,17 +36,20 @@
 #pragma mark Private Implementations
 
 - (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object {
+    [self processWithObject:object];
+    [self updateStateWithObject:object];
+}
+
+- (void)processWithObject:(id<LCHCashProtocol>)object {
     [self doesNotRecognizeSelector:_cmd];
 }
 
-- (void)stateDidChange {
-    [self performSelectorOnMainThread:@selector(notifyObserversOnMainThred)
-                           withObject:nil
-                        waitUntilDone:YES];
+- (void)finishWithObject:(id<LCHCashProtocol>)object {
+    [self doesNotRecognizeSelector:_cmd];
 }
 
-- (void)notifyObserversOnMainThred {
-    [self notifyWithSelector:[self selectorForState:self.state] withObject:self];
+- (void)updateStateWithObject:(id<LCHCashProtocol>)object {
+    [self performSelectorOnMainThread:@selector(finishWithObject:) withObject:object waitUntilDone:YES];
 }
 
 #pragma mark -

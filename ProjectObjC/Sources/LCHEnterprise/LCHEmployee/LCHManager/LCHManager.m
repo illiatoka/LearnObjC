@@ -13,14 +13,16 @@
 #pragma mark -
 #pragma mark Private Implementations
 
-- (void)performBackgroundWorkWithObject:(LCHAccountant *)object {
+- (void)processWithObject:(LCHAccountant *)object {
     @autoreleasepool {
         [object giveAllMoneyToReceiver:self];
-        object.state = kLCHEmployeeIsFree;
-        
         [self countProfit];
-        self.state = kLCHEmployeeIsFree;
     }
+}
+
+- (void)finishWithObject:(LCHAccountant *)object {
+    object.state = kLCHEmployeeIsFree;
+    self.state = kLCHEmployeeIsFree;
 }
 
 @end
