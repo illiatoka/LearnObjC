@@ -14,8 +14,8 @@ int main(int argc, const char * argv[]) {
         
         LCHEnterprise *enterprise = [LCHEnterprise object];
 
-        NSMutableSet *cars = [NSMutableSet setWithCapacity:carCount];
-        NSMutableSet *cars2 = [NSMutableSet setWithCapacity:carCount];
+        NSMutableArray *cars = [NSMutableArray arrayWithCapacity:carCount];
+        NSMutableArray *cars2 = [NSMutableArray arrayWithCapacity:carCount];
         
         for (NSUInteger count = 0; count < carCount; count++) {
             [cars addObject:[LCHCar car]];

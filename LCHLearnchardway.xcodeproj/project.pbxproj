@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A60FAD7D1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A60FAD7C1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m */; };
+		A650BED21C42C50800C28993 /* LCHController.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BED11C42C50800C28993 /* LCHController.m */; };
+		A650BED31C42C50800C28993 /* LCHController.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BED11C42C50800C28993 /* LCHController.m */; };
 		A690504B1BFF49CA00120215 /* LCHArrayObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050061BFF49CA00120215 /* LCHArrayObject.c */; };
 		A690504C1BFF49CA00120215 /* LCHHumanObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050091BFF49CA00120215 /* LCHHumanObject.c */; };
 		A690504D1BFF49CA00120215 /* LCHLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = A690500C1BFF49CA00120215 /* LCHLinkedList.c */; };
@@ -95,6 +97,8 @@
 /* Begin PBXFileReference section */
 		4D64A9D0C32E4D54ED2D992E /* Pods-ProjectObjCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectObjCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectObjCTests/Pods-ProjectObjCTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A60FAD7C1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHAlphabetSpec.m; sourceTree = "<group>"; };
+		A650BED01C42C50800C28993 /* LCHController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHController.h; sourceTree = "<group>"; };
+		A650BED11C42C50800C28993 /* LCHController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHController.m; sourceTree = "<group>"; };
 		A69050061BFF49CA00120215 /* LCHArrayObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHArrayObject.c; sourceTree = "<group>"; };
 		A69050071BFF49CA00120215 /* LCHArrayObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHArrayObject.h; sourceTree = "<group>"; };
 		A69050091BFF49CA00120215 /* LCHHumanObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHHumanObject.c; sourceTree = "<group>"; };
@@ -250,6 +254,15 @@
 				A6AEC3FB1C0FCC920003F972 /* ProjectObjC */,
 				A69050031BFF49CA00120215 /* ProjectC */,
 			);
+			sourceTree = "<group>";
+		};
+		A650BECF1C42C4C400C28993 /* LCHController */ = {
+			isa = PBXGroup;
+			children = (
+				A650BED01C42C50800C28993 /* LCHController.h */,
+				A650BED11C42C50800C28993 /* LCHController.m */,
+			);
+			path = LCHController;
 			sourceTree = "<group>";
 		};
 		A69050031BFF49CA00120215 /* ProjectC */ = {
@@ -757,6 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				A69DB05B1C2599FA009FFE40 /* LCHObservable */,
+				A650BECF1C42C4C400C28993 /* LCHController */,
 				A6FB99E31C2978A3002629F0 /* LCHContainer */,
 				A6FB99EA1C2B674A002629F0 /* LCHQueue */,
 			);
@@ -995,6 +1009,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A69A76301C170C4100D7F44C /* LCHAccountant.m in Sources */,
+				A650BED21C42C50800C28993 /* LCHController.m in Sources */,
 				A69A75CC1C16339700D7F44C /* LCHEnterprise.m in Sources */,
 				A69A75BE1C13A78100D7F44C /* LCHAlphabet.m in Sources */,
 				A69DB05E1C259A28009FFE40 /* LCHObservable.m in Sources */,
@@ -1038,6 +1053,7 @@
 				A69A75BF1C13A78100D7F44C /* LCHAlphabet.m in Sources */,
 				A69A76511C17119200D7F44C /* LCHCar.m in Sources */,
 				A6AEC4351C0FCC920003F972 /* LCHMan.m in Sources */,
+				A650BED31C42C50800C28993 /* LCHController.m in Sources */,
 				A60FAD7D1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m in Sources */,
 				A69DB05F1C259A28009FFE40 /* LCHObservable.m in Sources */,
 				A69A76311C170C4100D7F44C /* LCHAccountant.m in Sources */,
