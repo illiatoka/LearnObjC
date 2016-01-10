@@ -2,7 +2,7 @@
 #import "LCHContainer.h"
 
 @interface LCHObservable ()
-@property (nonatomic, readwrite, retain)    LCHContainer    *observersContainer;
+@property (nonatomic, readwrite, retain)    NSHashTable *observersHashTable;
 
 @end
 
@@ -14,7 +14,7 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.observersContainer = nil;
+    self.observersHashTable = nil;
     
     [super dealloc];
 }
@@ -22,7 +22,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.observersContainer = [LCHContainer object];
+        self.observersHashTable = [NSHashTable object];
     }
     
     return self;
@@ -32,15 +32,9 @@
 #pragma mark Accessors
 
 - (NSArray *)observers {
-    LCHContainer *observersContainer = self.observersContainer;
-    @synchronized(observersContainer) {
-        NSArray *objects = observersContainer.items;
-        NSMutableArray *observers = [NSMutableArray array];
-        for (NSValue *object in objects) {
-            [observers addObject:object.pointerValue];
-        }
-        
-        return [[observers copy] autorelease];
+    NSHashTable *observersHashTable = self.observersHashTable;
+    @synchronized(observersHashTable) {
+        return [observersHashTable allObjects];
     }
     
     return nil;
@@ -57,26 +51,18 @@
 #pragma mark Public Implementations
 
 - (void)addObserver:(id)observer {
-    LCHContainer *mutableObservers = self.observersContainer;
-    @synchronized(mutableObservers) {
-        if (![self containsObserver:observer]) {
-            NSValue *object = [NSValue valueWithNonretainedObject:observer];
-            [mutableObservers addItem:object];
+    NSHashTable *observersHashTable = self.observersHashTable;
+    @synchronized(observersHashTable) {
+        if (![observersHashTable containsObject:observer]) {
+            [observersHashTable addObject:observer];
         }
     }
 }
 
 - (void)removeObserver:(id)observer {
-    LCHContainer *observersContainer = self.observersContainer;
-    @synchronized(observersContainer) {
-        NSArray *objects = observersContainer.items;
-        for (NSValue *object in objects) {
-            if ([object pointerValue] == observer) {
-                [observersContainer removeItem:object];
-                
-                break;
-            }
-        }
+    NSHashTable *observersHashTable = self.observersHashTable;
+    @synchronized(observersHashTable) {
+        [observersHashTable removeObject:observer];
     }
 }
 
@@ -110,9 +96,9 @@
 }
 
 - (BOOL)containsObserver:(id)observer {
-    NSArray *observers = self.observers;
-    @synchronized(observers) {
-        return [observers containsObject:observer];
+    NSHashTable *observersHashTable = self.observersHashTable;
+    @synchronized(observersHashTable) {
+        return [observersHashTable containsObject:observer];
     }
     
     return NO;
