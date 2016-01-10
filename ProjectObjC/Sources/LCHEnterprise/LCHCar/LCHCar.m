@@ -43,11 +43,15 @@ static const NSUInteger kLCHInitialMoney = 20;
 }
 
 - (void)giveMoney:(NSUInteger)money {
-    self.wallet -= money;
+    @synchronized(self) {
+        self.wallet -= money;
+    }
 }
 
 - (void)takeMoney:(NSUInteger)money {
-    self.wallet += money;
+    @synchronized(self) {
+        self.wallet += money;
+    }
 }
 
 @end

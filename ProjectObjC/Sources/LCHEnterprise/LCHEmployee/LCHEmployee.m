@@ -40,16 +40,16 @@
     [self finishProcessingWithObjectOnMainThred:object];
 }
 
+- (void)finishProcessingWithObjectOnMainThred:(id<LCHCashProtocol>)object {
+    [self performSelectorOnMainThread:@selector(finishWithObject:) withObject:object waitUntilDone:YES];
+}
+
 - (void)processWithObject:(id<LCHCashProtocol>)object {
     [self doesNotRecognizeSelector:_cmd];
 }
 
 - (void)finishWithObject:(id<LCHCashProtocol>)object {
     [self doesNotRecognizeSelector:_cmd];
-}
-
-- (void)finishProcessingWithObjectOnMainThred:(id<LCHCashProtocol>)object {
-    [self performSelectorOnMainThread:@selector(finishWithObject:) withObject:object waitUntilDone:YES];
 }
 
 #pragma mark -
@@ -73,11 +73,15 @@
 }
 
 - (void)giveMoney:(NSUInteger)money {
-    self.wallet -= money;
+    @synchronized(self) {
+        self.wallet -= money;
+    }
 }
 
 - (void)takeMoney:(NSUInteger)money {
-    self.wallet += money;
+    @synchronized(self) {
+        self.wallet += money;
+    }
 }
 
 @end
