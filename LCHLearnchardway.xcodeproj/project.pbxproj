@@ -10,6 +10,14 @@
 		A60FAD7D1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A60FAD7C1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m */; };
 		A650BED21C42C50800C28993 /* LCHController.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BED11C42C50800C28993 /* LCHController.m */; };
 		A650BED31C42C50800C28993 /* LCHController.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BED11C42C50800C28993 /* LCHController.m */; };
+		A650BED71C42D16D00C28993 /* LCHDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BED61C42D16D00C28993 /* LCHDispatcher.m */; };
+		A650BED81C42D16D00C28993 /* LCHDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BED61C42D16D00C28993 /* LCHDispatcher.m */; };
+		A650BEDC1C42D71B00C28993 /* LCHWashermanDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BEDB1C42D71B00C28993 /* LCHWashermanDispatcher.m */; };
+		A650BEDD1C42D71B00C28993 /* LCHWashermanDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BEDB1C42D71B00C28993 /* LCHWashermanDispatcher.m */; };
+		A650BEE11C42D75200C28993 /* LCHAccountantDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BEE01C42D75200C28993 /* LCHAccountantDispatcher.m */; };
+		A650BEE21C42D75200C28993 /* LCHAccountantDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BEE01C42D75200C28993 /* LCHAccountantDispatcher.m */; };
+		A650BEE61C42EDC100C28993 /* LCHManagerDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BEE51C42EDC100C28993 /* LCHManagerDispatcher.m */; };
+		A650BEE71C42EDC100C28993 /* LCHManagerDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A650BEE51C42EDC100C28993 /* LCHManagerDispatcher.m */; };
 		A690504B1BFF49CA00120215 /* LCHArrayObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050061BFF49CA00120215 /* LCHArrayObject.c */; };
 		A690504C1BFF49CA00120215 /* LCHHumanObject.c in Sources */ = {isa = PBXBuildFile; fileRef = A69050091BFF49CA00120215 /* LCHHumanObject.c */; };
 		A690504D1BFF49CA00120215 /* LCHLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = A690500C1BFF49CA00120215 /* LCHLinkedList.c */; };
@@ -99,6 +107,14 @@
 		A60FAD7C1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHAlphabetSpec.m; sourceTree = "<group>"; };
 		A650BED01C42C50800C28993 /* LCHController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHController.h; sourceTree = "<group>"; };
 		A650BED11C42C50800C28993 /* LCHController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHController.m; sourceTree = "<group>"; };
+		A650BED51C42D16D00C28993 /* LCHDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHDispatcher.h; sourceTree = "<group>"; };
+		A650BED61C42D16D00C28993 /* LCHDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHDispatcher.m; sourceTree = "<group>"; };
+		A650BEDA1C42D71B00C28993 /* LCHWashermanDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHWashermanDispatcher.h; sourceTree = "<group>"; };
+		A650BEDB1C42D71B00C28993 /* LCHWashermanDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHWashermanDispatcher.m; sourceTree = "<group>"; };
+		A650BEDF1C42D75200C28993 /* LCHAccountantDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHAccountantDispatcher.h; sourceTree = "<group>"; };
+		A650BEE01C42D75200C28993 /* LCHAccountantDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHAccountantDispatcher.m; sourceTree = "<group>"; };
+		A650BEE41C42EDC100C28993 /* LCHManagerDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHManagerDispatcher.h; sourceTree = "<group>"; };
+		A650BEE51C42EDC100C28993 /* LCHManagerDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHManagerDispatcher.m; sourceTree = "<group>"; };
 		A69050061BFF49CA00120215 /* LCHArrayObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHArrayObject.c; sourceTree = "<group>"; };
 		A69050071BFF49CA00120215 /* LCHArrayObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHArrayObject.h; sourceTree = "<group>"; };
 		A69050091BFF49CA00120215 /* LCHHumanObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LCHHumanObject.c; sourceTree = "<group>"; };
@@ -263,6 +279,45 @@
 				A650BED11C42C50800C28993 /* LCHController.m */,
 			);
 			path = LCHController;
+			sourceTree = "<group>";
+		};
+		A650BED41C42D14600C28993 /* LCHDispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				A650BEE31C42ED9900C28993 /* LCHManagerDispatcher */,
+				A650BEDE1C42D72E00C28993 /* LCHAccountantDispatcher */,
+				A650BED91C42D6E600C28993 /* LCHWashermanDispatcher */,
+				A650BED51C42D16D00C28993 /* LCHDispatcher.h */,
+				A650BED61C42D16D00C28993 /* LCHDispatcher.m */,
+			);
+			path = LCHDispatcher;
+			sourceTree = "<group>";
+		};
+		A650BED91C42D6E600C28993 /* LCHWashermanDispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				A650BEDA1C42D71B00C28993 /* LCHWashermanDispatcher.h */,
+				A650BEDB1C42D71B00C28993 /* LCHWashermanDispatcher.m */,
+			);
+			path = LCHWashermanDispatcher;
+			sourceTree = "<group>";
+		};
+		A650BEDE1C42D72E00C28993 /* LCHAccountantDispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				A650BEDF1C42D75200C28993 /* LCHAccountantDispatcher.h */,
+				A650BEE01C42D75200C28993 /* LCHAccountantDispatcher.m */,
+			);
+			path = LCHAccountantDispatcher;
+			sourceTree = "<group>";
+		};
+		A650BEE31C42ED9900C28993 /* LCHManagerDispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				A650BEE41C42EDC100C28993 /* LCHManagerDispatcher.h */,
+				A650BEE51C42EDC100C28993 /* LCHManagerDispatcher.m */,
+			);
+			path = LCHManagerDispatcher;
 			sourceTree = "<group>";
 		};
 		A69050031BFF49CA00120215 /* ProjectC */ = {
@@ -769,6 +824,7 @@
 		A6D269E01C18A79C00EFC50C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A650BED41C42D14600C28993 /* LCHDispatcher */,
 				A69DB05B1C2599FA009FFE40 /* LCHObservable */,
 				A650BECF1C42C4C400C28993 /* LCHController */,
 				A6FB99E31C2978A3002629F0 /* LCHContainer */,
@@ -1013,8 +1069,12 @@
 				A69A75CC1C16339700D7F44C /* LCHEnterprise.m in Sources */,
 				A69A75BE1C13A78100D7F44C /* LCHAlphabet.m in Sources */,
 				A69DB05E1C259A28009FFE40 /* LCHObservable.m in Sources */,
+				A650BEE11C42D75200C28993 /* LCHAccountantDispatcher.m in Sources */,
 				A6AEC4241C0FCC920003F972 /* main.m in Sources */,
+				A650BED71C42D16D00C28993 /* LCHDispatcher.m in Sources */,
+				A650BEDC1C42D71B00C28993 /* LCHWashermanDispatcher.m in Sources */,
 				A69A75C01C13A78100D7F44C /* LCHClasterAlphabet.m in Sources */,
+				A650BEE61C42EDC100C28993 /* LCHManagerDispatcher.m in Sources */,
 				A6B37E8D1C172CEE00208724 /* LCHEmployee.m in Sources */,
 				A69A76361C170C4100D7F44C /* LCHWasherman.m in Sources */,
 				A6AEC42A1C0FCC920003F972 /* NSString+LCHExtensions.m in Sources */,
@@ -1035,12 +1095,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A650BED81C42D16D00C28993 /* LCHDispatcher.m in Sources */,
 				A69A75C51C13A78100D7F44C /* LCHStringsAlphabet.m in Sources */,
 				A69A75B31C13A5FE00D7F44C /* LCHHumanSpec.m in Sources */,
 				A69A76351C170C4100D7F44C /* LCHManager.m in Sources */,
 				A69A76371C170C4100D7F44C /* LCHWasherman.m in Sources */,
 				A6AEC4371C0FCC920003F972 /* LCHWoman.m in Sources */,
 				A6AEC4271C0FCC920003F972 /* NSObject+LCHExtensions.m in Sources */,
+				A650BEE71C42EDC100C28993 /* LCHManagerDispatcher.m in Sources */,
 				A69A75B11C13A1AD00D7F44C /* NSString+LCHExtansionsSpec.m in Sources */,
 				A6FB99E71C2978D1002629F0 /* LCHContainer.m in Sources */,
 				A69A75C11C13A78100D7F44C /* LCHClasterAlphabet.m in Sources */,
@@ -1056,7 +1118,9 @@
 				A650BED31C42C50800C28993 /* LCHController.m in Sources */,
 				A60FAD7D1C0FCF1C00E4A5F5 /* LCHAlphabetSpec.m in Sources */,
 				A69DB05F1C259A28009FFE40 /* LCHObservable.m in Sources */,
+				A650BEE21C42D75200C28993 /* LCHAccountantDispatcher.m in Sources */,
 				A69A76311C170C4100D7F44C /* LCHAccountant.m in Sources */,
+				A650BEDD1C42D71B00C28993 /* LCHWashermanDispatcher.m in Sources */,
 				A6B37E8E1C172CEE00208724 /* LCHEmployee.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

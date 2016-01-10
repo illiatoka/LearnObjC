@@ -4,8 +4,8 @@
 @protocol LCHObserverProtocol <NSObject>
 
 @optional
-- (void)employeeDidStartWork:(id)employee;
-- (void)employeeDidFinishWork:(id)employee;
-- (void)employeeDidBecomeFree:(id)employee;
+- (void)handlerDidStartWork:(id)handler;
+- (void)handlerDidFinishWork:(id)handler;
+- (void)handlerDidBecomeFree:(id)handler;
 
 @end

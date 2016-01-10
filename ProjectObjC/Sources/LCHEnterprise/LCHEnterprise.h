@@ -4,7 +4,7 @@
 @class LCHContainer;
 
 @interface LCHEnterprise : NSObject
-@property (nonatomic, readonly) LCHContainer    *employees;
+@property (nonatomic, readonly) NSArray *handlers;
 
 - (void)performWorkWithCar:(LCHCar *)car;
 - (void)performWorkWithCars:(NSArray *)cars;

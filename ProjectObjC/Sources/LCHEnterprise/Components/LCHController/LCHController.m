@@ -1,22 +1,26 @@
 #import "LCHController.h"
-#import "LCHObserverProtocol.h"
 #import "LCHEnterprise.h"
-#import "LCHQueue.h"
+
+#import "LCHWashermanDispatcher.h"
+#import "LCHAccountantDispatcher.h"
+#import "LCHManagerDispatcher.h"
 
 #import "LCHManager.h"
 #import "LCHAccountant.h"
 #import "LCHWasherman.h"
 
-@interface LCHController () <LCHObserverProtocol>
+@interface LCHController ()
 @property (nonatomic, assign)   LCHEnterprise   *enterprise;
-@property (nonatomic, retain)   LCHQueue        *carsQueue;
-@property (nonatomic, retain)   LCHQueue        *washermanQueue;
-@property (nonatomic, retain)   LCHQueue        *accountantQueue;
 
-- (void)performBackgroundWorkWithObject:(id)car;
+@property (nonatomic, retain)   LCHWashermanDispatcher      *washermanDispatcher;
+@property (nonatomic, retain)   LCHAccountantDispatcher     *accountantDispatcher;
+@property (nonatomic, retain)   LCHManagerDispatcher        *managerDispatcher;
+
+- (void)performBackgroundWorkWithObject:(id)object;
 - (void)performBackgroundWorkWithObjects:(NSArray *)cars;
 
-- (id)freeEmployeeOfClass:(Class)class;
+- (void)subscribeForNotifications;
+- (void)unsubscribeFromNotifications;
 
 @end
 
@@ -26,35 +30,31 @@
 #pragma mark Class Methods
 
 + (instancetype)controllerWithEnterprise:(id)enterprise {
-    return [[[self alloc] initWIthEnterprise:enterprise] autorelease];
+    return [[[self alloc] initWithEnterprise:enterprise] autorelease];
 }
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.carsQueue = nil;
-    self.washermanQueue = nil;
-    self.accountantQueue = nil;
+    [self unsubscribeFromNotifications];
+    
+    self.washermanDispatcher = nil;
+    self.accountantDispatcher = nil;
+    self.managerDispatcher = nil;
     
     [super dealloc];
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.carsQueue = [LCHQueue object];
-        self.washermanQueue = [LCHQueue object];
-        self.accountantQueue = [LCHQueue object];
-    }
-    
-    return self;
-}
-
-- (instancetype)initWIthEnterprise:(id)enterprise {
+- (instancetype)initWithEnterprise:(id)enterprise {
     self = [self init];
     if (self) {
         self.enterprise = enterprise;
+        self.washermanDispatcher = [LCHWashermanDispatcher dispatcherWithEnterprise:enterprise];
+        self.accountantDispatcher = [LCHAccountantDispatcher dispatcherWithEnterprise:enterprise];
+        self.managerDispatcher = [LCHManagerDispatcher dispatcherWithEnterprise:enterprise];
+        
+        [self subscribeForNotifications];
     }
     
     return self;
@@ -74,14 +74,9 @@
 #pragma -
 #pragma mark Private Implementations
 
-- (void)performBackgroundWorkWithObject:(id)car {
+- (void)performBackgroundWorkWithObject:(id)object {
     @autoreleasepool {
-        LCHWasherman *washerman = [self freeEmployeeOfClass:[LCHWasherman class]];
-        if (washerman) {
-            [washerman performWorkWithObject:car];
-        } else {
-            [self.carsQueue addToQueue:car];
-        }
+        [self.washermanDispatcher performWorkWithObject:object];
     }
 }
 
@@ -93,59 +88,26 @@
     }
 }
 
-- (id)freeEmployeeOfClass:(Class)class {
-    for (id employee in self.enterprise.employees.items) {
-        if ([employee isMemberOfClass:class]) {
-            @synchronized(employee) {
-                if (kLCHObjectIsFree == [employee state]) {
-                    [employee setState:kLCHObjectProcessed];
-                    
-                    return employee;
-                }
-            }
-        }
+- (void)subscribeForNotifications {
+    for (id handler in self.enterprise.handlers) {
+        [handler addObserver:self];
     }
-    
-    return nil;
+}
+
+- (void)unsubscribeFromNotifications {
+    for (id handler in self.enterprise.handlers) {
+        [handler removeObserver:self];
+    }
 }
 
 #pragma mark -
 #pragma mark LCHObserverProtocol
 
-- (void)employeeDidFinishWork:(id)employee {
-    if ([employee class] == [LCHWasherman class]) {
-        LCHAccountant *accountant = [self freeEmployeeOfClass:[LCHAccountant class]];
-        if (accountant) {
-            [accountant performWorkWithObject:employee];
-        } else {
-            [self.washermanQueue addItem:employee];
-        }
-    } else if ([employee class] == [LCHAccountant class]) {
-        LCHManager *manager = [self freeEmployeeOfClass:[LCHManager class]];
-        if (manager) {
-            [manager performWorkWithObject:employee];
-        } else {
-            [self.accountantQueue addItem:employee];
-        }
-    }
-}
-
-- (void)employeeDidBecomeFree:(id)employee {
-    if ([employee class] == [LCHWasherman class]) {
-        id car = [self.carsQueue nextObjectFromQueue];
-        if (car) {
-            [self performWorkWithObject:(id)car];
-        }
-    } else if ([employee class] == [LCHAccountant class]) {
-        LCHWasherman *washerman = [self.washermanQueue nextObjectFromQueue];
-        if (washerman) {
-            [employee performWorkWithObject:washerman];
-        }
-    } else if ([employee class] == [LCHManager class]) {
-        LCHAccountant *accountant = [self.accountantQueue nextObjectFromQueue];
-        if (accountant) {
-            [employee performWorkWithObject:accountant];
-        }
+- (void)handlerDidFinishWork:(id)handler {
+    if ([handler class] == [LCHWasherman class]) {
+        [self.accountantDispatcher performWorkWithObject:handler];
+    } else if ([handler class] == [LCHAccountant class]) {
+        [self.managerDispatcher performWorkWithObject:handler];
     }
 }
 

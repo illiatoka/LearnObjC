@@ -7,24 +7,23 @@
 #import "LCHWasherman.h"
 
 @interface LCHEnterprise ()
-@property (nonatomic, retain)   LCHContainer    *employees;
+@property (nonatomic, retain)   LCHContainer    *handlersContainer;
 @property (nonatomic, retain)   LCHController   *controller;
 
-- (void)hireStaff;
-- (void)retireStaff;
+- (void)hireEmployees;
 
 @end
 
 @implementation LCHEnterprise
 
+@dynamic handlers;
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [self retireStaff];
-    
-    self.employees = nil;
     self.controller = nil;
+    self.handlersContainer = nil;
     
     [super dealloc];
 }
@@ -32,13 +31,20 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.employees = [LCHContainer object];
-        self.controller = [LCHController controllerWithEnterprise:self];
+        self.handlersContainer = [LCHContainer object];
+        [self hireEmployees];
         
-        [self hireStaff];
+        self.controller = [LCHController controllerWithEnterprise:self];
     }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (NSArray *)handlers {
+    return self.handlersContainer.items;
 }
 
 #pragma mark -
@@ -55,20 +61,20 @@
 #pragma mark -
 #pragma mark Private Implementations
 
-- (void)hireStaff {
-    LCHContainer *employeesContainer = self.employees;
-    NSArray *employees = @[[LCHWasherman object], [LCHWasherman object], [LCHAccountant object], [LCHManager object]];
+- (void)hireEmployees {
+    LCHContainer *handlersContainer = self.handlersContainer;
+    NSArray *employees = @[[LCHWasherman object],
+                           [LCHWasherman object],
+                           [LCHWasherman object],
+                           [LCHWasherman object],
+                           [LCHAccountant object],
+                           [LCHAccountant object],
+                           [LCHAccountant object],
+                           [LCHManager object],
+                           [LCHManager object]];
     
     for (id employee in employees) {
-        [employee addObserver:self.controller];
-        [employeesContainer addItem:employee];
-    }
-}
-
-- (void)retireStaff {
-    LCHController *controller = self.controller;
-    for (id employee in self.employees.items) {
-        [employee removeObserver:controller];
+        [handlersContainer addItem:employee];
     }
 }
 

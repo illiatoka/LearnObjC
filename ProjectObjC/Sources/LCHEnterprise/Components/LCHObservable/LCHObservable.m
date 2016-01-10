@@ -99,11 +99,11 @@
 
 - (SEL)selectorForState:(LCHObjectState)state {
     if (kLCHObjectProcessed == state) {
-        return @selector(employeeDidStartWork:);
+        return @selector(handlerDidStartWork:);
     } else if (kLCHObjectFinished == state) {
-        return @selector(employeeDidFinishWork:);
+        return @selector(handlerDidFinishWork:);
     } else if (kLCHObjectIsFree) {
-        return @selector(employeeDidBecomeFree:);
+        return @selector(handlerDidBecomeFree:);
     }
     
     return NULL;

@@ -1,10 +1,11 @@
 #import <Foundation/Foundation.h>
+#import "LCHObserverProtocol.h"
 
-@interface LCHController : NSObject
+@interface LCHController : NSObject <LCHObserverProtocol>
 
 + (instancetype)controllerWithEnterprise:(id)enterprise;
 
-- (instancetype)initWIthEnterprise:(id)enterprise;
+- (instancetype)initWithEnterprise:(id)enterprise;
 
 - (void)performWorkWithObject:(id)object;
 - (void)performWorkWithObjects:(NSArray *)objects;
