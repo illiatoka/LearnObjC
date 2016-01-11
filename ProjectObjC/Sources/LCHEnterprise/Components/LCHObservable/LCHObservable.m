@@ -84,15 +84,19 @@
 }
 
 - (SEL)selectorForState:(LCHObjectState)state {
-    if (kLCHObjectProcessed == state) {
-        return @selector(handlerDidStartWork:);
-    } else if (kLCHObjectFinished == state) {
-        return @selector(handlerDidFinishWork:);
-    } else if (kLCHObjectIsFree) {
-        return @selector(handlerDidBecomeFree:);
+    switch (state) {
+        case kLCHObjectProcessed:
+           return @selector(handlerDidStartWork:);
+            
+        case kLCHObjectFinished:
+            return @selector(handlerDidFinishWork:);
+            
+        case kLCHObjectIsFree:
+             return @selector(handlerDidBecomeFree:);
+            
+        default:
+            return NULL;
     }
-    
-    return NULL;
 }
 
 - (BOOL)containsObserver:(id)observer {
