@@ -46,7 +46,8 @@
 
     NSMutableArray *cars = [NSMutableArray arrayWithCapacity:carCount];
     NSMutableArray *cars2 = [NSMutableArray arrayWithCapacity:carCount];
-
+    NSMutableArray *cars3 = [NSMutableArray arrayWithCapacity:carCount];
+    
     for (NSUInteger count = 0; count < carCount; count++) {
         [cars addObject:[LCHCar car]];
     }
@@ -55,8 +56,16 @@
         [cars2 addObject:[LCHCar car]];
     }
 
-    [self performWorkWithObjects:cars];
+    for (NSUInteger count = 0; count < carCount; count++) {
+        [cars3 addObject:[LCHCar car]];
+    }
+    
+    for (id car in cars) {
+        [self performBackgroundWorkWithObject:car];
+    }
+
     [self performWorkWithObjects:cars2];
+    [self performWorkWithObjects:cars3];
 }
 
 - (void)performWorkWithObject:(id)object {
