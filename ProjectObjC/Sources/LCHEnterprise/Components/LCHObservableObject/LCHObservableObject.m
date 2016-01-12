@@ -19,11 +19,10 @@
     [super dealloc];
 }
 
-// TODO: Fix NSHashTable initialization
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.observersHashTable = [NSHashTable object];
+        self.observersHashTable = [NSHashTable weakObjectsHashTable];
     }
     
     return self;

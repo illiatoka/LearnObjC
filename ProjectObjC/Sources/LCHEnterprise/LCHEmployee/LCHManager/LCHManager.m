@@ -22,7 +22,7 @@
     }
 }
 
-- (void)finishWithObject:(LCHAccountant *)object {
+- (void)finishProcessingWithObject:(LCHAccountant *)object {
     @synchronized(self) {
         object.state = kLCHEmployeeDidBecomeFree;
         self.state = kLCHEmployeeDidBecomeFree;

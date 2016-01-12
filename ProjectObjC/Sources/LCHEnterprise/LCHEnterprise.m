@@ -9,8 +9,10 @@
 @property (nonatomic, retain)   LCHDispatcher   *washermanDispatcher;
 @property (nonatomic, retain)   LCHDispatcher   *accountantDispatcher;
 @property (nonatomic, retain)   LCHDispatcher   *managerDispatcher;
+@property (nonatomic, retain)   LCHContainer    *employees;
 
 - (void)hireEmployees;
+- (void)retireEmployees;
 
 @end
 
@@ -19,8 +21,9 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-// TODO: Add retireEmployee method
 - (void)dealloc {
+    [self retireEmployees];
+    
     self.washermanDispatcher = nil;
     self.accountantDispatcher = nil;
     self.managerDispatcher = nil;
@@ -56,21 +59,48 @@
     NSArray *accountants = @[[LCHAccountant object], [LCHAccountant object], [LCHAccountant object]];
     NSArray *managers = @[[LCHManager object], [LCHManager object]];
     
+    LCHDispatcher *washermanDispatcher = self.washermanDispatcher;
+    LCHDispatcher *accountantDispatcher = self.accountantDispatcher;
+    LCHDispatcher *managerDispatcher = self.managerDispatcher;
+    
+    LCHContainer *washermanContainer = washermanDispatcher.handlers;
+    LCHContainer *accountantContainer = accountantDispatcher.handlers;
+    LCHContainer *managerContainer = managerDispatcher.handlers;
+    LCHContainer *employees = self.employees;
+    
     for (id employee in washermans) {
-        [self.washermanDispatcher.handlers addItem:employee];
+        [washermanContainer addItem:employee];
+        [employees addItem:employee];
         [employee addObserver:self];
-        [employee addObserver:self.washermanDispatcher];
+        [employee addObserver:washermanDispatcher];
     }
     
     for (id employee in accountants) {
-        [self.accountantDispatcher.handlers addItem:employee];
+        [accountantContainer addItem:employee];
+        [employees addItem:employee];
         [employee addObserver:self];
-        [employee addObserver:self.accountantDispatcher];
+        [employee addObserver:accountantDispatcher];
     }
     
     for (id employee in managers) {
-        [self.managerDispatcher.handlers addItem:employee];
-        [employee addObserver:self.managerDispatcher];
+        [managerContainer addItem:employee];
+        [employees addItem:employee];
+        [employee addObserver:managerDispatcher];
+    }
+}
+
+// TODO: Is it possible and necessary to do something with this shit?!
+- (void)retireEmployees {
+    LCHDispatcher *washermanDispatcher = self.washermanDispatcher;
+    LCHDispatcher *accountantDispatcher = self.accountantDispatcher;
+    LCHDispatcher *managerDispatcher = self.managerDispatcher;
+    NSArray *employees = self.employees.items;
+    
+    for (id employee in employees) {
+        [employee removeObserver:self];
+        [employee removeObserver:washermanDispatcher];
+        [employee removeObserver:accountantDispatcher];
+        [employee removeObserver:managerDispatcher];
     }
 }
 
