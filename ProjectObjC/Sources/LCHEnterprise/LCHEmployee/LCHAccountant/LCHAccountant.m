@@ -24,8 +24,8 @@
 
 - (void)finishWithObject:(LCHWasherman *)object {
     @synchronized(self) {
-        object.state = kLCHObjectIsFree;
-        self.state = kLCHObjectFinished;
+        object.state = kLCHEmployeeDidBecomeFree;
+        self.state = kLCHEmployeeDidFinish;
     }
 }
 

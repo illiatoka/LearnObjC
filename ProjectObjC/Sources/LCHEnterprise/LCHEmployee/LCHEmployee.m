@@ -19,7 +19,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.state = kLCHObjectIsFree;
+        self.state = kLCHEmployeeDidBecomeFree;
     }
     
     return self;
@@ -50,6 +50,25 @@
 
 - (void)finishWithObject:(id<LCHCashProtocol>)object {
     [self doesNotRecognizeSelector:_cmd];
+}
+
+#pragma mark -
+#pragma mark LCHObservableObject
+
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case kLCHEmployeeDidStart:
+            return @selector(employeeDidStart:);
+            
+        case kLCHEmployeeDidFinish:
+            return @selector(employeeDidFinish:);
+            
+        case kLCHEmployeeDidBecomeFree:
+            return @selector(employeeDidBecomeFree:);
+            
+        default:
+            return NULL;
+    }
 }
 
 #pragma mark -

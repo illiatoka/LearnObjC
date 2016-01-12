@@ -1,26 +1,12 @@
 #import "LCHController.h"
 #import "LCHEnterprise.h"
-
-#import "LCHWashermanDispatcher.h"
-#import "LCHAccountantDispatcher.h"
-#import "LCHManagerDispatcher.h"
-
-#import "LCHManager.h"
-#import "LCHAccountant.h"
-#import "LCHWasherman.h"
+#import "LCHCar.h"
 
 @interface LCHController ()
-@property (nonatomic, assign)   LCHEnterprise   *enterprise;
-
-@property (nonatomic, retain)   LCHWashermanDispatcher      *washermanDispatcher;
-@property (nonatomic, retain)   LCHAccountantDispatcher     *accountantDispatcher;
-@property (nonatomic, retain)   LCHManagerDispatcher        *managerDispatcher;
+@property (nonatomic, retain)   LCHEnterprise   *enterprise;
 
 - (void)performBackgroundWorkWithObject:(id)object;
 - (void)performBackgroundWorkWithObjects:(NSArray *)cars;
-
-- (void)subscribeForNotifications;
-- (void)unsubscribeFromNotifications;
 
 @end
 
@@ -37,11 +23,7 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [self unsubscribeFromNotifications];
-    
-    self.washermanDispatcher = nil;
-    self.accountantDispatcher = nil;
-    self.managerDispatcher = nil;
+    self.enterprise = nil;
     
     [super dealloc];
 }
@@ -50,11 +32,6 @@
     self = [self init];
     if (self) {
         self.enterprise = enterprise;
-        self.washermanDispatcher = [LCHWashermanDispatcher dispatcherWithEnterprise:enterprise];
-        self.accountantDispatcher = [LCHAccountantDispatcher dispatcherWithEnterprise:enterprise];
-        self.managerDispatcher = [LCHManagerDispatcher dispatcherWithEnterprise:enterprise];
-        
-        [self subscribeForNotifications];
     }
     
     return self;
@@ -62,6 +39,24 @@
 
 #pragma mark -
 #pragma mark Public Implementations
+
+- (void)startWork {
+    NSUInteger carCount = 4000;
+
+    NSMutableArray *cars = [NSMutableArray arrayWithCapacity:carCount];
+    NSMutableArray *cars2 = [NSMutableArray arrayWithCapacity:carCount];
+
+    for (NSUInteger count = 0; count < carCount; count++) {
+        [cars addObject:[LCHCar car]];
+    }
+
+    for (NSUInteger count = 0; count < carCount; count++) {
+        [cars2 addObject:[LCHCar car]];
+    }
+
+    [self performWorkWithObjects:cars];
+    [self performWorkWithObjects:cars2];
+}
 
 - (void)performWorkWithObject:(id)object {
     [self performSelectorInBackground:@selector(performBackgroundWorkWithObject:) withObject:object];
@@ -76,7 +71,7 @@
 
 - (void)performBackgroundWorkWithObject:(id)object {
     @autoreleasepool {
-        [self.washermanDispatcher performWorkWithObject:object];
+        [self.enterprise performWorkWithCar:object];
     }
 }
 
@@ -85,29 +80,6 @@
         for (id object in objects) {
             [self performBackgroundWorkWithObject:object];
         }
-    }
-}
-
-- (void)subscribeForNotifications {
-    for (id handler in self.enterprise.handlers) {
-        [handler addObserver:self];
-    }
-}
-
-- (void)unsubscribeFromNotifications {
-    for (id handler in self.enterprise.handlers) {
-        [handler removeObserver:self];
-    }
-}
-
-#pragma mark -
-#pragma mark LCHObserverProtocol
-
-- (void)handlerDidFinishWork:(id)handler {
-    if ([handler class] == [LCHWasherman class]) {
-        [self.accountantDispatcher performWorkWithObject:handler];
-    } else if ([handler class] == [LCHAccountant class]) {
-        [self.managerDispatcher performWorkWithObject:handler];
     }
 }
 

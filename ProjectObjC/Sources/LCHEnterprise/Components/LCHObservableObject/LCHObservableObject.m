@@ -1,4 +1,4 @@
-#import "LCHObservable.h"
+#import "LCHObservableObject.h"
 #import "LCHContainer.h"
 
 @interface LCHObservable ()
@@ -19,6 +19,7 @@
     [super dealloc];
 }
 
+// TODO: Fix NSHashTable initialization
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -40,7 +41,7 @@
     return nil;
 }
 
-- (void)setState:(LCHObjectState)state {
+- (void)setState:(NSUInteger)state {
     if (_state != state) {
         _state = state;
         [self notifyWithSelector:[self selectorForState:state] withObject:self];
@@ -66,6 +67,10 @@
     }
 }
 
+- (BOOL)containsObserver:(id)observer {
+    return [self.observersHashTable containsObject:observer];
+}
+
 - (void)notifyWithSelector:(SEL)selector {
     [self notifyWithSelector:selector withObject:nil];
 }
@@ -83,29 +88,10 @@
     }
 }
 
-- (SEL)selectorForState:(LCHObjectState)state {
-    switch (state) {
-        case kLCHObjectProcessed:
-           return @selector(handlerDidStartWork:);
-            
-        case kLCHObjectFinished:
-            return @selector(handlerDidFinishWork:);
-            
-        case kLCHObjectIsFree:
-             return @selector(handlerDidBecomeFree:);
-            
-        default:
-            return NULL;
-    }
-}
-
-- (BOOL)containsObserver:(id)observer {
-    NSHashTable *observersHashTable = self.observersHashTable;
-    @synchronized(observersHashTable) {
-        return [observersHashTable containsObject:observer];
-    }
+- (SEL)selectorForState:(NSUInteger)state {
+    [self doesNotRecognizeSelector:_cmd];
     
-    return NO;
+    return NULL;
 }
 
 @end

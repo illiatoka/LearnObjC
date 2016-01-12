@@ -24,8 +24,8 @@
 
 - (void)finishWithObject:(LCHAccountant *)object {
     @synchronized(self) {
-        object.state = kLCHObjectIsFree;
-        self.state = kLCHObjectIsFree;
+        object.state = kLCHEmployeeDidBecomeFree;
+        self.state = kLCHEmployeeDidBecomeFree;
     }
 }
 

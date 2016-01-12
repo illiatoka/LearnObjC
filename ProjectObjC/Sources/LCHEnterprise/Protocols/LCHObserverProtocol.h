@@ -1,11 +1,10 @@
 #import <Foundation/Foundation.h>
-#import "LCHCashProtocol.h"
 
 @protocol LCHObserverProtocol <NSObject>
 
 @optional
-- (void)handlerDidStartWork:(id)handler;
-- (void)handlerDidFinishWork:(id)handler;
-- (void)handlerDidBecomeFree:(id)handler;
+- (void)employeeDidStart:(id)employee;
+- (void)employeeDidFinish:(id)employee;
+- (void)employeeDidBecomeFree:(id)employee;
 
 @end

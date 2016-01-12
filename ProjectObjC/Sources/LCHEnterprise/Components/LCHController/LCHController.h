@@ -7,7 +7,6 @@
 
 - (instancetype)initWithEnterprise:(id)enterprise;
 
-- (void)performWorkWithObject:(id)object;
-- (void)performWorkWithObjects:(NSArray *)objects;
+- (void)startWork;
 
 @end

@@ -1,14 +1,14 @@
 #import "LCHEnterprise.h"
 #import "LCHContainer.h"
-#import "LCHController.h"
-
+#import "LCHDispatcher.h"
 #import "LCHManager.h"
 #import "LCHAccountant.h"
 #import "LCHWasherman.h"
 
 @interface LCHEnterprise ()
-@property (nonatomic, retain)   LCHContainer    *handlersContainer;
-@property (nonatomic, retain)   LCHController   *controller;
+@property (nonatomic, retain)   LCHDispatcher   *washermanDispatcher;
+@property (nonatomic, retain)   LCHDispatcher   *accountantDispatcher;
+@property (nonatomic, retain)   LCHDispatcher   *managerDispatcher;
 
 - (void)hireEmployees;
 
@@ -16,14 +16,14 @@
 
 @implementation LCHEnterprise
 
-@dynamic handlers;
-
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
+// TODO: Add retireEmployee method
 - (void)dealloc {
-    self.controller = nil;
-    self.handlersContainer = nil;
+    self.washermanDispatcher = nil;
+    self.accountantDispatcher = nil;
+    self.managerDispatcher = nil;
     
     [super dealloc];
 }
@@ -31,50 +31,56 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.handlersContainer = [LCHContainer object];
+        self.washermanDispatcher = [LCHDispatcher object];
+        self.accountantDispatcher = [LCHDispatcher object];
+        self.managerDispatcher = [LCHDispatcher object];
         [self hireEmployees];
-        
-        self.controller = [LCHController controllerWithEnterprise:self];
     }
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Accessors
-
-- (NSArray *)handlers {
-    return self.handlersContainer.items;
-}
-
-#pragma mark -
 #pragma mark Public Implementations
 
 - (void)performWorkWithCar:(LCHCar *)car {
-    [self.controller performWorkWithObject:(id<LCHCashProtocol>)car];
-}
-
-- (void)performWorkWithCars:(NSArray *)cars {
-    [self.controller performWorkWithObjects:cars];
+    [self.washermanDispatcher performWorkWithObject:car];
 }
 
 #pragma mark -
 #pragma mark Private Implementations
 
 - (void)hireEmployees {
-    LCHContainer *handlersContainer = self.handlersContainer;
-    NSArray *employees = @[[LCHWasherman object],
-                           [LCHWasherman object],
-                           [LCHWasherman object],
-                           [LCHWasherman object],
-                           [LCHAccountant object],
-                           [LCHAccountant object],
-                           [LCHAccountant object],
-                           [LCHManager object],
-                           [LCHManager object]];
+    NSArray *washermans = @[[LCHWasherman object], [LCHWasherman object], [LCHWasherman object], [LCHWasherman object]];
+    NSArray *accountants = @[[LCHAccountant object], [LCHAccountant object], [LCHAccountant object]];
+    NSArray *managers = @[[LCHManager object], [LCHManager object]];
     
-    for (id employee in employees) {
-        [handlersContainer addItem:employee];
+    for (id employee in washermans) {
+        [self.washermanDispatcher.handlers addItem:employee];
+        [employee addObserver:self];
+        [employee addObserver:self.washermanDispatcher];
+    }
+    
+    for (id employee in accountants) {
+        [self.accountantDispatcher.handlers addItem:employee];
+        [employee addObserver:self];
+        [employee addObserver:self.accountantDispatcher];
+    }
+    
+    for (id employee in managers) {
+        [self.managerDispatcher.handlers addItem:employee];
+        [employee addObserver:self.managerDispatcher];
+    }
+}
+
+#pragma mark -
+#pragma mark LCHObserverProtocol
+
+- (void)employeeDidFinish:(id)employee {
+    if ([employee class] == [LCHWasherman class]) {
+        [self.accountantDispatcher performWorkWithObject:employee];
+    } else if ([employee class] == [LCHAccountant class]) {
+        [self.managerDispatcher performWorkWithObject:employee];
     }
 }
 

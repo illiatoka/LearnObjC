@@ -1,7 +1,13 @@
 #import <Foundation/Foundation.h>
 
-#import "LCHObservable.h"
+#import "LCHObservableObject.h"
 #import "LCHCashProtocol.h"
+
+typedef NS_ENUM(NSUInteger, LCHObjectState) {
+    kLCHEmployeeDidStart,
+    kLCHEmployeeDidFinish,
+    kLCHEmployeeDidBecomeFree
+};
 
 @interface LCHEmployee : LCHObservable <LCHCashProtocol>
 

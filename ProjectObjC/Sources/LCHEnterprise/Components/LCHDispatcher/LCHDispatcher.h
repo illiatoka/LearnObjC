@@ -1,17 +1,13 @@
 #import <Foundation/Foundation.h>
 #import "LCHObserverProtocol.h"
 
+@class LCHContainer;
 @class LCHQueue;
 
 @interface LCHDispatcher : NSObject <LCHObserverProtocol>
-@property (nonatomic, readonly) LCHQueue    *queue;
-
-+ (instancetype)dispatcherWithEnterprise:(id)enterprise;
-
-- (instancetype)initWithEnterprise:(id)enterprise;
+@property (nonatomic, readonly) LCHContainer    *handlers;
+@property (nonatomic, readonly) LCHQueue        *queue;
 
 - (void)performWorkWithObject:(id)object;
-
-- (id)freeHandlerOfClass:(Class)class;
 
 @end
