@@ -9,6 +9,7 @@
 @property (nonatomic, readwrite, retain) LCHQueue       *queue;
 
 - (id)freeHandler;
+- (void)performWork;
 
 @end
 
@@ -37,16 +38,9 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-// TODO: Add object to queue first than perform work with object
 - (void)performWorkWithObject:(id)object {
-    @synchronized(self) {
-        id handler = [self freeHandler];
-        if (handler) {
-            [handler performWorkWithObject:object];
-        } else {
-            [self.queue enqueue:object];
-        }
-    }
+    [self.queue enqueue:object];
+    [self performWork];
 }
 
 #pragma mark -
@@ -68,15 +62,23 @@
     return nil;
 }
 
+- (void)performWork {
+    id object = [self.queue dequeue];
+    if (object) {
+        id handler = [self freeHandler];
+        if (handler) {
+            [handler performWorkWithObject:object];
+        } else {
+            [self.queue enqueue:object];
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark LCHObserverProtocol
 
-// TODO: Just call performWorkWithObject without using queue
 - (void)employeeDidBecomeFree:(id)employee {
-    id object = [self.queue dequeue];
-    if (object) {
-        [self performWorkWithObject:object];
-    }
+    [self performWork];
 }
 
 @end
