@@ -50,6 +50,7 @@
 #pragma mark -
 #pragma mark Private Implementations
 
+// TODO: Is it possible and necessary to do something with this shit?!
 - (void)hireEmployees {
     NSArray *washermans = @[[LCHWasherman object], [LCHWasherman object], [LCHWasherman object], [LCHWasherman object]];
     NSArray *accountants = @[[LCHAccountant object], [LCHAccountant object], [LCHAccountant object]];

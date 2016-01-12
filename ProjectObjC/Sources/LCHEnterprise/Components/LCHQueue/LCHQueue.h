@@ -2,7 +2,7 @@
 
 @interface LCHQueue : LCHContainer
 
-- (void)addToQueue:(id)object;
-- (id)nextObjectFromQueue;
+- (void)enqueue:(id)object;
+- (id)dequeue;
 
 @end

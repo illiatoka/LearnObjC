@@ -5,25 +5,24 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)addToQueue:(id)object {
+- (void)enqueue:(id)object {
     @synchronized(self) {
         [self addItem:object];
     }
 }
 
-- (id)nextObjectFromQueue {
-    id object = nil;
-    
+- (id)dequeue {
     @synchronized(self) {
-        object = [[self items] firstObject];
-        
+        id object = [[self items] firstObject];
         if (object) {
             [[object retain] autorelease];
             [self removeItem:object];
         }
+        
+        return object;
     }
     
-    return object;
+    return nil;
 }
 
 @end

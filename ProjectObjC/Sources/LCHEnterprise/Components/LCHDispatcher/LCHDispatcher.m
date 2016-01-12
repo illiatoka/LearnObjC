@@ -37,13 +37,14 @@
 #pragma mark -
 #pragma mark Public Implementations
 
+// TODO: Add object to queue first than perform work with object
 - (void)performWorkWithObject:(id)object {
     @synchronized(self) {
         id handler = [self freeHandler];
         if (handler) {
             [handler performWorkWithObject:object];
         } else {
-            [self.queue addToQueue:object];
+            [self.queue enqueue:object];
         }
     }
 }
@@ -70,8 +71,9 @@
 #pragma mark -
 #pragma mark LCHObserverProtocol
 
+// TODO: Just call performWorkWithObject without using queue
 - (void)employeeDidBecomeFree:(id)employee {
-    id object = [self.queue nextObjectFromQueue];
+    id object = [self.queue dequeue];
     if (object) {
         [self performWorkWithObject:object];
     }

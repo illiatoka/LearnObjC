@@ -40,6 +40,7 @@
 #pragma mark -
 #pragma mark Public Implementations
 
+// TODO: Is it possible and necessary to do something with this shit?!
 - (void)startWork {
     NSUInteger carCount = 4000;
 
