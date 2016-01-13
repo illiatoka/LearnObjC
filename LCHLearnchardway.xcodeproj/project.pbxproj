@@ -170,8 +170,7 @@
 		A69A761E1C170C4100D7F44C /* LCHWasherman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHWasherman.m; sourceTree = "<group>"; };
 		A69A764E1C17119200D7F44C /* LCHCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHCar.h; sourceTree = "<group>"; };
 		A69A764F1C17119200D7F44C /* LCHCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHCar.m; sourceTree = "<group>"; };
-		A69DB0591C244B32009FFE40 /* LCHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHConstants.h; sourceTree = "<group>"; };
-		A69DB0611C259AD0009FFE40 /* LCHObserverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCHObserverProtocol.h; path = ../Protocols/LCHObserverProtocol.h; sourceTree = "<group>"; };
+		A69DB0611C259AD0009FFE40 /* LCHEmployeeObserverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHEmployeeObserverProtocol.h; sourceTree = "<group>"; };
 		A69DCCB71C139491008FDE51 /* LCHAlphabetRanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCHAlphabetRanges.h; path = ../Declarations/LCHAlphabetRanges.h; sourceTree = "<group>"; };
 		A6AEC3F31C0FCB640003F972 /* ProjectObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectObjCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6AEC3F71C0FCB640003F972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -193,10 +192,11 @@
 		A6B37E8C1C172CEE00208724 /* LCHEmployee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHEmployee.m; sourceTree = "<group>"; };
 		A6B4BB1D1C446417007CC628 /* LCHObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHObservableObject.h; sourceTree = "<group>"; };
 		A6B4BB1E1C446417007CC628 /* LCHObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHObservableObject.m; sourceTree = "<group>"; };
+		A6B4BB271C46C612007CC628 /* LCHPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHPrefixHeader.pch; sourceTree = "<group>"; };
+		A6B4BB281C46C638007CC628 /* LCHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHConstants.h; sourceTree = "<group>"; };
 		A6D269E91C18B2F600EFC50C /* LCHCashProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCHCashProtocol.h; path = ../Protocols/LCHCashProtocol.h; sourceTree = "<group>"; };
 		A6FB99E41C2978D1002629F0 /* LCHContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHContainer.h; sourceTree = "<group>"; };
 		A6FB99E51C2978D1002629F0 /* LCHContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHContainer.m; sourceTree = "<group>"; };
-		A6FB99E91C2B5FDF002629F0 /* LCHPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHPrefixHeader.pch; sourceTree = "<group>"; };
 		A6FB99EB1C2B6784002629F0 /* LCHQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHQueue.h; sourceTree = "<group>"; };
 		A6FB99EC1C2B6784002629F0 /* LCHQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHQueue.m; sourceTree = "<group>"; };
 		E494D0ACDE1E329AFA546E75 /* libPods-ProjectObjCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ProjectObjCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -600,7 +600,6 @@
 		A69A75C91C16326D00D7F44C /* LCHEnterprise */ = {
 			isa = PBXGroup;
 			children = (
-				A69DB0581C244B05009FFE40 /* Global */,
 				A6D269E71C18B23700EFC50C /* Protocols */,
 				A6D269E01C18A79C00EFC50C /* Components */,
 				A69A76131C170C4100D7F44C /* LCHEmployee */,
@@ -659,15 +658,6 @@
 			path = LCHCar;
 			sourceTree = "<group>";
 		};
-		A69DB0581C244B05009FFE40 /* Global */ = {
-			isa = PBXGroup;
-			children = (
-				A69DB0591C244B32009FFE40 /* LCHConstants.h */,
-				A6FB99E91C2B5FDF002629F0 /* LCHPrefixHeader.pch */,
-			);
-			path = Global;
-			sourceTree = "<group>";
-		};
 		A6AEC3F41C0FCB640003F972 /* ProjectObjCTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -680,7 +670,9 @@
 		A6AEC3FB1C0FCC920003F972 /* ProjectObjC */ = {
 			isa = PBXGroup;
 			children = (
+				A6B4BB231C46C596007CC628 /* Common */,
 				A6AEC3FD1C0FCC920003F972 /* Sources */,
+				A6B4BB241C46C5F5007CC628 /* Tests */,
 				A6AEC3FC1C0FCC920003F972 /* main.m */,
 			);
 			path = ProjectObjC;
@@ -779,6 +771,38 @@
 			path = LCHObservableObject;
 			sourceTree = "<group>";
 		};
+		A6B4BB231C46C596007CC628 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A6B4BB281C46C638007CC628 /* LCHConstants.h */,
+				A6B4BB271C46C612007CC628 /* LCHPrefixHeader.pch */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A6B4BB241C46C5F5007CC628 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A6B4BB251C46C5F5007CC628 /* LCHHumanTests */,
+				A6B4BB261C46C5F5007CC628 /* LCHRandomStringTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A6B4BB251C46C5F5007CC628 /* LCHHumanTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LCHHumanTests;
+			sourceTree = "<group>";
+		};
+		A6B4BB261C46C5F5007CC628 /* LCHRandomStringTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LCHRandomStringTests;
+			sourceTree = "<group>";
+		};
 		A6D269E01C18A79C00EFC50C /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -795,7 +819,7 @@
 			isa = PBXGroup;
 			children = (
 				A6D269E91C18B2F600EFC50C /* LCHCashProtocol.h */,
-				A69DB0611C259AD0009FFE40 /* LCHObserverProtocol.h */,
+				A69DB0611C259AD0009FFE40 /* LCHEmployeeObserverProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1180,7 +1204,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "-";
-				GCC_PREFIX_HEADER = ProjectObjC/Sources/LCHEnterprise/Global/LCHPrefixHeader.pch;
+				GCC_PREFIX_HEADER = ProjectObjC/Common/LCHPrefixHeader.pch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1190,7 +1214,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "-";
-				GCC_PREFIX_HEADER = ProjectObjC/Sources/LCHEnterprise/Global/LCHPrefixHeader.pch;
+				GCC_PREFIX_HEADER = ProjectObjC/Common/LCHPrefixHeader.pch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

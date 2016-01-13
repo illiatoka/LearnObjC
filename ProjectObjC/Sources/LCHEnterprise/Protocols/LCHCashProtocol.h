@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol LCHCashProtocol <NSObject>
-@property (nonatomic, readonly) NSUInteger  wallet;
+@property (nonatomic, readonly) NSUInteger  moneyAmount;
 
 - (void)giveMoney:(NSUInteger)money toReceiver:(id<LCHCashProtocol>)receiver;
 

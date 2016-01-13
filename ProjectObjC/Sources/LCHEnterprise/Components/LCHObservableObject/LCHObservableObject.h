@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
-#import "LCHObserverProtocol.h"
+#import "LCHEmployeeObserverProtocol.h"
 
-@interface LCHObservable : NSObject <LCHObserverProtocol>
+@interface LCHObservable : NSObject <LCHEmployeeObserverProtocol>
 @property (nonatomic, readonly) NSArray     *observers;
 @property (nonatomic)           NSUInteger  state;
 
