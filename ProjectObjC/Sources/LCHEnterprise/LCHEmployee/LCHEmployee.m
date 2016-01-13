@@ -4,10 +4,10 @@
 @property (nonatomic, readwrite)    NSUInteger  moneyAmount;
 
 - (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object;
-- (void)finishProcessingOnMainThredWithObject:(id<LCHCashProtocol>)object;
+- (void)finishProcessingOnMainThreadWithObject:(id<LCHCashProtocol>)object;
 
-- (void)processWithObject:(id<LCHCashProtocol>)object;
-- (void)finishProcessingWithObject:(id<LCHCashProtocol>)object;
+- (void)processObject:(id<LCHCashProtocol>)object;
+- (void)finishProcessingObject:(id<LCHCashProtocol>)object;
 
 @end
 
@@ -36,19 +36,19 @@
 #pragma mark Private Implementations
 
 - (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object {
-    [self processWithObject:object];
-    [self finishProcessingOnMainThredWithObject:object];
+    [self processObject:object];
+    [self finishProcessingOnMainThreadWithObject:object];
 }
 
-- (void)finishProcessingOnMainThredWithObject:(id<LCHCashProtocol>)object {
-    [self performSelectorOnMainThread:@selector(finishProcessingWithObject:) withObject:object waitUntilDone:YES];
+- (void)finishProcessingOnMainThreadWithObject:(id<LCHCashProtocol>)object {
+    [self performSelectorOnMainThread:@selector(finishProcessingObject:) withObject:object waitUntilDone:YES];
 }
 
-- (void)processWithObject:(id<LCHCashProtocol>)object {
+- (void)processObject:(id<LCHCashProtocol>)object {
     [self doesNotRecognizeSelector:_cmd];
 }
 
-- (void)finishProcessingWithObject:(id<LCHCashProtocol>)object {
+- (void)finishProcessingObject:(id<LCHCashProtocol>)object {
     [self doesNotRecognizeSelector:_cmd];
 }
 

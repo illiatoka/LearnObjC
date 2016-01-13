@@ -13,6 +13,8 @@
 - (void)notifyWithSelector:(SEL)selector;
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object;
 
+- (void)setState:(NSUInteger)state withObject:(id)object;
+
 - (SEL)selectorForState:(NSUInteger)state;
 
 @end

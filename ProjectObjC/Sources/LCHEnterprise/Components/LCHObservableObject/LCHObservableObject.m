@@ -41,9 +41,13 @@
 }
 
 - (void)setState:(NSUInteger)state {
+    [self setState:state withObject:nil];
+}
+
+- (void)setState:(NSUInteger)state withObject:(id)object {
     if (_state != state) {
         _state = state;
-        [self notifyWithSelector:[self selectorForState:state] withObject:self];
+        [self notifyWithSelector:[self selectorForState:state] withObject:object];
     }
 }
 

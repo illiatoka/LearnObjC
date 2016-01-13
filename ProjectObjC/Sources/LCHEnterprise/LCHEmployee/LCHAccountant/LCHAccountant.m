@@ -13,7 +13,7 @@
 #pragma mark -
 #pragma mark Private Implementations
 
-- (void)processWithObject:(LCHWasherman *)object {
+- (void)processObject:(LCHWasherman *)object {
     @autoreleasepool {
         @synchronized(self) {
             [object giveAllMoneyToReceiver:self];
@@ -22,7 +22,7 @@
     }
 }
 
-- (void)finishProcessingWithObject:(LCHWasherman *)object {
+- (void)finishProcessingObject:(LCHWasherman *)object {
     @synchronized(self) {
         object.state = kLCHEmployeeDidBecomeFree;
         self.state = kLCHEmployeeDidFinishWork;

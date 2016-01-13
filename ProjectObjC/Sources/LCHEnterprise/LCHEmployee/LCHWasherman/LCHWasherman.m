@@ -13,7 +13,7 @@
 #pragma mark -
 #pragma mark Private Implementations
 
-- (void)processWithObject:(LCHCar *)object {
+- (void)processObject:(LCHCar *)object {
     @autoreleasepool {
         @synchronized(self) {
             [self washCar:object];
@@ -22,7 +22,7 @@
     }
 }
 
-- (void)finishProcessingWithObject:(LCHCar *)object {
+- (void)finishProcessingObject:(LCHCar *)object {
     @synchronized(self) {
         self.state = kLCHEmployeeDidFinishWork;
     }

@@ -13,7 +13,7 @@
 #pragma mark -
 #pragma mark Private Implementations
 
-- (void)processWithObject:(LCHAccountant *)object {
+- (void)processObject:(LCHAccountant *)object {
     @autoreleasepool {
         @synchronized(self) {
             [object giveAllMoneyToReceiver:self];
@@ -22,7 +22,7 @@
     }
 }
 
-- (void)finishProcessingWithObject:(LCHAccountant *)object {
+- (void)finishProcessingObject:(LCHAccountant *)object {
     @synchronized(self) {
         object.state = kLCHEmployeeDidBecomeFree;
         self.state = kLCHEmployeeDidBecomeFree;
