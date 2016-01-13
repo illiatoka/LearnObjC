@@ -4,4 +4,6 @@
 
 + (instancetype)object;
 
+- (NSArray *)objectsOfClass:(Class)class withCount:(NSUInteger)count;
+
 @end

@@ -4,14 +4,20 @@
 #import "LCHAccountant.h"
 #import "LCHWasherman.h"
 
+static const NSUInteger kLCHDefaultWashermanCount   = 4;
+static const NSUInteger kLCHDefaultAccountantCount  = 3;
+static const NSUInteger kLCHDefaultManagerCount     = 2;
+
 @interface LCHEnterprise ()
 @property (nonatomic, retain)   LCHDispatcher   *washermanDispatcher;
 @property (nonatomic, retain)   LCHDispatcher   *accountantDispatcher;
 @property (nonatomic, retain)   LCHDispatcher   *managerDispatcher;
-@property (nonatomic, retain)   NSMutableArray  *employees;
+@property (nonatomic, retain)   NSMutableArray  *mutableEmployees;
 
 - (void)hireEmployees;
 - (void)retireEmployees;
+
+- (void)setupEmployees:(NSArray *)employees withDispatcher:(LCHDispatcher *)dispatcher;
 
 @end
 
@@ -53,54 +59,35 @@
 #pragma mark -
 #pragma mark Private Implementations
 
-// TODO: Is it possible and necessary to do something with this shit?!
 - (void)hireEmployees {
-    NSArray *washermans = @[[LCHWasherman object], [LCHWasherman object], [LCHWasherman object], [LCHWasherman object]];
-    NSArray *accountants = @[[LCHAccountant object], [LCHAccountant object], [LCHAccountant object]];
-    NSArray *managers = @[[LCHManager object], [LCHManager object]];
+    NSArray *washermans = [self objectsOfClass:[LCHWasherman class] withCount:kLCHDefaultWashermanCount];
+    NSArray *accountants = [self objectsOfClass:[LCHAccountant class] withCount:kLCHDefaultAccountantCount];
+    NSArray *managers = [self objectsOfClass:[LCHManager class] withCount:kLCHDefaultManagerCount];
     
-    LCHDispatcher *washermanDispatcher = self.washermanDispatcher;
-    LCHDispatcher *accountantDispatcher = self.accountantDispatcher;
-    LCHDispatcher *managerDispatcher = self.managerDispatcher;
-    
-    NSMutableArray *employees = self.employees;
-    
-    for (id employee in washermans) {
-        [washermanDispatcher addHandler:employee];
-        [employees addObject:employee];
-        [employee addObserver:self];
-        [employee addObserver:washermanDispatcher];
-    }
-    
-    for (id employee in accountants) {
-        [accountantDispatcher addHandler:employee];
-        [employees addObject:employee];
-        [employee addObserver:self];
-        [employee addObserver:accountantDispatcher];
-    }
-    
-    for (id employee in managers) {
-        [managerDispatcher addHandler:employee];
-        [employees addObject:employee];
-        [employee addObserver:managerDispatcher];
-    }
+    [self setupEmployees:washermans withDispatcher:self.washermanDispatcher];
+    [self setupEmployees:accountants withDispatcher:self.accountantDispatcher];
+    [self setupEmployees:managers withDispatcher:self.managerDispatcher];
 }
 
-// TODO: Is it possible and necessary to do something with this shit?!
 - (void)retireEmployees {
-    LCHDispatcher *washermanDispatcher = self.washermanDispatcher;
-    LCHDispatcher *accountantDispatcher = self.accountantDispatcher;
-    LCHDispatcher *managerDispatcher = self.managerDispatcher;
-    NSMutableArray *employees = self.employees;
+    NSArray *observers = @[self, self.washermanDispatcher, self.accountantDispatcher, self.managerDispatcher];
     
-    for (id employee in employees) {
-        [employee removeObserver:self];
-        [employee removeObserver:washermanDispatcher];
-        [employee removeObserver:accountantDispatcher];
-        [employee removeObserver:managerDispatcher];
+    for (id employee in self.mutableEmployees) {
+        [employee removeObserversFromArray:observers];
     }
     
-    self.employees = nil;
+    self.mutableEmployees = nil;
+}
+
+- (void)setupEmployees:(NSArray *)employees withDispatcher:(LCHDispatcher *)dispatcher {
+    NSMutableArray *mutableEmployees = self.mutableEmployees;
+    NSArray *observers = @[self, dispatcher];
+    
+    for (id employee in employees) {
+        [dispatcher addHandler:employee];
+        [mutableEmployees addObject:employee];
+        [employee addObserversFromArray:observers];
+    }
 }
 
 #pragma mark -

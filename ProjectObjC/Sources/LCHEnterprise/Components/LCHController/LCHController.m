@@ -2,6 +2,8 @@
 #import "LCHEnterprise.h"
 #import "LCHCar.h"
 
+static const NSUInteger kLCHDefaultCarCount = 4000;
+
 @interface LCHController ()
 @property (nonatomic, retain)   LCHEnterprise   *enterprise;
 
@@ -40,9 +42,8 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-// TODO: Is it possible and necessary to do something with this shit?!
 - (void)startWork {
-    NSUInteger carCount = 4000;
+    NSUInteger carCount = kLCHDefaultCarCount;
 
     NSMutableArray *cars = [NSMutableArray arrayWithCapacity:carCount];
     NSMutableArray *cars2 = [NSMutableArray arrayWithCapacity:carCount];
