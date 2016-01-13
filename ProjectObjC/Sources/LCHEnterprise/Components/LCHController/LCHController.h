@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
-#import "LCHObserverProtocol.h"
+#import "LCHEmployeeObserverProtocol.h"
 
-@interface LCHController : NSObject <LCHObserverProtocol>
+@interface LCHController : NSObject <LCHEmployeeObserverProtocol>
 
 + (instancetype)controllerWithEnterprise:(id)enterprise;
 

@@ -107,7 +107,7 @@
 #pragma mark -
 #pragma mark LCHObserverProtocol
 
-- (void)employeeDidFinish:(id)employee {
+- (void)employeeDidFinishWork:(id)employee {
     if ([employee class] == [LCHWasherman class]) {
         [self.accountantDispatcher performWorkWithObject:employee];
     } else if ([employee class] == [LCHAccountant class]) {

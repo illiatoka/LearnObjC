@@ -7,7 +7,7 @@
 #pragma mark Public Implementations
 
 - (void)countProfit {
-    NSLog(@"Manager profit is %lu", self.wallet);
+    NSLog(@"Manager profit is %lu", self.moneyAmount);
 }
 
 #pragma mark -

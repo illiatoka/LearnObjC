@@ -24,7 +24,7 @@
 
 - (void)finishProcessingWithObject:(LCHCar *)object {
     @synchronized(self) {
-        self.state = kLCHEmployeeDidFinish;
+        self.state = kLCHEmployeeDidFinishWork;
     }
 }
 

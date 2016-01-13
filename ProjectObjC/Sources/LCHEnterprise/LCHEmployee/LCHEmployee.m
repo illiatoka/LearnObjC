@@ -1,7 +1,7 @@
 #import "LCHEmployee.h"
 
 @interface LCHEmployee ()
-@property (nonatomic, readwrite)    NSUInteger  wallet;
+@property (nonatomic, readwrite)    NSUInteger  moneyAmount;
 
 - (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object;
 - (void)finishProcessingOnMainThredWithObject:(id<LCHCashProtocol>)object;
@@ -57,11 +57,11 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case kLCHEmployeeDidStart:
-            return @selector(employeeDidStart:);
+        case kLCHEmployeeDidStartWork:
+            return @selector(employeeDidStartWork:);
             
-        case kLCHEmployeeDidFinish:
-            return @selector(employeeDidFinish:);
+        case kLCHEmployeeDidFinishWork:
+            return @selector(employeeDidFinishWork:);
             
         case kLCHEmployeeDidBecomeFree:
             return @selector(employeeDidBecomeFree:);
@@ -83,7 +83,7 @@
 
 - (void)giveAllMoneyToReceiver:(id<LCHCashProtocol>)receiver {
     @synchronized(self) {
-        NSUInteger money = self.wallet;
+        NSUInteger money = self.moneyAmount;
         if (0 < money) {
             [self giveMoney:money];
             [receiver takeMoney:money];
@@ -93,13 +93,13 @@
 
 - (void)giveMoney:(NSUInteger)money {
     @synchronized(self) {
-        self.wallet -= money;
+        self.moneyAmount -= money;
     }
 }
 
 - (void)takeMoney:(NSUInteger)money {
     @synchronized(self) {
-        self.wallet += money;
+        self.moneyAmount += money;
     }
 }
 

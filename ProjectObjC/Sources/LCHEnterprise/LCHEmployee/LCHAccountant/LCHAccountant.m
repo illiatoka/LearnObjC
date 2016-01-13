@@ -7,7 +7,7 @@
 #pragma mark Public Implementations
 
 - (void)countMoney {
-    NSLog(@"Accountant money count is: %lu", self.wallet);
+    NSLog(@"Accountant money count is: %lu", self.moneyAmount);
 }
 
 #pragma mark -
@@ -25,7 +25,7 @@
 - (void)finishProcessingWithObject:(LCHWasherman *)object {
     @synchronized(self) {
         object.state = kLCHEmployeeDidBecomeFree;
-        self.state = kLCHEmployeeDidFinish;
+        self.state = kLCHEmployeeDidFinishWork;
     }
 }
 

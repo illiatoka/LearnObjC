@@ -4,8 +4,8 @@
 #import "LCHCashProtocol.h"
 
 typedef NS_ENUM(NSUInteger, LCHObjectState) {
-    kLCHEmployeeDidStart,
-    kLCHEmployeeDidFinish,
+    kLCHEmployeeDidStartWork,
+    kLCHEmployeeDidFinishWork,
     kLCHEmployeeDidBecomeFree
 };
 

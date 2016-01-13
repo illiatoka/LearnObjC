@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
-#import "LCHObserverProtocol.h"
+#import "LCHEmployeeObserverProtocol.h"
 
 @class LCHContainer;
 @class LCHQueue;
 
-@interface LCHDispatcher : NSObject <LCHObserverProtocol>
+@interface LCHDispatcher : NSObject <LCHEmployeeObserverProtocol>
 @property (nonatomic, readonly) LCHContainer    *handlers;
 @property (nonatomic, readonly) LCHQueue        *queue;
 

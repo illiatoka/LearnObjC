@@ -51,7 +51,7 @@
         for (id handler in self.handlers.items) {
             @synchronized(handler) {
                 if (kLCHEmployeeDidBecomeFree == [handler state]) {
-                    [handler setState:kLCHEmployeeDidStart];
+                    [handler setState:kLCHEmployeeDidStartWork];
                     
                     return handler;
                 }
