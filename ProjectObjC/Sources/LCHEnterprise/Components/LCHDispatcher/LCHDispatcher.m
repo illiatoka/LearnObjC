@@ -1,14 +1,14 @@
 #import "LCHDispatcher.h"
 #import "LCHObservableObject.h"
+#import "LCHHandlerContainer.h"
 #import "LCHEmployee.h"
 #import "LCHEnterprise.h"
 #import "LCHQueue.h"
 
 @interface LCHDispatcher ()
-@property (nonatomic, readwrite, retain) LCHContainer   *handlers;
-@property (nonatomic, readwrite, retain) LCHQueue       *queue;
+@property (nonatomic, readwrite, retain) LCHHandlerContainer    *handlers;
+@property (nonatomic, readwrite, retain) LCHQueue               *queue;
 
-- (id)freeHandler;
 - (void)performWork;
 
 @end
@@ -28,7 +28,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.handlers = [LCHContainer object];
+        self.handlers = [LCHHandlerContainer object];
         self.queue = [LCHQueue object];
     }
     
@@ -46,26 +46,10 @@
 #pragma mark -
 #pragma mark Private Implementations
 
-- (id)freeHandler {
-    @synchronized(self.handlers) {
-        for (id handler in self.handlers.items) {
-            @synchronized(handler) {
-                if (kLCHEmployeeDidBecomeFree == [handler state]) {
-                    [handler setState:kLCHEmployeeDidStartWork];
-                    
-                    return handler;
-                }
-            }
-        }
-    }
-
-    return nil;
-}
-
 - (void)performWork {
     id object = [self.queue dequeue];
     if (object) {
-        id handler = [self freeHandler];
+        id handler = [self.handlers reserveHandler];
         if (handler) {
             [handler performWorkWithObject:object];
         } else {

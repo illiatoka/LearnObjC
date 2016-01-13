@@ -9,7 +9,7 @@ typedef NS_ENUM(NSUInteger, LCHObjectState) {
     kLCHEmployeeDidBecomeFree
 };
 
-@interface LCHEmployee : LCHObservable <LCHCashProtocol>
+@interface LCHEmployee : LCHObservableObject <LCHCashProtocol>
 
 - (void)performWorkWithObject:(id<LCHCashProtocol>)object;
 

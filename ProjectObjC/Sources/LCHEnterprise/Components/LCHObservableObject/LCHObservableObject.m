@@ -1,12 +1,11 @@
 #import "LCHObservableObject.h"
-#import "LCHContainer.h"
 
-@interface LCHObservable ()
+@interface LCHObservableObject ()
 @property (nonatomic, readwrite, retain)    NSHashTable *observersHashTable;
 
 @end
 
-@implementation LCHObservable
+@implementation LCHObservableObject
 
 @dynamic observers;
 
@@ -67,6 +66,18 @@
     NSHashTable *observersHashTable = self.observersHashTable;
     @synchronized(observersHashTable) {
         [observersHashTable removeObject:observer];
+    }
+}
+
+- (void)addObserversFromArray:(NSArray *)array {
+    for (id observer in array) {
+        [self addObserver:observer];
+    }
+}
+
+- (void)removeObserversFromArray:(NSArray *)array {
+    for (id observer in array) {
+        [self removeObserver:observer];
     }
 }
 

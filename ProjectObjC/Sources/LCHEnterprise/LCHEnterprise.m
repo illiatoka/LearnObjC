@@ -1,5 +1,5 @@
 #import "LCHEnterprise.h"
-#import "LCHContainer.h"
+#import "LCHHandlerContainer.h"
 #import "LCHDispatcher.h"
 #import "LCHManager.h"
 #import "LCHAccountant.h"
@@ -9,7 +9,7 @@
 @property (nonatomic, retain)   LCHDispatcher   *washermanDispatcher;
 @property (nonatomic, retain)   LCHDispatcher   *accountantDispatcher;
 @property (nonatomic, retain)   LCHDispatcher   *managerDispatcher;
-@property (nonatomic, retain)   LCHContainer    *employees;
+@property (nonatomic, retain)   NSMutableArray  *employees;
 
 - (void)hireEmployees;
 - (void)retireEmployees;
@@ -37,6 +37,7 @@
         self.washermanDispatcher = [LCHDispatcher object];
         self.accountantDispatcher = [LCHDispatcher object];
         self.managerDispatcher = [LCHDispatcher object];
+        
         [self hireEmployees];
     }
     
@@ -63,28 +64,28 @@
     LCHDispatcher *accountantDispatcher = self.accountantDispatcher;
     LCHDispatcher *managerDispatcher = self.managerDispatcher;
     
-    LCHContainer *washermanContainer = washermanDispatcher.handlers;
-    LCHContainer *accountantContainer = accountantDispatcher.handlers;
-    LCHContainer *managerContainer = managerDispatcher.handlers;
-    LCHContainer *employees = self.employees;
+    LCHHandlerContainer *washermanContainer = washermanDispatcher.handlers;
+    LCHHandlerContainer *accountantContainer = accountantDispatcher.handlers;
+    LCHHandlerContainer *managerContainer = managerDispatcher.handlers;
+    NSMutableArray *employees = self.employees;
     
     for (id employee in washermans) {
-        [washermanContainer addItem:employee];
-        [employees addItem:employee];
+        [washermanContainer addHandler:employee];
+        [employees addObject:employee];
         [employee addObserver:self];
         [employee addObserver:washermanDispatcher];
     }
     
     for (id employee in accountants) {
-        [accountantContainer addItem:employee];
-        [employees addItem:employee];
+        [accountantContainer addHandler:employee];
+        [employees addObject:employee];
         [employee addObserver:self];
         [employee addObserver:accountantDispatcher];
     }
     
     for (id employee in managers) {
-        [managerContainer addItem:employee];
-        [employees addItem:employee];
+        [managerContainer addHandler:employee];
+        [employees addObject:employee];
         [employee addObserver:managerDispatcher];
     }
 }
@@ -94,7 +95,7 @@
     LCHDispatcher *washermanDispatcher = self.washermanDispatcher;
     LCHDispatcher *accountantDispatcher = self.accountantDispatcher;
     LCHDispatcher *managerDispatcher = self.managerDispatcher;
-    NSArray *employees = self.employees.items;
+    NSMutableArray *employees = self.employees;
     
     for (id employee in employees) {
         [employee removeObserver:self];
@@ -102,6 +103,8 @@
         [employee removeObserver:accountantDispatcher];
         [employee removeObserver:managerDispatcher];
     }
+    
+    self.employees = nil;
 }
 
 #pragma mark -
