@@ -1,5 +1,4 @@
 #import "LCHEnterprise.h"
-#import "LCHHandlerContainer.h"
 #import "LCHDispatcher.h"
 #import "LCHManager.h"
 #import "LCHAccountant.h"
@@ -64,27 +63,24 @@
     LCHDispatcher *accountantDispatcher = self.accountantDispatcher;
     LCHDispatcher *managerDispatcher = self.managerDispatcher;
     
-    LCHHandlerContainer *washermanContainer = washermanDispatcher.handlers;
-    LCHHandlerContainer *accountantContainer = accountantDispatcher.handlers;
-    LCHHandlerContainer *managerContainer = managerDispatcher.handlers;
     NSMutableArray *employees = self.employees;
     
     for (id employee in washermans) {
-        [washermanContainer addHandler:employee];
+        [washermanDispatcher addHandler:employee];
         [employees addObject:employee];
         [employee addObserver:self];
         [employee addObserver:washermanDispatcher];
     }
     
     for (id employee in accountants) {
-        [accountantContainer addHandler:employee];
+        [accountantDispatcher addHandler:employee];
         [employees addObject:employee];
         [employee addObserver:self];
         [employee addObserver:accountantDispatcher];
     }
     
     for (id employee in managers) {
-        [managerContainer addHandler:employee];
+        [managerDispatcher addHandler:employee];
         [employees addObject:employee];
         [employee addObserver:managerDispatcher];
     }
