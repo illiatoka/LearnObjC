@@ -13,4 +13,7 @@ typedef NS_ENUM(NSUInteger, LCHObjectState) {
 
 - (void)performWorkWithObject:(id<LCHCashProtocol>)object;
 
+- (void)completeProcessingObject:(id<LCHCashProtocol>)object;
+- (void)cleanupAfterProcessing;
+
 @end

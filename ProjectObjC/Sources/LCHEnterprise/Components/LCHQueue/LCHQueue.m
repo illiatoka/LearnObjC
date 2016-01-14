@@ -1,7 +1,7 @@
 #import "LCHQueue.h"
 
 @interface LCHQueue ()
-@property (nonatomic, readwrite, retain)    NSMutableSet   *mutableItems;
+@property (nonatomic, retain)   NSMutableSet    *mutableItems;
 
 @end
 
@@ -31,14 +31,10 @@
 #pragma mark Accessors
 
 - (NSArray *)items {
-    NSArray *items = nil;
     NSMutableSet *mutableItems = self.mutableItems;
-    
     @synchronized(mutableItems) {
-        items = mutableItems.allObjects;
+        return mutableItems.allObjects;
     }
-    
-    return items;
 }
 
 #pragma mark -
@@ -60,8 +56,6 @@
         
         return object;
     }
-    
-    return nil;
 }
 
 @end

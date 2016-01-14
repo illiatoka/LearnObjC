@@ -1,7 +1,7 @@
 #import "LCHObservableObject.h"
 
 @interface LCHObservableObject ()
-@property (nonatomic, readwrite, retain)    NSHashTable *observersHashTable;
+@property (nonatomic, retain)   NSHashTable *observersHashTable;
 
 @end
 

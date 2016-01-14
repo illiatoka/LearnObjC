@@ -5,8 +5,8 @@
 #import "LCHQueue.h"
 
 @interface LCHDispatcher ()
-@property (nonatomic, readwrite, retain) NSMutableSet   *mutableHandlers;
-@property (nonatomic, readwrite, retain) LCHQueue       *queue;
+@property (nonatomic, retain)   NSMutableSet    *mutableHandlers;
+@property (nonatomic, retain)   LCHQueue        *queue;
 
 - (void)performWork;
 - (id)reserveHandler;
@@ -41,14 +41,10 @@
 #pragma mark Accessors
 
 - (NSArray *)handlers {
-    NSArray *handlers = nil;
     NSMutableSet *mutableHandlers = self.mutableHandlers;
-    
     @synchronized(mutableHandlers) {
-        handlers = mutableHandlers.allObjects;
+        return mutableHandlers.allObjects;
     }
-    
-    return handlers;
 }
 
 #pragma mark -
@@ -61,7 +57,6 @@
 
 - (void)addHandler:(id)handler {
     NSMutableSet *mutableHandlers = self.mutableHandlers;
-    
     @synchronized(mutableHandlers) {
         [mutableHandlers addObject:handler];
     }
@@ -69,7 +64,6 @@
 
 - (void)removeHandler:(id)handler {
     NSMutableSet *mutableHandlers = self.mutableHandlers;
-    
     @synchronized(mutableHandlers) {
         [mutableHandlers removeObject:handler];
     }

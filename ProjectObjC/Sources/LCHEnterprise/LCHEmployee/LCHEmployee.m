@@ -8,8 +8,6 @@
 
 - (void)processObject:(id<LCHCashProtocol>)object;
 - (void)finishProcessingObject:(id<LCHCashProtocol>)object;
-- (void)completeProcessingObject:(id<LCHCashProtocol>)object;
-- (void)cleanupAfterProcessing;
 
 @end
 
@@ -56,7 +54,7 @@
 }
 
 - (void)completeProcessingObject:(LCHEmployee *)object {
-    @synchronized(self) {
+    @synchronized(object) {
         object.state = kLCHEmployeeDidBecomeFree;
     }
 }
@@ -82,7 +80,7 @@
             return @selector(employeeDidBecomeFree:);
             
         default:
-            return NULL;
+            return [super selectorForState:state];
     }
 }
 

@@ -31,7 +31,7 @@ static const NSUInteger kLCHDefaultCarCount = 400;
 
 - (void)dealloc {
     self.enterprise = nil;
-    [self stopWork];
+    self.timer = nil;
     
     [super dealloc];
 }
@@ -52,21 +52,23 @@ static const NSUInteger kLCHDefaultCarCount = 400;
     return nil != self.timer;
 }
 
+- (void)setTimer:(NSTimer *)timer {
+    if (timer != _timer) {
+        [_timer invalidate];
+        [_timer release];
+        _timer = timer;
+    }
+}
+
 #pragma mark -
 #pragma mark Public Implementations
 
 - (void)startWork {
-    if (!self.isWorking) {
-        self.timer = [self setupTimer];
-        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
-    }
+    self.timer = [self setupTimer];
 }
 
 - (void)stopWork {
-    if (self.isWorking) {
-        [self.timer invalidate];
-        self.timer = nil;
-    }
+    self.timer = nil;
 }
 
 - (void)performWorkWithObject:(id)object {
@@ -85,17 +87,16 @@ static const NSUInteger kLCHDefaultCarCount = 400;
 }
 
 - (NSTimer *)setupTimer {
-    return [NSTimer timerWithTimeInterval:5.0
-                                   target:self
-                                 selector:@selector(startBackgroundWork:)
-                                 userInfo:nil
-                                  repeats:YES];
+    return [NSTimer scheduledTimerWithTimeInterval:5.0
+                                            target:self
+                                          selector:@selector(startBackgroundWork:)
+                                          userInfo:nil
+                                           repeats:YES];
 }
 
 - (void)generateCars {
     @autoreleasepool {
         NSArray *cars = [LCHCar objectsOfClassWithCount:kLCHDefaultCarCount];
-        
         for (id car in cars) {
             [self performBackgroundWorkWithObject:car];
         }

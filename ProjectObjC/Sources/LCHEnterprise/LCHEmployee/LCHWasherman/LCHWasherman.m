@@ -23,7 +23,7 @@
 }
 
 - (void)completeProcessingObject:(id)object {
-    return;
+    
 }
 
 @end
