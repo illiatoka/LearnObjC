@@ -668,7 +668,6 @@
 			children = (
 				A6B4BB231C46C596007CC628 /* Common */,
 				A6AEC3FD1C0FCC920003F972 /* Sources */,
-				A6B4BB241C46C5F5007CC628 /* Tests */,
 				A6AEC3FC1C0FCC920003F972 /* main.m */,
 			);
 			path = ProjectObjC;
@@ -774,29 +773,6 @@
 				A6B4BB271C46C612007CC628 /* LCHPrefixHeader.pch */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		A6B4BB241C46C5F5007CC628 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				A6B4BB251C46C5F5007CC628 /* LCHHumanTests */,
-				A6B4BB261C46C5F5007CC628 /* LCHRandomStringTests */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		A6B4BB251C46C5F5007CC628 /* LCHHumanTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LCHHumanTests;
-			sourceTree = "<group>";
-		};
-		A6B4BB261C46C5F5007CC628 /* LCHRandomStringTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LCHRandomStringTests;
 			sourceTree = "<group>";
 		};
 		A6D269E01C18A79C00EFC50C /* Components */ = {
