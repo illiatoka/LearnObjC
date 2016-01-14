@@ -9,14 +9,10 @@
     return [[[self alloc] init] autorelease];
 }
 
-#pragma mark -
-#pragma mark Public Implementations
-
-- (NSArray *)objectsOfClass:(Class)class withCount:(NSUInteger)count {
-    NSMutableArray *objects = [NSMutableArray arrayWithCapacity:count - 1];
++ (NSArray *)objectsOfClassWithCount:(NSUInteger)count {
+    NSMutableArray *objects = [NSMutableArray arrayWithCapacity:count];
     for (NSUInteger index = 0; index < count; index++) {
-        id object = [class object];
-        [objects addObject:object];
+        [objects addObject:[self object]];
     }
     
     return [[objects copy] autorelease];

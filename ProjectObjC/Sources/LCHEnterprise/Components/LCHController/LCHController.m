@@ -94,7 +94,7 @@ static const NSUInteger kLCHDefaultCarCount = 400;
 
 - (void)generateCars {
     @autoreleasepool {
-        NSArray *cars = [self objectsOfClass:[LCHCar class] withCount:kLCHDefaultCarCount];
+        NSArray *cars = [LCHCar objectsOfClassWithCount:kLCHDefaultCarCount];
         
         for (id car in cars) {
             [self performBackgroundWorkWithObject:car];

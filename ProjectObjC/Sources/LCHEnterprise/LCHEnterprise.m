@@ -60,9 +60,9 @@ static const NSUInteger kLCHDefaultManagerCount     = 2;
 #pragma mark Private Implementations
 
 - (void)hireEmployees {
-    NSArray *washermans = [self objectsOfClass:[LCHWasherman class] withCount:kLCHDefaultWashermanCount];
-    NSArray *accountants = [self objectsOfClass:[LCHAccountant class] withCount:kLCHDefaultAccountantCount];
-    NSArray *managers = [self objectsOfClass:[LCHManager class] withCount:kLCHDefaultManagerCount];
+    NSArray *washermans = [LCHWasherman objectsOfClassWithCount:kLCHDefaultWashermanCount];
+    NSArray *accountants = [LCHAccountant objectsOfClassWithCount:kLCHDefaultAccountantCount];
+    NSArray *managers = [LCHManager objectsOfClassWithCount:kLCHDefaultManagerCount];
     
     [self setupEmployees:washermans withDispatcher:self.washermanDispatcher];
     [self setupEmployees:accountants withDispatcher:self.accountantDispatcher];
