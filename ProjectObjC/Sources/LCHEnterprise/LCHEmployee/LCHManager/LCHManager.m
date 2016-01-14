@@ -4,14 +4,14 @@
 @implementation LCHManager
 
 #pragma mark -
-#pragma mark Public Implementations
+#pragma mark Public
 
 - (void)countProfit {
     NSLog(@"Manager profit is %lu", self.moneyAmount);
 }
 
 #pragma mark -
-#pragma mark Private Implementations
+#pragma mark Private
 
 - (void)processObject:(LCHAccountant *)object {
     @autoreleasepool {

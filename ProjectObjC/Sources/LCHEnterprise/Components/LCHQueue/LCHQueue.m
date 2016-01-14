@@ -38,7 +38,7 @@
 }
 
 #pragma mark -
-#pragma mark Public Implementations
+#pragma mark Public
 
 - (void)enqueue:(id)object {
     @synchronized(self) {

@@ -4,14 +4,14 @@
 @implementation LCHAccountant
 
 #pragma mark -
-#pragma mark Public Implementations
+#pragma mark Public
 
 - (void)countMoney {
     NSLog(@"Accountant money count is: %lu", self.moneyAmount);
 }
 
 #pragma mark -
-#pragma mark Private Implementations
+#pragma mark Private
 
 - (void)processObject:(LCHWasherman *)object {
     @autoreleasepool {

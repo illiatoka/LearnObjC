@@ -50,14 +50,14 @@ static const NSUInteger kLCHDefaultManagerCount     = 2;
 }
 
 #pragma mark -
-#pragma mark Public Implementations
+#pragma mark Public
 
 - (void)performWorkWithCar:(LCHCar *)car {
     [self.washermanDispatcher performWorkWithObject:car];
 }
 
 #pragma mark -
-#pragma mark Private Implementations
+#pragma mark Private
 
 - (void)hireEmployees {
     NSArray *washermen = [LCHWasherman objectsOfClassWithCount:kLCHDefaultWashermanCount];

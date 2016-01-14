@@ -59,7 +59,7 @@
 }
 
 #pragma mark -
-#pragma mark Public Implementations
+#pragma mark Public
 
 - (void)addObserver:(id)observer {
     NSHashTable *observersHashTable = self.observersHashTable;

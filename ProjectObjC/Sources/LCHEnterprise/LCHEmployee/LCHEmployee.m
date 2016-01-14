@@ -26,14 +26,14 @@
 }
 
 #pragma mark -
-#pragma mark Public Imlementations
+#pragma mark Public
 
 - (void)performWorkWithObject:(id<LCHCashProtocol>)object {
     [self performSelectorInBackground:@selector(performBackgroundWorkWithObject:) withObject:object];
 }
 
 #pragma mark -
-#pragma mark Private Implementations
+#pragma mark Private
 
 - (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object {
     [self processObject:object];

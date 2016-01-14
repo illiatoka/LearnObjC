@@ -48,7 +48,7 @@
 }
 
 #pragma mark -
-#pragma mark Public Implementations
+#pragma mark Public
 
 - (void)performWorkWithObject:(id)object {
     [self.queue enqueue:object];
@@ -70,7 +70,7 @@
 }
 
 #pragma mark -
-#pragma mark Private Implementations
+#pragma mark Private
 
 - (void)performWork {
     id object = [self.queue dequeue];

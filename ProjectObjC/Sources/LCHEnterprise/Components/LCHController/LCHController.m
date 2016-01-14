@@ -61,7 +61,7 @@ static const NSUInteger kLCHDefaultCarCount = 400;
 }
 
 #pragma mark -
-#pragma mark Public Implementations
+#pragma mark Public
 
 - (void)startWork {
     self.timer = [self setupTimer];
@@ -80,7 +80,7 @@ static const NSUInteger kLCHDefaultCarCount = 400;
 }
 
 #pragma -
-#pragma mark Private Implementations
+#pragma mark Private
 
 - (void)startBackgroundWork:(NSTimer *)timer {
     [self performSelectorInBackground:@selector(generateCars) withObject:nil];

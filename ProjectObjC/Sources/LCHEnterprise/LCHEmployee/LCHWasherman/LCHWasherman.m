@@ -4,14 +4,14 @@
 @implementation LCHWasherman
 
 #pragma mark -
-#pragma mark Public Implementations
+#pragma mark Public
 
 - (void)washCar:(LCHCar *)car {
     car.clean = YES;
 }
 
 #pragma mark -
-#pragma mark Private Implementations
+#pragma mark Private
 
 - (void)processObject:(LCHCar *)object {
     @autoreleasepool {
