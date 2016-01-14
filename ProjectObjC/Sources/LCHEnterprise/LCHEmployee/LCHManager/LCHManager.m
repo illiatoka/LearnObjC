@@ -23,9 +23,7 @@
 }
 
 - (void)cleanupAfterProcessing {
-    @synchronized(self) {
-        self.state = kLCHEmployeeDidBecomeFree;
-    }
+    self.state = kLCHEmployeeDidBecomeFree;
 }
 
 @end

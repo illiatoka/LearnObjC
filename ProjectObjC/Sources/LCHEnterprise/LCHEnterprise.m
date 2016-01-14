@@ -71,7 +71,6 @@ static const NSUInteger kLCHDefaultManagerCount     = 2;
 
 - (void)retireEmployees {
     NSArray *observers = @[self, self.washermanDispatcher, self.accountantDispatcher, self.managerDispatcher];
-    
     for (id employee in self.mutableEmployees) {
         [employee removeObserversFromArray:observers];
     }

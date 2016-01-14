@@ -54,15 +54,11 @@
 }
 
 - (void)completeProcessingObject:(LCHEmployee *)object {
-    @synchronized(object) {
-        object.state = kLCHEmployeeDidBecomeFree;
-    }
+    object.state = kLCHEmployeeDidBecomeFree;
 }
 
 - (void)cleanupAfterProcessing {
-    @synchronized(self) {
-        self.state = kLCHEmployeeDidFinishWork;
-    }
+    self.state = kLCHEmployeeDidFinishWork;
 }
 
 #pragma mark -
