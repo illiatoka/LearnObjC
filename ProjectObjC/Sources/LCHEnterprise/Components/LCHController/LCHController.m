@@ -2,10 +2,15 @@
 #import "LCHEnterprise.h"
 #import "LCHCar.h"
 
-static const NSUInteger kLCHDefaultCarCount = 4000;
+static const NSUInteger kLCHDefaultCarCount = 400;
 
 @interface LCHController ()
 @property (nonatomic, retain)   LCHEnterprise   *enterprise;
+@property (nonatomic, retain)   NSTimer         *timer;
+
+- (void)startBackgroundWork:(NSTimer *)timer;
+- (NSTimer *)setupTimer;
+- (void)generateCars;
 
 - (void)performBackgroundWorkWithObject:(id)object;
 - (void)performBackgroundWorkWithObjects:(NSArray *)cars;
@@ -26,6 +31,7 @@ static const NSUInteger kLCHDefaultCarCount = 4000;
 
 - (void)dealloc {
     self.enterprise = nil;
+    [self stopWork];
     
     [super dealloc];
 }
@@ -40,33 +46,27 @@ static const NSUInteger kLCHDefaultCarCount = 4000;
 }
 
 #pragma mark -
+#pragma mark Accessors
+
+- (BOOL)isWorking {
+    return nil != self.timer;
+}
+
+#pragma mark -
 #pragma mark Public Implementations
 
 - (void)startWork {
-    NSUInteger carCount = kLCHDefaultCarCount;
-
-    NSMutableArray *cars = [NSMutableArray arrayWithCapacity:carCount];
-    NSMutableArray *cars2 = [NSMutableArray arrayWithCapacity:carCount];
-    NSMutableArray *cars3 = [NSMutableArray arrayWithCapacity:carCount];
-    
-    for (NSUInteger count = 0; count < carCount; count++) {
-        [cars addObject:[LCHCar car]];
+    if (!self.isWorking) {
+        self.timer = [self setupTimer];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
     }
+}
 
-    for (NSUInteger count = 0; count < carCount; count++) {
-        [cars2 addObject:[LCHCar car]];
+- (void)stopWork {
+    if (self.isWorking) {
+        [self.timer invalidate];
+        self.timer = nil;
     }
-
-    for (NSUInteger count = 0; count < carCount; count++) {
-        [cars3 addObject:[LCHCar car]];
-    }
-    
-    for (id car in cars) {
-        [self performBackgroundWorkWithObject:car];
-    }
-
-    [self performWorkWithObjects:cars2];
-    [self performWorkWithObjects:cars3];
 }
 
 - (void)performWorkWithObject:(id)object {
@@ -79,6 +79,28 @@ static const NSUInteger kLCHDefaultCarCount = 4000;
 
 #pragma -
 #pragma mark Private Implementations
+
+- (void)startBackgroundWork:(NSTimer *)timer {
+    [self performSelectorInBackground:@selector(generateCars) withObject:nil];
+}
+
+- (NSTimer *)setupTimer {
+    return [NSTimer timerWithTimeInterval:5.0
+                                   target:self
+                                 selector:@selector(startBackgroundWork:)
+                                 userInfo:nil
+                                  repeats:YES];
+}
+
+- (void)generateCars {
+    @autoreleasepool {
+        NSArray *cars = [self objectsOfClass:[LCHCar class] withCount:kLCHDefaultCarCount];
+        
+        for (id car in cars) {
+            [self performBackgroundWorkWithObject:car];
+        }
+    }
+}
 
 - (void)performBackgroundWorkWithObject:(id)object {
     @autoreleasepool {
