@@ -22,10 +22,8 @@
     }
 }
 
-- (void)finishProcessingObject:(LCHCar *)object {
-    @synchronized(self) {
-        self.state = kLCHEmployeeDidFinishWork;
-    }
+- (void)completeProcessingObject:(id)object {
+    return;
 }
 
 @end

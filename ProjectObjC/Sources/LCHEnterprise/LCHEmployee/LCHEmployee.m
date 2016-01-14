@@ -8,6 +8,8 @@
 
 - (void)processObject:(id<LCHCashProtocol>)object;
 - (void)finishProcessingObject:(id<LCHCashProtocol>)object;
+- (void)completeProcessingObject:(id<LCHCashProtocol>)object;
+- (void)cleanupAfterProcessing;
 
 @end
 
@@ -49,7 +51,20 @@
 }
 
 - (void)finishProcessingObject:(id<LCHCashProtocol>)object {
-    [self doesNotRecognizeSelector:_cmd];
+    [self completeProcessingObject:object];
+    [self cleanupAfterProcessing];
+}
+
+- (void)completeProcessingObject:(LCHEmployee *)object {
+    @synchronized(self) {
+        object.state = kLCHEmployeeDidBecomeFree;
+    }
+}
+
+- (void)cleanupAfterProcessing {
+    @synchronized(self) {
+        self.state = kLCHEmployeeDidFinishWork;
+    }
 }
 
 #pragma mark -

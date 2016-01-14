@@ -22,11 +22,4 @@
     }
 }
 
-- (void)finishProcessingObject:(LCHWasherman *)object {
-    @synchronized(self) {
-        object.state = kLCHEmployeeDidBecomeFree;
-        self.state = kLCHEmployeeDidFinishWork;
-    }
-}
-
 @end

@@ -22,9 +22,8 @@
     }
 }
 
-- (void)finishProcessingObject:(LCHAccountant *)object {
+- (void)cleanupAfterProcessing {
     @synchronized(self) {
-        object.state = kLCHEmployeeDidBecomeFree;
         self.state = kLCHEmployeeDidBecomeFree;
     }
 }
