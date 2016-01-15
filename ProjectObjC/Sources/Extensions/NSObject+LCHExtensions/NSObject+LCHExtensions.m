@@ -9,7 +9,7 @@
     return [[[self alloc] init] autorelease];
 }
 
-+ (NSArray *)objectsOfClassWithCount:(NSUInteger)count {
++ (NSArray *)objectsWithCount:(NSUInteger)count {
     NSMutableArray *objects = [NSMutableArray arrayWithCapacity:count];
     for (NSUInteger index = 0; index < count; index++) {
         [objects addObject:[self object]];

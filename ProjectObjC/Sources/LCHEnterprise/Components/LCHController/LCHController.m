@@ -86,7 +86,7 @@ static const NSUInteger kLCHDefaultCarCount = 400;
 
 - (void)startBackgroundWork:(NSTimer *)timer {
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
-        NSArray *cars = [LCHCar objectsOfClassWithCount:kLCHDefaultCarCount];
+        NSArray *cars = [LCHCar objectsWithCount:kLCHDefaultCarCount];
         for (id car in cars) {
             [self performWorkWithObject:car];
         }
