@@ -5,15 +5,11 @@
 static const NSUInteger kLCHDefaultCarCount = 400;
 
 @interface LCHController ()
-@property (nonatomic, retain)   LCHEnterprise   *enterprise;
-@property (nonatomic, retain)   NSTimer         *timer;
+@property (nonatomic, retain)   LCHEnterprise       *enterprise;
+@property (nonatomic, retain)   NSTimer             *timer;
 
 - (void)startBackgroundWork:(NSTimer *)timer;
 - (NSTimer *)setupTimer;
-- (void)generateCars;
-
-- (void)performBackgroundWorkWithObject:(id)object;
-- (void)performBackgroundWorkWithObjects:(NSArray *)cars;
 
 @end
 
@@ -72,18 +68,29 @@ static const NSUInteger kLCHDefaultCarCount = 400;
 }
 
 - (void)performWorkWithObject:(id)object {
-    [self performSelectorInBackground:@selector(performBackgroundWorkWithObject:) withObject:object];
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+        [self.enterprise performWorkWithCar:object];
+    });
 }
 
 - (void)performWorkWithObjects:(NSArray *)objects {
-    [self performSelectorInBackground:@selector(performBackgroundWorkWithObjects:) withObject:objects];
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+        for (id object in objects) {
+            [self performWorkWithObject:object];
+        }
+    });
 }
 
 #pragma -
 #pragma mark Private
 
 - (void)startBackgroundWork:(NSTimer *)timer {
-    [self performSelectorInBackground:@selector(generateCars) withObject:nil];
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+        NSArray *cars = [LCHCar objectsOfClassWithCount:kLCHDefaultCarCount];
+        for (id car in cars) {
+            [self performWorkWithObject:car];
+        }
+    });
 }
 
 - (NSTimer *)setupTimer {
@@ -92,29 +99,6 @@ static const NSUInteger kLCHDefaultCarCount = 400;
                                           selector:@selector(startBackgroundWork:)
                                           userInfo:nil
                                            repeats:YES];
-}
-
-- (void)generateCars {
-    @autoreleasepool {
-        NSArray *cars = [LCHCar objectsOfClassWithCount:kLCHDefaultCarCount];
-        for (id car in cars) {
-            [self performBackgroundWorkWithObject:car];
-        }
-    }
-}
-
-- (void)performBackgroundWorkWithObject:(id)object {
-    @autoreleasepool {
-        [self.enterprise performWorkWithCar:object];
-    }
-}
-
-- (void)performBackgroundWorkWithObjects:(NSArray *)objects {
-    @autoreleasepool {
-        for (id object in objects) {
-            [self performBackgroundWorkWithObject:object];
-        }
-    }
 }
 
 @end

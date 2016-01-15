@@ -7,10 +7,7 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         [[LCHController controllerWithEnterprise:[LCHEnterprise object]] startWork];
-        
-        while (true) {
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate distantFuture]];
-        }
+        [[NSRunLoop mainRunLoop] run];
     }
     
     return 0;
