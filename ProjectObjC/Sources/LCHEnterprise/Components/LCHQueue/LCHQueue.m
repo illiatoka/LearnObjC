@@ -1,13 +1,11 @@
 #import "LCHQueue.h"
 
 @interface LCHQueue ()
-@property (nonatomic, retain)   NSMutableSet    *mutableItems;
+@property (nonatomic, retain)   NSMutableArray  *mutableItems;
 
 @end
 
 @implementation LCHQueue
-
-@dynamic items;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -21,20 +19,10 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.mutableItems = [NSMutableSet set];
+        self.mutableItems = [NSMutableArray array];
     }
     
     return self;
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (NSArray *)items {
-    NSMutableSet *mutableItems = self.mutableItems;
-    @synchronized(mutableItems) {
-        return mutableItems.allObjects;
-    }
 }
 
 #pragma mark -
@@ -48,7 +36,7 @@
 
 - (id)dequeue {
     @synchronized(self) {
-        id object = [[self items] firstObject];
+        id object = [self.mutableItems firstObject];
         if (object) {
             [[object retain] autorelease];
             [self.mutableItems removeObject:object];
