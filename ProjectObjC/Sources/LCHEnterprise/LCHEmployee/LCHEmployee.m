@@ -3,9 +3,6 @@
 @interface LCHEmployee ()
 @property (nonatomic, readwrite)    NSUInteger  moneyAmount;
 
-- (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object;
-- (void)finishProcessingOnMainThreadWithObject:(id<LCHCashProtocol>)object;
-
 - (void)processObject:(id<LCHCashProtocol>)object;
 - (void)finishProcessingObject:(id<LCHCashProtocol>)object;
 
@@ -29,20 +26,17 @@
 #pragma mark Public
 
 - (void)performWorkWithObject:(id<LCHCashProtocol>)object {
-    [self performSelectorInBackground:@selector(performBackgroundWorkWithObject:) withObject:object];
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+        [self processObject:object];
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self finishProcessingObject:object];
+        });
+    });
 }
 
 #pragma mark -
 #pragma mark Private
-
-- (void)performBackgroundWorkWithObject:(id<LCHCashProtocol>)object {
-    [self processObject:object];
-    [self finishProcessingOnMainThreadWithObject:object];
-}
-
-- (void)finishProcessingOnMainThreadWithObject:(id<LCHCashProtocol>)object {
-    [self performSelectorOnMainThread:@selector(finishProcessingObject:) withObject:object waitUntilDone:YES];
-}
 
 - (void)processObject:(id<LCHCashProtocol>)object {
     [self doesNotRecognizeSelector:_cmd];
