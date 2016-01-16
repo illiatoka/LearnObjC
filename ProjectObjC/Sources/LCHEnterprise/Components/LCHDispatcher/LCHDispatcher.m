@@ -85,11 +85,13 @@
 }
 
 - (id)reserveHandler {
-    for (id handler in self.handlers) {
-        if (kLCHEmployeeDidBecomeFree == [handler state]) {
-            [handler setState:kLCHEmployeeDidStartWork];
-            
-            return handler;
+    for (LCHEmployee *handler in self.handlers) {
+        @synchronized(handler) {
+            if (kLCHEmployeeDidBecomeFree == handler.state) {
+                [handler setState:kLCHEmployeeDidStartWork];
+                
+                return handler;
+            }
         }
     }
     

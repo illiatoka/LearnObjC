@@ -1,15 +1,19 @@
 #import "LCHController.h"
 #import "LCHEnterprise.h"
+#import "LCHBlock.h"
 #import "LCHCar.h"
 
-static const NSUInteger kLCHDefaultCarCount = 400;
+static const NSUInteger kLCHDefaultCarCount         = 1000;
+static const NSTimeInterval kLCHDefaultTimeInterval = 5.0;
 
 @interface LCHController ()
 @property (nonatomic, retain)   LCHEnterprise       *enterprise;
 @property (nonatomic, retain)   NSTimer             *timer;
 
 - (void)startBackgroundWork:(NSTimer *)timer;
-- (NSTimer *)setupTimer;
+
+- (void)performWorkWithObject:(id)object;
+- (void)performWorkWithObjects:(NSArray *)objects;
 
 @end
 
@@ -60,7 +64,11 @@ static const NSUInteger kLCHDefaultCarCount = 400;
 #pragma mark Public
 
 - (void)startWork {
-    self.timer = [self setupTimer];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kLCHDefaultTimeInterval
+                                                  target:self
+                                                selector:@selector(startBackgroundWork:)
+                                                userInfo:nil
+                                                 repeats:YES];
 }
 
 - (void)stopWork {
@@ -68,13 +76,13 @@ static const NSUInteger kLCHDefaultCarCount = 400;
 }
 
 - (void)performWorkWithObject:(id)object {
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+    performAsyncOnBackgroundQueue(^{
         [self.enterprise performWorkWithCar:object];
     });
 }
 
 - (void)performWorkWithObjects:(NSArray *)objects {
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+    performAsyncOnBackgroundQueue(^{
         for (id object in objects) {
             [self performWorkWithObject:object];
         }
@@ -85,20 +93,12 @@ static const NSUInteger kLCHDefaultCarCount = 400;
 #pragma mark Private
 
 - (void)startBackgroundWork:(NSTimer *)timer {
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+    performAsyncOnBackgroundQueue(^{
         NSArray *cars = [LCHCar objectsWithCount:kLCHDefaultCarCount];
         for (id car in cars) {
             [self performWorkWithObject:car];
         }
     });
-}
-
-- (NSTimer *)setupTimer {
-    return [NSTimer scheduledTimerWithTimeInterval:5.0
-                                            target:self
-                                          selector:@selector(startBackgroundWork:)
-                                          userInfo:nil
-                                           repeats:YES];
 }
 
 @end

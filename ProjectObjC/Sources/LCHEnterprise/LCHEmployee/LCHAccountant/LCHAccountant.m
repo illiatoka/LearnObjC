@@ -11,7 +11,7 @@
 }
 
 #pragma mark -
-#pragma mark Private
+#pragma mark LCHEmployee
 
 - (void)processObject:(LCHWasherman *)object {
     @autoreleasepool {

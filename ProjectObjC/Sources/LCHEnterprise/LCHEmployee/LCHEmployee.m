@@ -1,10 +1,8 @@
 #import "LCHEmployee.h"
+#import "LCHBlock.h"
 
 @interface LCHEmployee ()
 @property (nonatomic, readwrite)    NSUInteger  moneyAmount;
-
-- (void)processObject:(id<LCHCashProtocol>)object;
-- (void)finishProcessingObject:(id<LCHCashProtocol>)object;
 
 @end
 
@@ -26,25 +24,18 @@
 #pragma mark Public
 
 - (void)performWorkWithObject:(id<LCHCashProtocol>)object {
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+    performAsyncOnBackgroundQueue(^{
         [self processObject:object];
         
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [self finishProcessingObject:object];
+        performSyncOnMainQueue(^{
+            [self completeProcessingObject:object];
+            [self cleanupAfterProcessing];
         });
     });
 }
 
-#pragma mark -
-#pragma mark Private
-
 - (void)processObject:(id<LCHCashProtocol>)object {
     [self doesNotRecognizeSelector:_cmd];
-}
-
-- (void)finishProcessingObject:(id<LCHCashProtocol>)object {
-    [self completeProcessingObject:object];
-    [self cleanupAfterProcessing];
 }
 
 - (void)completeProcessingObject:(LCHEmployee *)object {
