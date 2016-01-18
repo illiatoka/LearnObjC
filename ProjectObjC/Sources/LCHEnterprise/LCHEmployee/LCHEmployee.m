@@ -1,5 +1,5 @@
 #import "LCHEmployee.h"
-#import "LCHBlock.h"
+#import "LCHDispatch.h"
 
 @interface LCHEmployee ()
 @property (nonatomic, readwrite)    NSUInteger  moneyAmount;
@@ -24,10 +24,10 @@
 #pragma mark Public
 
 - (void)performWorkWithObject:(id<LCHCashProtocol>)object {
-    performAsyncOnBackgroundQueue(^{
+    LCHDispatchAsyncOnBackgroundQueue(^{
         [self processObject:object];
         
-        performSyncOnMainQueue(^{
+        LCHDispatchSyncOnMainQueue(^{
             [self completeProcessingObject:object];
             [self cleanupAfterProcessing];
         });

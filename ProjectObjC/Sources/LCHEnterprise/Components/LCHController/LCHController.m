@@ -1,6 +1,6 @@
 #import "LCHController.h"
 #import "LCHEnterprise.h"
-#import "LCHBlock.h"
+#import "LCHDispatch.h"
 #import "LCHCar.h"
 
 static const NSUInteger kLCHDefaultCarCount         = 1000;
@@ -76,13 +76,13 @@ static const NSTimeInterval kLCHDefaultTimeInterval = 5.0;
 }
 
 - (void)performWorkWithObject:(id)object {
-    performAsyncOnBackgroundQueue(^{
+    LCHDispatchAsyncOnBackgroundQueue(^{
         [self.enterprise performWorkWithCar:object];
     });
 }
 
 - (void)performWorkWithObjects:(NSArray *)objects {
-    performAsyncOnBackgroundQueue(^{
+    LCHDispatchAsyncOnBackgroundQueue(^{
         for (id object in objects) {
             [self performWorkWithObject:object];
         }
@@ -93,7 +93,7 @@ static const NSTimeInterval kLCHDefaultTimeInterval = 5.0;
 #pragma mark Private
 
 - (void)startBackgroundWork:(NSTimer *)timer {
-    performAsyncOnBackgroundQueue(^{
+    LCHDispatchAsyncOnBackgroundQueue(^{
         NSArray *cars = [LCHCar objectsWithCount:kLCHDefaultCarCount];
         for (id car in cars) {
             [self performWorkWithObject:car];
