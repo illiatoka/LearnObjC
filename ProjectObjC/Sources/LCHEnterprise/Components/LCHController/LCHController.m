@@ -52,6 +52,18 @@ static const NSTimeInterval kLCHDefaultTimeInterval = 5.0;
     return nil != self.timer;
 }
 
+- (void)setWorking:(BOOL)working {
+    if (working) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:kLCHDefaultTimeInterval
+                                                      target:self
+                                                    selector:@selector(startBackgroundWork:)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    } else {
+        self.timer = nil;
+    }
+}
+
 - (void)setTimer:(NSTimer *)timer {
     if (timer != _timer) {
         [_timer invalidate];
@@ -62,18 +74,6 @@ static const NSTimeInterval kLCHDefaultTimeInterval = 5.0;
 
 #pragma mark -
 #pragma mark Public
-
-- (void)startWork {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:kLCHDefaultTimeInterval
-                                                  target:self
-                                                selector:@selector(startBackgroundWork:)
-                                                userInfo:nil
-                                                 repeats:YES];
-}
-
-- (void)stopWork {
-    self.timer = nil;
-}
 
 - (void)performWorkWithObject:(id)object {
     LCHDispatchAsyncOnBackgroundQueue(^{

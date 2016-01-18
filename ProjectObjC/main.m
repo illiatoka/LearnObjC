@@ -6,7 +6,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        [[LCHController controllerWithEnterprise:[LCHEnterprise object]] startWork];
+        [[LCHController controllerWithEnterprise:[LCHEnterprise object]] setWorking:YES];
         [[NSRunLoop mainRunLoop] run];
     }
     
