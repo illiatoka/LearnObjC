@@ -93,9 +93,9 @@ static const NSUInteger kLCHDefaultManagerCount     = 2;
 #pragma mark LCHObserverProtocol
 
 - (void)employeeDidFinishWork:(id)employee {
-    if ([employee class] == [LCHWasherman class]) {
+    if ([self.washermanDispatcher containsHandler:employee]) {
         [self.accountantDispatcher performWorkWithObject:employee];
-    } else if ([employee class] == [LCHAccountant class]) {
+    } else if ([self.accountantDispatcher containsHandler:employee]) {
         [self.managerDispatcher performWorkWithObject:employee];
     }
 }

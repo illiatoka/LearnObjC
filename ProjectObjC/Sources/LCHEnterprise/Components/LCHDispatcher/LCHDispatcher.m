@@ -69,6 +69,10 @@
     }
 }
 
+- (BOOL)containsHandler:(id)handler {
+    return [self.mutableHandlers containsObject:handler];
+}
+
 #pragma mark -
 #pragma mark Private
 
