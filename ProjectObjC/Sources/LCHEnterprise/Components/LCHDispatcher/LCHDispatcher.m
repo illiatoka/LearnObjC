@@ -44,15 +44,24 @@
 }
 
 - (void)addHandler:(id)handler {
-    [self.handlers addObject:handler];
+    NSMutableSet *handlers = self.handlers;
+    @synchronized(handlers) {
+        [handlers addObject:handler];
+    }
 }
 
 - (void)removeHandler:(id)handler {
-    [self.handlers removeObject:handler];
+    NSMutableSet *handlers = self.handlers;
+    @synchronized(handlers) {
+        [handlers removeObject:handler];
+    }
 }
 
 - (BOOL)containsHandler:(id)handler {
-    return [self.handlers containsObject:handler];
+    NSMutableSet *handlers = self.handlers;
+    @synchronized(handlers) {
+        return [handlers containsObject:handler];
+    }
 }
 
 #pragma mark -

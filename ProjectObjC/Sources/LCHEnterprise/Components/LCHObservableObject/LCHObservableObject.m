@@ -39,12 +39,6 @@
     return nil;
 }
 
-- (NSUInteger)getState {
-    @synchronized(self) {
-        return _state;
-    }
-}
-
 - (void)setState:(NSUInteger)state {
     [self setState:state withObject:nil];
 }
@@ -90,7 +84,10 @@
 }
 
 - (BOOL)containsObserver:(id)observer {
-    return [self.observersHashTable containsObject:observer];
+    NSHashTable *observersHashTable = self.observersHashTable;
+    @synchronized(observersHashTable) {
+        return [observersHashTable containsObject:observer];
+    }
 }
 
 - (void)notifyWithSelector:(SEL)selector {

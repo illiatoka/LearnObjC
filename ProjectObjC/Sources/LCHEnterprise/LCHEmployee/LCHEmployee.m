@@ -69,10 +69,8 @@
 #pragma mark LCHCashProtocol
 
 - (void)giveMoney:(NSUInteger)money toReceiver:(id<LCHCashProtocol>)receiver {
-    @synchronized(self) {
-        [self giveMoney:money];
-        [receiver takeMoney:money];
-    }
+    [self giveMoney:money];
+    [receiver takeMoney:money];
 }
 
 - (void)giveAllMoneyToReceiver:(id<LCHCashProtocol>)receiver {

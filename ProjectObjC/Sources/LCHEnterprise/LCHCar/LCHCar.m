@@ -36,10 +36,8 @@ static const NSUInteger kLCHInitialMoney = 20;
 #pragma mark LCHCashProtocol
 
 - (void)giveMoney:(NSUInteger)money toReceiver:(id<LCHCashProtocol>)receiver {
-    @synchronized(self) {
-        [self giveMoney:money];
-        [receiver takeMoney:money];
-    }
+    [self giveMoney:money];
+    [receiver takeMoney:money];
 }
 
 - (void)giveMoney:(NSUInteger)money {

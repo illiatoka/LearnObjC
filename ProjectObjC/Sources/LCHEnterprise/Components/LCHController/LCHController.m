@@ -65,7 +65,7 @@ static const NSTimeInterval kLCHDefaultTimeInterval = 0.1;
 }
 
 - (void)setTimer:(NSTimer *)timer {
-    if (timer != _timer) {
+    if (_timer != timer) {
         [_timer invalidate];
         [_timer release];
         _timer = timer;
