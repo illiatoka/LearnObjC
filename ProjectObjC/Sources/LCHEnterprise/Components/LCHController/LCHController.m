@@ -76,13 +76,13 @@ static const NSTimeInterval kLCHDefaultTimeInterval = 0.1;
 #pragma mark Public
 
 - (void)performWorkWithObject:(id)object {
-    LCHDispatchAsyncOnBackgroundQueue(^{
+    LCHDispatchAsyncOnQueue(LCHDispatchQueueDefault, ^{
         [self.enterprise performWorkWithCar:object];
     });
 }
 
 - (void)performWorkWithObjects:(NSArray *)objects {
-    LCHDispatchAsyncOnBackgroundQueue(^{
+    LCHDispatchAsyncOnQueue(LCHDispatchQueueBackground, ^{
         for (id object in objects) {
             [self performWorkWithObject:object];
         }
@@ -106,11 +106,8 @@ static NSUInteger count = 0;
         count++;
     }
     
-    LCHDispatchAsyncOnBackgroundQueue(^{
-        NSArray *cars = [LCHCar objectsWithCount:kLCHDefaultCarCount];
-        for (id car in cars) {
-            [self performWorkWithObject:car];
-        }
+    LCHDispatchAsyncOnQueue(LCHDispatchQueueBackground, ^{
+        [self performWorkWithObjects:[LCHCar objectsWithCount:kLCHDefaultCarCount]];
     });
 }
 

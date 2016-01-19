@@ -67,7 +67,6 @@
 #pragma mark -
 #pragma mark Private
 
-// TODO: Check potential deadlock here
 - (void)performWork {
     id object = [self.queue dequeue];
     if (object) {

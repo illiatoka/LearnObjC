@@ -24,10 +24,10 @@
 #pragma mark Public
 
 - (void)performWorkWithObject:(id<LCHCashProtocol>)object {
-    LCHDispatchAsyncOnBackgroundQueue(^{
+    LCHDispatchAsyncOnQueue(LCHDispatchQueueInterective, ^{
         [self processObject:object];
         
-        LCHDispatchAsyncOnMainQueue(^{
+        LCHDispatchSyncOnMainQueue(^{
             [self completeProcessingObject:object];
             [self cleanupAfterProcessing];
         });
