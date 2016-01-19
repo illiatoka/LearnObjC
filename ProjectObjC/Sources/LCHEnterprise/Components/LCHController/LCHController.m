@@ -3,8 +3,8 @@
 #import "LCHDispatch.h"
 #import "LCHCar.h"
 
-static const NSUInteger kLCHDefaultCarCount         = 1000;
-static const NSTimeInterval kLCHDefaultTimeInterval = 5.0;
+static const NSUInteger kLCHDefaultCarCount         = 10000;
+static const NSTimeInterval kLCHDefaultTimeInterval = 0.1;
 
 @interface LCHController ()
 @property (nonatomic, retain)   LCHEnterprise       *enterprise;
@@ -92,7 +92,20 @@ static const NSTimeInterval kLCHDefaultTimeInterval = 5.0;
 #pragma -
 #pragma mark Private
 
+// TODO: Remove test code bellow
+// Variable 'count' and 'if' statement placed below just for testing
+
+static NSUInteger count = 0;
+
 - (void)startBackgroundWork:(NSTimer *)timer {
+    if (count > 99) {
+        [self setWorking:NO];
+        
+        return;
+    } else {
+        count++;
+    }
+    
     LCHDispatchAsyncOnBackgroundQueue(^{
         NSArray *cars = [LCHCar objectsWithCount:kLCHDefaultCarCount];
         for (id car in cars) {

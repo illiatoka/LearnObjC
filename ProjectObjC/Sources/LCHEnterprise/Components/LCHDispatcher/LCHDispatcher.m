@@ -5,7 +5,7 @@
 #import "LCHQueue.h"
 
 @interface LCHDispatcher ()
-@property (nonatomic, retain)   NSMutableSet    *mutableHandlers;
+@property (nonatomic, retain)   NSMutableSet    *handlers;
 @property (nonatomic, retain)   LCHQueue        *queue;
 
 - (void)performWork;
@@ -15,13 +15,11 @@
 
 @implementation LCHDispatcher
 
-@dynamic handlers;
-
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.mutableHandlers = nil;
+    self.handlers = nil;
     self.queue = nil;
     
     [super dealloc];
@@ -30,21 +28,11 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.mutableHandlers = [NSMutableSet object];
+        self.handlers = [NSMutableSet object];
         self.queue = [LCHQueue object];
     }
     
     return self;
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (NSArray *)handlers {
-    NSMutableSet *mutableHandlers = self.mutableHandlers;
-    @synchronized(mutableHandlers) {
-        return mutableHandlers.allObjects;
-    }
 }
 
 #pragma mark -
@@ -56,26 +44,21 @@
 }
 
 - (void)addHandler:(id)handler {
-    NSMutableSet *mutableHandlers = self.mutableHandlers;
-    @synchronized(mutableHandlers) {
-        [mutableHandlers addObject:handler];
-    }
+    [self.handlers addObject:handler];
 }
 
 - (void)removeHandler:(id)handler {
-    NSMutableSet *mutableHandlers = self.mutableHandlers;
-    @synchronized(mutableHandlers) {
-        [mutableHandlers removeObject:handler];
-    }
+    [self.handlers removeObject:handler];
 }
 
 - (BOOL)containsHandler:(id)handler {
-    return [self.mutableHandlers containsObject:handler];
+    return [self.handlers containsObject:handler];
 }
 
 #pragma mark -
 #pragma mark Private
 
+// TODO: Check potential deadlock here
 - (void)performWork {
     id object = [self.queue dequeue];
     if (object) {

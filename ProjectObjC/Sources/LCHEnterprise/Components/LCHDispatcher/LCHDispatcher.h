@@ -1,11 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "LCHEmployeeObserverProtocol.h"
 
-@class LCHHandlerContainer;
-@class LCHQueue;
-
 @interface LCHDispatcher : NSObject <LCHEmployeeObserverProtocol>
-@property (nonatomic, readonly) NSArray *handlers;
 
 - (void)performWorkWithObject:(id)object;
 

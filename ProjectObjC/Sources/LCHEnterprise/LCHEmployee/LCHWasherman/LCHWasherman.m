@@ -14,12 +14,8 @@
 #pragma mark LCHEmployee
 
 - (void)processObject:(LCHCar *)object {
-    @autoreleasepool {
-        @synchronized(self) {
-            [self washCar:object];
-            [object giveMoney:kLCHDefaultPrice toReceiver:self];
-        }
-    }
+    [self washCar:object];
+    [object giveMoney:kLCHDefaultPrice toReceiver:self];
 }
 
 - (void)completeProcessingObject:(id)object {

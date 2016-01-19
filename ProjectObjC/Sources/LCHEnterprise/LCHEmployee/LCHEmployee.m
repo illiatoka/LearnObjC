@@ -27,7 +27,7 @@
     LCHDispatchAsyncOnBackgroundQueue(^{
         [self processObject:object];
         
-        LCHDispatchSyncOnMainQueue(^{
+        LCHDispatchAsyncOnMainQueue(^{
             [self completeProcessingObject:object];
             [self cleanupAfterProcessing];
         });

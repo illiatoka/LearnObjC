@@ -14,12 +14,8 @@
 #pragma mark LCHEmployee
 
 - (void)processObject:(LCHAccountant *)object {
-    @autoreleasepool {
-        @synchronized(self) {
-            [object giveAllMoneyToReceiver:self];
-            [self countProfit];
-        }
-    }
+    [object giveAllMoneyToReceiver:self];
+    [self countProfit];
 }
 
 - (void)cleanupAfterProcessing {

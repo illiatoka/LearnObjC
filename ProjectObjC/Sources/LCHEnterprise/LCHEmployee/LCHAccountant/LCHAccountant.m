@@ -14,12 +14,8 @@
 #pragma mark LCHEmployee
 
 - (void)processObject:(LCHWasherman *)object {
-    @autoreleasepool {
-        @synchronized(self) {
-            [object giveAllMoneyToReceiver:self];
-            [self countMoney];
-        }
-    }
+    [object giveAllMoneyToReceiver:self];
+    [self countMoney];
 }
 
 @end
