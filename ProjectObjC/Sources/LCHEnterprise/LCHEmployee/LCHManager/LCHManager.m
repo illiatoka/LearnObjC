@@ -7,7 +7,9 @@
 #pragma mark Public
 
 - (void)countProfit {
-    NSLog(@"Manager profit is %lu", self.moneyAmount);
+    if (0 == (self.moneyAmount % 1000000)) {
+        NSLog(@"Manager profit is %lu", self.moneyAmount);
+    }
 }
 
 #pragma mark -
