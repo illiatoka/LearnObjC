@@ -4,9 +4,9 @@
 #import "LCHAccountant.h"
 #import "LCHWasherman.h"
 
-static const NSUInteger kLCHDefaultWashermanCount   = 4;
-static const NSUInteger kLCHDefaultAccountantCount  = 3;
-static const NSUInteger kLCHDefaultManagerCount     = 2;
+static const NSUInteger kLCHDefaultWashermanCount   = 3;
+static const NSUInteger kLCHDefaultAccountantCount  = 2;
+static const NSUInteger kLCHDefaultManagerCount     = 1;
 
 @interface LCHEnterprise ()
 @property (nonatomic, retain)   LCHDispatcher   *washermanDispatcher;
@@ -60,6 +60,8 @@ static const NSUInteger kLCHDefaultManagerCount     = 2;
 #pragma mark Private
 
 - (void)hireEmployees {
+    self.mutableEmployees = [NSMutableArray array];
+    
     NSArray *washermen = [LCHWasherman objectsWithCount:kLCHDefaultWashermanCount];
     NSArray *accountants = [LCHAccountant objectsWithCount:kLCHDefaultAccountantCount];
     NSArray *managers = [LCHManager objectsWithCount:kLCHDefaultManagerCount];

@@ -24,7 +24,7 @@
 #pragma mark Public
 
 - (void)performWorkWithObject:(id<LCHCashProtocol>)object {
-    LCHDispatchAsyncOnQueue(LCHDispatchQueueInterective, ^{
+    LCHDispatchSyncOnQueue(LCHDispatchQueueDefault, ^{
         [self processObject:object];
         
         LCHDispatchSyncOnMainQueue(^{

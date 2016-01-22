@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, LCHDispatchQueueType) {
-    LCHDispatchQueueInterective = QOS_CLASS_USER_INTERACTIVE,
+    LCHDispatchQueueInteractive = QOS_CLASS_USER_INTERACTIVE,
     LCHDispatchQueueInitiated = QOS_CLASS_USER_INITIATED,
     LCHDispatchQueueDefault = QOS_CLASS_DEFAULT,
     LCHDispatchQueueUtility = QOS_CLASS_UTILITY,

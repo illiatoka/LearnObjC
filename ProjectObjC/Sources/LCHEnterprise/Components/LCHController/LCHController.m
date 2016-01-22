@@ -76,17 +76,13 @@ static const NSTimeInterval kLCHDefaultTimeInterval = 0.1;
 #pragma mark Public
 
 - (void)performWorkWithObject:(id)object {
-    LCHDispatchAsyncOnQueue(LCHDispatchQueueDefault, ^{
-        [self.enterprise performWorkWithCar:object];
-    });
+    [self.enterprise performWorkWithCar:object];
 }
 
 - (void)performWorkWithObjects:(NSArray *)objects {
-    LCHDispatchAsyncOnQueue(LCHDispatchQueueBackground, ^{
-        for (id object in objects) {
-            [self performWorkWithObject:object];
-        }
-    });
+    for (id object in objects) {
+        [self performWorkWithObject:object];
+    }
 }
 
 #pragma -
