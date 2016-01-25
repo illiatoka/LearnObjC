@@ -3,7 +3,7 @@
 static const NSUInteger kLCHInitialMoney = 20;
 
 @interface LCHCar ()
-@property (nonatomic, readwrite)    NSUInteger  moneyAmount;
+@property (nonatomic, assign)   NSUInteger  moneyAmount;
 
 @end
 

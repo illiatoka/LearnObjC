@@ -10,6 +10,7 @@
 
 - (void)performWork;
 - (id)reserveHandler;
+- (void)removeHandlers;
 
 @end
 
@@ -19,7 +20,8 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.handlers = nil;
+    [self removeHandlers];
+    
     self.queue = nil;
     
     [super dealloc];
@@ -47,12 +49,14 @@
     NSMutableSet *handlers = self.handlers;
     @synchronized(handlers) {
         [handlers addObject:handler];
+        [handler addObserver:self];
     }
 }
 
 - (void)removeHandler:(id)handler {
     NSMutableSet *handlers = self.handlers;
     @synchronized(handlers) {
+        [handler removeObserver:self];
         [handlers removeObject:handler];
     }
 }
@@ -91,6 +95,13 @@
     }
     
     return nil;
+}
+
+- (void)removeHandlers {
+    NSArray *handlers = [self.handlers allObjects];
+    for (id handler in handlers) {
+        [self removeHandler:handler];
+    }
 }
 
 #pragma mark -

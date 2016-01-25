@@ -2,7 +2,7 @@
 #import "LCHDispatch.h"
 
 @interface LCHEmployee ()
-@property (nonatomic, readwrite)    NSUInteger  moneyAmount;
+@property (nonatomic, assign)   NSUInteger  moneyAmount;
 
 @end
 

@@ -62,19 +62,18 @@ static const NSUInteger kLCHDefaultManagerCount     = 1;
 - (void)hireEmployees {
     self.mutableEmployees = [NSMutableArray array];
     
-    NSArray *washermen = [LCHWasherman objectsWithCount:kLCHDefaultWashermanCount];
+    NSArray *washers = [LCHWasherman objectsWithCount:kLCHDefaultWashermanCount];
     NSArray *accountants = [LCHAccountant objectsWithCount:kLCHDefaultAccountantCount];
     NSArray *managers = [LCHManager objectsWithCount:kLCHDefaultManagerCount];
     
-    [self setupEmployees:washermen withDispatcher:self.washermanDispatcher];
+    [self setupEmployees:washers withDispatcher:self.washermanDispatcher];
     [self setupEmployees:accountants withDispatcher:self.accountantDispatcher];
     [self setupEmployees:managers withDispatcher:self.managerDispatcher];
 }
 
 - (void)retireEmployees {
-    NSArray *observers = @[self, self.washermanDispatcher, self.accountantDispatcher, self.managerDispatcher];
     for (id employee in self.mutableEmployees) {
-        [employee removeObserversFromArray:observers];
+        [employee removeObserver:self];
     }
     
     self.mutableEmployees = nil;
@@ -82,12 +81,11 @@ static const NSUInteger kLCHDefaultManagerCount     = 1;
 
 - (void)setupEmployees:(NSArray *)employees withDispatcher:(LCHDispatcher *)dispatcher {
     NSMutableArray *mutableEmployees = self.mutableEmployees;
-    NSArray *observers = @[self, dispatcher];
     
     for (id employee in employees) {
         [dispatcher addHandler:employee];
         [mutableEmployees addObject:employee];
-        [employee addObserversFromArray:observers];
+        [employee addObserver:self];
     }
 }
 
