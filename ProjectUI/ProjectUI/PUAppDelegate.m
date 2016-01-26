@@ -1,8 +1,15 @@
 #import "PUAppDelegate.h"
+#import "PUViewController.h"
 
 @implementation PUAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = window;
+    window.rootViewController = [PUViewController new];
+    
+    [window makeKeyAndVisible];
+    
     return YES;
 }
 

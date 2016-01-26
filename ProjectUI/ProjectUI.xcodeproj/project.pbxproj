@@ -11,8 +11,9 @@
 		A63261221C58193200508740 /* PUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A63261151C58193200508740 /* PUAppDelegate.m */; };
 		A63261231C58193200508740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A63261171C58193200508740 /* Assets.xcassets */; };
 		A63261241C58193200508740 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63261181C58193200508740 /* LaunchScreen.storyboard */; };
-		A63261251C58193200508740 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A632611A1C58193200508740 /* Main.storyboard */; };
 		A63261261C58193200508740 /* PUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A632611F1C58193200508740 /* PUViewController.m */; };
+		A63261281C58301300508740 /* PUView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63261271C58301300508740 /* PUView.xib */; };
+		A632612B1C58304300508740 /* PUView.m in Sources */ = {isa = PBXBuildFile; fileRef = A632612A1C58304300508740 /* PUView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +24,11 @@
 		A63261151C58193200508740 /* PUAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUAppDelegate.m; sourceTree = "<group>"; };
 		A63261171C58193200508740 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A63261191C58193200508740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A632611B1C58193200508740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A632611E1C58193200508740 /* PUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUViewController.h; sourceTree = "<group>"; };
 		A632611F1C58193200508740 /* PUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUViewController.m; sourceTree = "<group>"; };
+		A63261271C58301300508740 /* PUView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUView.xib; sourceTree = "<group>"; };
+		A63261291C58304300508740 /* PUView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUView.h; sourceTree = "<group>"; };
+		A632612A1C58304300508740 /* PUView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +76,6 @@
 			children = (
 				A63261171C58193200508740 /* Assets.xcassets */,
 				A63261181C58193200508740 /* LaunchScreen.storyboard */,
-				A632611A1C58193200508740 /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -91,6 +93,9 @@
 			children = (
 				A632611E1C58193200508740 /* PUViewController.h */,
 				A632611F1C58193200508740 /* PUViewController.m */,
+				A63261271C58301300508740 /* PUView.xib */,
+				A63261291C58304300508740 /* PUView.h */,
+				A632612A1C58304300508740 /* PUView.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -154,9 +159,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A63261281C58301300508740 /* PUView.xib in Resources */,
 				A63261241C58193200508740 /* LaunchScreen.storyboard in Resources */,
 				A63261231C58193200508740 /* Assets.xcassets in Resources */,
-				A63261251C58193200508740 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +175,7 @@
 				A63261211C58193200508740 /* main.m in Sources */,
 				A63261261C58193200508740 /* PUViewController.m in Sources */,
 				A63261221C58193200508740 /* PUAppDelegate.m in Sources */,
+				A632612B1C58304300508740 /* PUView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,14 +188,6 @@
 				A63261191C58193200508740 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		A632611A1C58193200508740 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A632611B1C58193200508740 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
