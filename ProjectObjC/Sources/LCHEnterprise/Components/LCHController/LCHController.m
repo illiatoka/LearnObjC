@@ -19,6 +19,8 @@ static const NSTimeInterval kLCHDefaultTimeInterval = 0.1;
 
 @implementation LCHController
 
+@dynamic working;
+
 #pragma mark -
 #pragma mark Class Methods
 
@@ -68,7 +70,7 @@ static const NSTimeInterval kLCHDefaultTimeInterval = 0.1;
     if (_timer != timer) {
         [_timer invalidate];
         [_timer release];
-        _timer = timer;
+        _timer = [timer retain];
     }
 }
 
