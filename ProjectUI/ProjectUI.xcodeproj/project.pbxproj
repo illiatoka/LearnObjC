@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A63260FC1C5816C600508740 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A63260FB1C5816C600508740 /* main.m */; };
-		A63260FF1C5816C600508740 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A63260FE1C5816C600508740 /* AppDelegate.m */; };
-		A63261021C5816C600508740 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63261011C5816C600508740 /* ViewController.m */; };
-		A63261051C5816C600508740 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63261031C5816C600508740 /* Main.storyboard */; };
-		A63261071C5816C600508740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A63261061C5816C600508740 /* Assets.xcassets */; };
-		A632610A1C5816C600508740 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63261081C5816C600508740 /* LaunchScreen.storyboard */; };
+		A63261211C58193200508740 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A63261131C58193200508740 /* main.m */; };
+		A63261221C58193200508740 /* PUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A63261151C58193200508740 /* PUAppDelegate.m */; };
+		A63261231C58193200508740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A63261171C58193200508740 /* Assets.xcassets */; };
+		A63261241C58193200508740 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63261181C58193200508740 /* LaunchScreen.storyboard */; };
+		A63261251C58193200508740 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A632611A1C58193200508740 /* Main.storyboard */; };
+		A63261261C58193200508740 /* PUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A632611F1C58193200508740 /* PUViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A63260F71C5816C600508740 /* ProjectUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A63260FB1C5816C600508740 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A63260FD1C5816C600508740 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		A63260FE1C5816C600508740 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A63261001C5816C600508740 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A63261011C5816C600508740 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A63261041C5816C600508740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A63261061C5816C600508740 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A63261091C5816C600508740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A632610B1C5816C600508740 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A63261121C58193200508740 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A63261131C58193200508740 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A63261141C58193200508740 /* PUAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUAppDelegate.h; sourceTree = "<group>"; };
+		A63261151C58193200508740 /* PUAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUAppDelegate.m; sourceTree = "<group>"; };
+		A63261171C58193200508740 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A63261191C58193200508740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A632611B1C58193200508740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A632611E1C58193200508740 /* PUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUViewController.h; sourceTree = "<group>"; };
+		A632611F1C58193200508740 /* PUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,8 +42,10 @@
 		A63260EE1C5816C600508740 = {
 			isa = PBXGroup;
 			children = (
-				A63260F91C5816C600508740 /* ProjectUI */,
 				A63260F81C5816C600508740 /* Products */,
+				A63261111C58193200508740 /* ProjectUI */,
+				A63261161C58193200508740 /* Resources */,
+				A632611C1C58193200508740 /* Source */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,28 +57,42 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A63260F91C5816C600508740 /* ProjectUI */ = {
+		A63261111C58193200508740 /* ProjectUI */ = {
 			isa = PBXGroup;
 			children = (
-				A63260FD1C5816C600508740 /* AppDelegate.h */,
-				A63260FE1C5816C600508740 /* AppDelegate.m */,
-				A63261001C5816C600508740 /* ViewController.h */,
-				A63261011C5816C600508740 /* ViewController.m */,
-				A63261031C5816C600508740 /* Main.storyboard */,
-				A63261061C5816C600508740 /* Assets.xcassets */,
-				A63261081C5816C600508740 /* LaunchScreen.storyboard */,
-				A632610B1C5816C600508740 /* Info.plist */,
-				A63260FA1C5816C600508740 /* Supporting Files */,
+				A63261141C58193200508740 /* PUAppDelegate.h */,
+				A63261151C58193200508740 /* PUAppDelegate.m */,
+				A63261121C58193200508740 /* Info.plist */,
+				A63261131C58193200508740 /* main.m */,
 			);
 			path = ProjectUI;
 			sourceTree = "<group>";
 		};
-		A63260FA1C5816C600508740 /* Supporting Files */ = {
+		A63261161C58193200508740 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A63260FB1C5816C600508740 /* main.m */,
+				A63261171C58193200508740 /* Assets.xcassets */,
+				A63261181C58193200508740 /* LaunchScreen.storyboard */,
+				A632611A1C58193200508740 /* Main.storyboard */,
 			);
-			name = "Supporting Files";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A632611C1C58193200508740 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A632611D1C58193200508740 /* UI */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		A632611D1C58193200508740 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A632611E1C58193200508740 /* PUViewController.h */,
+				A632611F1C58193200508740 /* PUViewController.m */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +121,7 @@
 		A63260EF1C5816C600508740 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = PU;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "ILYA Toka";
 				TargetAttributes = {
@@ -137,9 +154,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A632610A1C5816C600508740 /* LaunchScreen.storyboard in Resources */,
-				A63261071C5816C600508740 /* Assets.xcassets in Resources */,
-				A63261051C5816C600508740 /* Main.storyboard in Resources */,
+				A63261241C58193200508740 /* LaunchScreen.storyboard in Resources */,
+				A63261231C58193200508740 /* Assets.xcassets in Resources */,
+				A63261251C58193200508740 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,29 +167,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A63261021C5816C600508740 /* ViewController.m in Sources */,
-				A63260FF1C5816C600508740 /* AppDelegate.m in Sources */,
-				A63260FC1C5816C600508740 /* main.m in Sources */,
+				A63261211C58193200508740 /* main.m in Sources */,
+				A63261261C58193200508740 /* PUViewController.m in Sources */,
+				A63261221C58193200508740 /* PUAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A63261031C5816C600508740 /* Main.storyboard */ = {
+		A63261181C58193200508740 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A63261041C5816C600508740 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A63261081C5816C600508740 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A63261091C5816C600508740 /* Base */,
+				A63261191C58193200508740 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A632611A1C58193200508740 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A632611B1C58193200508740 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -262,6 +279,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ProjectUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ilyatoka.ProjectUI;
@@ -273,6 +291,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ProjectUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ilyatoka.ProjectUI;
@@ -299,6 +318,7 @@
 				A63261101C5816C600508740 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
