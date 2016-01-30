@@ -11,9 +11,10 @@
 		A63261221C58193200508740 /* PUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A63261151C58193200508740 /* PUAppDelegate.m */; };
 		A63261231C58193200508740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A63261171C58193200508740 /* Assets.xcassets */; };
 		A63261241C58193200508740 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63261181C58193200508740 /* LaunchScreen.storyboard */; };
-		A63261261C58193200508740 /* PUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A632611F1C58193200508740 /* PUViewController.m */; };
-		A63261281C58301300508740 /* PUView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63261271C58301300508740 /* PUView.xib */; };
-		A632612B1C58304300508740 /* PUView.m in Sources */ = {isa = PBXBuildFile; fileRef = A632612A1C58304300508740 /* PUView.m */; };
+		A63261301C5BD82900508740 /* UIWindow+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A632612F1C5BD82900508740 /* UIWindow+PUExtensions.m */; };
+		A63261391C5C00CC00508740 /* PUView.m in Sources */ = {isa = PBXBuildFile; fileRef = A63261351C5C00CC00508740 /* PUView.m */; };
+		A632613A1C5C00CC00508740 /* PUView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63261361C5C00CC00508740 /* PUView.xib */; };
+		A632613B1C5C00CC00508740 /* PUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63261381C5C00CC00508740 /* PUViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,11 +25,13 @@
 		A63261151C58193200508740 /* PUAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUAppDelegate.m; sourceTree = "<group>"; };
 		A63261171C58193200508740 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A63261191C58193200508740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A632611E1C58193200508740 /* PUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUViewController.h; sourceTree = "<group>"; };
-		A632611F1C58193200508740 /* PUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUViewController.m; sourceTree = "<group>"; };
-		A63261271C58301300508740 /* PUView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUView.xib; sourceTree = "<group>"; };
-		A63261291C58304300508740 /* PUView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUView.h; sourceTree = "<group>"; };
-		A632612A1C58304300508740 /* PUView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUView.m; sourceTree = "<group>"; };
+		A632612E1C5BD82900508740 /* UIWindow+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+PUExtensions.h"; sourceTree = "<group>"; };
+		A632612F1C5BD82900508740 /* UIWindow+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PUExtensions.m"; sourceTree = "<group>"; };
+		A63261341C5C00CC00508740 /* PUView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUView.h; sourceTree = "<group>"; };
+		A63261351C5C00CC00508740 /* PUView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUView.m; sourceTree = "<group>"; };
+		A63261361C5C00CC00508740 /* PUView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUView.xib; sourceTree = "<group>"; };
+		A63261371C5C00CC00508740 /* PUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUViewController.h; sourceTree = "<group>"; };
+		A63261381C5C00CC00508740 /* PUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,7 @@
 		A632611C1C58193200508740 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A632612C1C5BD7B300508740 /* Categories */,
 				A632611D1C58193200508740 /* UI */,
 			);
 			path = Source;
@@ -91,13 +95,46 @@
 		A632611D1C58193200508740 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A632611E1C58193200508740 /* PUViewController.h */,
-				A632611F1C58193200508740 /* PUViewController.m */,
-				A63261271C58301300508740 /* PUView.xib */,
-				A63261291C58304300508740 /* PUView.h */,
-				A632612A1C58304300508740 /* PUView.m */,
+				A63261321C5C00CC00508740 /* PUViewController */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		A632612C1C5BD7B300508740 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A632612D1C5BD7D600508740 /* UIWindow+PUExtensions */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		A632612D1C5BD7D600508740 /* UIWindow+PUExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				A632612E1C5BD82900508740 /* UIWindow+PUExtensions.h */,
+				A632612F1C5BD82900508740 /* UIWindow+PUExtensions.m */,
+			);
+			path = "UIWindow+PUExtensions";
+			sourceTree = "<group>";
+		};
+		A63261321C5C00CC00508740 /* PUViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A63261331C5C00CC00508740 /* PUView */,
+				A63261371C5C00CC00508740 /* PUViewController.h */,
+				A63261381C5C00CC00508740 /* PUViewController.m */,
+			);
+			path = PUViewController;
+			sourceTree = "<group>";
+		};
+		A63261331C5C00CC00508740 /* PUView */ = {
+			isa = PBXGroup;
+			children = (
+				A63261341C5C00CC00508740 /* PUView.h */,
+				A63261351C5C00CC00508740 /* PUView.m */,
+				A63261361C5C00CC00508740 /* PUView.xib */,
+			);
+			path = PUView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,7 +196,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A63261281C58301300508740 /* PUView.xib in Resources */,
+				A632613A1C5C00CC00508740 /* PUView.xib in Resources */,
 				A63261241C58193200508740 /* LaunchScreen.storyboard in Resources */,
 				A63261231C58193200508740 /* Assets.xcassets in Resources */,
 			);
@@ -172,10 +209,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A63261301C5BD82900508740 /* UIWindow+PUExtensions.m in Sources */,
 				A63261211C58193200508740 /* main.m in Sources */,
-				A63261261C58193200508740 /* PUViewController.m in Sources */,
 				A63261221C58193200508740 /* PUAppDelegate.m in Sources */,
-				A632612B1C58304300508740 /* PUView.m in Sources */,
+				A63261391C5C00CC00508740 /* PUView.m in Sources */,
+				A632613B1C5C00CC00508740 /* PUViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
