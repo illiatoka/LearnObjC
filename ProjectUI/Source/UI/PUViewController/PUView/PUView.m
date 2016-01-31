@@ -1,6 +1,19 @@
 #import "PUView.h"
 
+static const CGFloat squareSize = 65;
+static const CGFloat framePadding = 40;
+static const CGFloat frameOffset = squareSize + framePadding;
+
+static const NSTimeInterval animationDuration = 1.0;
+static const NSTimeInterval animationDelay = 0.5;
+
+static NSString *enableAnimation = @"Enable animation";
+static NSString *disableAnimation = @"Disable animation";
+
 @interface PUView ()
+
+- (void)moveSquareAnimated:(BOOL)animated;
+- (void)moveSquareAtPosition:(PUSquarePosition)position animated:(BOOL)animated;
 
 - (CGPoint)squarePositionForPosition:(PUSquarePosition)position;
 
@@ -22,20 +35,18 @@
 - (void)setSquarePosition:(PUSquarePosition)position animated:(BOOL)animated completionHandler:(void(^)(void))handler {
     if (_squarePosition != position) {
         CGPoint newPosition = [self squarePositionForPosition:position];
+        NSTimeInterval duration = animated ? animationDuration : 0.0;
+        NSTimeInterval delay = animated ? 0.0 : animationDelay;
         
-        if (animated) {
-            [UIView animateWithDuration:1.0 animations:^() {
-                self.square.frame = CGRectOffset(self.square.frame, newPosition.x, newPosition.y);
-            } completion:^(BOOL finished) {
-                handler();
-            }];
-        } else {
-            [UIView animateWithDuration:0.0 delay:0.5 options:UIViewAnimationOptionTransitionNone animations:^() {
-                self.square.frame = CGRectOffset(self.square.frame, newPosition.x, newPosition.y);
-            } completion:^(BOOL finished) {
-                handler();
-            }];
-        }
+        void (^updatePosition)() = ^() {
+            self.square.frame = CGRectOffset(self.square.frame, newPosition.x, newPosition.y);
+        };
+        
+        [UIView animateWithDuration:duration
+                              delay:delay
+                            options:UIViewAnimationOptionTransitionNone
+                         animations:^(void) {updatePosition();}
+                         completion:^(BOOL finished){handler();}];
         
         _squarePosition = position;
     }
@@ -43,20 +54,10 @@
 
 - (void)moveSquare {
     if (self.isMoving) {
-        __block PUView *_self = self;
-        
         if (self.switcher.isOn) {
-            if (self.squarePosition < 3) {
-                [self setSquarePosition:self.squarePosition + 1 animated:YES completionHandler:^(){[_self moveSquare];}];
-            } else {
-                [self setSquarePosition:PUSquarePositionTopLeft animated:YES completionHandler:^(){[_self moveSquare];}];
-            }
+            [self moveSquareAnimated:YES];
         } else {
-            if (self.squarePosition < 3) {
-                [self setSquarePosition:self.squarePosition + 1 animated:NO completionHandler:^(){[_self moveSquare];}];
-            } else {
-                [self setSquarePosition:PUSquarePositionTopLeft animated:NO completionHandler:^(){[_self moveSquare];}];
-            }
+            [self moveSquareAnimated:NO];
         }
     }
 }
@@ -67,14 +68,28 @@
 
 - (void)updateSwitcherText {
     if (self.switcher.isOn) {
-        self.switcherLabel.text = @"Disable animation";
+        self.switcherLabel.text = disableAnimation;
     } else {
-        self.switcherLabel.text = @"Enable animation";
+        self.switcherLabel.text = enableAnimation;
     }
 }
 
 #pragma mark -
 #pragma mark Private
+
+- (void)moveSquareAnimated:(BOOL)animated {
+    NSUInteger position = self.squarePosition;
+    if (position < PUSquarePositionTopRight) {
+        [self moveSquareAtPosition:position + 1 animated:animated];
+    } else {
+        [self moveSquareAtPosition:PUSquarePositionTopLeft animated:animated];
+    }
+}
+
+- (void)moveSquareAtPosition:(PUSquarePosition)position animated:(BOOL)animated {
+    __block PUView *_self = self;
+    [self setSquarePosition:position animated:animated completionHandler:^(){[_self moveSquare];}];
+}
 
 - (CGPoint)squarePositionForPosition:(PUSquarePosition)position {
     CGFloat frameWidth = self.areaView.frame.size.width;
@@ -82,16 +97,16 @@
     
     switch (position) {
         case PUSquarePositionTopLeft:
-            return CGPointMake(-(frameWidth - 105), 0);
+            return CGPointMake(-(frameWidth - frameOffset), 0);
             
         case PUSquarePositionBottomLeft:
-            return CGPointMake(0, frameHeight - 105);
+            return CGPointMake(0, frameHeight - frameOffset);
             
         case PUSquarePositionBottomRight:
-            return CGPointMake(frameWidth - 105, 0);
+            return CGPointMake(frameWidth - frameOffset, 0);
             
         case PUSquarePositionTopRight:
-            return CGPointMake(0, -(frameHeight - 105));
+            return CGPointMake(0, -(frameHeight - frameOffset));
             
         default:
             return CGPointMake(0, 0);
