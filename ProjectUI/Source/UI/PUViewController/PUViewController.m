@@ -3,6 +3,8 @@
 #import "PUView.h"
 
 @interface PUViewController ()
+@property (nonatomic, assign, getter=isMovingDidStart)  BOOL    movingDidStart;
+
 - (UIStatusBarStyle)preferredStatusBarStyle;
 
 @end
@@ -27,15 +29,21 @@
 #pragma mark Puclic
 
 - (IBAction)startMoving {
-    [(PUView *)self.view moveSquare];
+    if (!self.isMovingDidStart) {
+        self.movingDidStart = YES;
+        [(PUView *)self.view setMoving:YES];
+        [(PUView *)self.view moveSquare];
+    }
 }
 
 - (IBAction)stopMoving {
+    self.movingDidStart = NO;
+    [(PUView *)self.view setMoving:NO];
     [(PUView *)self.view stopSquare];
 }
 
-- (IBAction)switcherChanged {
-    [(PUView *)self.view updateSquare];
+- (IBAction)switcherDidChange {
+    [(PUView *)self.view updateSwitcherText];
 }
 
 @end

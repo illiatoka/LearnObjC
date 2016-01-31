@@ -22,12 +22,19 @@
 - (void)setSquarePosition:(PUSquarePosition)position animated:(BOOL)animated completionHandler:(void(^)(void))handler {
     if (_squarePosition != position) {
         CGPoint newPosition = [self squarePositionForPosition:position];
+        
         if (animated) {
             [UIView animateWithDuration:1.0 animations:^() {
                 self.square.frame = CGRectOffset(self.square.frame, newPosition.x, newPosition.y);
+            } completion:^(BOOL finished) {
+                handler();
             }];
         } else {
-            self.square.frame = CGRectOffset(self.square.frame, newPosition.x, newPosition.y);
+            [UIView animateWithDuration:0.0 delay:0.5 options:UIViewAnimationOptionTransitionNone animations:^() {
+                self.square.frame = CGRectOffset(self.square.frame, newPosition.x, newPosition.y);
+            } completion:^(BOOL finished) {
+                handler();
+            }];
         }
         
         _squarePosition = position;
@@ -35,27 +42,35 @@
 }
 
 - (void)moveSquare {
-    if (self.switcher.isOn) {
-        if (self.squarePosition < 3) {
-            [self setSquarePosition:self.squarePosition + 1 animated:YES];
+    if (self.isMoving) {
+        __block PUView *_self = self;
+        
+        if (self.switcher.isOn) {
+            if (self.squarePosition < 3) {
+                [self setSquarePosition:self.squarePosition + 1 animated:YES completionHandler:^(){[_self moveSquare];}];
+            } else {
+                [self setSquarePosition:PUSquarePositionTopLeft animated:YES completionHandler:^(){[_self moveSquare];}];
+            }
         } else {
-            [self setSquarePosition:PUSquarePositionTopLeft animated:YES];
-        }
-    } else {
-        if (self.squarePosition < 3) {
-            [self setSquarePosition:self.squarePosition + 1 animated:NO];
-        } else {
-            [self setSquarePosition:PUSquarePositionTopLeft animated:NO];
+            if (self.squarePosition < 3) {
+                [self setSquarePosition:self.squarePosition + 1 animated:NO completionHandler:^(){[_self moveSquare];}];
+            } else {
+                [self setSquarePosition:PUSquarePositionTopLeft animated:NO completionHandler:^(){[_self moveSquare];}];
+            }
         }
     }
 }
 
 - (void)stopSquare {
-
+    
 }
 
-- (void)updateSquare {
-
+- (void)updateSwitcherText {
+    if (self.switcher.isOn) {
+        self.switcherLabel.text = @"Disable animation";
+    } else {
+        self.switcherLabel.text = @"Enable animation";
+    }
 }
 
 #pragma mark -

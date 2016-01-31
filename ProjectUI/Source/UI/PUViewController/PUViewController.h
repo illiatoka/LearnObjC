@@ -5,6 +5,6 @@
 - (IBAction)startMoving;
 - (IBAction)stopMoving;
 
-- (IBAction)switcherChanged;
+- (IBAction)switcherDidChange;
 
 @end

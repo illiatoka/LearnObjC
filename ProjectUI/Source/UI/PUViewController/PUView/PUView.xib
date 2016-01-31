@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PUViewController">
             <connections>
-                <outlet property="view" destination="iN0-l3-epB" id="lec-Uk-oKB"/>
+                <outlet property="view" destination="iN0-l3-epB" id="naW-GT-n84"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -33,16 +33,16 @@
                     <rect key="frame" x="7" y="434" width="306" height="126"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <subviews>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="MNf-ws-8IQ">
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="MNf-ws-8IQ">
                             <rect key="frame" x="10" y="10" width="51" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <connections>
-                                <action selector="switcherChanged" destination="-1" eventType="valueChanged" id="t6G-B6-5SZ"/>
+                                <action selector="switcherDidChange" destination="-1" eventType="valueChanged" id="Aw4-xy-L2Z"/>
                             </connections>
                         </switch>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toggle animation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gr3-K9-3Aq" userLabel="Label">
-                            <rect key="frame" x="70" y="10" width="135" height="31"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable animation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gr3-K9-3Aq" userLabel="Label">
+                            <rect key="frame" x="75" y="10" width="140" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -88,7 +88,8 @@
                 <outlet property="square" destination="26a-Un-ayA" id="e1T-k3-L9Y"/>
                 <outlet property="startButton" destination="0ZU-D7-osY" id="kcg-RO-UJ1"/>
                 <outlet property="stopButton" destination="Ngn-UR-72P" id="WuI-SW-GwK"/>
-                <outlet property="switcher" destination="MNf-ws-8IQ" id="SeO-QP-Feb"/>
+                <outlet property="switcher" destination="MNf-ws-8IQ" id="msM-wu-jPi"/>
+                <outlet property="switcherLabel" destination="Gr3-K9-3Aq" id="tOK-65-uax"/>
             </connections>
             <point key="canvasLocation" x="325" y="380"/>
         </view>

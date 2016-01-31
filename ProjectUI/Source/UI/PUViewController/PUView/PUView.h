@@ -13,10 +13,13 @@ typedef NS_ENUM(NSUInteger, PUSquarePosition) {
 
 @property (nonatomic, strong) IBOutlet  UIView      *square;
 @property (nonatomic, strong) IBOutlet  UISwitch    *switcher;
+@property (nonatomic, strong) IBOutlet  UILabel     *switcherLabel;
 @property (nonatomic, strong) IBOutlet  UIButton    *startButton;
 @property (nonatomic, strong) IBOutlet  UIButton    *stopButton;
 
 @property (nonatomic, assign) PUSquarePosition squarePosition;
+
+@property (nonatomic, assign, getter=isMoving)  BOOL    moving;
 
 - (void)setSquarePosition:(PUSquarePosition)position animated:(BOOL)animated;
 - (void)setSquarePosition:(PUSquarePosition)position animated:(BOOL)animated completionHandler:(void(^)(void))handler;
@@ -24,6 +27,6 @@ typedef NS_ENUM(NSUInteger, PUSquarePosition) {
 - (void)moveSquare;
 - (void)stopSquare;
 
-- (void)updateSquare;
+- (void)updateSwitcherText;
 
 @end
