@@ -31,14 +31,14 @@
 - (IBAction)startMoving {
     if (!self.isMovingDidStart) {
         self.movingDidStart = YES;
-        [(PUView *)self.view setMoving:YES];
+        [(PUView *)self.view setSquareMoving:YES];
         [(PUView *)self.view moveSquare];
     }
 }
 
 - (IBAction)stopMoving {
     self.movingDidStart = NO;
-    [(PUView *)self.view setMoving:NO];
+    [(PUView *)self.view setSquareMoving:NO];
     [(PUView *)self.view stopSquare];
 }
 

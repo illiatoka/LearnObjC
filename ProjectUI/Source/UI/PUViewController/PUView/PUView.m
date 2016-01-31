@@ -45,15 +45,15 @@ static NSString *disableAnimation = @"Disable animation";
         [UIView animateWithDuration:duration
                               delay:delay
                             options:UIViewAnimationOptionTransitionNone
-                         animations:^(void) {updatePosition();}
-                         completion:^(BOOL finished){handler();}];
+                         animations:^(void) { updatePosition(); }
+                         completion:^(BOOL finished) { handler(); }];
         
         _squarePosition = position;
     }
 }
 
 - (void)moveSquare {
-    if (self.isMoving) {
+    if (self.isSquareMoving) {
         if (self.switcher.isOn) {
             [self moveSquareAnimated:YES];
         } else {
@@ -87,8 +87,8 @@ static NSString *disableAnimation = @"Disable animation";
 }
 
 - (void)moveSquareAtPosition:(PUSquarePosition)position animated:(BOOL)animated {
-    __block PUView *_self = self;
-    [self setSquarePosition:position animated:animated completionHandler:^(){[_self moveSquare];}];
+    __block PUView *view = self;
+    [self setSquarePosition:position animated:animated completionHandler:^() { [view moveSquare]; }];
 }
 
 - (CGPoint)squarePositionForPosition:(PUSquarePosition)position {
