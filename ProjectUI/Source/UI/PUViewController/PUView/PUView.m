@@ -1,25 +1,37 @@
 #import "PUView.h"
 
-static const CGFloat squareSize = 65;
-static const CGFloat framePadding = 40;
-static const CGFloat frameOffset = squareSize + framePadding;
+static const CGFloat kPUFramePadding = 40;
 
-static const NSTimeInterval animationDuration = 1.0;
-static const NSTimeInterval animationDelay = 0.5;
+static const NSTimeInterval kPUAnimationDuration = 1.0;
+static const NSTimeInterval kPUAnimationDelay = 0.5;
 
-static NSString *enableAnimation = @"Enable animation";
-static NSString *disableAnimation = @"Disable animation";
+static NSString * const kPUEnableAnimation = @"Enable animation";
+static NSString * const kPUDisableAnimation = @"Disable animation";
 
 @interface PUView ()
+@property (nonatomic, assign, getter=isStopButtonDidPush)   BOOL    stopButtonDidPush;
 
-- (void)moveSquareAnimated:(BOOL)animated;
 - (void)moveSquareAtPosition:(PUSquarePosition)position animated:(BOOL)animated;
 
-- (CGPoint)squarePositionForPosition:(PUSquarePosition)position;
+- (CGRect)squareFrameWithSquarePosition:(PUSquarePosition)position;
+
+- (CGPoint)nextPointWithPosition:(PUSquarePosition)position frameWidth:(CGFloat)width frameHeight:(CGFloat)height;
 
 @end
 
 @implementation PUView
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setCycleMovingDidStart:(BOOL)cycleMovingDidStart {
+    if (_cycleMovingDidStart != cycleMovingDidStart) {
+        self.stopButton.alpha = cycleMovingDidStart ? 1.0 : 0.0;
+        self.startButton.alpha = cycleMovingDidStart ? 0.0 : 1.0;
+        
+        _cycleMovingDidStart = cycleMovingDidStart;
+    }
+}
 
 #pragma mark -
 #pragma mark Public
@@ -32,85 +44,115 @@ static NSString *disableAnimation = @"Disable animation";
     [self setSquarePosition:position animated:animated completionHandler:NULL];
 }
 
-- (void)setSquarePosition:(PUSquarePosition)position animated:(BOOL)animated completionHandler:(void(^)(void))handler {
+- (void)setSquarePosition:(PUSquarePosition)position animated:(BOOL)animated completionHandler:(PUVoidBlock)handler {
     if (_squarePosition != position) {
-        CGPoint newPosition = [self squarePositionForPosition:position];
-        NSTimeInterval duration = animated ? animationDuration : 0.0;
-        NSTimeInterval delay = animated ? 0.0 : animationDelay;
-        
-        void (^updatePosition)() = ^() {
-            self.square.frame = CGRectOffset(self.square.frame, newPosition.x, newPosition.y);
+        void (^updatePosition)(void) = ^() {
+            self.squareView.frame = [self squareFrameWithSquarePosition:position];
         };
         
-        [UIView animateWithDuration:duration
-                              delay:delay
-                            options:UIViewAnimationOptionTransitionNone
-                         animations:^(void) { updatePosition(); }
-                         completion:^(BOOL finished) { handler(); }];
+        void (^completePosition)(BOOL finished) = ^(BOOL finished) {
+            if (finished) {
+                _squarePosition = position;
+                self.squareMoving = NO;
+            }
+            
+            if (handler) {
+                handler();
+            }
+        };
         
-        _squarePosition = position;
+        [UIView animateWithDuration:animated ? kPUAnimationDuration : 0.0
+                              delay:animated ? 0.0 : (self.isCycleMovingDidStart ? kPUAnimationDelay : 0.0)
+                            options:UIViewAnimationOptionTransitionNone
+                         animations:updatePosition
+                         completion:completePosition];
     }
 }
 
-- (void)moveSquare {
-    if (self.isSquareMoving) {
-        if (self.switcher.isOn) {
-            [self moveSquareAnimated:YES];
-        } else {
-            [self moveSquareAnimated:NO];
-        }
+- (void)moveSquareInCycle {
+    if (!self.isCycleMovingDidStart && !self.squareMoving) {
+        self.cycleMovingDidStart = YES;
+        [self moveSquareToNextPosition];
     }
 }
 
-- (void)stopSquare {
+- (void)moveSquareToNextPosition {
+    if (!self.isSquareMoving && !self.isStopButtonDidPush) {
+        self.squareMoving = YES;
+        NSUInteger position = (self.squarePosition + 1) % PUSquarePositionCount;
+        [self moveSquareAtPosition:position animated:self.controlSwitch.isOn];
+    }
     
+    self.stopButtonDidPush = NO;
+}
+
+- (void)stopSquareMoving {
+    self.cycleMovingDidStart = NO;
+    self.stopButtonDidPush = YES;
 }
 
 - (void)updateSwitcherText {
-    if (self.switcher.isOn) {
-        self.switcherLabel.text = disableAnimation;
-    } else {
-        self.switcherLabel.text = enableAnimation;
-    }
+    self.controlLabel.text = self.controlSwitch.isOn ? kPUDisableAnimation : kPUEnableAnimation;
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (void)moveSquareAnimated:(BOOL)animated {
-    NSUInteger position = self.squarePosition;
-    if (position < PUSquarePositionTopRight) {
-        [self moveSquareAtPosition:position + 1 animated:animated];
-    } else {
-        [self moveSquareAtPosition:PUSquarePositionTopLeft animated:animated];
-    }
-}
-
 - (void)moveSquareAtPosition:(PUSquarePosition)position animated:(BOOL)animated {
-    __block PUView *view = self;
-    [self setSquarePosition:position animated:animated completionHandler:^() { [view moveSquare]; }];
+    __weak typeof(self) weakSelf = self;
+    void (^updatePosition)(void) = nil;
+    
+    if (self.isCycleMovingDidStart) {
+        updatePosition = ^() {
+            __strong typeof(self) self = weakSelf;
+            
+            if (!self) {
+                return;
+            }
+            
+            [self moveSquareToNextPosition];
+        };
+    }
+    
+    [self setSquarePosition:position animated:animated completionHandler:updatePosition];
 }
 
-- (CGPoint)squarePositionForPosition:(PUSquarePosition)position {
-    CGFloat frameWidth = self.areaView.frame.size.width;
-    CGFloat frameHeight = self.areaView.frame.size.height;
+- (CGRect)squareFrameWithSquarePosition:(PUSquarePosition)position {
+    CGRect areaFrame = self.areaView.frame;
+    CGRect squareFrame = self.squareView.frame;
     
+    CGFloat frameWidth = CGRectGetWidth(areaFrame) - CGRectGetWidth(squareFrame) - kPUFramePadding;
+    CGFloat frameHeight = CGRectGetHeight(areaFrame) - CGRectGetHeight(squareFrame) - kPUFramePadding;
+    
+    CGPoint newOrigin = [self nextPointWithPosition:position frameWidth:frameWidth frameHeight:frameHeight];
+    
+    return CGRectOffset(squareFrame, newOrigin.x, newOrigin.y);
+}
+
+- (CGPoint)nextPointWithPosition:(PUSquarePosition)position frameWidth:(CGFloat)width frameHeight:(CGFloat)height {
+    CGPoint point = CGPointZero;
     switch (position) {
         case PUSquarePositionTopLeft:
-            return CGPointMake(-(frameWidth - frameOffset), 0);
+            point.x = -width;
+            break;
             
         case PUSquarePositionBottomLeft:
-            return CGPointMake(0, frameHeight - frameOffset);
+            point.y = height;
+            break;
             
         case PUSquarePositionBottomRight:
-            return CGPointMake(frameWidth - frameOffset, 0);
+            point.x = width;
+            break;
             
         case PUSquarePositionTopRight:
-            return CGPointMake(0, -(frameHeight - frameOffset));
+            point.y = -height;
+            break;
             
         default:
-            return CGPointMake(0, 0);
+            break;
     }
+    
+    return point;
 }
 
 @end

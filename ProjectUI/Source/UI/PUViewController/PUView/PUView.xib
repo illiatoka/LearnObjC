@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="Dp5-h7-eCQ" userLabel="PUAreaView">
+                <view contentMode="scaleToFill" id="Dp5-h7-eCQ" userLabel="AreaView">
                     <rect key="frame" x="7" y="22" width="306" height="404"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <subviews>
@@ -29,19 +29,19 @@
                     <animations/>
                     <color key="backgroundColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <view contentMode="scaleToFill" id="RdK-EE-nTL" userLabel="PUControlsView">
+                <view contentMode="scaleToFill" id="RdK-EE-nTL" userLabel="ControlsView">
                     <rect key="frame" x="7" y="434" width="306" height="126"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <subviews>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="MNf-ws-8IQ">
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="MNf-ws-8IQ" userLabel="ControlSwitch">
                             <rect key="frame" x="10" y="10" width="51" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <connections>
-                                <action selector="switcherDidChange" destination="-1" eventType="valueChanged" id="Aw4-xy-L2Z"/>
+                                <action selector="animationControlDidChange" destination="-1" eventType="valueChanged" id="tt4-c8-sU4"/>
                             </connections>
                         </switch>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable animation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gr3-K9-3Aq" userLabel="Label">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable animation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gr3-K9-3Aq" userLabel="ControlLabel">
                             <rect key="frame" x="75" y="10" width="140" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
@@ -49,6 +49,19 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FiJ-W7-7Ai" userLabel="NextButton">
+                            <rect key="frame" x="10" y="55" width="110" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <color key="backgroundColor" red="0.23529411764705882" green="0.22745098039215686" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <state key="normal" title="Next">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="moveOnce" destination="-1" eventType="touchUpInside" id="ear-Sp-4IZ"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0ZU-D7-osY" userLabel="StartButton">
                             <rect key="frame" x="120" y="55" width="178" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -56,17 +69,17 @@
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                             <state key="normal" title="Start">
-                                <color key="titleColor" red="0.2196078431372549" green="0.44313725490196076" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.1803921568627451" green="0.17254901960784313" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="startMoving" destination="-1" eventType="touchUpInside" id="Xrp-ih-yqP"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ngn-UR-72P" userLabel="StopButton">
-                            <rect key="frame" x="10" y="55" width="110" height="60"/>
+                        <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ngn-UR-72P" userLabel="StopButton">
+                            <rect key="frame" x="120" y="55" width="178" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <animations/>
-                            <color key="backgroundColor" red="0.86524748322147649" green="0.29488255033557048" blue="0.24874161073825504" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.82352941180000006" green="0.20392156859999999" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                             <state key="normal" title="Stop">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,12 +97,11 @@
             <color key="backgroundColor" red="0.30196078431372547" green="0.29411764705882354" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="areaView" destination="Dp5-h7-eCQ" id="kZA-VU-agc"/>
-                <outlet property="controlsView" destination="RdK-EE-nTL" id="VsY-qn-qS0"/>
-                <outlet property="square" destination="26a-Un-ayA" id="e1T-k3-L9Y"/>
+                <outlet property="controlLabel" destination="Gr3-K9-3Aq" id="P6N-Yk-GQY"/>
+                <outlet property="controlSwitch" destination="MNf-ws-8IQ" id="wfU-ga-gwR"/>
+                <outlet property="squareView" destination="26a-Un-ayA" id="0LE-J3-zsv"/>
                 <outlet property="startButton" destination="0ZU-D7-osY" id="kcg-RO-UJ1"/>
                 <outlet property="stopButton" destination="Ngn-UR-72P" id="WuI-SW-GwK"/>
-                <outlet property="switcher" destination="MNf-ws-8IQ" id="msM-wu-jPi"/>
-                <outlet property="switcherLabel" destination="Gr3-K9-3Aq" id="tOK-65-uax"/>
             </connections>
             <point key="canvasLocation" x="325" y="380"/>
         </view>

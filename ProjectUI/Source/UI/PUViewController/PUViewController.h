@@ -2,9 +2,11 @@
 
 @interface PUViewController : UIViewController
 
+- (IBAction)moveOnce;
+
 - (IBAction)startMoving;
 - (IBAction)stopMoving;
 
-- (IBAction)switcherDidChange;
+- (IBAction)animationControlDidChange;
 
 @end
