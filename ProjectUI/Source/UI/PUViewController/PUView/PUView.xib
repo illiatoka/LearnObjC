@@ -38,7 +38,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <connections>
-                                <action selector="animationControlDidChange" destination="-1" eventType="valueChanged" id="tt4-c8-sU4"/>
+                                <action selector="updateSwitcherText" destination="iN0-l3-epB" eventType="valueChanged" id="Tj9-MA-sfk"/>
                             </connections>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable animation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gr3-K9-3Aq" userLabel="ControlLabel">
@@ -59,33 +59,20 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="moveOnce" destination="-1" eventType="touchUpInside" id="ear-Sp-4IZ"/>
+                                <action selector="onNextButton" destination="-1" eventType="touchUpInside" id="SnH-fd-BuM"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0ZU-D7-osY" userLabel="StartButton">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0ZU-D7-osY" userLabel="StartStopButton">
                             <rect key="frame" x="120" y="55" width="178" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <animations/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                             <state key="normal" title="Start">
-                                <color key="titleColor" red="0.1803921568627451" green="0.17254901960784313" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.23529411759999999" green="0.2274509804" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
-                                <action selector="startMoving" destination="-1" eventType="touchUpInside" id="Xrp-ih-yqP"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ngn-UR-72P" userLabel="StopButton">
-                            <rect key="frame" x="120" y="55" width="178" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <animations/>
-                            <color key="backgroundColor" red="0.82352941180000006" green="0.20392156859999999" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                            <state key="normal" title="Stop">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="stopMoving" destination="-1" eventType="touchUpInside" id="us4-zL-bR8"/>
+                                <action selector="onStartStopButton" destination="-1" eventType="touchUpInside" id="91O-8H-f6h"/>
                             </connections>
                         </button>
                     </subviews>
@@ -100,8 +87,7 @@
                 <outlet property="controlLabel" destination="Gr3-K9-3Aq" id="P6N-Yk-GQY"/>
                 <outlet property="controlSwitch" destination="MNf-ws-8IQ" id="wfU-ga-gwR"/>
                 <outlet property="squareView" destination="26a-Un-ayA" id="0LE-J3-zsv"/>
-                <outlet property="startButton" destination="0ZU-D7-osY" id="kcg-RO-UJ1"/>
-                <outlet property="stopButton" destination="Ngn-UR-72P" id="WuI-SW-GwK"/>
+                <outlet property="startStopButton" destination="0ZU-D7-osY" id="DNk-Yo-Fh5"/>
             </connections>
             <point key="canvasLocation" x="325" y="380"/>
         </view>

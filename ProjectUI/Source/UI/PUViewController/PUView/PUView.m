@@ -1,21 +1,31 @@
 #import "PUView.h"
 
-static const CGFloat kPUFramePadding = 40;
+#import "PUMacro.h"
+
+#import "CGGeometry+PUExtensions.h"
+
+static const CGFloat kPUFramePadding = 20;
 
 static const NSTimeInterval kPUAnimationDuration = 1.0;
 static const NSTimeInterval kPUAnimationDelay = 0.5;
+
+static NSString * const kPUStart = @"Start";
+static NSString * const kPUStop = @"Stop";
 
 static NSString * const kPUEnableAnimation = @"Enable animation";
 static NSString * const kPUDisableAnimation = @"Disable animation";
 
 @interface PUView ()
-@property (nonatomic, assign, getter=isStopButtonDidPush)   BOOL    stopButtonDidPush;
+@property (nonatomic, assign, getter=isSquareMoving)    BOOL    squareMoving;
+@property (nonatomic, assign, getter=isCycleStoped)     BOOL    cycleStoped;
+
+- (void)stopSquareMoving;
+- (void)updateStartStopButton;
+- (IBAction)updateSwitcherText;
 
 - (void)moveSquareAtPosition:(PUSquarePosition)position animated:(BOOL)animated;
-
+- (PUSquarePosition)nextPositionWithPosition:(PUSquarePosition)position;
 - (CGRect)squareFrameWithSquarePosition:(PUSquarePosition)position;
-
-- (CGPoint)nextPointWithPosition:(PUSquarePosition)position frameWidth:(CGFloat)width frameHeight:(CGFloat)height;
 
 @end
 
@@ -24,12 +34,19 @@ static NSString * const kPUDisableAnimation = @"Disable animation";
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setCycleMovingDidStart:(BOOL)cycleMovingDidStart {
-    if (_cycleMovingDidStart != cycleMovingDidStart) {
-        self.stopButton.alpha = cycleMovingDidStart ? 1.0 : 0.0;
-        self.startButton.alpha = cycleMovingDidStart ? 0.0 : 1.0;
-        
-        _cycleMovingDidStart = cycleMovingDidStart;
+- (void)setCycleMoving:(BOOL)cycleMoving {
+    if (_cycleMoving != cycleMoving) {
+        if (cycleMoving) {
+            if (!self.squareMoving) {
+                _cycleMoving = cycleMoving;
+                [self moveSquareToNextPosition];
+                [self updateStartStopButton];
+            }
+        } else {
+            _cycleMoving = cycleMoving;
+            [self stopSquareMoving];
+            [self updateStartStopButton];
+        }
     }
 }
 
@@ -62,53 +79,52 @@ static NSString * const kPUDisableAnimation = @"Disable animation";
         };
         
         [UIView animateWithDuration:animated ? kPUAnimationDuration : 0.0
-                              delay:animated ? 0.0 : (self.isCycleMovingDidStart ? kPUAnimationDelay : 0.0)
+                              delay:animated ? 0.0 : (self.cycleMoving ? kPUAnimationDelay : 0.0)
                             options:UIViewAnimationOptionTransitionNone
                          animations:updatePosition
                          completion:completePosition];
     }
 }
 
-- (void)moveSquareInCycle {
-    if (!self.isCycleMovingDidStart && !self.squareMoving) {
-        self.cycleMovingDidStart = YES;
-        [self moveSquareToNextPosition];
-    }
-}
-
 - (void)moveSquareToNextPosition {
-    if (!self.isSquareMoving && !self.isStopButtonDidPush) {
+    if (!self.squareMoving && !self.cycleStoped) {
         self.squareMoving = YES;
-        NSUInteger position = (self.squarePosition + 1) % PUSquarePositionCount;
-        [self moveSquareAtPosition:position animated:self.controlSwitch.isOn];
+        
+        [self moveSquareAtPosition:[self nextPositionWithPosition:self.squarePosition]
+                          animated:self.controlSwitch.isOn];
     }
     
-    self.stopButtonDidPush = NO;
-}
-
-- (void)stopSquareMoving {
-    self.cycleMovingDidStart = NO;
-    self.stopButtonDidPush = YES;
-}
-
-- (void)updateSwitcherText {
-    self.controlLabel.text = self.controlSwitch.isOn ? kPUDisableAnimation : kPUEnableAnimation;
+    self.cycleStoped = NO;
 }
 
 #pragma mark -
 #pragma mark Private
 
+- (void)stopSquareMoving {
+    self.cycleStoped = YES;
+}
+
+- (void)updateStartStopButton {
+    UIButton *button = self.startStopButton;
+    UIColor *whiteColor = [UIColor whiteColor];
+    BOOL cycleMoving = self.cycleMoving;
+    
+    [button setBackgroundColor:cycleMoving ? generateColor(210, 52, 48, 1.0) : whiteColor];
+    [button setTitle:cycleMoving ? kPUStop : kPUStart forState:UIControlStateNormal];
+    [button setTitleColor:cycleMoving ? whiteColor : generateColor(60, 58, 63, 1.0) forState:UIControlStateNormal];
+}
+
+- (IBAction)updateSwitcherText {
+    self.controlLabel.text = self.controlSwitch.isOn ? kPUDisableAnimation : kPUEnableAnimation;
+}
+
 - (void)moveSquareAtPosition:(PUSquarePosition)position animated:(BOOL)animated {
-    __weak typeof(self) weakSelf = self;
+    PUWeakify(self);
     void (^updatePosition)(void) = nil;
     
-    if (self.isCycleMovingDidStart) {
+    if (self.cycleMoving) {
         updatePosition = ^() {
-            __strong typeof(self) self = weakSelf;
-            
-            if (!self) {
-                return;
-            }
+            PUStrongifyAndReturnIfNil(self);
             
             [self moveSquareToNextPosition];
         };
@@ -117,42 +133,39 @@ static NSString * const kPUDisableAnimation = @"Disable animation";
     [self setSquarePosition:position animated:animated completionHandler:updatePosition];
 }
 
-- (CGRect)squareFrameWithSquarePosition:(PUSquarePosition)position {
-    CGRect areaFrame = self.areaView.frame;
-    CGRect squareFrame = self.squareView.frame;
-    
-    CGFloat frameWidth = CGRectGetWidth(areaFrame) - CGRectGetWidth(squareFrame) - kPUFramePadding;
-    CGFloat frameHeight = CGRectGetHeight(areaFrame) - CGRectGetHeight(squareFrame) - kPUFramePadding;
-    
-    CGPoint newOrigin = [self nextPointWithPosition:position frameWidth:frameWidth frameHeight:frameHeight];
-    
-    return CGRectOffset(squareFrame, newOrigin.x, newOrigin.y);
+- (PUSquarePosition)nextPositionWithPosition:(PUSquarePosition)position {
+    return (position + 1) % PUSquarePositionCount;
 }
 
-- (CGPoint)nextPointWithPosition:(PUSquarePosition)position frameWidth:(CGFloat)width frameHeight:(CGFloat)height {
-    CGPoint point = CGPointZero;
+- (CGRect)squareFrameWithSquarePosition:(PUSquarePosition)position {
+    CGRect area = CGRectInset(self.areaView.bounds, kPUFramePadding, kPUFramePadding);
+    CGRect square = self.squareView.frame;
+    
+    CGPoint origin = CGPointMake(CGWidth(area) - CGWidth(square), CGHeight(area) - CGHeight(square));
+    CGPoint newOrigin = CGPointZero;
+    
     switch (position) {
         case PUSquarePositionTopLeft:
-            point.x = -width;
+            newOrigin.x = -origin.x;
             break;
             
         case PUSquarePositionBottomLeft:
-            point.y = height;
+            newOrigin.y = origin.y;
             break;
             
         case PUSquarePositionBottomRight:
-            point.x = width;
+            newOrigin.x = origin.x;
             break;
             
         case PUSquarePositionTopRight:
-            point.y = -height;
+            newOrigin.y = -origin.y;
             break;
             
         default:
             break;
     }
     
-    return point;
+    return CGRectOffset(square, newOrigin.x, newOrigin.y);
 }
 
 @end

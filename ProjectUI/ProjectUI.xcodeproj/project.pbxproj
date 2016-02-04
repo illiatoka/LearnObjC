@@ -32,6 +32,8 @@
 		A63261361C5C00CC00508740 /* PUView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUView.xib; sourceTree = "<group>"; };
 		A63261371C5C00CC00508740 /* PUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUViewController.h; sourceTree = "<group>"; };
 		A63261381C5C00CC00508740 /* PUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUViewController.m; sourceTree = "<group>"; };
+		A63261461C63795300508740 /* CGGeometry+PUExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+PUExtensions.h"; sourceTree = "<group>"; };
+		A63261481C637FFE00508740 /* PUMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		A632611C1C58193200508740 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A63261471C637EE600508740 /* Macro */,
 				A632612C1C5BD7B300508740 /* Categories */,
 				A632611D1C58193200508740 /* UI */,
 			);
@@ -103,6 +106,7 @@
 		A632612C1C5BD7B300508740 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				A63261431C63785800508740 /* CGGeometry+PUExtensions */,
 				A632612D1C5BD7D600508740 /* UIWindow+PUExtensions */,
 			);
 			path = Categories;
@@ -135,6 +139,22 @@
 				A63261361C5C00CC00508740 /* PUView.xib */,
 			);
 			path = PUView;
+			sourceTree = "<group>";
+		};
+		A63261431C63785800508740 /* CGGeometry+PUExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				A63261461C63795300508740 /* CGGeometry+PUExtensions.h */,
+			);
+			path = "CGGeometry+PUExtensions";
+			sourceTree = "<group>";
+		};
+		A63261471C637EE600508740 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				A63261481C637FFE00508740 /* PUMacro.h */,
+			);
+			path = Macro;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +283,7 @@
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -300,6 +321,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;

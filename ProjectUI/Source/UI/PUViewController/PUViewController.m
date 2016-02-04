@@ -2,11 +2,9 @@
 
 #import "PUView.h"
 
-@interface PUViewController ()
+#import "PUMacro.h"
 
-- (UIStatusBarStyle)preferredStatusBarStyle;
-
-@end
+PUViewControllerBaseViewProperty(PUViewController, baseView, PUView)
 
 @implementation PUViewController
 
@@ -27,20 +25,12 @@
 #pragma mark -
 #pragma mark Puclic
 
-- (IBAction)moveOnce {
-    [(PUView *)self.view moveSquareToNextPosition];
+- (IBAction)onNextButton {
+    [self.baseView moveSquareToNextPosition];
 }
 
-- (IBAction)startMoving {
-    [(PUView *)self.view moveSquareInCycle];
-}
-
-- (IBAction)stopMoving {
-    [(PUView *)self.view stopSquareMoving];
-}
-
-- (IBAction)animationControlDidChange {
-    [(PUView *)self.view updateSwitcherText];
+- (IBAction)onStartStopButton {
+    self.baseView.cycleMoving = !self.baseView.cycleMoving;
 }
 
 @end
