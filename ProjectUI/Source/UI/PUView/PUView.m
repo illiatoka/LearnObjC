@@ -3,6 +3,7 @@
 #import "PUMacro.h"
 
 #import "CGGeometry+PUExtensions.h"
+#import "UIColor+PUExtensions.h"
 
 static const CGFloat kPUFramePadding = 20;
 
@@ -109,9 +110,9 @@ static NSString * const kPUDisableAnimation = @"Disable animation";
     UIColor *whiteColor = [UIColor whiteColor];
     BOOL cycleMoving = self.cycleMoving;
     
-    [button setBackgroundColor:cycleMoving ? generateColor(210, 52, 48, 1.0) : whiteColor];
+    [button setBackgroundColor:cycleMoving ? PUColorWithRGBA(210, 52, 48, 1.0) : whiteColor];
     [button setTitle:cycleMoving ? kPUStop : kPUStart forState:UIControlStateNormal];
-    [button setTitleColor:cycleMoving ? whiteColor : generateColor(60, 58, 63, 1.0) forState:UIControlStateNormal];
+    [button setTitleColor:cycleMoving ? whiteColor : PUColorWithRGBA(60, 58, 63, 1.0) forState:UIControlStateNormal];
 }
 
 - (IBAction)updateSwitcherText {

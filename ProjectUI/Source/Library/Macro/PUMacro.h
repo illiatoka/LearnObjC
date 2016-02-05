@@ -49,7 +49,3 @@
     @dynamic propertyName; \
     PUBaseViewGetterSynthesize(propertyName, baseViewClass) \
     @end
-
-// Generate UIColor Macro
-#define generateColor(redValue, greenValue, blueValue, alphaValue) \
-    [UIColor colorWithRed:redValue/255.0 green:greenValue/255.0 blue:blueValue/255.0 alpha:alphaValue]
