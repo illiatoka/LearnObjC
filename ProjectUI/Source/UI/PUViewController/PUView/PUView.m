@@ -6,13 +6,13 @@
 
 static const CGFloat kPUFramePadding = 20;
 
-static const NSTimeInterval kPUAnimationDuration = 1.0;
-static const NSTimeInterval kPUAnimationDelay = 0.5;
+static const NSTimeInterval kPUAnimationDuration    = 1.0;
+static const NSTimeInterval kPUAnimationDelay       = 0.5;
 
-static NSString * const kPUStart = @"Start";
-static NSString * const kPUStop = @"Stop";
+static NSString * const kPUStart    = @"Start";
+static NSString * const kPUStop     = @"Stop";
 
-static NSString * const kPUEnableAnimation = @"Enable animation";
+static NSString * const kPUEnableAnimation  = @"Enable animation";
 static NSString * const kPUDisableAnimation = @"Disable animation";
 
 @interface PUView ()
@@ -63,7 +63,7 @@ static NSString * const kPUDisableAnimation = @"Disable animation";
 
 - (void)setSquarePosition:(PUSquarePosition)position animated:(BOOL)animated completionHandler:(PUVoidBlock)handler {
     if (_squarePosition != position) {
-        void (^updatePosition)(void) = ^() {
+        void (^updatePosition)(void) = ^{
             self.squareView.frame = [self squareFrameWithSquarePosition:position];
         };
         
@@ -123,7 +123,7 @@ static NSString * const kPUDisableAnimation = @"Disable animation";
     void (^updatePosition)(void) = nil;
     
     if (self.cycleMoving) {
-        updatePosition = ^() {
+        updatePosition = ^{
             PUStrongifyAndReturnIfNil(self);
             
             [self moveSquareToNextPosition];
