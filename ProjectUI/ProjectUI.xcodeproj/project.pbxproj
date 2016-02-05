@@ -99,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				A63261321C5C00CC00508740 /* PUViewController */,
+				A63261331C5C00CC00508740 /* PUView */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -124,7 +125,6 @@
 		A63261321C5C00CC00508740 /* PUViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A63261331C5C00CC00508740 /* PUView */,
 				A63261371C5C00CC00508740 /* PUViewController.h */,
 				A63261381C5C00CC00508740 /* PUViewController.m */,
 			);
