@@ -8,6 +8,9 @@ PUViewControllerBaseViewProperty(PUViewController, baseView, PUView)
 
 @implementation PUViewController
 
+#pragma mark -
+#pragma mark View Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -18,19 +21,23 @@ PUViewControllerBaseViewProperty(PUViewController, baseView, PUView)
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark -
+#pragma mark Public
+
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
 #pragma mark -
-#pragma mark Puclic
+#pragma mark Interface Handling
 
-- (IBAction)onNextButton {
+- (IBAction)onNextPosition {
     [self.baseView moveSquareToNextPosition];
 }
 
-- (IBAction)onStartStopButton {
-    self.baseView.cycleMoving = !self.baseView.cycleMoving;
+- (IBAction)onAnimate {
+    PUView *baseView = self.baseView;
+    baseView.cycleMoving = !baseView.cycleMoving;
 }
 
 @end

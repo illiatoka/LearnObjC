@@ -2,7 +2,7 @@
 
 @interface PUViewController : UIViewController
 
-- (IBAction)onNextButton;
-- (IBAction)onStartStopButton;
+- (IBAction)onNextPosition;
+- (IBAction)onAnimate;
 
 @end
