@@ -1,6 +1,7 @@
 #import "PUAppDelegate.h"
 
-#import "PUViewController.h"
+#import "PUSquareViewController.h"
+#import "PUTableViewController.h"
 
 #import "UIWindow+PUExtensions.h"
 
@@ -9,7 +10,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow *window = [UIWindow window];
     self.window = window;
-    window.rootViewController = [PUViewController new];
+    window.rootViewController = [PUTableViewController new];
     
     [window makeKeyAndVisible];
     

@@ -10,7 +10,7 @@ typedef NS_ENUM(NSUInteger, PUSquarePosition) {
     PUSquarePositionCount
 };
 
-@interface PUView : UIView
+@interface PUSquareView : UIView
 @property (nonatomic, strong) IBOutlet  UIView      *areaView;
 @property (nonatomic, strong) IBOutlet  UIView      *squareView;
 

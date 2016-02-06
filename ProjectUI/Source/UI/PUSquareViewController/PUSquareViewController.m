@@ -1,12 +1,12 @@
-#import "PUViewController.h"
+#import "PUSquareViewController.h"
 
-#import "PUView.h"
+#import "PUSquareView.h"
 
 #import "PUMacro.h"
 
-PUViewControllerBaseViewProperty(PUViewController, baseView, PUView)
+PUViewControllerBaseViewProperty(PUSquareViewController, baseView, PUSquareView)
 
-@implementation PUViewController
+@implementation PUSquareViewController
 
 #pragma mark -
 #pragma mark View Lifecycle
@@ -34,7 +34,7 @@ PUViewControllerBaseViewProperty(PUViewController, baseView, PUView)
 }
 
 - (IBAction)onAnimate:(id)sender {
-    PUView *baseView = self.baseView;
+    PUSquareView *baseView = self.baseView;
     baseView.cycleMoving = !baseView.cycleMoving;
 }
 

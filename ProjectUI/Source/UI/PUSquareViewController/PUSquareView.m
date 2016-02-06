@@ -1,4 +1,4 @@
-#import "PUView.h"
+#import "PUSquareView.h"
 
 #import "PUMacro.h"
 
@@ -19,7 +19,7 @@ static NSString * const kPUStop     = @"Stop";
 static NSString * const kPUEnableAnimation  = @"Enable animation";
 static NSString * const kPUDisableAnimation = @"Disable animation";
 
-@interface PUView ()
+@interface PUSquareView ()
 @property (nonatomic, assign, getter=isSquareMoving)    BOOL    squareMoving;
 @property (nonatomic, assign, getter=isCycleStoped)     BOOL    cycleStoped;
 
@@ -33,7 +33,7 @@ static NSString * const kPUDisableAnimation = @"Disable animation";
 
 @end
 
-@implementation PUView
+@implementation PUSquareView
 
 #pragma mark -
 #pragma mark Accessors
