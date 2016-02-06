@@ -13,8 +13,6 @@ PUViewControllerBaseViewProperty(PUViewController, baseView, PUView)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,11 +29,11 @@ PUViewControllerBaseViewProperty(PUViewController, baseView, PUView)
 #pragma mark -
 #pragma mark Interface Handling
 
-- (IBAction)onNextPosition {
+- (IBAction)onNextPosition:(id)sender {
     [self.baseView moveSquareToNextPosition];
 }
 
-- (IBAction)onAnimate {
+- (IBAction)onAnimate:(id)sender {
     PUView *baseView = self.baseView;
     baseView.cycleMoving = !baseView.cycleMoving;
 }

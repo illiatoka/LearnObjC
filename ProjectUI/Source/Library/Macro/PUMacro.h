@@ -1,6 +1,12 @@
 // ARC Ownership Macro
 
-#define PUEmptyResult
+#define PUClangDiagnosticPush _Pragma("clang diagnostic push")
+#define PUClangDiagnosticPop _Pragma("clang diagnostic pop")
+
+#define PUClangDiagnosticPushExpression(key) \
+    PUClangDiagnosticPush; _Pragma(key);
+
+#define PUClangDiagnosticPopExpression PUClangDiagnosticPop;
 
 #define PUWeakify(variable) \
     __weak __typeof(variable) __PUWeakified_##variable = variable
@@ -10,23 +16,19 @@
     __strong __typeof(variable) variable = __PUWeakified_##variable \
     PUClangDiagnosticPopExpression
 
-#define PUStrongifyAndReturnIfNil(variable) \
-    PUStrongifyAndReturnResultIfNil(variable, PUEmptyResult)
-
-#define PUStrongifyAndReturnNilIfNil(variable) \
-    PUStrongifyAndReturnResultIfNil(variable, nil)
-
 #define PUStrongifyAndReturnResultIfNil(variable, result) \
     PUStrongify(variable) \
     if (!variable) { \
         return result; \
     }
 
-#define PUClangDiagnosticPush _Pragma("clang diagnostic push")
-#define PUClangDiagnosticPop _Pragma("clang diagnostic pop")
+#define PUStrongifyAndReturnIfNil(variable) \
+    PUStrongifyAndReturnResultIfNil(variable, PUEmptyResult)
 
-#define PUClangDiagnosticPushExpression(key) PUClangDiagnosticPush; _Pragma(key);
-#define PUClangDiagnosticPopExpression PUClangDiagnosticPop;
+#define PUStrongifyAndReturnNilIfNil(variable) \
+    PUStrongifyAndReturnResultIfNil(variable, nil)
+
+#define PUEmptyResult
 
 // Base View for View Controller Macro
 

@@ -11,12 +11,12 @@
 		A63261221C58193200508740 /* PUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A63261151C58193200508740 /* PUAppDelegate.m */; };
 		A63261231C58193200508740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A63261171C58193200508740 /* Assets.xcassets */; };
 		A63261241C58193200508740 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63261181C58193200508740 /* LaunchScreen.storyboard */; };
-		A63261391C5C00CC00508740 /* PUView.m in Sources */ = {isa = PBXBuildFile; fileRef = A63261351C5C00CC00508740 /* PUView.m */; };
-		A632613A1C5C00CC00508740 /* PUView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63261361C5C00CC00508740 /* PUView.xib */; };
-		A632613B1C5C00CC00508740 /* PUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63261381C5C00CC00508740 /* PUViewController.m */; };
 		A6B8827C1C64D4F00073FB5B /* UIWindow+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */; };
 		A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B8827F1C64F5530073FB5B /* UIColor+PUExtensions.m */; };
 		A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B882811C64F8580073FB5B /* CGGeometry+PUExtensions.m */; };
+		A6CF6AA81C66639A00C34A7C /* PUView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CF6AA41C66639A00C34A7C /* PUView.m */; };
+		A6CF6AA91C66639A00C34A7C /* PUView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6CF6AA51C66639A00C34A7C /* PUView.xib */; };
+		A6CF6AAA1C66639A00C34A7C /* PUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CF6AA71C66639A00C34A7C /* PUViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +27,6 @@
 		A63261151C58193200508740 /* PUAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUAppDelegate.m; sourceTree = "<group>"; };
 		A63261171C58193200508740 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A63261191C58193200508740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A63261341C5C00CC00508740 /* PUView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUView.h; sourceTree = "<group>"; };
-		A63261351C5C00CC00508740 /* PUView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUView.m; sourceTree = "<group>"; };
-		A63261361C5C00CC00508740 /* PUView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUView.xib; sourceTree = "<group>"; };
-		A63261371C5C00CC00508740 /* PUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUViewController.h; sourceTree = "<group>"; };
-		A63261381C5C00CC00508740 /* PUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUViewController.m; sourceTree = "<group>"; };
 		A6B882761C64D4F00073FB5B /* CGGeometry+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882781C64D4F00073FB5B /* UIWindow+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PUExtensions.m"; sourceTree = "<group>"; };
@@ -39,6 +34,11 @@
 		A6B8827E1C64F3960073FB5B /* UIColor+PUExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B8827F1C64F5530073FB5B /* UIColor+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PUExtensions.m"; sourceTree = "<group>"; };
 		A6B882811C64F8580073FB5B /* CGGeometry+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+PUExtensions.m"; sourceTree = "<group>"; };
+		A6CF6AA31C66639A00C34A7C /* PUView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUView.h; sourceTree = "<group>"; };
+		A6CF6AA41C66639A00C34A7C /* PUView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUView.m; sourceTree = "<group>"; };
+		A6CF6AA51C66639A00C34A7C /* PUView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUView.xib; sourceTree = "<group>"; };
+		A6CF6AA61C66639A00C34A7C /* PUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUViewController.h; sourceTree = "<group>"; };
+		A6CF6AA71C66639A00C34A7C /* PUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,29 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				A6B882731C64D4F00073FB5B /* Library */,
-				A63261321C5C00CC00508740 /* PUViewController */,
-				A63261331C5C00CC00508740 /* PUView */,
+				A6CF6AA21C66639A00C34A7C /* PUViewController */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		A63261321C5C00CC00508740 /* PUViewController */ = {
-			isa = PBXGroup;
-			children = (
-				A63261371C5C00CC00508740 /* PUViewController.h */,
-				A63261381C5C00CC00508740 /* PUViewController.m */,
-			);
-			path = PUViewController;
-			sourceTree = "<group>";
-		};
-		A63261331C5C00CC00508740 /* PUView */ = {
-			isa = PBXGroup;
-			children = (
-				A63261341C5C00CC00508740 /* PUView.h */,
-				A63261351C5C00CC00508740 /* PUView.m */,
-				A63261361C5C00CC00508740 /* PUView.xib */,
-			);
-			path = PUView;
 			sourceTree = "<group>";
 		};
 		A6B882731C64D4F00073FB5B /* Library */ = {
@@ -180,6 +160,18 @@
 				A6B8827F1C64F5530073FB5B /* UIColor+PUExtensions.m */,
 			);
 			path = UIColor;
+			sourceTree = "<group>";
+		};
+		A6CF6AA21C66639A00C34A7C /* PUViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A6CF6AA31C66639A00C34A7C /* PUView.h */,
+				A6CF6AA41C66639A00C34A7C /* PUView.m */,
+				A6CF6AA51C66639A00C34A7C /* PUView.xib */,
+				A6CF6AA61C66639A00C34A7C /* PUViewController.h */,
+				A6CF6AA71C66639A00C34A7C /* PUViewController.m */,
+			);
+			path = PUViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,7 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A632613A1C5C00CC00508740 /* PUView.xib in Resources */,
+				A6CF6AA91C66639A00C34A7C /* PUView.xib in Resources */,
 				A63261241C58193200508740 /* LaunchScreen.storyboard in Resources */,
 				A63261231C58193200508740 /* Assets.xcassets in Resources */,
 			);
@@ -255,12 +247,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6B8827C1C64D4F00073FB5B /* UIWindow+PUExtensions.m in Sources */,
+				A6CF6AAA1C66639A00C34A7C /* PUViewController.m in Sources */,
 				A63261211C58193200508740 /* main.m in Sources */,
 				A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */,
 				A63261221C58193200508740 /* PUAppDelegate.m in Sources */,
-				A63261391C5C00CC00508740 /* PUView.m in Sources */,
 				A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */,
-				A632613B1C5C00CC00508740 /* PUViewController.m in Sources */,
+				A6CF6AA81C66639A00C34A7C /* PUView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

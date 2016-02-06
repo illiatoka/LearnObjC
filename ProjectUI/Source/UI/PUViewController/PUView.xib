@@ -59,7 +59,7 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="onNextPosition" destination="-1" eventType="touchUpInside" id="9TD-Y6-oik"/>
+                                <action selector="onNextPosition:" destination="-1" eventType="touchUpInside" id="PMb-Lb-Sj3"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0ZU-D7-osY" userLabel="StartStopButton">
@@ -72,7 +72,7 @@
                                 <color key="titleColor" red="0.23529411759999999" green="0.2274509804" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
-                                <action selector="onAnimate" destination="-1" eventType="touchUpInside" id="H5Y-j5-Ee4"/>
+                                <action selector="onAnimate:" destination="-1" eventType="touchUpInside" id="uUA-av-wNR"/>
                             </connections>
                         </button>
                     </subviews>

@@ -10,6 +10,9 @@ static const CGFloat kPUFramePadding = 20;
 static const NSTimeInterval kPUAnimationDuration    = 1.0;
 static const NSTimeInterval kPUAnimationDelay       = 0.5;
 
+const PUColor kPURedColor   = {210, 52, 48, 1.0};
+const PUColor kPUBlackColor = {60, 58, 63, 1.0};
+
 static NSString * const kPUStart    = @"Start";
 static NSString * const kPUStop     = @"Stop";
 
@@ -110,9 +113,9 @@ static NSString * const kPUDisableAnimation = @"Disable animation";
     UIColor *whiteColor = [UIColor whiteColor];
     BOOL cycleMoving = self.cycleMoving;
     
-    [button setBackgroundColor:cycleMoving ? PUColorWithRGBA(210, 52, 48, 1.0) : whiteColor];
+    [button setBackgroundColor:cycleMoving ? UIColorWithPUColor(kPURedColor) : whiteColor];
     [button setTitle:cycleMoving ? kPUStop : kPUStart forState:UIControlStateNormal];
-    [button setTitleColor:cycleMoving ? whiteColor : PUColorWithRGBA(60, 58, 63, 1.0) forState:UIControlStateNormal];
+    [button setTitleColor:cycleMoving ? whiteColor : UIColorWithPUColor(kPUBlackColor) forState:UIControlStateNormal];
 }
 
 - (IBAction)updateSwitcherText {
@@ -142,31 +145,29 @@ static NSString * const kPUDisableAnimation = @"Disable animation";
     CGRect area = CGRectInset(self.areaView.bounds, kPUFramePadding, kPUFramePadding);
     CGRect square = self.squareView.frame;
     
-    CGPoint origin = CGPointMake(CGWidth(area) - CGWidth(square), CGHeight(area) - CGHeight(square));
-    CGPoint newOrigin = CGPointZero;
+    CGPoint bottomRight = CGPointOfBottomRightCornerCommonForRects(area, square);
+    CGPoint origin = area.origin;
     
     switch (position) {
-        case PUSquarePositionTopLeft:
-            newOrigin.x = -origin.x;
-            break;
-            
         case PUSquarePositionBottomLeft:
-            newOrigin.y = origin.y;
+            origin.y = bottomRight.y;
             break;
             
         case PUSquarePositionBottomRight:
-            newOrigin.x = origin.x;
+            origin = bottomRight;
             break;
             
         case PUSquarePositionTopRight:
-            newOrigin.y = -origin.y;
+            origin.x = bottomRight.x;
             break;
             
         default:
             break;
     }
     
-    return CGRectOffset(square, newOrigin.x, newOrigin.y);
+    square.origin = origin;
+    
+    return square;
 }
 
 @end
