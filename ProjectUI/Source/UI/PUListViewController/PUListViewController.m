@@ -63,7 +63,7 @@ PUViewControllerBaseViewProperty(PUListViewController, baseView, PUListView)
         NSArray *cells = [nib instantiateWithOwner:nil options:nil];
         
         for (id result in cells) {
-            if ([result class] == cellClass) {
+            if ([result isMemberOfClass:cellClass]) {
                 cell = result;
             }
         }
