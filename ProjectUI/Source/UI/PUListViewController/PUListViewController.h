@@ -1,8 +1,10 @@
 #import <UIKit/UIKit.h>
 
-@class PUListItem;
+@class PUList;
 
 @interface PUListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong)   PUListItem  *listItem;
+@property (nonatomic, strong)   PUList  *listModel;
+
+- (IBAction)onAddItem:(id)sender;
 
 @end

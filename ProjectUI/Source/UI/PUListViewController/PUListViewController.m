@@ -1,13 +1,26 @@
 #import "PUListViewController.h"
 
+#import "PUList.h"
+
 #import "PUListView.h"
 #import "PUListCell.h"
 
-#import "PUMacro.h"
+#import "PUViewControllerMacro.h"
 
 PUViewControllerBaseViewProperty(PUListViewController, baseView, PUListView)
 
 @implementation PUListViewController
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setListModel:(PUList *)listModel {
+    if (_listModel != listModel) {
+        _listModel = listModel;
+        
+        [self.baseView.tableView reloadData];
+    }
+}
 
 #pragma mark -
 #pragma mark View Lifecycle
@@ -15,7 +28,7 @@ PUViewControllerBaseViewProperty(PUListViewController, baseView, PUListView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.baseView.listView reloadData];
+    [self.baseView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,27 +42,41 @@ PUViewControllerBaseViewProperty(PUListViewController, baseView, PUListView)
     return UIStatusBarStyleLightContent;
 }
 
+- (IBAction)onAddItem:(id)sender {
+    
+}
+
 #pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.listModel.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *reuseIdentifier = NSStringFromClass([PUListCell class]);
+    Class cellClass = [PUListCell class];
+    NSString *cellClassString = NSStringFromClass(cellClass);
     
-    PUListCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    PUListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClassString];
     if (!cell) {
-        UINib *nib = [UINib nibWithNibName:reuseIdentifier bundle:nil];
+        UINib *nib = [UINib nibWithNibName:cellClassString bundle:nil];
         NSArray *cells = [nib instantiateWithOwner:nil options:nil];
-        cell = [cells firstObject];
+        
+        for (id result in cells) {
+            if ([result class] == cellClass) {
+                cell = result;
+            }
+        }
     }
     
     cell.layoutMargins = UIEdgeInsetsZero;
-    cell.listItem = self.listItem;
+    cell.listItem = [self.listModel objectAtIndex:indexPath.row];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Selected");
 }
 
 @end

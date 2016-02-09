@@ -1,9 +1,9 @@
 #import "PUSquareView.h"
 
-#import "PUMacro.h"
-
 #import "CGGeometry+PUExtensions.h"
 #import "UIColor+PUExtensions.h"
+
+#import "PUOwnershipMacro.h"
 
 static const CGFloat kPUFramePadding = 20;
 

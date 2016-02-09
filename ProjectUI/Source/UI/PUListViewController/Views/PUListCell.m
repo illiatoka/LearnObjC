@@ -2,6 +2,12 @@
 
 #import "PUListItem.h"
 
+@interface PUListCell ()
+
+- (void)fillWithModel:(PUListItem *)listItem;
+
+@end
+
 @implementation PUListCell
 
 #pragma mark -
@@ -16,10 +22,10 @@
 }
 
 #pragma mark -
-#pragma mark Public
+#pragma mark Private
 
 - (void)fillWithModel:(PUListItem *)listItem {
-    self.listItemTextLabel.text = self.listItem.listItemText;
+    self.itemTextLabel.text = self.listItem.itemText;
 }
 
 @end

@@ -3,6 +3,8 @@
 #import "PUSquareViewController.h"
 #import "PUListViewController.h"
 
+#import "PUList.h"
+
 #import "UIWindow+PUExtensions.h"
 
 @implementation PUAppDelegate
@@ -10,7 +12,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow *window = [UIWindow window];
     self.window = window;
-    window.rootViewController = [PUListViewController new];
+    PUListViewController *controller = [PUListViewController new];
+    window.rootViewController = controller;
+    
+    controller.listModel = [PUList new];
     
     [window makeKeyAndVisible];
     

@@ -21,6 +21,8 @@
 		A653E0FD1C679ED7002F424F /* PUSquareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A653E0F41C679ED7002F424F /* PUSquareView.xib */; };
 		A653E0FE1C679ED7002F424F /* PUSquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A653E0F61C679ED7002F424F /* PUSquareViewController.m */; };
 		A653E1021C67A542002F424F /* PUListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A653E1011C67A542002F424F /* PUListItem.m */; };
+		A6959CB31C69EDF90045A6E6 /* PUList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CB21C69EDF90045A6E6 /* PUList.m */; };
+		A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */; };
 		A6B8827C1C64D4F00073FB5B /* UIWindow+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */; };
 		A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B8827F1C64F5530073FB5B /* UIColor+PUExtensions.m */; };
 		A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B882811C64F8580073FB5B /* CGGeometry+PUExtensions.m */; };
@@ -51,10 +53,16 @@
 		A653E0F61C679ED7002F424F /* PUSquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUSquareViewController.m; sourceTree = "<group>"; };
 		A653E1011C67A542002F424F /* PUListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PUListItem.m; path = ../PUListItem/PUListItem.m; sourceTree = "<group>"; };
 		A653E1031C67A618002F424F /* PUListItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUListItem.h; sourceTree = "<group>"; };
+		A6959CB11C69EDF90045A6E6 /* PUList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUList.h; sourceTree = "<group>"; };
+		A6959CB21C69EDF90045A6E6 /* PUList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUList.m; sourceTree = "<group>"; };
+		A6959CB51C6A0C880045A6E6 /* PUObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUObservableObject.h; sourceTree = "<group>"; };
+		A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUObservableObject.m; sourceTree = "<group>"; };
+		A6959CB81C6A0F4F0045A6E6 /* PUClangMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUClangMacro.h; sourceTree = "<group>"; };
+		A6959CB91C6A0F900045A6E6 /* PUOwnershipMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUOwnershipMacro.h; sourceTree = "<group>"; };
 		A6B882761C64D4F00073FB5B /* CGGeometry+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882781C64D4F00073FB5B /* UIWindow+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PUExtensions.m"; sourceTree = "<group>"; };
-		A6B8827B1C64D4F00073FB5B /* PUMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUMacro.h; sourceTree = "<group>"; };
+		A6B8827B1C64D4F00073FB5B /* PUViewControllerMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUViewControllerMacro.h; sourceTree = "<group>"; };
 		A6B8827E1C64F3960073FB5B /* UIColor+PUExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B8827F1C64F5530073FB5B /* UIColor+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PUExtensions.m"; sourceTree = "<group>"; };
 		A6B882811C64F8580073FB5B /* CGGeometry+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+PUExtensions.m"; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 		A653E0DA1C6794DE002F424F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A6959CB41C6A0C880045A6E6 /* PUObservableObject */,
 				A653E0DC1C67951D002F424F /* PUTableViewCell */,
 			);
 			path = Classes;
@@ -130,6 +139,7 @@
 		A653E0DB1C679506002F424F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A6959CB01C69EDCF0045A6E6 /* PUList */,
 				A653E0FF1C67A425002F424F /* PUListItem */,
 			);
 			path = Models;
@@ -197,6 +207,24 @@
 			path = PUListItem;
 			sourceTree = "<group>";
 		};
+		A6959CB01C69EDCF0045A6E6 /* PUList */ = {
+			isa = PBXGroup;
+			children = (
+				A6959CB11C69EDF90045A6E6 /* PUList.h */,
+				A6959CB21C69EDF90045A6E6 /* PUList.m */,
+			);
+			path = PUList;
+			sourceTree = "<group>";
+		};
+		A6959CB41C6A0C880045A6E6 /* PUObservableObject */ = {
+			isa = PBXGroup;
+			children = (
+				A6959CB51C6A0C880045A6E6 /* PUObservableObject.h */,
+				A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */,
+			);
+			path = PUObservableObject;
+			sourceTree = "<group>";
+		};
 		A6B882731C64D4F00073FB5B /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +267,9 @@
 		A6B8827A1C64D4F00073FB5B /* Macro */ = {
 			isa = PBXGroup;
 			children = (
-				A6B8827B1C64D4F00073FB5B /* PUMacro.h */,
+				A6B8827B1C64D4F00073FB5B /* PUViewControllerMacro.h */,
+				A6959CB91C6A0F900045A6E6 /* PUOwnershipMacro.h */,
+				A6959CB81C6A0F4F0045A6E6 /* PUClangMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -337,7 +367,9 @@
 				A653E0F71C679ED7002F424F /* PUListView.m in Sources */,
 				A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */,
 				A63261221C58193200508740 /* PUAppDelegate.m in Sources */,
+				A6959CB31C69EDF90045A6E6 /* PUList.m in Sources */,
 				A653E0FC1C679ED7002F424F /* PUSquareView.m in Sources */,
+				A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */,
 				A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

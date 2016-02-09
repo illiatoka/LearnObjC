@@ -8,7 +8,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.listItemText = @"Random text";
+        self.itemText = @"Random text";
     }
     
     return self;

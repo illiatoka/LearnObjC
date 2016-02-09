@@ -2,7 +2,7 @@
 
 #import "PUSquareView.h"
 
-#import "PUMacro.h"
+#import "PUViewControllerMacro.h"
 
 PUViewControllerBaseViewProperty(PUSquareViewController, baseView, PUSquareView)
 

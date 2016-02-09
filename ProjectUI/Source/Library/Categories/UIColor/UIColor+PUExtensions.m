@@ -1,7 +1,7 @@
 #import "UIColor+PUExtensions.h"
 
 UIColor *UIRGBAColor(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha) {
-    return [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha];
+    return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:alpha];
 }
 
 UIColor *UIRGBColor(CGFloat red, CGFloat green, CGFloat blue) {
