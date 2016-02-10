@@ -2,6 +2,9 @@
 
 #import "PUFoodListItem.h"
 
+static NSString * const kPUCheckImageName = @"check";
+static NSString * const kPUUncheckImageName = @"uncheck";
+
 @interface PUFoodListCell ()
 
 - (void)fillWithModel:(PUFoodListItem *)foodListItem;
@@ -26,7 +29,16 @@
 
 - (void)fillWithModel:(PUFoodListItem *)foodListItem {
     self.itemTextLabel.text = self.foodListItem.foodName;
-    self.statusImageView.image = [UIImage imageNamed:foodListItem.isChecked ? @"check" : @"uncheck"];
+    
+    static UIImage *__check = nil;
+    static UIImage *__uncheck = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __check = [UIImage imageNamed:kPUCheckImageName];
+        __uncheck = [UIImage imageNamed:kPUUncheckImageName];
+    });
+    
+    self.statusImageView.image = foodListItem.isChecked ? __check : __uncheck;
 }
 
 #pragma mark -
