@@ -1,7 +1,11 @@
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface PUListItem : NSObject
-@property (nonatomic, strong)           NSString    *itemText;
-@property (nonatomic, getter=isChecked) BOOL        checked;
+#import "PUObservableObject.h"
+#import "PUListItemObserverProtocol.h"
+
+@interface PUListItem : PUObservableObject <PUListItemObserverProtocol>
+@property (nonatomic, strong)   NSString    *itemText;
+
+@property (nonatomic, getter=isChecked) BOOL    checked;
 
 @end

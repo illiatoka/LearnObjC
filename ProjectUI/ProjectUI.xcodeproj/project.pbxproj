@@ -59,6 +59,7 @@
 		A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUObservableObject.m; sourceTree = "<group>"; };
 		A6959CB81C6A0F4F0045A6E6 /* PUClangMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUClangMacro.h; sourceTree = "<group>"; };
 		A6959CB91C6A0F900045A6E6 /* PUOwnershipMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUOwnershipMacro.h; sourceTree = "<group>"; };
+		A6959CBE1C6AAFD30045A6E6 /* PUListItemObserverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUListItemObserverProtocol.h; sourceTree = "<group>"; };
 		A6B882761C64D4F00073FB5B /* CGGeometry+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882781C64D4F00073FB5B /* UIWindow+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PUExtensions.m"; sourceTree = "<group>"; };
@@ -225,9 +226,18 @@
 			path = PUObservableObject;
 			sourceTree = "<group>";
 		};
+		A6959CBC1C6A88080045A6E6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A6959CBE1C6AAFD30045A6E6 /* PUListItemObserverProtocol.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		A6B882731C64D4F00073FB5B /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				A6959CBC1C6A88080045A6E6 /* Protocols */,
 				A6B882741C64D4F00073FB5B /* Categories */,
 				A653E0DA1C6794DE002F424F /* Classes */,
 				A6B8827A1C64D4F00073FB5B /* Macro */,

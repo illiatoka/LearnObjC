@@ -58,8 +58,9 @@
             <connections>
                 <outlet property="foregroundView" destination="HBc-ih-bdb" id="7nY-fB-JTq"/>
                 <outlet property="itemTextLabel" destination="QeV-h1-H4z" id="hz4-Qn-n7g"/>
-                <outlet property="statusImage" destination="eKp-S3-DZp" id="7cU-oU-Uy5"/>
+                <outlet property="statusImageView" destination="eKp-S3-DZp" id="v6u-k4-pCN"/>
                 <outletCollection property="gestureRecognizers" destination="MDI-hO-gtF" appends="YES" id="nrx-aE-qgY"/>
+                <outletCollection property="gestureRecognizers" destination="TAK-t0-duB" appends="YES" id="NG8-tr-yCd"/>
             </connections>
             <point key="canvasLocation" x="329" y="179"/>
         </tableViewCell>

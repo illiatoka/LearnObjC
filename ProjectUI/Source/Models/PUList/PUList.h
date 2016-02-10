@@ -15,7 +15,4 @@
 
 - (void)removeObjectAtIndex:(NSUInteger)index;
 
-- (void)markObjectAtIndex:(NSUInteger)index;
-- (void)unmarkObjectAtIndex:(NSUInteger)index;
-
 @end

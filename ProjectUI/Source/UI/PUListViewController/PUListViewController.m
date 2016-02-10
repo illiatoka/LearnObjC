@@ -1,6 +1,7 @@
 #import "PUListViewController.h"
 
 #import "PUList.h"
+#import "PUListItem.h"
 
 #import "PUListView.h"
 #import "PUListCell.h"
@@ -69,14 +70,23 @@ PUViewControllerBaseViewProperty(PUListViewController, baseView, PUListView)
         }
     }
     
+    PUList *listModel = self.listModel;
+    PUListItem *listItem = [listModel objectAtIndex:indexPath.row];
+    
+    // TODO: Don't forget to remove cell from listModel observers!
+    if (![listItem containsObserver:cell]) {
+        [listItem addObserver:cell];
+    }
+    
+    cell.listItem = [listModel objectAtIndex:indexPath.row];
     cell.layoutMargins = UIEdgeInsetsZero;
-    cell.listItem = [self.listModel objectAtIndex:indexPath.row];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Selected");
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    PUListItem *listItem = [self.listModel objectAtIndex:indexPath.row];
+    [listItem setChecked:listItem.isChecked ? NO : YES];
 }
 
 @end

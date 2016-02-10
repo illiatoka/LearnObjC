@@ -26,6 +26,16 @@
 
 - (void)fillWithModel:(PUListItem *)listItem {
     self.itemTextLabel.text = self.listItem.itemText;
+    self.statusImageView.image = [UIImage imageNamed:listItem.isChecked ? @"check" : @"uncheck"];
+}
+
+#pragma mark -
+#pragma mark PUListObserverProtocol
+
+- (void)listItemModelDidChange:(id)model {
+    if (self.listItem == model) {
+        [self fillWithModel:model];
+    }
 }
 
 @end

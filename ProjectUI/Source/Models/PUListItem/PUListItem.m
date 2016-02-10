@@ -14,4 +14,15 @@
     return self;
 }
 
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setChecked:(BOOL)checked {
+    if (_checked != checked) {
+        _checked = checked;
+        
+        [self notifyWithSelector:@selector(listItemModelDidChange:)];
+    }
+}
+
 @end
