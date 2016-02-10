@@ -1,16 +1,19 @@
-#import "PUList.h"
-#import "PUListItem.h"
+#import "PUFoodListItems.h"
+
+#import "PUFoodListItem.h"
+#import "PURandomFoodName.h"
 
 static const NSUInteger kPUListItemCount = 20;
 
-@interface PUList ()
-@property (nonatomic, strong)   NSMutableArray  *mutableItems;
+@interface PUFoodListItems ()
+@property (nonatomic, strong)   NSMutableArray      *mutableItems;
+@property (nonatomic, strong)   PURandomFoodName    *randomFoodNames;
 
 - (void)fill;
 
 @end
 
-@implementation PUList
+@implementation PUFoodListItems
 
 @dynamic items;
 @dynamic count;
@@ -22,6 +25,7 @@ static const NSUInteger kPUListItemCount = 20;
     self = [super init];
     if (self) {
         self.mutableItems = [NSMutableArray arrayWithCapacity:kPUListItemCount];
+        self.randomFoodNames = [PURandomFoodName new];
         [self fill];
     }
     
@@ -42,7 +46,7 @@ static const NSUInteger kPUListItemCount = 20;
 #pragma mark -
 #pragma mark Public
 
-- (PUListItem *)objectAtIndex:(NSUInteger)index {
+- (PUFoodListItem *)objectAtIndex:(NSUInteger)index {
     return [self.mutableItems objectAtIndex:index];
 }
 
@@ -58,14 +62,6 @@ static const NSUInteger kPUListItemCount = 20;
 
 }
 
-- (void)markObjectAtIndex:(NSUInteger)index {
-
-}
-
-- (void)unmarkObjectAtIndex:(NSUInteger)index {
-
-}
-
 #pragma mark -
 #pragma mark Private
 
@@ -73,7 +69,7 @@ static const NSUInteger kPUListItemCount = 20;
     NSMutableArray *items = self.mutableItems;
     @synchronized(items) {
         for (NSUInteger count = 0; count < kPUListItemCount; count++) {
-            [items addObject:[PUListItem new]];
+            [items addObject:[[PUFoodListItem alloc] initWithFoodName:[self.randomFoodNames randomFoodName]]];
         }
     }
 }

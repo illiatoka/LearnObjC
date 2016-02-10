@@ -1,14 +1,14 @@
 #import "PUTableViewCell.h"
 
-#import "PUListItemObserverProtocol.h"
+#import "PUFoodListItemObserverProtocol.h"
 
-@class PUListItem;
+@class PUFoodListItem;
 
-@interface PUListCell : PUTableViewCell <PUListItemObserverProtocol>
+@interface PUFoodListCell : PUTableViewCell <PUFoodListItemObserverProtocol>
 @property (nonatomic, strong)   IBOutlet UIView         *foregroundView;
 @property (nonatomic, strong)   IBOutlet UIImageView    *statusImageView;
 @property (nonatomic, strong)   IBOutlet UILabel        *itemTextLabel;
 
-@property (nonatomic, strong)   PUListItem  *listItem;
+@property (nonatomic, strong)   PUFoodListItem  *foodListItem;
 
 @end

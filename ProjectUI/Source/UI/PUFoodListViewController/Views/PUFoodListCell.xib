@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="zkb-Lr-shF" userLabel="PUListCell" customClass="PUListCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="zkb-Lr-shF" userLabel="PUFoodListCell" customClass="PUFoodListCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zkb-Lr-shF" id="lLY-dg-dPb">
@@ -56,16 +56,23 @@
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
-                <outlet property="foregroundView" destination="HBc-ih-bdb" id="7nY-fB-JTq"/>
-                <outlet property="itemTextLabel" destination="QeV-h1-H4z" id="hz4-Qn-n7g"/>
-                <outlet property="statusImageView" destination="eKp-S3-DZp" id="v6u-k4-pCN"/>
-                <outletCollection property="gestureRecognizers" destination="MDI-hO-gtF" appends="YES" id="nrx-aE-qgY"/>
-                <outletCollection property="gestureRecognizers" destination="TAK-t0-duB" appends="YES" id="NG8-tr-yCd"/>
+                <outlet property="backgroundView" destination="uho-0D-gzE" id="CWT-CF-Nmb"/>
+                <outlet property="foregroundView" destination="HBc-ih-bdb" id="beO-Hd-5jb"/>
+                <outlet property="itemTextLabel" destination="QeV-h1-H4z" id="RQt-2H-3Zc"/>
+                <outlet property="statusImageView" destination="eKp-S3-DZp" id="Rhs-dO-YJ5"/>
             </connections>
             <point key="canvasLocation" x="329" y="179"/>
         </tableViewCell>
-        <swipeGestureRecognizer direction="right" id="MDI-hO-gtF" userLabel="Swipe Right"/>
-        <swipeGestureRecognizer direction="left" id="TAK-t0-duB" userLabel="Swipe Left"/>
+        <swipeGestureRecognizer direction="right" id="MDI-hO-gtF" userLabel="Swipe Right">
+            <connections>
+                <outlet property="delegate" destination="zkb-Lr-shF" id="ivZ-vC-Qhe"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="left" id="TAK-t0-duB" userLabel="Swipe Left">
+            <connections>
+                <outlet property="delegate" destination="zkb-Lr-shF" id="TrZ-Wf-w2v"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
     <resources>
         <image name="trash" width="20" height="20"/>
