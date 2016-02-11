@@ -1,9 +1,9 @@
 #import "PUAppDelegate.h"
 
 #import "PUSquareViewController.h"
-#import "PUFoodListViewController.h"
+#import "PUShopListViewController.h"
 
-#import "PUFoodListItems.h"
+#import "PUShopListItems.h"
 
 #import "UIWindow+PUExtensions.h"
 
@@ -12,10 +12,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow *window = [UIWindow window];
     self.window = window;
-    PUFoodListViewController *controller = [PUFoodListViewController new];
+    PUShopListViewController *controller = [PUShopListViewController new];
     window.rootViewController = controller;
     
-    controller.foodListItems = [PUFoodListItems new];
+    controller.shopListItems = [PUShopListItems new];
     
     [window makeKeyAndVisible];
     

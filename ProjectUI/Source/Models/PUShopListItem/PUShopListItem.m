@@ -1,14 +1,14 @@
-#import "PUFoodListItem.h"
+#import "PUShopListItem.h"
 
-@implementation PUFoodListItem
+@implementation PUShopListItem
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)initWithFoodName:(NSString *)foodName {
+- (instancetype)initWithName:(NSString *)name {
     self = [super init];
     if (self) {
-        self.foodName = foodName;
+        self.name = name;
     }
     
     return self;
@@ -21,7 +21,7 @@
     if (_checked != checked) {
         _checked = checked;
         
-        [self notifyWithSelector:@selector(foodListItemModelDidChange:)];
+        [self notifyWithSelector:@selector(shopListItemModelDidChange:)];
     }
 }
 

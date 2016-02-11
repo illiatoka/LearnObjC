@@ -16,14 +16,14 @@
 		A653E0FD1C679ED7002F424F /* PUSquareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A653E0F41C679ED7002F424F /* PUSquareView.xib */; };
 		A653E0FE1C679ED7002F424F /* PUSquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A653E0F61C679ED7002F424F /* PUSquareViewController.m */; };
 		A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */; };
-		A6959CC21C6BD86E0045A6E6 /* PURandomFoodName.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CC11C6BD86E0045A6E6 /* PURandomFoodName.m */; };
-		A6959CC91C6BE32B0045A6E6 /* PUFoodListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CC51C6BE32B0045A6E6 /* PUFoodListItem.m */; };
-		A6959CCA1C6BE32B0045A6E6 /* PUFoodListItems.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CC81C6BE32B0045A6E6 /* PUFoodListItems.m */; };
-		A6959CD51C6BE34B0045A6E6 /* PUFoodListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CCD1C6BE34B0045A6E6 /* PUFoodListView.m */; };
-		A6959CD61C6BE34B0045A6E6 /* PUFoodListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6959CCE1C6BE34B0045A6E6 /* PUFoodListView.xib */; };
-		A6959CD71C6BE34B0045A6E6 /* PUFoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CD01C6BE34B0045A6E6 /* PUFoodListViewController.m */; };
-		A6959CD81C6BE34B0045A6E6 /* PUFoodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CD31C6BE34B0045A6E6 /* PUFoodListCell.m */; };
-		A6959CD91C6BE34B0045A6E6 /* PUFoodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6959CD41C6BE34B0045A6E6 /* PUFoodListCell.xib */; };
+		A6959CC21C6BD86E0045A6E6 /* PURandomName.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CC11C6BD86E0045A6E6 /* PURandomName.m */; };
+		A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CDD1C6CCEA50045A6E6 /* PUShopListItem.m */; };
+		A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CE01C6CCEA50045A6E6 /* PUShopListItems.m */; };
+		A6959CED1C6CCEFB0045A6E6 /* PUShopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CE51C6CCEFB0045A6E6 /* PUShopListView.m */; };
+		A6959CEE1C6CCEFB0045A6E6 /* PUShopListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6959CE61C6CCEFB0045A6E6 /* PUShopListView.xib */; };
+		A6959CEF1C6CCEFB0045A6E6 /* PUShopListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CE81C6CCEFB0045A6E6 /* PUShopListViewController.m */; };
+		A6959CF01C6CCEFB0045A6E6 /* PUShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CEB1C6CCEFB0045A6E6 /* PUShopListCell.m */; };
+		A6959CF11C6CCEFB0045A6E6 /* PUShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6959CEC1C6CCEFB0045A6E6 /* PUShopListCell.xib */; };
 		A6B8827C1C64D4F00073FB5B /* UIWindow+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */; };
 		A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B8827F1C64F5530073FB5B /* UIColor+PUExtensions.m */; };
 		A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B882811C64F8580073FB5B /* CGGeometry+PUExtensions.m */; };
@@ -48,21 +48,21 @@
 		A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUObservableObject.m; sourceTree = "<group>"; };
 		A6959CB81C6A0F4F0045A6E6 /* PUClangMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUClangMacro.h; sourceTree = "<group>"; };
 		A6959CB91C6A0F900045A6E6 /* PUOwnershipMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUOwnershipMacro.h; sourceTree = "<group>"; };
-		A6959CBE1C6AAFD30045A6E6 /* PUFoodListItemObserverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUFoodListItemObserverProtocol.h; sourceTree = "<group>"; };
-		A6959CC01C6BD86E0045A6E6 /* PURandomFoodName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PURandomFoodName.h; sourceTree = "<group>"; };
-		A6959CC11C6BD86E0045A6E6 /* PURandomFoodName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PURandomFoodName.m; sourceTree = "<group>"; };
-		A6959CC41C6BE32B0045A6E6 /* PUFoodListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUFoodListItem.h; sourceTree = "<group>"; };
-		A6959CC51C6BE32B0045A6E6 /* PUFoodListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUFoodListItem.m; sourceTree = "<group>"; };
-		A6959CC71C6BE32B0045A6E6 /* PUFoodListItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUFoodListItems.h; sourceTree = "<group>"; };
-		A6959CC81C6BE32B0045A6E6 /* PUFoodListItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUFoodListItems.m; sourceTree = "<group>"; };
-		A6959CCC1C6BE34B0045A6E6 /* PUFoodListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUFoodListView.h; sourceTree = "<group>"; };
-		A6959CCD1C6BE34B0045A6E6 /* PUFoodListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUFoodListView.m; sourceTree = "<group>"; };
-		A6959CCE1C6BE34B0045A6E6 /* PUFoodListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUFoodListView.xib; sourceTree = "<group>"; };
-		A6959CCF1C6BE34B0045A6E6 /* PUFoodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUFoodListViewController.h; sourceTree = "<group>"; };
-		A6959CD01C6BE34B0045A6E6 /* PUFoodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUFoodListViewController.m; sourceTree = "<group>"; };
-		A6959CD21C6BE34B0045A6E6 /* PUFoodListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUFoodListCell.h; sourceTree = "<group>"; };
-		A6959CD31C6BE34B0045A6E6 /* PUFoodListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUFoodListCell.m; sourceTree = "<group>"; };
-		A6959CD41C6BE34B0045A6E6 /* PUFoodListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUFoodListCell.xib; sourceTree = "<group>"; };
+		A6959CBE1C6AAFD30045A6E6 /* PUShopListItemObserverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUShopListItemObserverProtocol.h; sourceTree = "<group>"; };
+		A6959CC01C6BD86E0045A6E6 /* PURandomName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PURandomName.h; sourceTree = "<group>"; };
+		A6959CC11C6BD86E0045A6E6 /* PURandomName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PURandomName.m; sourceTree = "<group>"; };
+		A6959CDC1C6CCEA50045A6E6 /* PUShopListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUShopListItem.h; sourceTree = "<group>"; };
+		A6959CDD1C6CCEA50045A6E6 /* PUShopListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUShopListItem.m; sourceTree = "<group>"; };
+		A6959CDF1C6CCEA50045A6E6 /* PUShopListItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUShopListItems.h; sourceTree = "<group>"; };
+		A6959CE01C6CCEA50045A6E6 /* PUShopListItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUShopListItems.m; sourceTree = "<group>"; };
+		A6959CE41C6CCEFB0045A6E6 /* PUShopListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUShopListView.h; sourceTree = "<group>"; };
+		A6959CE51C6CCEFB0045A6E6 /* PUShopListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUShopListView.m; sourceTree = "<group>"; };
+		A6959CE61C6CCEFB0045A6E6 /* PUShopListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUShopListView.xib; sourceTree = "<group>"; };
+		A6959CE71C6CCEFB0045A6E6 /* PUShopListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUShopListViewController.h; sourceTree = "<group>"; };
+		A6959CE81C6CCEFB0045A6E6 /* PUShopListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUShopListViewController.m; sourceTree = "<group>"; };
+		A6959CEA1C6CCEFB0045A6E6 /* PUShopListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUShopListCell.h; sourceTree = "<group>"; };
+		A6959CEB1C6CCEFB0045A6E6 /* PUShopListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUShopListCell.m; sourceTree = "<group>"; };
+		A6959CEC1C6CCEFB0045A6E6 /* PUShopListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUShopListCell.xib; sourceTree = "<group>"; };
 		A6B882761C64D4F00073FB5B /* CGGeometry+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882781C64D4F00073FB5B /* UIWindow+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PUExtensions.m"; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				A6B882731C64D4F00073FB5B /* Library */,
-				A653E0DB1C679506002F424F /* Models */,
+				A6959CDA1C6CCEA50045A6E6 /* Models */,
 				A653E0E61C679ED7002F424F /* UI */,
 			);
 			path = Source;
@@ -141,15 +141,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		A653E0DB1C679506002F424F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				A6959CC31C6BE32B0045A6E6 /* PUFoodListItem */,
-				A6959CC61C6BE32B0045A6E6 /* PUFoodListItems */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		A653E0DC1C67951D002F424F /* PUTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				A653E0F11C679ED7002F424F /* PUSquareViewController */,
-				A6959CCB1C6BE34B0045A6E6 /* PUFoodListViewController */,
+				A6959CE31C6CCEFB0045A6E6 /* PUShopListViewController */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -192,7 +183,7 @@
 		A6959CBC1C6A88080045A6E6 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				A6959CBE1C6AAFD30045A6E6 /* PUFoodListItemObserverProtocol.h */,
+				A6959CBE1C6AAFD30045A6E6 /* PUShopListItemObserverProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -200,49 +191,59 @@
 		A6959CBF1C6BD3450045A6E6 /* PURandomFoodName */ = {
 			isa = PBXGroup;
 			children = (
-				A6959CC01C6BD86E0045A6E6 /* PURandomFoodName.h */,
-				A6959CC11C6BD86E0045A6E6 /* PURandomFoodName.m */,
+				A6959CC01C6BD86E0045A6E6 /* PURandomName.h */,
+				A6959CC11C6BD86E0045A6E6 /* PURandomName.m */,
 			);
-			path = PURandomFoodName;
+			name = PURandomFoodName;
+			path = PURandomName;
 			sourceTree = "<group>";
 		};
-		A6959CC31C6BE32B0045A6E6 /* PUFoodListItem */ = {
+		A6959CDA1C6CCEA50045A6E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A6959CC41C6BE32B0045A6E6 /* PUFoodListItem.h */,
-				A6959CC51C6BE32B0045A6E6 /* PUFoodListItem.m */,
+				A6959CDB1C6CCEA50045A6E6 /* PUShopListItem */,
+				A6959CDE1C6CCEA50045A6E6 /* PUShopListItems */,
 			);
-			path = PUFoodListItem;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		A6959CC61C6BE32B0045A6E6 /* PUFoodListItems */ = {
+		A6959CDB1C6CCEA50045A6E6 /* PUShopListItem */ = {
 			isa = PBXGroup;
 			children = (
-				A6959CC71C6BE32B0045A6E6 /* PUFoodListItems.h */,
-				A6959CC81C6BE32B0045A6E6 /* PUFoodListItems.m */,
+				A6959CDC1C6CCEA50045A6E6 /* PUShopListItem.h */,
+				A6959CDD1C6CCEA50045A6E6 /* PUShopListItem.m */,
 			);
-			path = PUFoodListItems;
+			path = PUShopListItem;
 			sourceTree = "<group>";
 		};
-		A6959CCB1C6BE34B0045A6E6 /* PUFoodListViewController */ = {
+		A6959CDE1C6CCEA50045A6E6 /* PUShopListItems */ = {
 			isa = PBXGroup;
 			children = (
-				A6959CD11C6BE34B0045A6E6 /* Views */,
-				A6959CCF1C6BE34B0045A6E6 /* PUFoodListViewController.h */,
-				A6959CD01C6BE34B0045A6E6 /* PUFoodListViewController.m */,
-				A6959CCC1C6BE34B0045A6E6 /* PUFoodListView.h */,
-				A6959CCD1C6BE34B0045A6E6 /* PUFoodListView.m */,
-				A6959CCE1C6BE34B0045A6E6 /* PUFoodListView.xib */,
+				A6959CDF1C6CCEA50045A6E6 /* PUShopListItems.h */,
+				A6959CE01C6CCEA50045A6E6 /* PUShopListItems.m */,
 			);
-			path = PUFoodListViewController;
+			path = PUShopListItems;
 			sourceTree = "<group>";
 		};
-		A6959CD11C6BE34B0045A6E6 /* Views */ = {
+		A6959CE31C6CCEFB0045A6E6 /* PUShopListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A6959CD21C6BE34B0045A6E6 /* PUFoodListCell.h */,
-				A6959CD31C6BE34B0045A6E6 /* PUFoodListCell.m */,
-				A6959CD41C6BE34B0045A6E6 /* PUFoodListCell.xib */,
+				A6959CE91C6CCEFB0045A6E6 /* Views */,
+				A6959CE71C6CCEFB0045A6E6 /* PUShopListViewController.h */,
+				A6959CE81C6CCEFB0045A6E6 /* PUShopListViewController.m */,
+				A6959CE41C6CCEFB0045A6E6 /* PUShopListView.h */,
+				A6959CE51C6CCEFB0045A6E6 /* PUShopListView.m */,
+				A6959CE61C6CCEFB0045A6E6 /* PUShopListView.xib */,
+			);
+			path = PUShopListViewController;
+			sourceTree = "<group>";
+		};
+		A6959CE91C6CCEFB0045A6E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A6959CEA1C6CCEFB0045A6E6 /* PUShopListCell.h */,
+				A6959CEB1C6CCEFB0045A6E6 /* PUShopListCell.m */,
+				A6959CEC1C6CCEFB0045A6E6 /* PUShopListCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -366,10 +367,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A63261241C58193200508740 /* LaunchScreen.storyboard in Resources */,
-				A6959CD91C6BE34B0045A6E6 /* PUFoodListCell.xib in Resources */,
+				A6959CEE1C6CCEFB0045A6E6 /* PUShopListView.xib in Resources */,
+				A6959CF11C6CCEFB0045A6E6 /* PUShopListCell.xib in Resources */,
 				A653E0FD1C679ED7002F424F /* PUSquareView.xib in Resources */,
 				A63261231C58193200508740 /* Assets.xcassets in Resources */,
-				A6959CD61C6BE34B0045A6E6 /* PUFoodListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,21 +381,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6959CF01C6CCEFB0045A6E6 /* PUShopListCell.m in Sources */,
 				A653E0FE1C679ED7002F424F /* PUSquareViewController.m in Sources */,
+				A6959CED1C6CCEFB0045A6E6 /* PUShopListView.m in Sources */,
 				A6B8827C1C64D4F00073FB5B /* UIWindow+PUExtensions.m in Sources */,
 				A63261211C58193200508740 /* main.m in Sources */,
-				A6959CC91C6BE32B0045A6E6 /* PUFoodListItem.m in Sources */,
+				A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */,
 				A653E0DF1C679558002F424F /* PUTableViewCell.m in Sources */,
 				A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */,
-				A6959CC21C6BD86E0045A6E6 /* PURandomFoodName.m in Sources */,
+				A6959CC21C6BD86E0045A6E6 /* PURandomName.m in Sources */,
 				A63261221C58193200508740 /* PUAppDelegate.m in Sources */,
-				A6959CCA1C6BE32B0045A6E6 /* PUFoodListItems.m in Sources */,
+				A6959CEF1C6CCEFB0045A6E6 /* PUShopListViewController.m in Sources */,
 				A653E0FC1C679ED7002F424F /* PUSquareView.m in Sources */,
 				A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */,
+				A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */,
 				A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */,
-				A6959CD81C6BE34B0045A6E6 /* PUFoodListCell.m in Sources */,
-				A6959CD51C6BE34B0045A6E6 /* PUFoodListView.m in Sources */,
-				A6959CD71C6BE34B0045A6E6 /* PUFoodListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

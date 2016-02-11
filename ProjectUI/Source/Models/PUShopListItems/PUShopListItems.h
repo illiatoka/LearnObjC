@@ -2,13 +2,14 @@
 
 #import "PUObservableObject.h"
 
-@class PUFoodListItem;
+@class PUShopListItem;
 
-@interface PUFoodListItems : PUObservableObject
+@interface PUShopListItems : PUObservableObject
 @property (nonatomic, readonly) NSArray     *items;
 @property (nonatomic, readonly) NSUInteger  count;
 
-- (PUFoodListItem *)objectAtIndex:(NSUInteger)index;
+- (PUShopListItem *)objectAtIndex:(NSUInteger)index;
+- (PUShopListItem *)objectAtIndexedSubscript:(NSUInteger)index;
 
 - (void)addObject:(id)object;
 - (void)removeObject:(id)object;

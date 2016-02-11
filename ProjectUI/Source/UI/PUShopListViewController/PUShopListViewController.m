@@ -1,23 +1,23 @@
-#import "PUFoodListViewController.h"
+#import "PUShopListViewController.h"
 
-#import "PUFoodListItems.h"
-#import "PUFoodListItem.h"
+#import "PUShopListItems.h"
+#import "PUShopListItem.h"
 
-#import "PUFoodListView.h"
-#import "PUFoodListCell.h"
+#import "PUShopListView.h"
+#import "PUShopListCell.h"
 
 #import "PUViewControllerMacro.h"
 
-PUViewControllerBaseViewProperty(PUFoodListViewController, baseView, PUFoodListView)
+PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListView)
 
-@implementation PUFoodListViewController
+@implementation PUShopListViewController
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setListModel:(PUFoodListItems *)foodListItems {
-    if (_foodListItems != foodListItems) {
-        _foodListItems = foodListItems;
+- (void)setListModel:(PUShopListItems *)shopListItems {
+    if (_shopListItems != shopListItems) {
+        _shopListItems = shopListItems;
         
         [self.baseView.tableView reloadData];
     }
@@ -51,14 +51,14 @@ PUViewControllerBaseViewProperty(PUFoodListViewController, baseView, PUFoodListV
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.foodListItems.count;
+    return self.shopListItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Class cellClass = [PUFoodListCell class];
+    Class cellClass = [PUShopListCell class];
     NSString *cellClassString = NSStringFromClass(cellClass);
     
-    PUFoodListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClassString];
+    PUShopListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClassString];
     if (!cell) {
         UINib *nib = [UINib nibWithNibName:cellClassString bundle:nil];
         NSArray *cells = [nib instantiateWithOwner:nil options:nil];
@@ -70,23 +70,22 @@ PUViewControllerBaseViewProperty(PUFoodListViewController, baseView, PUFoodListV
         }
     }
     
-    PUFoodListItems *foodListItems = self.foodListItems;
-    PUFoodListItem *foodListItem = [foodListItems objectAtIndex:indexPath.row];
+    PUShopListItem *shopListItem = self.shopListItems[indexPath.row];
     
     // TODO: Don't forget to remove cell from listModel observers!
-    if (![foodListItem containsObserver:cell]) {
-        [foodListItem addObserver:cell];
+    if (![shopListItem containsObserver:cell]) {
+        [shopListItem addObserver:cell];
     }
     
-    cell.foodListItem = foodListItem;
+    cell.shopListItem = shopListItem;
     cell.layoutMargins = UIEdgeInsetsZero;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    PUFoodListItem *foodListItem = [self.foodListItems objectAtIndex:indexPath.row];
-    [foodListItem setChecked:foodListItem.isChecked ? NO : YES];
+    PUShopListItem *shopListItem = self.shopListItems[indexPath.row];
+    [shopListItem setChecked:shopListItem.isChecked ? NO : YES];
 }
 
 @end

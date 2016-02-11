@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface PUFoodListView : UIView
+@interface PUShopListView : UIView
 @property (nonatomic, strong)   IBOutlet UITableView    *tableView;
 
 @end
