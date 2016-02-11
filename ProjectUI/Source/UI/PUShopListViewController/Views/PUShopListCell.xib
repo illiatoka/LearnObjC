@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="zkb-Lr-shF" userLabel="PUShopListCell" customClass="PUShopListCell">
+        <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="zkb-Lr-shF" userLabel="PUShopListCell" customClass="PUShopListCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zkb-Lr-shF" id="lLY-dg-dPb">
@@ -21,11 +21,14 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6RY-hl-YIi" userLabel="Delete">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentEdgeInsets" minX="17" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="trash"/>
+                                <connections>
+                                    <action selector="onDelete:" destination="zkb-Lr-shF" eventType="touchUpInside" id="DXl-KV-Tzh"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.31372549019607843" green="0.82352941176470584" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view contentMode="scaleToFill" id="HBc-ih-bdb" userLabel="Foreground">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
@@ -56,23 +59,30 @@
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
-                <outlet property="backgroundView" destination="uho-0D-gzE" id="CWT-CF-Nmb"/>
                 <outlet property="foregroundView" destination="HBc-ih-bdb" id="beO-Hd-5jb"/>
                 <outlet property="itemTextLabel" destination="QeV-h1-H4z" id="RQt-2H-3Zc"/>
                 <outlet property="statusImageView" destination="eKp-S3-DZp" id="Rhs-dO-YJ5"/>
+                <outletCollection property="gestureRecognizers" destination="MDI-hO-gtF" appends="YES" id="qOr-bz-A7f"/>
+                <outletCollection property="gestureRecognizers" destination="TAK-t0-duB" appends="YES" id="Q6s-pN-DOZ"/>
+                <outletCollection property="gestureRecognizers" destination="FJz-Ie-aZI" appends="YES" id="1It-ep-lrU"/>
             </connections>
             <point key="canvasLocation" x="329" y="179"/>
         </tableViewCell>
         <swipeGestureRecognizer direction="right" id="MDI-hO-gtF" userLabel="Swipe Right">
             <connections>
-                <outlet property="delegate" destination="zkb-Lr-shF" id="ivZ-vC-Qhe"/>
+                <action selector="onMenuSwipeRight:" destination="zkb-Lr-shF" id="dl1-rY-mw4"/>
             </connections>
         </swipeGestureRecognizer>
         <swipeGestureRecognizer direction="left" id="TAK-t0-duB" userLabel="Swipe Left">
             <connections>
-                <outlet property="delegate" destination="zkb-Lr-shF" id="TrZ-Wf-w2v"/>
+                <action selector="onMenuSwipeLeft:" destination="zkb-Lr-shF" id="KLG-9w-arE"/>
             </connections>
         </swipeGestureRecognizer>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="FJz-Ie-aZI" userLabel="Long Press">
+            <connections>
+                <action selector="onLongPress:" destination="zkb-Lr-shF" id="Rsz-bc-QAe"/>
+            </connections>
+        </pongPressGestureRecognizer>
     </objects>
     <resources>
         <image name="trash" width="20" height="20"/>

@@ -2,28 +2,71 @@
 
 #import "PUShopListItem.h"
 
+#import "UIColor+PUExtensions.h"
+
 static NSString * const kPUCheckImageName = @"check";
 static NSString * const kPUUncheckImageName = @"uncheck";
+
+static const PUColor kPUGreyColor  = {187, 187, 189, 1.0};
+static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
 
 @interface PUShopListCell ()
 
 - (void)fillWithModel:(PUShopListItem *)shopListItem;
 
-- (UIImage *)imageForModelStatus:(BOOL)status;
-- (NSAttributedString *)labelAttribureForModelStatus:(BOOL)status;
+- (UIImage *)imageForModelCheckedStatus:(BOOL)status;
+- (NSAttributedString *)labelAttributedString;
 
 @end
 
 @implementation PUShopListCell
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    self.shopListItem = nil;
+}
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setShopListItem:(PUShopListItem *)shopListItem {
     if (_shopListItem != shopListItem) {
+        [_shopListItem removeObserver:self];
         _shopListItem = shopListItem;
+        [_shopListItem addObserver:self];
         
         [self fillWithModel:shopListItem];
+    }
+}
+
+#pragma mark -
+#pragma mark Interface Handling
+
+- (IBAction)onDelete:(id)sender {
+    NSLog(@"On delete");
+}
+
+- (IBAction)onMenuSwipeRight:(UISwipeGestureRecognizer *)sender {
+    if (UIGestureRecognizerStateRecognized == sender.state) {
+        CGRect frame = self.foregroundView.frame;
+        frame.origin.x = frame.size.width / 2;
+        self.foregroundView.frame = frame;
+    }
+}
+
+- (IBAction)onMenuSwipeLeft:(UISwipeGestureRecognizer *)sender {
+    if (UIGestureRecognizerStateRecognized == sender.state) {
+        CGRect frame = self.foregroundView.frame;
+        frame.origin.x = 0;
+        self.foregroundView.frame = frame;
+    }
+}
+
+- (IBAction)onLongPress:(UILongPressGestureRecognizer *)sender {
+    if (UIGestureRecognizerStateBegan == sender.state) {
+        NSLog(@"On long press");
     }
 }
 
@@ -31,46 +74,43 @@ static NSString * const kPUUncheckImageName = @"uncheck";
 #pragma mark Private
 
 - (void)fillWithModel:(PUShopListItem *)shopListItem {
-    BOOL modelStatus = shopListItem.isChecked;
+    UILabel *label = self.itemTextLabel;
+    BOOL checkedStatus = shopListItem.isChecked;
     
-    self.itemTextLabel.text = self.shopListItem.name;
-    self.itemTextLabel.alpha = modelStatus ? 0.3 : 1.0;
-    self.statusImageView.image = [self imageForModelStatus:modelStatus];
-    self.itemTextLabel.attributedText = [self labelAttribureForModelStatus:modelStatus];
+    label.attributedText = [self labelAttributedString];
+    self.statusImageView.image = [self imageForModelCheckedStatus:checkedStatus];
 }
 
-- (UIImage *)imageForModelStatus:(BOOL)status {
-    static UIImage *__check = nil;
-    static UIImage *__uncheck = nil;
+- (UIImage *)imageForModelCheckedStatus:(BOOL)status {
+    static UIImage *__checkImage = nil;
+    static UIImage *__uncheckImage = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        __check = [UIImage imageNamed:kPUCheckImageName];
-        __uncheck = [UIImage imageNamed:kPUUncheckImageName];
+        __checkImage = [UIImage imageNamed:kPUCheckImageName];
+        __uncheckImage = [UIImage imageNamed:kPUUncheckImageName];
     });
 
-    return status ? __check : __uncheck;
+    return status ? __checkImage : __uncheckImage;
 }
 
-- (NSAttributedString *)labelAttribureForModelStatus:(BOOL)status {
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.shopListItem.name];
+- (NSAttributedString *)labelAttributedString {
+    NSDictionary *attributes = @{NSForegroundColorAttributeName:UIColorWithPUColor(kPUBlackColor)};
+    PUShopListItem *model = self.shopListItem;
     
-    if (status) {
-        NSNumber *style = [NSNumber numberWithInt:NSUnderlineStyleSingle];
-        NSDictionary *attributes = @{ NSStrikethroughStyleAttributeName:style };
-        
-        attrString = [[NSAttributedString alloc] initWithString:self.shopListItem.name attributes:attributes];
+    if (model.checked) {
+        attributes = @{NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle),
+                       NSForegroundColorAttributeName:UIColorWithPUColor(kPUGreyColor)
+                       };
     }
     
-    return attrString;
+    return [[NSAttributedString alloc] initWithString:model.name attributes:attributes];
 }
 
 #pragma mark -
 #pragma mark PUListObserverProtocol
 
 - (void)shopListItemModelDidChange:(id)model {
-    if (self.shopListItem == model) {
-        [self fillWithModel:model];
-    }
+    [self fillWithModel:model];
 }
 
 @end

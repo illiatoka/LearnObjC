@@ -66,18 +66,13 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
         for (id result in cells) {
             if ([result isMemberOfClass:cellClass]) {
                 cell = result;
+                
+                break;
             }
         }
     }
-    
-    PUShopListItem *shopListItem = self.shopListItems[indexPath.row];
-    
-    // TODO: Don't forget to remove cell from listModel observers!
-    if (![shopListItem containsObserver:cell]) {
-        [shopListItem addObserver:cell];
-    }
-    
-    cell.shopListItem = shopListItem;
+
+    cell.shopListItem = self.shopListItems[indexPath.row];
     cell.layoutMargins = UIEdgeInsetsZero;
     
     return cell;
@@ -85,7 +80,7 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     PUShopListItem *shopListItem = self.shopListItems[indexPath.row];
-    [shopListItem setChecked:shopListItem.isChecked ? NO : YES];
+    shopListItem.checked = !shopListItem.checked;
 }
 
 @end
