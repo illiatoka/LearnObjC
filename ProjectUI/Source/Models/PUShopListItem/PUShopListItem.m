@@ -3,6 +3,13 @@
 @implementation PUShopListItem
 
 #pragma mark -
+#pragma mark Class Methods
+
++ (instancetype)shopListItemWithName:(NSString *)name {
+    return [[self alloc] initWithName:name];
+}
+
+#pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithName:(NSString *)name {

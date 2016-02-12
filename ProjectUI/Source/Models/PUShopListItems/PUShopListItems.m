@@ -31,7 +31,7 @@ static const NSUInteger kPUShopListItemCount = 20;
 
 - (void)fill {
     for (NSUInteger count = 0; count < kPUShopListItemCount; count++) {
-        [self addObject:[[PUShopListItem alloc] initWithName:[NSString randomName]]];
+        [self addObject:[PUShopListItem shopListItemWithName:[NSString randomName]]];
     }
 }
 

@@ -6,6 +6,8 @@
 #import "PUShopListView.h"
 #import "PUShopListCell.h"
 
+#import "NSString+PURandomFoodName.h"
+
 #import "PUViewControllerMacro.h"
 
 PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListView)
@@ -15,9 +17,11 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setListModel:(PUShopListItems *)shopListItems {
+- (void)setShopListItems:(PUShopListItems *)shopListItems {
     if (_shopListItems != shopListItems) {
+        [_shopListItems removeObserver:self];
         _shopListItems = shopListItems;
+        [_shopListItems addObserver:self];
         
         [self.baseView.tableView reloadData];
     }
@@ -44,7 +48,7 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 }
 
 - (IBAction)onAddItem:(id)sender {
-    NSLog(@"On add");
+    [self.shopListItems insertObject:[PUShopListItem shopListItemWithName:[NSString randomName]] atIndex:0];
 }
 
 #pragma mark -
@@ -81,6 +85,13 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     PUShopListItem *shopListItem = self.shopListItems[indexPath.row];
     shopListItem.checked = !shopListItem.checked;
+}
+
+#pragma mark -
+#pragma mark PUArrayModelObserverProtocol
+
+- (void)arrayModelDidChange:(id)model {
+    NSLog(@"Item added");
 }
 
 @end

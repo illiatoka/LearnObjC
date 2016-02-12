@@ -58,6 +58,7 @@
         NSMutableArray *items = self.mutableItems;
         @synchronized(items) {
             [items addObject:object];
+            [self notifyWithSelector:@selector(arrayModelDidChange:)];
         }
     }
 }
@@ -66,6 +67,7 @@
     NSMutableArray *items = self.mutableItems;
     @synchronized(items) {
         [items removeObject:object];
+        [self notifyWithSelector:@selector(arrayModelDidChange:)];
     }
 }
 
@@ -74,6 +76,7 @@
         NSMutableArray *items = self.mutableItems;
         @synchronized(items) {
             [items insertObject:object atIndex:index];
+            [self notifyWithSelector:@selector(arrayModelDidChange:)];
         }
     }
 }
@@ -83,6 +86,7 @@
         NSMutableArray *items = self.mutableItems;
         @synchronized(items) {
             [items replaceObjectAtIndex:index withObject:object];
+            [self notifyWithSelector:@selector(arrayModelDidChange:)];
         }
     }
 }
@@ -91,6 +95,7 @@
     NSMutableArray *items = self.mutableItems;
     @synchronized(items) {
         [items exchangeObjectAtIndex:idx1 withObjectAtIndex:idx2];
+        [self notifyWithSelector:@selector(arrayModelDidChange:)];
     }
 }
 
@@ -98,6 +103,7 @@
     NSMutableArray *items = self.mutableItems;
     @synchronized(items) {
         [items removeObjectAtIndex:index];
+        [self notifyWithSelector:@selector(arrayModelDidChange:)];
     }
 }
 

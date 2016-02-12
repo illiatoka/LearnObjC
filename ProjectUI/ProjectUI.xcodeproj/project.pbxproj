@@ -66,6 +66,7 @@
 		A6959CF41C6E17970045A6E6 /* PUArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArrayModel.m; sourceTree = "<group>"; };
 		A6959CF71C6E206D0045A6E6 /* NSString+PURandomFoodName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PURandomFoodName.h"; sourceTree = "<group>"; };
 		A6959CF81C6E206D0045A6E6 /* NSString+PURandomFoodName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PURandomFoodName.m"; sourceTree = "<group>"; };
+		A6959CFA1C6E26E50045A6E6 /* PUArrayModelObserverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUArrayModelObserverProtocol.h; sourceTree = "<group>"; };
 		A6B882761C64D4F00073FB5B /* CGGeometry+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882781C64D4F00073FB5B /* UIWindow+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PUExtensions.m"; sourceTree = "<group>"; };
@@ -137,9 +138,9 @@
 		A653E0DA1C6794DE002F424F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A6959CF21C6E0D9A0045A6E6 /* PUArrayModel */,
 				A6959CB41C6A0C880045A6E6 /* PUObservableObject */,
 				A653E0DC1C67951D002F424F /* PUTableViewCell */,
+				A6959CF21C6E0D9A0045A6E6 /* PUArrayModel */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -186,6 +187,7 @@
 		A6959CBC1C6A88080045A6E6 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				A6959CFA1C6E26E50045A6E6 /* PUArrayModelObserverProtocol.h */,
 				A6959CBE1C6AAFD30045A6E6 /* PUShopListItemObserverProtocol.h */,
 			);
 			path = Protocols;
@@ -194,8 +196,8 @@
 		A6959CDA1C6CCEA50045A6E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A6959CDB1C6CCEA50045A6E6 /* PUShopListItem */,
 				A6959CDE1C6CCEA50045A6E6 /* PUShopListItems */,
+				A6959CDB1C6CCEA50045A6E6 /* PUShopListItem */,
 			);
 			path = Models;
 			sourceTree = "<group>";

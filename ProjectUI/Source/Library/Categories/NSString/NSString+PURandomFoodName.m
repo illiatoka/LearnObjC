@@ -2,6 +2,9 @@
 
 @implementation NSString (PURandomName)
 
+#pragma mark -
+#pragma mark Class Methods
+
 + (instancetype)randomName {
     NSArray *names = @[@"Apples",
                        @"Bananas",
