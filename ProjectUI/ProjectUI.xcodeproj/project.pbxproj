@@ -16,7 +16,6 @@
 		A653E0FD1C679ED7002F424F /* PUSquareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A653E0F41C679ED7002F424F /* PUSquareView.xib */; };
 		A653E0FE1C679ED7002F424F /* PUSquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A653E0F61C679ED7002F424F /* PUSquareViewController.m */; };
 		A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */; };
-		A6959CC21C6BD86E0045A6E6 /* PURandomName.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CC11C6BD86E0045A6E6 /* PURandomName.m */; };
 		A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CDD1C6CCEA50045A6E6 /* PUShopListItem.m */; };
 		A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CE01C6CCEA50045A6E6 /* PUShopListItems.m */; };
 		A6959CED1C6CCEFB0045A6E6 /* PUShopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CE51C6CCEFB0045A6E6 /* PUShopListView.m */; };
@@ -25,6 +24,7 @@
 		A6959CF01C6CCEFB0045A6E6 /* PUShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CEB1C6CCEFB0045A6E6 /* PUShopListCell.m */; };
 		A6959CF11C6CCEFB0045A6E6 /* PUShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6959CEC1C6CCEFB0045A6E6 /* PUShopListCell.xib */; };
 		A6959CF51C6E17970045A6E6 /* PUArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CF41C6E17970045A6E6 /* PUArrayModel.m */; };
+		A6959CF91C6E206D0045A6E6 /* NSString+PURandomFoodName.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CF81C6E206D0045A6E6 /* NSString+PURandomFoodName.m */; };
 		A6B8827C1C64D4F00073FB5B /* UIWindow+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */; };
 		A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B8827F1C64F5530073FB5B /* UIColor+PUExtensions.m */; };
 		A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B882811C64F8580073FB5B /* CGGeometry+PUExtensions.m */; };
@@ -50,8 +50,6 @@
 		A6959CB81C6A0F4F0045A6E6 /* PUClangMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUClangMacro.h; sourceTree = "<group>"; };
 		A6959CB91C6A0F900045A6E6 /* PUOwnershipMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUOwnershipMacro.h; sourceTree = "<group>"; };
 		A6959CBE1C6AAFD30045A6E6 /* PUShopListItemObserverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUShopListItemObserverProtocol.h; sourceTree = "<group>"; };
-		A6959CC01C6BD86E0045A6E6 /* PURandomName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PURandomName.h; sourceTree = "<group>"; };
-		A6959CC11C6BD86E0045A6E6 /* PURandomName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PURandomName.m; sourceTree = "<group>"; };
 		A6959CDC1C6CCEA50045A6E6 /* PUShopListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUShopListItem.h; sourceTree = "<group>"; };
 		A6959CDD1C6CCEA50045A6E6 /* PUShopListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUShopListItem.m; sourceTree = "<group>"; };
 		A6959CDF1C6CCEA50045A6E6 /* PUShopListItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUShopListItems.h; sourceTree = "<group>"; };
@@ -66,6 +64,8 @@
 		A6959CEC1C6CCEFB0045A6E6 /* PUShopListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUShopListCell.xib; sourceTree = "<group>"; };
 		A6959CF31C6E17970045A6E6 /* PUArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUArrayModel.h; sourceTree = "<group>"; };
 		A6959CF41C6E17970045A6E6 /* PUArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArrayModel.m; sourceTree = "<group>"; };
+		A6959CF71C6E206D0045A6E6 /* NSString+PURandomFoodName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PURandomFoodName.h"; sourceTree = "<group>"; };
+		A6959CF81C6E206D0045A6E6 /* NSString+PURandomFoodName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PURandomFoodName.m"; sourceTree = "<group>"; };
 		A6B882761C64D4F00073FB5B /* CGGeometry+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882781C64D4F00073FB5B /* UIWindow+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PUExtensions.m"; sourceTree = "<group>"; };
@@ -138,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				A6959CF21C6E0D9A0045A6E6 /* PUArrayModel */,
-				A6959CBF1C6BD3450045A6E6 /* PURandomFoodName */,
 				A6959CB41C6A0C880045A6E6 /* PUObservableObject */,
 				A653E0DC1C67951D002F424F /* PUTableViewCell */,
 			);
@@ -190,16 +189,6 @@
 				A6959CBE1C6AAFD30045A6E6 /* PUShopListItemObserverProtocol.h */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		A6959CBF1C6BD3450045A6E6 /* PURandomFoodName */ = {
-			isa = PBXGroup;
-			children = (
-				A6959CC01C6BD86E0045A6E6 /* PURandomName.h */,
-				A6959CC11C6BD86E0045A6E6 /* PURandomName.m */,
-			);
-			name = PURandomFoodName;
-			path = PURandomName;
 			sourceTree = "<group>";
 		};
 		A6959CDA1C6CCEA50045A6E6 /* Models */ = {
@@ -261,6 +250,15 @@
 			path = PUArrayModel;
 			sourceTree = "<group>";
 		};
+		A6959CF61C6E201E0045A6E6 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				A6959CF71C6E206D0045A6E6 /* NSString+PURandomFoodName.h */,
+				A6959CF81C6E206D0045A6E6 /* NSString+PURandomFoodName.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
 		A6B882731C64D4F00073FB5B /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +276,7 @@
 			children = (
 				A6B882751C64D4F00073FB5B /* CGGeometry */,
 				A6B882771C64D4F00073FB5B /* UIWindow */,
+				A6959CF61C6E201E0045A6E6 /* NSString */,
 				A6B8827D1C64F3590073FB5B /* UIColor */,
 			);
 			path = Categories;
@@ -402,7 +401,6 @@
 				A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */,
 				A653E0DF1C679558002F424F /* PUTableViewCell.m in Sources */,
 				A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */,
-				A6959CC21C6BD86E0045A6E6 /* PURandomName.m in Sources */,
 				A63261221C58193200508740 /* PUAppDelegate.m in Sources */,
 				A6959CEF1C6CCEFB0045A6E6 /* PUShopListViewController.m in Sources */,
 				A653E0FC1C679ED7002F424F /* PUSquareView.m in Sources */,
@@ -410,6 +408,7 @@
 				A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */,
 				A6959CF51C6E17970045A6E6 /* PUArrayModel.m in Sources */,
 				A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */,
+				A6959CF91C6E206D0045A6E6 /* NSString+PURandomFoodName.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

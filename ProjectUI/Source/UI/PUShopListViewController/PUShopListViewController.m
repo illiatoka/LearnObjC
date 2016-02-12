@@ -44,7 +44,7 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 }
 
 - (IBAction)onAddItem:(id)sender {
-    
+    NSLog(@"On add");
 }
 
 #pragma mark -

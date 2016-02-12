@@ -1,12 +1,12 @@
 #import "PUShopListItems.h"
 
 #import "PUShopListItem.h"
-#import "PURandomName.h"
+
+#import "NSString+PURandomFoodName.h"
 
 static const NSUInteger kPUShopListItemCount = 20;
 
 @interface PUShopListItems ()
-@property (nonatomic, strong)   PURandomName    *randomNames;
 
 - (void)fill;
 
@@ -20,7 +20,6 @@ static const NSUInteger kPUShopListItemCount = 20;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.randomNames = [PURandomName new];
         [self fill];
     }
     
@@ -32,7 +31,7 @@ static const NSUInteger kPUShopListItemCount = 20;
 
 - (void)fill {
     for (NSUInteger count = 0; count < kPUShopListItemCount; count++) {
-        [self addObject:[[PUShopListItem alloc] initWithName:[self.randomNames randomName]]];
+        [self addObject:[[PUShopListItem alloc] initWithName:[NSString randomName]]];
     }
 }
 
