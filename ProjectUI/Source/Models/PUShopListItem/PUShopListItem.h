@@ -1,9 +1,9 @@
 #import <UIKit/UIKit.h>
 
 #import "PUObservableObject.h"
-#import "PUShopListItemObserverProtocol.h"
+#import "PUShopListItemObserver.h"
 
-@interface PUShopListItem : PUObservableObject <PUShopListItemObserverProtocol>
+@interface PUShopListItem : PUObservableObject
 @property (nonatomic, strong)   NSString    *name;
 
 @property (nonatomic, assign, getter=isChecked) BOOL    checked;

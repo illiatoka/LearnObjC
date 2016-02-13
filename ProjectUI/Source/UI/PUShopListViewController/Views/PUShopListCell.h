@@ -1,10 +1,10 @@
 #import "PUTableViewCell.h"
 
-#import "PUShopListItemObserverProtocol.h"
+#import "PUShopListItemObserver.h"
 
 @class PUShopListItem;
 
-@interface PUShopListCell : PUTableViewCell <PUShopListItemObserverProtocol>
+@interface PUShopListCell : PUTableViewCell <PUShopListItemObserver>
 @property (nonatomic, strong)   IBOutlet UIView         *foregroundView;
 @property (nonatomic, strong)   IBOutlet UIImageView    *statusImageView;
 @property (nonatomic, strong)   IBOutlet UILabel        *itemTextLabel;

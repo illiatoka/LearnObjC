@@ -49,7 +49,7 @@
 		A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUObservableObject.m; sourceTree = "<group>"; };
 		A6959CB81C6A0F4F0045A6E6 /* PUClangMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUClangMacro.h; sourceTree = "<group>"; };
 		A6959CB91C6A0F900045A6E6 /* PUOwnershipMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUOwnershipMacro.h; sourceTree = "<group>"; };
-		A6959CBE1C6AAFD30045A6E6 /* PUShopListItemObserverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUShopListItemObserverProtocol.h; sourceTree = "<group>"; };
+		A6959CBE1C6AAFD30045A6E6 /* PUShopListItemObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUShopListItemObserver.h; sourceTree = "<group>"; };
 		A6959CDC1C6CCEA50045A6E6 /* PUShopListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUShopListItem.h; sourceTree = "<group>"; };
 		A6959CDD1C6CCEA50045A6E6 /* PUShopListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUShopListItem.m; sourceTree = "<group>"; };
 		A6959CDF1C6CCEA50045A6E6 /* PUShopListItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUShopListItems.h; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		A6959CF41C6E17970045A6E6 /* PUArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArrayModel.m; sourceTree = "<group>"; };
 		A6959CF71C6E206D0045A6E6 /* NSString+PURandomFoodName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PURandomFoodName.h"; sourceTree = "<group>"; };
 		A6959CF81C6E206D0045A6E6 /* NSString+PURandomFoodName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PURandomFoodName.m"; sourceTree = "<group>"; };
-		A6959CFA1C6E26E50045A6E6 /* PUArrayModelObserverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUArrayModelObserverProtocol.h; sourceTree = "<group>"; };
+		A6959CFA1C6E26E50045A6E6 /* PUArrayModelObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUArrayModelObserver.h; sourceTree = "<group>"; };
 		A6B882761C64D4F00073FB5B /* CGGeometry+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882781C64D4F00073FB5B /* UIWindow+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PUExtensions.m"; sourceTree = "<group>"; };
@@ -187,8 +187,8 @@
 		A6959CBC1C6A88080045A6E6 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				A6959CFA1C6E26E50045A6E6 /* PUArrayModelObserverProtocol.h */,
-				A6959CBE1C6AAFD30045A6E6 /* PUShopListItemObserverProtocol.h */,
+				A6959CFA1C6E26E50045A6E6 /* PUArrayModelObserver.h */,
+				A6959CBE1C6AAFD30045A6E6 /* PUShopListItemObserver.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

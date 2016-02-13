@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@protocol PUArrayModelObserverProtocol <NSObject>
+@protocol PUArrayModelObserver <NSObject>
 
 @optional
 - (void)arrayModelDidChange:(id)model;

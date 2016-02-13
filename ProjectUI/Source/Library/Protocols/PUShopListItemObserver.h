@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@protocol PUShopListItemObserverProtocol <NSObject>
+@protocol PUShopListItemObserver <NSObject>
 
 @optional
 - (void)shopListItemModelDidChange:(id)model;

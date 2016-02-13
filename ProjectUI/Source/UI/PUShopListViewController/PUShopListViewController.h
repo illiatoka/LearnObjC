@@ -1,12 +1,12 @@
 #import <UIKit/UIKit.h>
 
-#import "PUArrayModelObserverProtocol.h"
+#import "PUArrayModelObserver.h"
 
 @class PUShopListItems;
 
 @interface PUShopListViewController : UIViewController <UITableViewDelegate,
                                                         UITableViewDataSource,
-                                                        PUArrayModelObserverProtocol>
+                                                        PUArrayModelObserver>
 
 @property (nonatomic, strong)   PUShopListItems *shopListItems;
 
