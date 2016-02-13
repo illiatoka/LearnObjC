@@ -7,6 +7,7 @@
 #import "PUShopListCell.h"
 
 #import "NSString+PURandomFoodName.h"
+#import "UITableView+PUExtensions.h"
 
 #import "PUViewControllerMacro.h"
 
@@ -59,22 +60,7 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Class cellClass = [PUShopListCell class];
-    NSString *cellClassString = NSStringFromClass(cellClass);
-    
-    PUShopListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClassString];
-    if (!cell) {
-        UINib *nib = [UINib nibWithNibName:cellClassString bundle:nil];
-        NSArray *cells = [nib instantiateWithOwner:nil options:nil];
-        
-        for (id result in cells) {
-            if ([result isMemberOfClass:cellClass]) {
-                cell = result;
-                
-                break;
-            }
-        }
-    }
+    PUShopListCell *cell = [tableView cellWithClass:[PUShopListCell class]];
 
     cell.shopListItem = self.shopListItems[indexPath.row];
     
