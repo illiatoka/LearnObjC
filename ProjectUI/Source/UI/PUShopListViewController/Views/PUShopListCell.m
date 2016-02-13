@@ -28,6 +28,12 @@ static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
     self.shopListItem = nil;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.layoutMargins = UIEdgeInsetsZero;
+}
+
 #pragma mark -
 #pragma mark Accessors
 
@@ -48,18 +54,16 @@ static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
     NSLog(@"On delete");
 }
 
-- (IBAction)onMenuSwipeRight:(UISwipeGestureRecognizer *)sender {
+- (IBAction)onMenuSwipe:(UISwipeGestureRecognizer *)sender {
     if (UIGestureRecognizerStateRecognized == sender.state) {
         CGRect frame = self.foregroundView.frame;
-        frame.origin.x = frame.size.width / 2;
-        self.foregroundView.frame = frame;
-    }
-}
-
-- (IBAction)onMenuSwipeLeft:(UISwipeGestureRecognizer *)sender {
-    if (UIGestureRecognizerStateRecognized == sender.state) {
-        CGRect frame = self.foregroundView.frame;
-        frame.origin.x = 0;
+        
+        if (UISwipeGestureRecognizerDirectionRight == sender.direction) {
+            frame.origin.x = frame.size.width / 2;
+        } else if (UISwipeGestureRecognizerDirectionLeft == sender.direction) {
+            frame.origin.x = 0;
+        }
+        
         self.foregroundView.frame = frame;
     }
 }

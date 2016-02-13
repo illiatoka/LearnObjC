@@ -12,8 +12,7 @@
 @property (nonatomic, strong)   PUShopListItem  *shopListItem;
 
 - (IBAction)onDelete:(id)sender;
-- (IBAction)onMenuSwipeRight:(id)sender;
-- (IBAction)onMenuSwipeLeft:(id)sender;
+- (IBAction)onMenuSwipe:(id)sender;
 - (IBAction)onLongPress:(id)sender;
 
 @end

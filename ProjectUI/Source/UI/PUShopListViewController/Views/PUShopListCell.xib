@@ -70,12 +70,12 @@
         </tableViewCell>
         <swipeGestureRecognizer direction="right" id="MDI-hO-gtF" userLabel="Swipe Right">
             <connections>
-                <action selector="onMenuSwipeRight:" destination="zkb-Lr-shF" id="dl1-rY-mw4"/>
+                <action selector="onMenuSwipe:" destination="zkb-Lr-shF" id="BRY-qA-xU4"/>
             </connections>
         </swipeGestureRecognizer>
         <swipeGestureRecognizer direction="left" id="TAK-t0-duB" userLabel="Swipe Left">
             <connections>
-                <action selector="onMenuSwipeLeft:" destination="zkb-Lr-shF" id="KLG-9w-arE"/>
+                <action selector="onMenuSwipe:" destination="zkb-Lr-shF" id="GPg-z7-nly"/>
             </connections>
         </swipeGestureRecognizer>
         <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="FJz-Ie-aZI" userLabel="Long Press">

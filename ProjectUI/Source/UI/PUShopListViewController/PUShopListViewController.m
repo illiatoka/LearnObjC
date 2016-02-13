@@ -77,7 +77,6 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
     }
 
     cell.shopListItem = self.shopListItems[indexPath.row];
-    cell.layoutMargins = UIEdgeInsetsZero;
     
     return cell;
 }
