@@ -1,5 +1,7 @@
 #import "PUArrayModel.h"
 
+#import "PUArrayModelChanges.h"
+
 @interface PUArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableItems;
 
@@ -58,7 +60,12 @@
         NSMutableArray *items = self.mutableItems;
         @synchronized(items) {
             [items addObject:object];
-            [self notifyWithSelector:@selector(arrayModelDidChange:)];
+            
+            PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionInsert
+                                                                                    idx1:items.count - 1
+                                                                                    idx2:0];
+            
+            [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
         }
     }
 }
@@ -66,8 +73,14 @@
 - (void)removeObject:(id)object {
     NSMutableArray *items = self.mutableItems;
     @synchronized(items) {
+        NSUInteger objectIndex = [items indexOfObject:object];
         [items removeObject:object];
-        [self notifyWithSelector:@selector(arrayModelDidChange:)];
+        
+        PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionRemove
+                                                                                idx1:objectIndex
+                                                                                idx2:0];
+        
+        [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
     }
 }
 
@@ -76,7 +89,12 @@
         NSMutableArray *items = self.mutableItems;
         @synchronized(items) {
             [items insertObject:object atIndex:index];
-            [self notifyWithSelector:@selector(arrayModelDidChange:)];
+            
+            PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionInsert
+                                                                                    idx1:index
+                                                                                    idx2:0];
+            
+            [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
         }
     }
 }
@@ -86,7 +104,12 @@
         NSMutableArray *items = self.mutableItems;
         @synchronized(items) {
             [items replaceObjectAtIndex:index withObject:object];
-            [self notifyWithSelector:@selector(arrayModelDidChange:)];
+            
+            PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionReplace
+                                                                                    idx1:index
+                                                                                    idx2:0];
+            
+            [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
         }
     }
 }
@@ -95,7 +118,12 @@
     NSMutableArray *items = self.mutableItems;
     @synchronized(items) {
         [items exchangeObjectAtIndex:idx1 withObjectAtIndex:idx2];
-        [self notifyWithSelector:@selector(arrayModelDidChange:)];
+        
+        PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionExchange
+                                                                                idx1:idx1
+                                                                                idx2:idx2];
+        
+        [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
     }
 }
 
@@ -103,7 +131,12 @@
     NSMutableArray *items = self.mutableItems;
     @synchronized(items) {
         [items removeObjectAtIndex:index];
-        [self notifyWithSelector:@selector(arrayModelDidChange:)];
+        
+        PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionRemove
+                                                                                idx1:index
+                                                                                idx2:0];
+        
+        [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
     }
 }
 

@@ -1,5 +1,7 @@
 #import "PUShopListViewController.h"
 
+#import "PUArrayModelChanges.h"
+
 #import "PUShopListItems.h"
 #import "PUShopListItem.h"
 
@@ -61,7 +63,6 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PUShopListCell *cell = [tableView cellWithClass:[PUShopListCell class]];
-
     cell.shopListItem = self.shopListItems[indexPath.row];
     
     return cell;
@@ -75,8 +76,8 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 #pragma mark -
 #pragma mark PUArrayModelObserverProtocol
 
-- (void)arrayModelDidChange:(id)model {
-    NSLog(@"Item added");
+- (void)arrayModelDidChange:(id)model withObject:(PUArrayModelChanges *)object {
+    [self.baseView updateViewWithChanges:object];
 }
 
 @end
