@@ -22,7 +22,9 @@
             [tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationRight];
         };
     } else if (PUArrayModelActionRemove == changes.action) {
-        [tableView deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationRight];
+        action = ^{
+            [tableView deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationTop];
+        };
     }
     
     [self updateViewWithAction:action];

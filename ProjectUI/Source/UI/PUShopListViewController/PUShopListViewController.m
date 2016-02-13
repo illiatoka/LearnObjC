@@ -15,6 +15,12 @@
 
 PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListView)
 
+@interface PUShopListViewController ()
+
+- (void)deleteObjectAtIndex:(NSUInteger)index;
+
+@end
+
 @implementation PUShopListViewController
 
 #pragma mark -
@@ -55,6 +61,13 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 }
 
 #pragma mark -
+#pragma mark Private
+
+- (void)deleteObjectAtIndex:(NSUInteger)index {
+    [self.shopListItems removeObjectAtIndex:index];
+}
+
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -64,6 +77,10 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PUShopListCell *cell = [tableView cellWithClass:[PUShopListCell class]];
     cell.shopListItem = self.shopListItems[indexPath.row];
+    cell.callback = ^(PUShopListCell *listCell) {
+        NSIndexPath *cellIndexPath = [tableView indexPathForCell:listCell];
+        [self deleteObjectAtIndex:cellIndexPath.row];
+    };
     
     return cell;
 }

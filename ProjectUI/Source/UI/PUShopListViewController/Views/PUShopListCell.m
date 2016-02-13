@@ -17,6 +17,8 @@ static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
 - (UIImage *)imageForModelCheckedStatus:(BOOL)status;
 - (NSAttributedString *)labelAttributedString;
 
+- (void)resetForegroundView;
+
 @end
 
 @implementation PUShopListCell
@@ -51,7 +53,7 @@ static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
 #pragma mark Interface Handling
 
 - (IBAction)onDelete:(id)sender {
-    NSLog(@"On delete");
+    self.callback(self);
 }
 
 - (IBAction)onMenuSwipe:(UISwipeGestureRecognizer *)sender {
@@ -81,6 +83,8 @@ static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
     UILabel *label = self.itemTextLabel;
     BOOL checkedStatus = shopListItem.isChecked;
     
+    [self resetForegroundView];
+    
     label.attributedText = [self labelAttributedString];
     self.statusImageView.image = [self imageForModelCheckedStatus:checkedStatus];
 }
@@ -108,6 +112,12 @@ static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
     }
     
     return [[NSAttributedString alloc] initWithString:model.name attributes:attributes];
+}
+
+- (void)resetForegroundView {
+    CGRect frame = self.foregroundView.frame;
+    frame.origin.x = 0;
+    self.foregroundView.frame = frame;
 }
 
 #pragma mark -
