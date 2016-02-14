@@ -16,6 +16,5 @@ typedef void(^PUCellDeletingCallback)(id cell);
 
 - (IBAction)onDelete:(id)sender;
 - (IBAction)onMenuSwipe:(id)sender;
-- (IBAction)onLongPress:(id)sender;
 
 @end

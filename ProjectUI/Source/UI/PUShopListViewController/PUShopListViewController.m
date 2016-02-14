@@ -15,12 +15,6 @@
 
 PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListView)
 
-@interface PUShopListViewController ()
-
-- (void)deleteObjectAtIndex:(NSUInteger)index;
-
-@end
-
 @implementation PUShopListViewController
 
 #pragma mark -
@@ -61,13 +55,6 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 }
 
 #pragma mark -
-#pragma mark Private
-
-- (void)deleteObjectAtIndex:(NSUInteger)index {
-    [self.shopListItems removeObjectAtIndex:index];
-}
-
-#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -76,10 +63,12 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PUShopListCell *cell = [tableView cellWithClass:[PUShopListCell class]];
-    cell.shopListItem = self.shopListItems[indexPath.row];
+    PUShopListItems *shopListItems = self.shopListItems;
+    
+    cell.shopListItem = shopListItems[indexPath.row];
     cell.callback = ^(PUShopListCell *listCell) {
         NSIndexPath *cellIndexPath = [tableView indexPathForCell:listCell];
-        [self deleteObjectAtIndex:cellIndexPath.row];
+        [shopListItems removeObjectAtIndex:cellIndexPath.row];
     };
     
     return cell;
@@ -88,6 +77,13 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     PUShopListItem *shopListItem = self.shopListItems[indexPath.row];
     shopListItem.checked = !shopListItem.checked;
+}
+
+-   (void)tableView:(UITableView *)tableView
+ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+        toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [self.shopListItems exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
 }
 
 #pragma mark -

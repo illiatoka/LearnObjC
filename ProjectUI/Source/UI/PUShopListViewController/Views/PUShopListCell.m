@@ -70,12 +70,6 @@ static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
     }
 }
 
-- (IBAction)onLongPress:(UILongPressGestureRecognizer *)sender {
-    if (UIGestureRecognizerStateBegan == sender.state) {
-        NSLog(@"On long press");
-    }
-}
-
 #pragma mark -
 #pragma mark Private
 

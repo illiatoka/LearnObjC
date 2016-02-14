@@ -26,7 +26,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" id="orP-iv-Cck">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" id="orP-iv-Cck" customClass="HPReorderTableView">
                     <rect key="frame" x="0.0" y="162" width="320" height="406"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -37,7 +37,9 @@
     UITableView *tableView = self.tableView;
     
     [tableView beginUpdates];
-    action();
+    if (action) {
+        action();
+    }
     [tableView endUpdates];
 }
 

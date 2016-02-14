@@ -64,7 +64,6 @@
                 <outlet property="statusImageView" destination="eKp-S3-DZp" id="Rhs-dO-YJ5"/>
                 <outletCollection property="gestureRecognizers" destination="MDI-hO-gtF" appends="YES" id="qOr-bz-A7f"/>
                 <outletCollection property="gestureRecognizers" destination="TAK-t0-duB" appends="YES" id="Q6s-pN-DOZ"/>
-                <outletCollection property="gestureRecognizers" destination="FJz-Ie-aZI" appends="YES" id="1It-ep-lrU"/>
             </connections>
             <point key="canvasLocation" x="329" y="179"/>
         </tableViewCell>
@@ -78,11 +77,6 @@
                 <action selector="onMenuSwipe:" destination="zkb-Lr-shF" id="GPg-z7-nly"/>
             </connections>
         </swipeGestureRecognizer>
-        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="FJz-Ie-aZI" userLabel="Long Press">
-            <connections>
-                <action selector="onLongPress:" destination="zkb-Lr-shF" id="Rsz-bc-QAe"/>
-            </connections>
-        </pongPressGestureRecognizer>
     </objects>
     <resources>
         <image name="trash" width="20" height="20"/>
