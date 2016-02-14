@@ -36,11 +36,11 @@
 - (void)updateViewWithAction:(PUVoidBlock)action {
     UITableView *tableView = self.tableView;
     
-    [tableView beginUpdates];
     if (action) {
+        [tableView beginUpdates];
         action();
+        [tableView endUpdates];
     }
-    [tableView endUpdates];
 }
 
 @end

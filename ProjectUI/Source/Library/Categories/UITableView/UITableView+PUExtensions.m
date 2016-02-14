@@ -5,7 +5,7 @@
 @implementation UITableView (PUExtensions)
 
 #pragma mark -
-#pragma mark Class Methods
+#pragma mark Public
 
 - (id)cellWithClass:(Class)class {
     id cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass(class)];
