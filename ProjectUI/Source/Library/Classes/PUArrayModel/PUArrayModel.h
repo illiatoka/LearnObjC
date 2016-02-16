@@ -15,6 +15,7 @@
 - (void)insertObject:(id)object atIndex:(NSUInteger)index;
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)object;
 - (void)exchangeObjectAtIndex:(NSUInteger)idx1 withObjectAtIndex:(NSUInteger)idx2;
+- (void)moveObjectAtIndex:(NSUInteger)idx1 toIndex:(NSUInteger)idx2;
 
 - (void)removeObjectAtIndex:(NSUInteger)index;
 

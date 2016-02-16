@@ -4,7 +4,8 @@ typedef NS_ENUM(NSUInteger, PUArrayModelAction) {
     PUArrayModelActionInsert,
     PUArrayModelActionRemove,
     PUArrayModelActionReplace,
-    PUArrayModelActionExchange
+    PUArrayModelActionExchange,
+    PUArrayModelActionMove
 };
 
 @interface PUArrayModelChanges : NSObject
