@@ -61,6 +61,14 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 }
 
 #pragma mark -
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    PUShopListItem *shopListItem = self.shopListItems[indexPath.row];
+    shopListItem.checked = !shopListItem.checked;
+}
+
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -78,11 +86,6 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
     };
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    PUShopListItem *shopListItem = self.shopListItems[indexPath.row];
-    shopListItem.checked = !shopListItem.checked;
 }
 
 -   (void)tableView:(UITableView *)tableView

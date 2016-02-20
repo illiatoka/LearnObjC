@@ -16,4 +16,12 @@
     return cell;
 }
 
+- (void)updateWithBlock:(void(^)(UITableView *))block {
+    if (block) {
+        [self beginUpdates];
+        block(self);
+        [self endUpdates];
+    }
+}
+
 @end

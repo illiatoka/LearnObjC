@@ -1,7 +1,6 @@
 #import "PUArraySingleIndexChangeModel.h"
 
 @interface PUArraySingleIndexChangeModel ()
-@property (nonatomic, assign)   NSUInteger  modelAction;
 @property (nonatomic, assign)   NSUInteger  index;
 
 @end
@@ -19,9 +18,8 @@
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithAction:(NSUInteger)action index:(NSUInteger)index {
-    self = [self init];
+    self = [super initModelWithAction:action];
     if (self) {
-        self.modelAction = action;
         self.index = index;
     }
     

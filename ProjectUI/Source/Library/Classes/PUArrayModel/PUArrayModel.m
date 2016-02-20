@@ -1,15 +1,13 @@
 #import "PUArrayModel.h"
 
-#import "PUArraySingleIndexChangeModel.h"
-#import "PUArrayDoubleIndexChangeModel.h"
+#import "PUCollectionChangeModel+PUArrayChangeModel.h"
 
 #import "PUArrayModelObserver.h"
 
-typedef PUArraySingleIndexChangeModel PUSingleChangeModel;
-typedef PUArrayDoubleIndexChangeModel PUDoubleChangeModel;
-
 @interface PUArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableItems;
+
+- (void)notifyObserversWithChangeModel:(PUCollectionChangeModel *)model;
 
 @end
 
@@ -67,10 +65,7 @@ typedef PUArrayDoubleIndexChangeModel PUDoubleChangeModel;
         @synchronized(items) {
             [items addObject:object];
             
-            PUSingleChangeModel *model = [PUSingleChangeModel changeModelWithAction:PUArrayModelActionInsert
-                                                                              index:items.count - 1];
-            
-            [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
+            [self notifyObserversWithChangeModel:[PUCollectionChangeModel addingModelWithIndex:items.count - 1]];
         }
     }
 }
@@ -81,10 +76,7 @@ typedef PUArrayDoubleIndexChangeModel PUDoubleChangeModel;
         NSUInteger objectIndex = [items indexOfObject:object];
         [items removeObject:object];
         
-        PUSingleChangeModel *model = [PUSingleChangeModel changeModelWithAction:PUArrayModelActionRemove
-                                                                          index:objectIndex];
-        
-        [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
+        [self notifyObserversWithChangeModel:[PUCollectionChangeModel removingModelWithIndex:objectIndex]];
     }
 }
 
@@ -94,10 +86,7 @@ typedef PUArrayDoubleIndexChangeModel PUDoubleChangeModel;
         @synchronized(items) {
             [items insertObject:object atIndex:index];
             
-            PUSingleChangeModel *model = [PUSingleChangeModel changeModelWithAction:PUArrayModelActionInsert
-                                                                              index:index];
-            
-            [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
+            [self notifyObserversWithChangeModel:[PUCollectionChangeModel insertingModelWithIndex:index]];
         }
     }
 }
@@ -108,10 +97,7 @@ typedef PUArrayDoubleIndexChangeModel PUDoubleChangeModel;
         @synchronized(items) {
             [items replaceObjectAtIndex:index withObject:object];
             
-            PUSingleChangeModel *model = [PUSingleChangeModel changeModelWithAction:PUArrayModelActionReplace
-                                                                              index:index];
-            
-            [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
+            [self notifyObserversWithChangeModel:[PUCollectionChangeModel replacingModelWithIndex:index]];
         }
     }
 }
@@ -121,11 +107,7 @@ typedef PUArrayDoubleIndexChangeModel PUDoubleChangeModel;
     @synchronized(items) {
         [items exchangeObjectAtIndex:idx1 withObjectAtIndex:idx2];
         
-        PUDoubleChangeModel *model = [PUDoubleChangeModel changeModelWithAction:PUArrayModelActionExchange
-                                                                           idx1:idx1
-                                                                           idx2:idx2];
-        
-        [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
+        [self notifyObserversWithChangeModel:[PUCollectionChangeModel exchangingModelWithIndex:idx1 toIndex:idx2]];
     }
 }
 
@@ -135,11 +117,7 @@ typedef PUArrayDoubleIndexChangeModel PUDoubleChangeModel;
         [items insertObject:items[idx1] atIndex:idx1 < idx2 ? (idx2 + 1) : idx2];
         [items removeObjectAtIndex:idx1 < idx2 ? idx1 : (idx1 + 1)];
         
-        PUDoubleChangeModel *model = [PUDoubleChangeModel changeModelWithAction:PUArrayModelActionMove
-                                                                           idx1:idx1
-                                                                           idx2:idx2];
-        
-        [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
+        [self notifyObserversWithChangeModel:[PUCollectionChangeModel movingModelWithIndex:idx1 toIndex:idx2]];
     }
 }
 
@@ -148,11 +126,15 @@ typedef PUArrayDoubleIndexChangeModel PUDoubleChangeModel;
     @synchronized(items) {
         [items removeObjectAtIndex:index];
         
-        PUSingleChangeModel *model = [PUSingleChangeModel changeModelWithAction:PUArrayModelActionRemove
-                                                                          index:index];
-        
-        [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
+        [self notifyObserversWithChangeModel:[PUCollectionChangeModel removingModelWithIndex:index]];
     }
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)notifyObserversWithChangeModel:(PUCollectionChangeModel *)model {
+    [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
 }
 
 @end

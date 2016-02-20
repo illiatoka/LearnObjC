@@ -4,4 +4,6 @@
 
 - (id)cellWithClass:(Class)cls;
 
+- (void)updateWithBlock:(void(^)(UITableView *))block;
+
 @end

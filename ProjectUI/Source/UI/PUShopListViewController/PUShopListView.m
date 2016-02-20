@@ -3,13 +3,8 @@
 #import "PUArraySingleIndexChangeModel.h"
 #import "PUArrayDoubleIndexChangeModel.h"
 
+#import "UITableView+PUExtensions.h"
 #import "NSIndexPath+PUExtensions.h"
-
-@interface PUShopListView ()
-
-- (void)updateWithBlock:(PUVoidBlock)block;
-
-@end
 
 @implementation PUShopListView
 
@@ -17,7 +12,7 @@
 #pragma mark Public
 
 - (void)updateViewWithChangeModel:(PUArraySingleIndexChangeModel *)model {
-    NSUInteger modelAction = [model modelAction];
+    NSUInteger modelAction = model.modelAction;
     UITableView *tableView = self.tableView;
     NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:model.index]];
     
@@ -32,23 +27,10 @@
             [tableView deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationTop];
         };
     } else if (PUArrayModelActionReplace == modelAction) {
-        // In this case tableView updates performed by HRReorderTableView class
+        // In this case tableView updates will perform by HRReorderTableView class
     }
     
     [self updateWithBlock:block];
-}
-
-#pragma mark -
-#pragma mark Private
-
-- (void)updateWithBlock:(PUVoidBlock)block {
-    UITableView *tableView = self.tableView;
-    
-    if (block) {
-        [tableView beginUpdates];
-        block();
-        [tableView endUpdates];
-    }
 }
 
 @end
