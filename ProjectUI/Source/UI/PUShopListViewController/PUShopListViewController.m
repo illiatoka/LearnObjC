@@ -10,10 +10,15 @@
 
 #import "NSString+PURandomFoodName.h"
 #import "UITableView+PUExtensions.h"
+#import "PUArrayModelObserver.h"
 
 #import "PUViewControllerMacro.h"
 
 PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListView)
+
+@interface PUShopListViewController () <UITableViewDelegate, UITableViewDataSource, PUArrayModelObserver>
+
+@end
 
 @implementation PUShopListViewController
 
@@ -66,7 +71,7 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
     PUShopListItems *shopListItems = self.shopListItems;
     
     cell.shopListItem = shopListItems[indexPath.row];
-    cell.callback = ^(PUShopListCell *listCell) {
+    cell.deleteCallback = ^(PUShopListCell *listCell) {
         NSIndexPath *cellIndexPath = [tableView indexPathForCell:listCell];
         [shopListItems removeObjectAtIndex:cellIndexPath.row];
     };

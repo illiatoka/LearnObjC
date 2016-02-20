@@ -6,16 +6,19 @@
 #pragma mark Class Methods
 
 + (instancetype)randomName {
-    NSArray *names = @[@"Apples",
-                       @"Bananas",
-                       @"Juice",
-                       @"Bread",
-                       @"Cheese",
-                       @"Milk",
-                       @"Yogurt"];
-    
-    
-    return names[arc4random_uniform((uint32_t)names.count)];
+    static NSArray *__names = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __names = @[@"Apples",
+                    @"Bananas",
+                    @"Juice",
+                    @"Bread",
+                    @"Cheese",
+                    @"Milk",
+                    @"Yogurt"];
+    });
+
+    return __names[arc4random_uniform((uint32_t)__names.count)];
 }
 
 @end

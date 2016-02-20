@@ -2,7 +2,7 @@
 
 @interface PUShopListView ()
 
-- (void)updateViewWithAction:(PUVoidBlock)action;
+- (void)updateWithBlock:(PUVoidBlock)block;
 
 @end
 
@@ -15,30 +15,30 @@
     UITableView *tableView = self.tableView;
     NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:changes.idx1 inSection:0]];
     
-    void (^action)(void) = nil;
+    void (^block)(void) = nil;
     
     if (PUArrayModelActionInsert == changes.action) {
-        action = ^{
+        block = ^{
             [tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationRight];
         };
     } else if (PUArrayModelActionRemove == changes.action) {
-        action = ^{
+        block = ^{
             [tableView deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationTop];
         };
     }
     
-    [self updateViewWithAction:action];
+    [self updateWithBlock:block];
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (void)updateViewWithAction:(PUVoidBlock)action {
+- (void)updateWithBlock:(PUVoidBlock)block {
     UITableView *tableView = self.tableView;
     
-    if (action) {
+    if (block) {
         [tableView beginUpdates];
-        action();
+        block();
         [tableView endUpdates];
     }
 }

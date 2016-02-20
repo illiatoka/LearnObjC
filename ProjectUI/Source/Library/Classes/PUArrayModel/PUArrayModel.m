@@ -130,8 +130,8 @@
 - (void)moveObjectAtIndex:(NSUInteger)idx1 toIndex:(NSUInteger)idx2 {
     NSMutableArray *items = self.mutableItems;
     @synchronized(items) {
-        [items insertObject:items[idx1] atIndex:idx1 < idx2 ? idx2 + 1 : idx2];
-        [items removeObjectAtIndex:idx1 < idx2 ? idx1 : idx1 + 1];
+        [items insertObject:items[idx1] atIndex:idx1 < idx2 ? (idx2 + 1) : idx2];
+        [items removeObjectAtIndex:idx1 < idx2 ? idx1 : (idx1 + 1)];
         
         PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionExchange
                                                                                 idx1:idx1

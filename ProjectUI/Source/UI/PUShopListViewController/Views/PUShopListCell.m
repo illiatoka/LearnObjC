@@ -3,9 +3,7 @@
 #import "PUShopListItem.h"
 
 #import "UIColor+PUExtensions.h"
-
-static NSString * const kPUCheckImageName = @"check";
-static NSString * const kPUUncheckImageName = @"uncheck";
+#import "UIImage+PUExtensions.h"
 
 static const PUColor kPUGreyColor  = {187, 187, 189, 1.0};
 static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
@@ -53,7 +51,7 @@ static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
 #pragma mark Interface Handling
 
 - (IBAction)onDelete:(id)sender {
-    self.callback(self);
+    self.deleteCallback(self);
 }
 
 - (IBAction)onMenuSwipe:(UISwipeGestureRecognizer *)sender {
@@ -84,15 +82,7 @@ static const PUColor kPUBlackColor = {29, 29, 38, 1.0};
 }
 
 - (UIImage *)imageForModelCheckedStatus:(BOOL)status {
-    static UIImage *__checkImage = nil;
-    static UIImage *__uncheckImage = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        __checkImage = [UIImage imageNamed:kPUCheckImageName];
-        __uncheckImage = [UIImage imageNamed:kPUUncheckImageName];
-    });
-
-    return status ? __checkImage : __uncheckImage;
+    return status ? [UIImage checkedImage] : [UIImage uncheckedImage];
 }
 
 - (NSAttributedString *)labelAttributedString {
