@@ -3,6 +3,8 @@
 #import "PUArraySingleIndexChangeModel.h"
 #import "PUArrayDoubleIndexChangeModel.h"
 
+#import "NSIndexPath+PUExtensions.h"
+
 @interface PUShopListView ()
 
 - (void)updateWithBlock:(PUVoidBlock)block;
@@ -14,10 +16,10 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)updateViewWithChangeModel:(id)model {
+- (void)updateViewWithChangeModel:(PUArraySingleIndexChangeModel *)model {
     NSUInteger modelAction = [model modelAction];
     UITableView *tableView = self.tableView;
-    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:[model index] inSection:0]];
+    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:model.index]];
     
     void (^block)(void) = nil;
     

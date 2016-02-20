@@ -19,6 +19,7 @@
 		A68BB7681C788C7F00B1180A /* PUArraySingleIndexChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7641C788C7F00B1180A /* PUArraySingleIndexChangeModel.m */; };
 		A68BB7691C788C7F00B1180A /* PUArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7661C788C7F00B1180A /* PUArrayModel.m */; };
 		A68BB76C1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB76B1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.m */; };
+		A68BB7701C79091800B1180A /* NSIndexPath+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB76F1C79091800B1180A /* NSIndexPath+PUExtensions.m */; };
 		A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */; };
 		A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CDD1C6CCEA50045A6E6 /* PUShopListItem.m */; };
 		A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CE01C6CCEA50045A6E6 /* PUShopListItems.m */; };
@@ -61,6 +62,8 @@
 		A68BB7661C788C7F00B1180A /* PUArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArrayModel.m; sourceTree = "<group>"; };
 		A68BB76A1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUArrayDoubleIndexChangeModel.h; sourceTree = "<group>"; };
 		A68BB76B1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArrayDoubleIndexChangeModel.m; sourceTree = "<group>"; };
+		A68BB76E1C79091800B1180A /* NSIndexPath+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+PUExtensions.h"; sourceTree = "<group>"; };
+		A68BB76F1C79091800B1180A /* NSIndexPath+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+PUExtensions.m"; sourceTree = "<group>"; };
 		A6959CB51C6A0C880045A6E6 /* PUObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUObservableObject.h; sourceTree = "<group>"; };
 		A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUObservableObject.m; sourceTree = "<group>"; };
 		A6959CB81C6A0F4F0045A6E6 /* PUClangMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUClangMacro.h; sourceTree = "<group>"; };
@@ -260,6 +263,15 @@
 			path = PUCollectionChangeModel;
 			sourceTree = "<group>";
 		};
+		A68BB76D1C7908D300B1180A /* NSIndexPath */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB76E1C79091800B1180A /* NSIndexPath+PUExtensions.h */,
+				A68BB76F1C79091800B1180A /* NSIndexPath+PUExtensions.m */,
+			);
+			path = NSIndexPath;
+			sourceTree = "<group>";
+		};
 		A6959CB41C6A0C880045A6E6 /* PUObservableObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				A6B882751C64D4F00073FB5B /* CGGeometry */,
+				A68BB76D1C7908D300B1180A /* NSIndexPath */,
 				A6959CF61C6E201E0045A6E6 /* NSString */,
 				A6959CFF1C6F90690045A6E6 /* UITableView */,
 				A6B882771C64D4F00073FB5B /* UIWindow */,
@@ -568,6 +581,7 @@
 				A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */,
 				A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */,
 				A68BB75E1C78733E00B1180A /* UIImage+PUExtensions.m in Sources */,
+				A68BB7701C79091800B1180A /* NSIndexPath+PUExtensions.m in Sources */,
 				A6959D021C6F90A50045A6E6 /* UITableView+PUExtensions.m in Sources */,
 				A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */,
 				A6959CF91C6E206D0045A6E6 /* NSString+PURandomFoodName.m in Sources */,
