@@ -17,6 +17,9 @@
 - (void)notifyWithSelector:(SEL)selector;
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object;
 
+- (void)performWithNotification:(void(^)(void))block;
+- (void)performWithoutNotification:(void(^)(void))block;
+
 // This method should be overridden in subclass
 - (SEL)selectorForState:(NSUInteger)state;
 

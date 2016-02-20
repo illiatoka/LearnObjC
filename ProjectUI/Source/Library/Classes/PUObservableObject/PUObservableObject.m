@@ -5,6 +5,10 @@
 @interface PUObservableObject ()
 @property (nonatomic, strong)   NSHashTable *observersHashTable;
 
+@property (nonatomic, assign, getter=isNotificationEnabled) BOOL    notificationEnabled;
+
+- (void)performBlock:(void(^)(void))block notify:(BOOL)shouldNotify;
+
 @end
 
 @implementation PUObservableObject
@@ -18,6 +22,7 @@
     self = [super init];
     if (self) {
         self.observersHashTable = [NSHashTable weakObjectsHashTable];
+        self.notificationEnabled = YES;
     }
     
     return self;
@@ -91,18 +96,46 @@
 }
 
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object {
-    NSArray *observers = self.observers;
-    for (id observer in observers) {
-        if ([observer respondsToSelector:selector]) {
-            PUClangDiagnosticPushExpressionPerformSelectorLeakWarning
-            [observer performSelector:selector withObject:self withObject:object];
-            PUClangDiagnosticPopExpression
+    @synchronized(self) {
+        if (!self.notificationEnabled) {
+            return;
+        }
+
+        for (id observer in self.observers) {
+            if ([observer respondsToSelector:selector]) {
+                PUClangDiagnosticPushExpressionPerformSelectorLeakWarning
+                [observer performSelector:selector withObject:self withObject:object];
+                PUClangDiagnosticPopExpression
+            }
         }
     }
 }
 
+- (void)performWithNotification:(void(^)(void))block {
+    [self performBlock:block notify:YES];
+}
+
+- (void)performWithoutNotification:(void(^)(void))block {
+    [self performBlock:block notify:NO];
+}
+
 - (SEL)selectorForState:(NSUInteger)state {
     return NULL;
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)performBlock:(void(^)(void))block notify:(BOOL)shouldNotify {
+    @synchronized(self) {
+        BOOL notificationEnabled = self.notificationEnabled;
+        self.notificationEnabled = shouldNotify;
+        if (block) {
+            block();
+        }
+        
+        self.notificationEnabled = notificationEnabled;
+    }
 }
 
 @end
