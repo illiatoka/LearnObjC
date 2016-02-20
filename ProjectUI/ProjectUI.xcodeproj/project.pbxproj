@@ -16,6 +16,9 @@
 		A653E0FD1C679ED7002F424F /* PUSquareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A653E0F41C679ED7002F424F /* PUSquareView.xib */; };
 		A653E0FE1C679ED7002F424F /* PUSquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A653E0F61C679ED7002F424F /* PUSquareViewController.m */; };
 		A68BB75E1C78733E00B1180A /* UIImage+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB75D1C78733E00B1180A /* UIImage+PUExtensions.m */; };
+		A68BB7681C788C7F00B1180A /* PUArraySingleIndexChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7641C788C7F00B1180A /* PUArraySingleIndexChangeModel.m */; };
+		A68BB7691C788C7F00B1180A /* PUArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7661C788C7F00B1180A /* PUArrayModel.m */; };
+		A68BB76C1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB76B1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.m */; };
 		A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */; };
 		A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CDD1C6CCEA50045A6E6 /* PUShopListItem.m */; };
 		A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CE01C6CCEA50045A6E6 /* PUShopListItems.m */; };
@@ -24,11 +27,9 @@
 		A6959CEF1C6CCEFB0045A6E6 /* PUShopListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CE81C6CCEFB0045A6E6 /* PUShopListViewController.m */; };
 		A6959CF01C6CCEFB0045A6E6 /* PUShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CEB1C6CCEFB0045A6E6 /* PUShopListCell.m */; };
 		A6959CF11C6CCEFB0045A6E6 /* PUShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6959CEC1C6CCEFB0045A6E6 /* PUShopListCell.xib */; };
-		A6959CF51C6E17970045A6E6 /* PUArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CF41C6E17970045A6E6 /* PUArrayModel.m */; };
 		A6959CF91C6E206D0045A6E6 /* NSString+PURandomFoodName.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CF81C6E206D0045A6E6 /* NSString+PURandomFoodName.m */; };
 		A6959CFE1C6F8B220045A6E6 /* UINib+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CFD1C6F8B220045A6E6 /* UINib+PUExtensions.m */; };
 		A6959D021C6F90A50045A6E6 /* UITableView+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959D011C6F90A50045A6E6 /* UITableView+PUExtensions.m */; };
-		A6959D061C6FAA710045A6E6 /* PUArrayModelChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959D051C6FAA710045A6E6 /* PUArrayModelChanges.m */; };
 		A6B8827C1C64D4F00073FB5B /* UIWindow+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */; };
 		A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B8827F1C64F5530073FB5B /* UIColor+PUExtensions.m */; };
 		A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B882811C64F8580073FB5B /* CGGeometry+PUExtensions.m */; };
@@ -54,6 +55,12 @@
 		A653E0F61C679ED7002F424F /* PUSquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUSquareViewController.m; sourceTree = "<group>"; };
 		A68BB75C1C78733E00B1180A /* UIImage+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PUExtensions.h"; sourceTree = "<group>"; };
 		A68BB75D1C78733E00B1180A /* UIImage+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PUExtensions.m"; sourceTree = "<group>"; };
+		A68BB7631C788C7F00B1180A /* PUArraySingleIndexChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUArraySingleIndexChangeModel.h; sourceTree = "<group>"; };
+		A68BB7641C788C7F00B1180A /* PUArraySingleIndexChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArraySingleIndexChangeModel.m; sourceTree = "<group>"; };
+		A68BB7651C788C7F00B1180A /* PUArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUArrayModel.h; sourceTree = "<group>"; };
+		A68BB7661C788C7F00B1180A /* PUArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArrayModel.m; sourceTree = "<group>"; };
+		A68BB76A1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUArrayDoubleIndexChangeModel.h; sourceTree = "<group>"; };
+		A68BB76B1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArrayDoubleIndexChangeModel.m; sourceTree = "<group>"; };
 		A6959CB51C6A0C880045A6E6 /* PUObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUObservableObject.h; sourceTree = "<group>"; };
 		A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUObservableObject.m; sourceTree = "<group>"; };
 		A6959CB81C6A0F4F0045A6E6 /* PUClangMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUClangMacro.h; sourceTree = "<group>"; };
@@ -71,8 +78,6 @@
 		A6959CEA1C6CCEFB0045A6E6 /* PUShopListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUShopListCell.h; sourceTree = "<group>"; };
 		A6959CEB1C6CCEFB0045A6E6 /* PUShopListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUShopListCell.m; sourceTree = "<group>"; };
 		A6959CEC1C6CCEFB0045A6E6 /* PUShopListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUShopListCell.xib; sourceTree = "<group>"; };
-		A6959CF31C6E17970045A6E6 /* PUArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUArrayModel.h; sourceTree = "<group>"; };
-		A6959CF41C6E17970045A6E6 /* PUArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArrayModel.m; sourceTree = "<group>"; };
 		A6959CF71C6E206D0045A6E6 /* NSString+PURandomFoodName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PURandomFoodName.h"; sourceTree = "<group>"; };
 		A6959CF81C6E206D0045A6E6 /* NSString+PURandomFoodName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PURandomFoodName.m"; sourceTree = "<group>"; };
 		A6959CFA1C6E26E50045A6E6 /* PUArrayModelObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUArrayModelObserver.h; sourceTree = "<group>"; };
@@ -80,8 +85,6 @@
 		A6959CFD1C6F8B220045A6E6 /* UINib+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+PUExtensions.m"; sourceTree = "<group>"; };
 		A6959D001C6F90A50045A6E6 /* UITableView+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+PUExtensions.h"; sourceTree = "<group>"; };
 		A6959D011C6F90A50045A6E6 /* UITableView+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+PUExtensions.m"; sourceTree = "<group>"; };
-		A6959D041C6FAA710045A6E6 /* PUArrayModelChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUArrayModelChanges.h; sourceTree = "<group>"; };
-		A6959D051C6FAA710045A6E6 /* PUArrayModelChanges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArrayModelChanges.m; sourceTree = "<group>"; };
 		A6B882761C64D4F00073FB5B /* CGGeometry+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882781C64D4F00073FB5B /* UIWindow+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+PUExtensions.h"; sourceTree = "<group>"; };
 		A6B882791C64D4F00073FB5B /* UIWindow+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PUExtensions.m"; sourceTree = "<group>"; };
@@ -166,10 +169,10 @@
 		A653E0DA1C6794DE002F424F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A6959D031C6FA99A0045A6E6 /* PUArrayModelChanges */,
 				A6959CB41C6A0C880045A6E6 /* PUObservableObject */,
+				A68BB7671C788C7F00B1180A /* PUCollectionChangeModel */,
 				A653E0DC1C67951D002F424F /* PUTableViewCell */,
-				A6959CF21C6E0D9A0045A6E6 /* PUArrayModel */,
+				A68BB75F1C788C7F00B1180A /* PUArrayModel */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -211,6 +214,50 @@
 				A68BB75D1C78733E00B1180A /* UIImage+PUExtensions.m */,
 			);
 			path = UIImage;
+			sourceTree = "<group>";
+		};
+		A68BB75F1C788C7F00B1180A /* PUArrayModel */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7601C788C7F00B1180A /* Private */,
+				A68BB7651C788C7F00B1180A /* PUArrayModel.h */,
+				A68BB7661C788C7F00B1180A /* PUArrayModel.m */,
+			);
+			path = PUArrayModel;
+			sourceTree = "<group>";
+		};
+		A68BB7601C788C7F00B1180A /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7621C788C7F00B1180A /* PUArraySingleIndexChangeModel */,
+				A68BB7611C788C7F00B1180A /* PUArrayDoubleIndexChangeModel */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		A68BB7611C788C7F00B1180A /* PUArrayDoubleIndexChangeModel */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB76A1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.h */,
+				A68BB76B1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.m */,
+			);
+			path = PUArrayDoubleIndexChangeModel;
+			sourceTree = "<group>";
+		};
+		A68BB7621C788C7F00B1180A /* PUArraySingleIndexChangeModel */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7631C788C7F00B1180A /* PUArraySingleIndexChangeModel.h */,
+				A68BB7641C788C7F00B1180A /* PUArraySingleIndexChangeModel.m */,
+			);
+			path = PUArraySingleIndexChangeModel;
+			sourceTree = "<group>";
+		};
+		A68BB7671C788C7F00B1180A /* PUCollectionChangeModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PUCollectionChangeModel;
 			sourceTree = "<group>";
 		};
 		A6959CB41C6A0C880045A6E6 /* PUObservableObject */ = {
@@ -281,15 +328,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A6959CF21C6E0D9A0045A6E6 /* PUArrayModel */ = {
-			isa = PBXGroup;
-			children = (
-				A6959CF31C6E17970045A6E6 /* PUArrayModel.h */,
-				A6959CF41C6E17970045A6E6 /* PUArrayModel.m */,
-			);
-			path = PUArrayModel;
-			sourceTree = "<group>";
-		};
 		A6959CF61C6E201E0045A6E6 /* NSString */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,15 +353,6 @@
 				A6959D011C6F90A50045A6E6 /* UITableView+PUExtensions.m */,
 			);
 			path = UITableView;
-			sourceTree = "<group>";
-		};
-		A6959D031C6FA99A0045A6E6 /* PUArrayModelChanges */ = {
-			isa = PBXGroup;
-			children = (
-				A6959D041C6FAA710045A6E6 /* PUArrayModelChanges.h */,
-				A6959D051C6FAA710045A6E6 /* PUArrayModelChanges.m */,
-			);
-			path = PUArrayModelChanges;
 			sourceTree = "<group>";
 		};
 		A6B882731C64D4F00073FB5B /* Library */ = {
@@ -523,21 +552,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6959CF01C6CCEFB0045A6E6 /* PUShopListCell.m in Sources */,
+				A68BB7681C788C7F00B1180A /* PUArraySingleIndexChangeModel.m in Sources */,
 				A653E0FE1C679ED7002F424F /* PUSquareViewController.m in Sources */,
 				A6959CED1C6CCEFB0045A6E6 /* PUShopListView.m in Sources */,
-				A6959D061C6FAA710045A6E6 /* PUArrayModelChanges.m in Sources */,
 				A6B8827C1C64D4F00073FB5B /* UIWindow+PUExtensions.m in Sources */,
 				A63261211C58193200508740 /* main.m in Sources */,
 				A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */,
 				A653E0DF1C679558002F424F /* PUTableViewCell.m in Sources */,
 				A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */,
 				A63261221C58193200508740 /* PUAppDelegate.m in Sources */,
+				A68BB76C1C788D1200B1180A /* PUArrayDoubleIndexChangeModel.m in Sources */,
+				A68BB7691C788C7F00B1180A /* PUArrayModel.m in Sources */,
 				A6959CEF1C6CCEFB0045A6E6 /* PUShopListViewController.m in Sources */,
 				A653E0FC1C679ED7002F424F /* PUSquareView.m in Sources */,
 				A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */,
 				A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */,
 				A68BB75E1C78733E00B1180A /* UIImage+PUExtensions.m in Sources */,
-				A6959CF51C6E17970045A6E6 /* PUArrayModel.m in Sources */,
 				A6959D021C6F90A50045A6E6 /* UITableView+PUExtensions.m in Sources */,
 				A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */,
 				A6959CF91C6E206D0045A6E6 /* NSString+PURandomFoodName.m in Sources */,

@@ -1,7 +1,5 @@
 #import "PUObservableObject.h"
 
-#import "PUArrayModelObserver.h"
-
 @interface PUArrayModel : PUObservableObject
 @property (nonatomic, readonly) NSArray     *items;
 @property (nonatomic, readonly) NSUInteger  count;

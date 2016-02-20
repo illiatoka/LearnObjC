@@ -1,6 +1,12 @@
 #import "PUArrayModel.h"
 
-#import "PUArrayModelChanges.h"
+#import "PUArraySingleIndexChangeModel.h"
+#import "PUArrayDoubleIndexChangeModel.h"
+
+#import "PUArrayModelObserver.h"
+
+typedef PUArraySingleIndexChangeModel PUSingleChangeModel;
+typedef PUArrayDoubleIndexChangeModel PUDoubleChangeModel;
 
 @interface PUArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableItems;
@@ -61,11 +67,10 @@
         @synchronized(items) {
             [items addObject:object];
             
-            PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionInsert
-                                                                                    idx1:items.count - 1
-                                                                                    idx2:0];
+            PUSingleChangeModel *model = [PUSingleChangeModel changeModelWithAction:PUArrayModelActionInsert
+                                                                              index:items.count - 1];
             
-            [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
+            [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
         }
     }
 }
@@ -76,11 +81,10 @@
         NSUInteger objectIndex = [items indexOfObject:object];
         [items removeObject:object];
         
-        PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionRemove
-                                                                                idx1:objectIndex
-                                                                                idx2:0];
+        PUSingleChangeModel *model = [PUSingleChangeModel changeModelWithAction:PUArrayModelActionRemove
+                                                                          index:objectIndex];
         
-        [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
+        [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
     }
 }
 
@@ -90,11 +94,10 @@
         @synchronized(items) {
             [items insertObject:object atIndex:index];
             
-            PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionInsert
-                                                                                    idx1:index
-                                                                                    idx2:0];
+            PUSingleChangeModel *model = [PUSingleChangeModel changeModelWithAction:PUArrayModelActionInsert
+                                                                              index:index];
             
-            [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
+            [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
         }
     }
 }
@@ -105,11 +108,10 @@
         @synchronized(items) {
             [items replaceObjectAtIndex:index withObject:object];
             
-            PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionReplace
-                                                                                    idx1:index
-                                                                                    idx2:0];
+            PUSingleChangeModel *model = [PUSingleChangeModel changeModelWithAction:PUArrayModelActionReplace
+                                                                              index:index];
             
-            [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
+            [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
         }
     }
 }
@@ -119,11 +121,11 @@
     @synchronized(items) {
         [items exchangeObjectAtIndex:idx1 withObjectAtIndex:idx2];
         
-        PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionExchange
-                                                                                idx1:idx1
-                                                                                idx2:idx2];
+        PUDoubleChangeModel *model = [PUDoubleChangeModel changeModelWithAction:PUArrayModelActionExchange
+                                                                           idx1:idx1
+                                                                           idx2:idx2];
         
-        [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
+        [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
     }
 }
 
@@ -133,11 +135,11 @@
         [items insertObject:items[idx1] atIndex:idx1 < idx2 ? (idx2 + 1) : idx2];
         [items removeObjectAtIndex:idx1 < idx2 ? idx1 : (idx1 + 1)];
         
-        PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionExchange
-                                                                                idx1:idx1
-                                                                                idx2:idx2];
+        PUDoubleChangeModel *model = [PUDoubleChangeModel changeModelWithAction:PUArrayModelActionMove
+                                                                           idx1:idx1
+                                                                           idx2:idx2];
         
-        [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
+        [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
     }
 }
 
@@ -146,11 +148,10 @@
     @synchronized(items) {
         [items removeObjectAtIndex:index];
         
-        PUArrayModelChanges *changes = [PUArrayModelChanges modelOfChangesWithAction:PUArrayModelActionRemove
-                                                                                idx1:index
-                                                                                idx2:0];
+        PUSingleChangeModel *model = [PUSingleChangeModel changeModelWithAction:PUArrayModelActionRemove
+                                                                          index:index];
         
-        [self notifyWithSelector:@selector(arrayModelDidChange:withObject:) withObject:changes];
+        [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
     }
 }
 

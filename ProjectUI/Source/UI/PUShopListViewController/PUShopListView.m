@@ -1,5 +1,8 @@
 #import "PUShopListView.h"
 
+#import "PUArraySingleIndexChangeModel.h"
+#import "PUArrayDoubleIndexChangeModel.h"
+
 @interface PUShopListView ()
 
 - (void)updateWithBlock:(PUVoidBlock)block;
@@ -11,19 +14,24 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)updateViewWithChanges:(PUArrayModelChanges *)changes {
+- (void)updateViewWithChangeModel:(id)model {
+    NSUInteger modelAction = [model modelAction];
     UITableView *tableView = self.tableView;
-    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:changes.idx1 inSection:0]];
+    NSArray *insertIndexPaths = @[[NSIndexPath indexPathForRow:[model index] inSection:0]];
     
     void (^block)(void) = nil;
     
-    if (PUArrayModelActionInsert == changes.action) {
+    if (PUArrayModelActionInsert == modelAction) {
         block = ^{
             [tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationRight];
         };
-    } else if (PUArrayModelActionRemove == changes.action) {
+    } else if (PUArrayModelActionRemove == modelAction) {
         block = ^{
             [tableView deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationTop];
+        };
+    } else if (PUArrayModelActionReplace == modelAction) {
+        block = ^{
+            
         };
     }
     

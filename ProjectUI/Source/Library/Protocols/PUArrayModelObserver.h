@@ -4,6 +4,6 @@
 
 @optional
 - (void)arrayModelDidChange:(id)model;
-- (void)arrayModelDidChange:(id)model withObject:(id)object;
+- (void)arrayModel:(id)model didChangeWithModel:(id)changeModel;
 
 @end

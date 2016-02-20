@@ -1,6 +1,7 @@
 #import "PUShopListViewController.h"
 
-#import "PUArrayModelChanges.h"
+#import "PUArraySingleIndexChangeModel.h"
+#import "PUArrayDoubleIndexChangeModel.h"
 
 #import "PUShopListItems.h"
 #import "PUShopListItem.h"
@@ -94,8 +95,8 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 #pragma mark -
 #pragma mark PUArrayModelObserverProtocol
 
-- (void)arrayModelDidChange:(id)model withObject:(PUArrayModelChanges *)object {
-    [self.baseView updateViewWithChanges:object];
+- (void)arrayModel:(id)model didChangeWithModel:(id)changeModel {
+    [self.baseView updateViewWithChangeModel:changeModel];
 }
 
 @end
