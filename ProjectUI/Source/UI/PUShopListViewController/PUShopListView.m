@@ -30,9 +30,7 @@
             [tableView deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationTop];
         };
     } else if (PUArrayModelActionReplace == modelAction) {
-        block = ^{
-            
-        };
+        // In this case tableView updates performed by HRReorderTableView class
     }
     
     [self updateWithBlock:block];

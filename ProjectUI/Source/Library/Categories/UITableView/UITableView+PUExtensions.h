@@ -2,6 +2,6 @@
 
 @interface UITableView (PUExtensions)
 
-- (id)cellWithClass:(Class)class;
+- (id)cellWithClass:(Class)cls;
 
 @end

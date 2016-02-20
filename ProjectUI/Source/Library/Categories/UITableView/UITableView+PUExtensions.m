@@ -7,10 +7,10 @@
 #pragma mark -
 #pragma mark Public
 
-- (id)cellWithClass:(Class)class {
-    id cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass(class)];
+- (id)cellWithClass:(Class)cls {
+    id cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass(cls)];
     if (!cell) {
-        cell = [UINib objectWithClass:class];
+        cell = [UINib objectWithClass:cls];
     }
     
     return cell;
