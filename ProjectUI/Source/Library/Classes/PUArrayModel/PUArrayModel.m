@@ -2,7 +2,7 @@
 
 #import "PUCollectionChangeModel+PUArrayChangeModel.h"
 
-#import "PUArrayModelObserver.h"
+#import "PUCollectionObserver.h"
 
 @interface PUArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableItems;
@@ -134,7 +134,7 @@
 #pragma mark Private
 
 - (void)notifyObserversWithChangeModel:(PUCollectionChangeModel *)model {
-    [self notifyWithSelector:@selector(arrayModel:didChangeWithModel:) withObject:model];
+    [self notifyWithSelector:@selector(collection:didChangeWithModel:) withObject:model];
 }
 
 @end

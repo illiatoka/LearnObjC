@@ -1,7 +1,7 @@
 #import "PUArrayDoubleIndexChangeModel.h"
 
 @interface PUArrayDoubleIndexChangeModel ()
-@property (nonatomic, assign)   NSUInteger  idx2;
+@property (nonatomic, assign)   NSUInteger  toIndex;
 
 @end
 
@@ -20,7 +20,7 @@
 - (instancetype)initWithAction:(NSUInteger)action idx1:(NSUInteger)idx1 idx2:(NSUInteger)idx2 {
     self = [super initWithAction:action index:idx1];
     if (self) {
-        self.idx2 = idx2;
+        self.toIndex = idx2;
     }
     
     return self;

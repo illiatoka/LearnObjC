@@ -10,9 +10,9 @@ typedef void(^PUCellDeletingCallback)(id cell);
 @property (nonatomic, strong)   IBOutlet UIView         *foregroundView;
 @property (nonatomic, strong)   IBOutlet UIImageView    *statusImageView;
 @property (nonatomic, strong)   IBOutlet UILabel        *itemTextLabel;
-@property (nonatomic, copy)     PUCellDeletingCallback  deleteCallback;
 
-@property (nonatomic, strong)   PUShopListItem  *shopListItem;
+@property (nonatomic, copy)     PUCellDeletingCallback  deleteCallback;
+@property (nonatomic, strong)   PUShopListItem          *shopListItem;
 
 - (IBAction)onDelete:(id)sender;
 - (IBAction)onMenuSwipe:(id)sender;

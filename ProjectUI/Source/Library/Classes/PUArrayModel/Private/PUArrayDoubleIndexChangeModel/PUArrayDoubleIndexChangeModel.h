@@ -8,7 +8,7 @@ typedef NS_ENUM(NSUInteger, PUDoubleArrayModelAction) {
 };
 
 @interface PUArrayDoubleIndexChangeModel : PUArraySingleIndexChangeModel
-@property (nonatomic, readonly) NSUInteger  idx2;
+@property (nonatomic, readonly) NSUInteger  toIndex;
 
 + (instancetype)changeModelWithAction:(NSUInteger)action idx1:(NSUInteger)idx1 idx2:(NSUInteger)idx2;
 

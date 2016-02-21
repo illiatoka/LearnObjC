@@ -1,23 +1,22 @@
 #import "PUShopListViewController.h"
 
-#import "PUArraySingleIndexChangeModel.h"
-#import "PUArrayDoubleIndexChangeModel.h"
-
 #import "PUShopListItems.h"
 #import "PUShopListItem.h"
 
 #import "PUShopListView.h"
 #import "PUShopListCell.h"
 
+#import "UITableView+PUCollectionChangeModel.h"
 #import "NSString+PURandomFoodName.h"
 #import "UITableView+PUExtensions.h"
-#import "PUArrayModelObserver.h"
+
+#import "PUCollectionObserver.h"
 
 #import "PUViewControllerMacro.h"
 
 PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListView)
 
-@interface PUShopListViewController () <UITableViewDelegate, UITableViewDataSource, PUArrayModelObserver>
+@interface PUShopListViewController () <UITableViewDelegate, UITableViewDataSource, PUCollectionObserver>
 
 @end
 
@@ -55,6 +54,9 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
+
+#pragma mark -
+#pragma mark Interface Handling
 
 - (IBAction)onAddItem:(id)sender {
     [self.shopListItems insertObject:[PUShopListItem shopListItemWithName:[NSString randomName]] atIndex:0];
@@ -98,8 +100,8 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 #pragma mark -
 #pragma mark PUArrayModelObserverProtocol
 
-- (void)arrayModel:(id)model didChangeWithModel:(id)changeModel {
-    [self.baseView updateViewWithChangeModel:changeModel];
+- (void)collection:(id)collection didChangeWithModel:(id)changeModel {
+    [self.baseView.tableView updateWithCollectionChangeModel:changeModel];
 }
 
 @end

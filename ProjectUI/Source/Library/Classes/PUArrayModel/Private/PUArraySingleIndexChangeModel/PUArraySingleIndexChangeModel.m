@@ -18,7 +18,7 @@
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithAction:(NSUInteger)action index:(NSUInteger)index {
-    self = [super initModelWithAction:action];
+    self = [super initCollectionModelWithAction:action];
     if (self) {
         self.index = index;
     }

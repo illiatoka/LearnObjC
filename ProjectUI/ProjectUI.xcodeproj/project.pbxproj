@@ -21,7 +21,11 @@
 		A68BB7811C791EB200B1180A /* PUArrayDoubleIndexChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB77D1C791EB200B1180A /* PUArrayDoubleIndexChangeModel.m */; };
 		A68BB7821C791EB200B1180A /* PUArraySingleIndexChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7801C791EB200B1180A /* PUArraySingleIndexChangeModel.m */; };
 		A68BB78A1C791FE800B1180A /* PUCollectionChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7891C791FE800B1180A /* PUCollectionChangeModel.m */; };
-		A68BB78D1C79205000B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB78C1C79205000B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m */; };
+		A68BB7A51C79C31A00B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7A41C79C31A00B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m */; };
+		A68BB7A91C79C4C600B1180A /* PUArraySingleIndexChangeModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7A81C79C4C600B1180A /* PUArraySingleIndexChangeModel+UITableView.m */; };
+		A68BB7AD1C79C64700B1180A /* PUArrayDoubleIndexChangeModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7AC1C79C64700B1180A /* PUArrayDoubleIndexChangeModel+UITableView.m */; };
+		A68BB7B91C79CAE900B1180A /* UITableView+PUCollectionChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7B71C79CAE900B1180A /* UITableView+PUCollectionChangeModel.m */; };
+		A68BB7BD1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7BC1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.m */; };
 		A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */; };
 		A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CDD1C6CCEA50045A6E6 /* PUShopListItem.m */; };
 		A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CE01C6CCEA50045A6E6 /* PUShopListItems.m */; };
@@ -68,8 +72,16 @@
 		A68BB7801C791EB200B1180A /* PUArraySingleIndexChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUArraySingleIndexChangeModel.m; sourceTree = "<group>"; };
 		A68BB7881C791FE800B1180A /* PUCollectionChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUCollectionChangeModel.h; sourceTree = "<group>"; };
 		A68BB7891C791FE800B1180A /* PUCollectionChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUCollectionChangeModel.m; sourceTree = "<group>"; };
-		A68BB78B1C79205000B1180A /* PUCollectionChangeModel+PUArrayChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PUCollectionChangeModel+PUArrayChangeModel.h"; sourceTree = "<group>"; };
-		A68BB78C1C79205000B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PUCollectionChangeModel+PUArrayChangeModel.m"; sourceTree = "<group>"; };
+		A68BB7A31C79C31A00B1180A /* PUCollectionChangeModel+PUArrayChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PUCollectionChangeModel+PUArrayChangeModel.h"; sourceTree = "<group>"; };
+		A68BB7A41C79C31A00B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PUCollectionChangeModel+PUArrayChangeModel.m"; sourceTree = "<group>"; };
+		A68BB7A71C79C4C600B1180A /* PUArraySingleIndexChangeModel+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PUArraySingleIndexChangeModel+UITableView.h"; sourceTree = "<group>"; };
+		A68BB7A81C79C4C600B1180A /* PUArraySingleIndexChangeModel+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PUArraySingleIndexChangeModel+UITableView.m"; sourceTree = "<group>"; };
+		A68BB7AB1C79C64700B1180A /* PUArrayDoubleIndexChangeModel+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PUArrayDoubleIndexChangeModel+UITableView.h"; sourceTree = "<group>"; };
+		A68BB7AC1C79C64700B1180A /* PUArrayDoubleIndexChangeModel+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PUArrayDoubleIndexChangeModel+UITableView.m"; sourceTree = "<group>"; };
+		A68BB7B61C79CAE900B1180A /* UITableView+PUCollectionChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+PUCollectionChangeModel.h"; sourceTree = "<group>"; };
+		A68BB7B71C79CAE900B1180A /* UITableView+PUCollectionChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+PUCollectionChangeModel.m"; sourceTree = "<group>"; };
+		A68BB7BB1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PUCollectionChangeModel+UITableView.h"; sourceTree = "<group>"; };
+		A68BB7BC1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PUCollectionChangeModel+UITableView.m"; sourceTree = "<group>"; };
 		A6959CB51C6A0C880045A6E6 /* PUObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUObservableObject.h; sourceTree = "<group>"; };
 		A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUObservableObject.m; sourceTree = "<group>"; };
 		A6959CB81C6A0F4F0045A6E6 /* PUClangMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUClangMacro.h; sourceTree = "<group>"; };
@@ -89,7 +101,7 @@
 		A6959CEC1C6CCEFB0045A6E6 /* PUShopListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUShopListCell.xib; sourceTree = "<group>"; };
 		A6959CF71C6E206D0045A6E6 /* NSString+PURandomFoodName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PURandomFoodName.h"; sourceTree = "<group>"; };
 		A6959CF81C6E206D0045A6E6 /* NSString+PURandomFoodName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PURandomFoodName.m"; sourceTree = "<group>"; };
-		A6959CFA1C6E26E50045A6E6 /* PUArrayModelObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUArrayModelObserver.h; sourceTree = "<group>"; };
+		A6959CFA1C6E26E50045A6E6 /* PUCollectionObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUCollectionObserver.h; sourceTree = "<group>"; };
 		A6959CFC1C6F8B220045A6E6 /* UINib+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+PUExtensions.h"; sourceTree = "<group>"; };
 		A6959CFD1C6F8B220045A6E6 /* UINib+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+PUExtensions.m"; sourceTree = "<group>"; };
 		A6959D001C6F90A50045A6E6 /* UITableView+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+PUExtensions.h"; sourceTree = "<group>"; };
@@ -239,6 +251,7 @@
 		A68BB7671C788C7F00B1180A /* PUCollectionChangeModel */ = {
 			isa = PBXGroup;
 			children = (
+				A68BB7B11C79CAE900B1180A /* Categories */,
 				A68BB7881C791FE800B1180A /* PUCollectionChangeModel.h */,
 				A68BB7891C791FE800B1180A /* PUCollectionChangeModel.m */,
 			);
@@ -284,10 +297,65 @@
 		A68BB7841C791EF100B1180A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				A68BB78B1C79205000B1180A /* PUCollectionChangeModel+PUArrayChangeModel.h */,
-				A68BB78C1C79205000B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m */,
+				A68BB7A61C79C49100B1180A /* PUArraySingleIndexChangeModel */,
+				A68BB7AA1C79C61400B1180A /* PUArrayDoubleIndexChangeModel */,
+				A68BB7A21C79C2E600B1180A /* PUCollectionChangeModel */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		A68BB7A21C79C2E600B1180A /* PUCollectionChangeModel */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7A31C79C31A00B1180A /* PUCollectionChangeModel+PUArrayChangeModel.h */,
+				A68BB7A41C79C31A00B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m */,
+			);
+			path = PUCollectionChangeModel;
+			sourceTree = "<group>";
+		};
+		A68BB7A61C79C49100B1180A /* PUArraySingleIndexChangeModel */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7A71C79C4C600B1180A /* PUArraySingleIndexChangeModel+UITableView.h */,
+				A68BB7A81C79C4C600B1180A /* PUArraySingleIndexChangeModel+UITableView.m */,
+			);
+			path = PUArraySingleIndexChangeModel;
+			sourceTree = "<group>";
+		};
+		A68BB7AA1C79C61400B1180A /* PUArrayDoubleIndexChangeModel */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7AB1C79C64700B1180A /* PUArrayDoubleIndexChangeModel+UITableView.h */,
+				A68BB7AC1C79C64700B1180A /* PUArrayDoubleIndexChangeModel+UITableView.m */,
+			);
+			path = PUArrayDoubleIndexChangeModel;
+			sourceTree = "<group>";
+		};
+		A68BB7B11C79CAE900B1180A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7BA1C79CCD600B1180A /* PUCollectionChangeModel */,
+				A68BB7B51C79CAE900B1180A /* UITableView */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		A68BB7B51C79CAE900B1180A /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7B61C79CAE900B1180A /* UITableView+PUCollectionChangeModel.h */,
+				A68BB7B71C79CAE900B1180A /* UITableView+PUCollectionChangeModel.m */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		A68BB7BA1C79CCD600B1180A /* PUCollectionChangeModel */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7BB1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.h */,
+				A68BB7BC1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.m */,
+			);
+			path = PUCollectionChangeModel;
 			sourceTree = "<group>";
 		};
 		A6959CB41C6A0C880045A6E6 /* PUObservableObject */ = {
@@ -302,7 +370,7 @@
 		A6959CBC1C6A88080045A6E6 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				A6959CFA1C6E26E50045A6E6 /* PUArrayModelObserver.h */,
+				A6959CFA1C6E26E50045A6E6 /* PUCollectionObserver.h */,
 				A6959CBE1C6AAFD30045A6E6 /* PUShopListItemObserver.h */,
 			);
 			path = Protocols;
@@ -587,18 +655,22 @@
 				A6959CED1C6CCEFB0045A6E6 /* PUShopListView.m in Sources */,
 				A6B8827C1C64D4F00073FB5B /* UIWindow+PUExtensions.m in Sources */,
 				A68BB78A1C791FE800B1180A /* PUCollectionChangeModel.m in Sources */,
-				A68BB78D1C79205000B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m in Sources */,
+				A68BB7A51C79C31A00B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m in Sources */,
 				A63261211C58193200508740 /* main.m in Sources */,
 				A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */,
+				A68BB7BD1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.m in Sources */,
 				A653E0DF1C679558002F424F /* PUTableViewCell.m in Sources */,
+				A68BB7A91C79C4C600B1180A /* PUArraySingleIndexChangeModel+UITableView.m in Sources */,
 				A68BB7821C791EB200B1180A /* PUArraySingleIndexChangeModel.m in Sources */,
 				A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */,
 				A63261221C58193200508740 /* PUAppDelegate.m in Sources */,
 				A68BB7691C788C7F00B1180A /* PUArrayModel.m in Sources */,
 				A68BB7811C791EB200B1180A /* PUArrayDoubleIndexChangeModel.m in Sources */,
+				A68BB7B91C79CAE900B1180A /* UITableView+PUCollectionChangeModel.m in Sources */,
 				A6959CEF1C6CCEFB0045A6E6 /* PUShopListViewController.m in Sources */,
 				A653E0FC1C679ED7002F424F /* PUSquareView.m in Sources */,
 				A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */,
+				A68BB7AD1C79C64700B1180A /* PUArrayDoubleIndexChangeModel+UITableView.m in Sources */,
 				A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */,
 				A68BB75E1C78733E00B1180A /* UIImage+PUExtensions.m in Sources */,
 				A68BB7701C79091800B1180A /* NSIndexPath+PUExtensions.m in Sources */,

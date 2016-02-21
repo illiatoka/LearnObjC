@@ -3,8 +3,8 @@
 @interface PUCollectionChangeModel : NSObject
 @property (nonatomic, readonly) NSUInteger  modelAction;
 
-+ (instancetype)changeModelWithAction:(NSUInteger)action;
++ (instancetype)collectionModelWithAction:(NSUInteger)action;
 
-- (instancetype)initModelWithAction:(NSUInteger)action;
+- (instancetype)initCollectionModelWithAction:(NSUInteger)action;
 
 @end
