@@ -26,6 +26,11 @@
 		A68BB7AD1C79C64700B1180A /* PUArrayDoubleIndexChangeModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7AC1C79C64700B1180A /* PUArrayDoubleIndexChangeModel+UITableView.m */; };
 		A68BB7B91C79CAE900B1180A /* UITableView+PUCollectionChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7B71C79CAE900B1180A /* UITableView+PUCollectionChangeModel.m */; };
 		A68BB7BD1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7BC1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.m */; };
+		A68BB7C21C7A220000B1180A /* PUUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7C01C7A220000B1180A /* PUUsersViewController.m */; };
+		A68BB7C31C7A220000B1180A /* PUUsersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68BB7C11C7A220000B1180A /* PUUsersView.xib */; };
+		A68BB7C61C7A230200B1180A /* PUUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7C51C7A230200B1180A /* PUUsersView.m */; };
+		A68BB7CA1C7A23B700B1180A /* PUUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7C91C7A23B700B1180A /* PUUserCell.m */; };
+		A68BB7CC1C7A242E00B1180A /* PUUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68BB7CB1C7A242E00B1180A /* PUUserCell.xib */; };
 		A6959CB71C6A0C880045A6E6 /* PUObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */; };
 		A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CDD1C6CCEA50045A6E6 /* PUShopListItem.m */; };
 		A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */ = {isa = PBXBuildFile; fileRef = A6959CE01C6CCEA50045A6E6 /* PUShopListItems.m */; };
@@ -82,6 +87,14 @@
 		A68BB7B71C79CAE900B1180A /* UITableView+PUCollectionChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+PUCollectionChangeModel.m"; sourceTree = "<group>"; };
 		A68BB7BB1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PUCollectionChangeModel+UITableView.h"; sourceTree = "<group>"; };
 		A68BB7BC1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PUCollectionChangeModel+UITableView.m"; sourceTree = "<group>"; };
+		A68BB7BF1C7A220000B1180A /* PUUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUUsersViewController.h; sourceTree = "<group>"; };
+		A68BB7C01C7A220000B1180A /* PUUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUUsersViewController.m; sourceTree = "<group>"; };
+		A68BB7C11C7A220000B1180A /* PUUsersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUUsersView.xib; sourceTree = "<group>"; };
+		A68BB7C41C7A230200B1180A /* PUUsersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUUsersView.h; sourceTree = "<group>"; };
+		A68BB7C51C7A230200B1180A /* PUUsersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUUsersView.m; sourceTree = "<group>"; };
+		A68BB7C81C7A23B700B1180A /* PUUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUUserCell.h; sourceTree = "<group>"; };
+		A68BB7C91C7A23B700B1180A /* PUUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUUserCell.m; sourceTree = "<group>"; };
+		A68BB7CB1C7A242E00B1180A /* PUUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PUUserCell.xib; sourceTree = "<group>"; };
 		A6959CB51C6A0C880045A6E6 /* PUObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUObservableObject.h; sourceTree = "<group>"; };
 		A6959CB61C6A0C880045A6E6 /* PUObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUObservableObject.m; sourceTree = "<group>"; };
 		A6959CB81C6A0F4F0045A6E6 /* PUClangMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUClangMacro.h; sourceTree = "<group>"; };
@@ -212,6 +225,7 @@
 			children = (
 				A653E0F11C679ED7002F424F /* PUSquareViewController */,
 				A6959CE31C6CCEFB0045A6E6 /* PUShopListViewController */,
+				A68BB7BE1C7A213B00B1180A /* PUUsersViewController */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -356,6 +370,29 @@
 				A68BB7BC1C79CCD600B1180A /* PUCollectionChangeModel+UITableView.m */,
 			);
 			path = PUCollectionChangeModel;
+			sourceTree = "<group>";
+		};
+		A68BB7BE1C7A213B00B1180A /* PUUsersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7C71C7A237D00B1180A /* Views */,
+				A68BB7BF1C7A220000B1180A /* PUUsersViewController.h */,
+				A68BB7C01C7A220000B1180A /* PUUsersViewController.m */,
+				A68BB7C41C7A230200B1180A /* PUUsersView.h */,
+				A68BB7C51C7A230200B1180A /* PUUsersView.m */,
+				A68BB7C11C7A220000B1180A /* PUUsersView.xib */,
+			);
+			path = PUUsersViewController;
+			sourceTree = "<group>";
+		};
+		A68BB7C71C7A237D00B1180A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A68BB7C81C7A23B700B1180A /* PUUserCell.h */,
+				A68BB7C91C7A23B700B1180A /* PUUserCell.m */,
+				A68BB7CB1C7A242E00B1180A /* PUUserCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A6959CB41C6A0C880045A6E6 /* PUObservableObject */ = {
@@ -588,9 +625,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A63261241C58193200508740 /* LaunchScreen.storyboard in Resources */,
+				A68BB7CC1C7A242E00B1180A /* PUUserCell.xib in Resources */,
 				A6959CEE1C6CCEFB0045A6E6 /* PUShopListView.xib in Resources */,
 				A6959CF11C6CCEFB0045A6E6 /* PUShopListCell.xib in Resources */,
 				A653E0FD1C679ED7002F424F /* PUSquareView.xib in Resources */,
+				A68BB7C31C7A220000B1180A /* PUUsersView.xib in Resources */,
 				A63261231C58193200508740 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,6 +694,7 @@
 				A6959CED1C6CCEFB0045A6E6 /* PUShopListView.m in Sources */,
 				A6B8827C1C64D4F00073FB5B /* UIWindow+PUExtensions.m in Sources */,
 				A68BB78A1C791FE800B1180A /* PUCollectionChangeModel.m in Sources */,
+				A68BB7CA1C7A23B700B1180A /* PUUserCell.m in Sources */,
 				A68BB7A51C79C31A00B1180A /* PUCollectionChangeModel+PUArrayChangeModel.m in Sources */,
 				A63261211C58193200508740 /* main.m in Sources */,
 				A6959CE21C6CCEA50045A6E6 /* PUShopListItems.m in Sources */,
@@ -662,6 +702,7 @@
 				A653E0DF1C679558002F424F /* PUTableViewCell.m in Sources */,
 				A68BB7A91C79C4C600B1180A /* PUArraySingleIndexChangeModel+UITableView.m in Sources */,
 				A68BB7821C791EB200B1180A /* PUArraySingleIndexChangeModel.m in Sources */,
+				A68BB7C21C7A220000B1180A /* PUUsersViewController.m in Sources */,
 				A6B882821C64F8580073FB5B /* CGGeometry+PUExtensions.m in Sources */,
 				A63261221C58193200508740 /* PUAppDelegate.m in Sources */,
 				A68BB7691C788C7F00B1180A /* PUArrayModel.m in Sources */,
@@ -675,6 +716,7 @@
 				A68BB75E1C78733E00B1180A /* UIImage+PUExtensions.m in Sources */,
 				A68BB7701C79091800B1180A /* NSIndexPath+PUExtensions.m in Sources */,
 				A6959D021C6F90A50045A6E6 /* UITableView+PUExtensions.m in Sources */,
+				A68BB7C61C7A230200B1180A /* PUUsersView.m in Sources */,
 				A6B882801C64F5530073FB5B /* UIColor+PUExtensions.m in Sources */,
 				A6959CF91C6E206D0045A6E6 /* NSString+PURandomFoodName.m in Sources */,
 				A6959CFE1C6F8B220045A6E6 /* UINib+PUExtensions.m in Sources */,

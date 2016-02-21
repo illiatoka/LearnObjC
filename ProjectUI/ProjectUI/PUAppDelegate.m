@@ -2,6 +2,7 @@
 
 #import "PUSquareViewController.h"
 #import "PUShopListViewController.h"
+#import "PUUsersViewController.h"
 
 #import "PUShopListItems.h"
 
