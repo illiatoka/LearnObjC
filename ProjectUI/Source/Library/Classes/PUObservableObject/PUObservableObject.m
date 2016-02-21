@@ -128,13 +128,14 @@
 
 - (void)performBlock:(void(^)(void))block notify:(BOOL)shouldNotify {
     @synchronized(self) {
-        BOOL notificationEnabled = self.notificationEnabled;
-        self.notificationEnabled = shouldNotify;
         if (block) {
+            BOOL notificationEnabled = self.notificationEnabled;
+            self.notificationEnabled = shouldNotify;
+            
             block();
+            
+            self.notificationEnabled = notificationEnabled;
         }
-        
-        self.notificationEnabled = notificationEnabled;
     }
 }
 

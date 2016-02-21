@@ -1,7 +1,7 @@
 #import "PUCollectionChangeModel.h"
 
 typedef NS_ENUM(NSUInteger, PUSingleArrayModelAction) {
-    PUSingleArrayModelActionStart = 0,
+    PUSingleArrayModelActionStart,
     PUArrayModelActionAdd,
     PUArrayModelActionInsert,
     PUArrayModelActionRemove,
