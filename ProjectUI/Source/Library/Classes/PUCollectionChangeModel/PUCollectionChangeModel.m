@@ -10,14 +10,14 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)collectionModelWithAction:(NSUInteger)action {
-    return [[self alloc] initCollectionModelWithAction:action];
++ (instancetype)modelWithAction:(NSUInteger)action {
+    return [[self alloc] initWithAction:action];
 }
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)initCollectionModelWithAction:(NSUInteger)action {
+- (instancetype)initWithAction:(NSUInteger)action {
     self = [self init];
     if (self) {
         self.modelAction = action;

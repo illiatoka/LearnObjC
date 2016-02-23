@@ -10,7 +10,7 @@ typedef NS_ENUM(NSUInteger, PUSingleArrayModelAction) {
 @interface PUArraySingleIndexChangeModel : PUCollectionChangeModel
 @property (nonatomic, readonly) NSUInteger  index;
 
-+ (instancetype)changeModelWithAction:(NSUInteger)action index:(NSUInteger)index;
++ (instancetype)modelWithAction:(NSUInteger)action index:(NSUInteger)index;
 
 - (instancetype)initWithAction:(NSUInteger)action index:(NSUInteger)index;
 

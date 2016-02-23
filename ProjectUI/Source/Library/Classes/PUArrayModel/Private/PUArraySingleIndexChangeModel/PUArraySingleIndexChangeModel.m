@@ -10,7 +10,7 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)changeModelWithAction:(NSUInteger)action index:(NSUInteger)index {
++ (instancetype)modelWithAction:(NSUInteger)action index:(NSUInteger)index {
     return [[PUArraySingleIndexChangeModel alloc] initWithAction:action index:index];
 }
 
@@ -18,7 +18,7 @@
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithAction:(NSUInteger)action index:(NSUInteger)index {
-    self = [super initCollectionModelWithAction:action];
+    self = [super initWithAction:action];
     if (self) {
         self.index = index;
     }

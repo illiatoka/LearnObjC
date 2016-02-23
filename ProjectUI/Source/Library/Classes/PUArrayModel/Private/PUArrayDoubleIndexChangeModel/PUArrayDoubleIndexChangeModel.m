@@ -10,7 +10,7 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)changeModelWithAction:(NSUInteger)action idx1:(NSUInteger)idx1 idx2:(NSUInteger)idx2 {
++ (instancetype)modelWithAction:(NSUInteger)action idx1:(NSUInteger)idx1 idx2:(NSUInteger)idx2 {
     return [[PUArrayDoubleIndexChangeModel alloc] initWithAction:action idx1:idx1 idx2:idx2];
 }
 
