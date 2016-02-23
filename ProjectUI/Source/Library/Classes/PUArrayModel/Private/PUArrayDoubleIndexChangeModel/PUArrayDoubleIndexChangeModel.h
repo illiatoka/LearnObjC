@@ -1,10 +1,8 @@
 #import "PUArraySingleIndexChangeModel.h"
 
 typedef NS_ENUM(NSUInteger, PUDoubleArrayModelAction) {
-    PUDoubleArrayModelActionStart = PUSingleArrayModelActionEnd,
     PUArrayModelActionExchange,
-    PUArrayModelActionMove,
-    PUDoubleArrayModelActionEnd
+    PUArrayModelActionMove
 };
 
 @interface PUArrayDoubleIndexChangeModel : PUArraySingleIndexChangeModel
