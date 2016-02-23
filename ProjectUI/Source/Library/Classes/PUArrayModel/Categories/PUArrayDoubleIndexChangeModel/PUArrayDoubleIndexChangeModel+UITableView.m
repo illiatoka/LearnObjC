@@ -26,7 +26,6 @@
     
     if (PUArrayModelActionExchange == modelAction) {
         // In this case tableView updates will perform by HRReorderTableView class!
-        // How can I fix this?
         indexPaths = nil;
     }
     

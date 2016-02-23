@@ -24,11 +24,11 @@
     }
 }
 
-- (void)updateWithBlock:(void(^)(UITableView *))block completion:(void(^)(UITableView *))comletion {
+- (void)updateWithBlock:(void(^)(UITableView *))block completion:(void(^)(UITableView *))completion {
     [self updateWithBlock:block];
     
-    if (comletion) {
-        comletion(self);
+    if (completion) {
+        completion(self);
     }
 }
 

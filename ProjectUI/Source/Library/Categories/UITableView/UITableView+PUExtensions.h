@@ -5,6 +5,6 @@
 - (id)cellWithClass:(Class)cls;
 
 - (void)updateWithBlock:(void(^)(UITableView *))block;
-- (void)updateWithBlock:(void(^)(UITableView *))block completion:(void(^)(UITableView *))comletion;
+- (void)updateWithBlock:(void(^)(UITableView *))block completion:(void(^)(UITableView *))completion;
 
 @end

@@ -1,8 +1,8 @@
 #import "PUArrayModel.h"
 
-#import "PUCollectionChangeModel+PUArrayChangeModel.h"
-
 #import "PUCollectionObserver.h"
+
+#import "PUCollectionChangeModel+PUArrayChangeModel.h"
 
 @interface PUArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableItems;

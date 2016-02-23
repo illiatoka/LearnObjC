@@ -6,11 +6,11 @@
 #import "PUShopListView.h"
 #import "PUShopListCell.h"
 
+#import "PUCollectionObserver.h"
+
 #import "UITableView+PUCollectionChangeModel.h"
 #import "NSString+PURandomFoodName.h"
 #import "UITableView+PUExtensions.h"
-
-#import "PUCollectionObserver.h"
 
 #import "PUViewControllerMacro.h"
 
