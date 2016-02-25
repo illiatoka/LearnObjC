@@ -38,7 +38,19 @@
                         <outlet property="delegate" destination="-1" id="NPV-02-nwP"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1T1-h0-I02" userLabel="Add Button">
+                <view alpha="0.0" contentMode="scaleToFill" id="Nvf-qp-auX" userLabel="Foreground View">
+                    <rect key="frame" x="0.0" y="162" width="320" height="406"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="zNq-lx-Mxx" userLabel="Activity Indicator">
+                            <rect key="frame" x="141" y="185" width="37" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" red="0.98431372549019602" green="0.078431372549019607" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1T1-h0-I02" userLabel="Add Button">
                     <rect key="frame" x="250" y="132" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
@@ -52,6 +64,9 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="activityView" destination="zNq-lx-Mxx" id="BoT-W1-iNz"/>
+                <outlet property="addButton" destination="1T1-h0-I02" id="vCa-7D-oXX"/>
+                <outlet property="foregroundView" destination="Nvf-qp-auX" id="uhp-wN-yDv"/>
                 <outlet property="tableView" destination="orP-iv-Cck" id="bmy-UY-Nrb"/>
             </connections>
             <point key="canvasLocation" x="314" y="366"/>

@@ -4,5 +4,6 @@
 
 @optional
 - (void)modelDidLoad:(id)model;
+- (void)modelIsLoading:(id)model;
 
 @end

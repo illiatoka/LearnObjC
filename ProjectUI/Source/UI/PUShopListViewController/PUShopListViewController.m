@@ -123,6 +123,11 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 
 - (void)modelDidLoad:(id)model {
     [self updateViewWithModel];
+    [self.baseView hideActivityIndicator];
+}
+
+- (void)modelIsLoading:(id)model {
+    [self.baseView showActivityIndicator];
 }
 
 @end

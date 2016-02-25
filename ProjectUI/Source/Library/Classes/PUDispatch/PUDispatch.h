@@ -16,6 +16,12 @@ extern
 void PUDispatchAsyncOnMainQueue(dispatch_block_t block);
 
 extern
+void PUDispatchSyncOnDefaultQueue(dispatch_block_t block);
+
+extern
+void PUDispatchAsyncOnDefaultQueue(dispatch_block_t block);
+
+extern
 void PUDispatchSyncOnBackgroundQueue(dispatch_block_t block);
 
 extern

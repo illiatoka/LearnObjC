@@ -23,7 +23,12 @@ static NSString * const kPUItemsKey = @"items";
 - (void)fillWithBlock:(PUVoidBlock)block {
     if (block) {
         block();
-        self.state = PUModelStateDidLoad;
+        
+        // Just for testing the activity indicator
+        sleep(2);
+        PUDispatchAsyncOnMainQueue(^{
+            self.state = PUModelStateDidLoad;
+        });
     }
 }
 
@@ -35,9 +40,9 @@ static NSString * const kPUItemsKey = @"items";
 }
 
 - (void)load {
+    self.state = PUModelStateLoading;
+    
     PUDispatchAsyncOnBackgroundQueue(^{
-        self.state = PUModelStateLoading;
-        
         NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
         PUVoidBlock block = nil;
         

@@ -83,6 +83,9 @@ static NSString * const kPUFileName     = @"shoplist.plist";
     switch (state) {
         case PUModelStateDidLoad:
             return @selector(modelDidLoad:);
+        
+        case PUModelStateLoading:
+            return @selector(modelIsLoading:);
             
         default:
             return [super selectorForState:state];

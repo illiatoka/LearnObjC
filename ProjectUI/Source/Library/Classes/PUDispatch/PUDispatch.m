@@ -23,6 +23,14 @@ void PUDispatchAsyncOnMainQueue(dispatch_block_t block) {
     dispatch_async(PUDispatchGetQueue(PUDispatchQueueMain), block);
 }
 
+void PUDispatchSyncOnDefaultQueue(dispatch_block_t block) {
+    PUDispatchSyncOnQueue(PUDispatchQueueDefault, block);
+}
+
+void PUDispatchAsyncOnDefaultQueue(dispatch_block_t block) {
+    PUDispatchAsyncOnQueue(PUDispatchQueueDefault, block);
+}
+
 void PUDispatchSyncOnBackgroundQueue(dispatch_block_t block) {
     PUDispatchSyncOnQueue(PUDispatchQueueBackground, block);
 }
