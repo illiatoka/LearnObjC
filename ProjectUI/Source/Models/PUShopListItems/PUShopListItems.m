@@ -1,6 +1,7 @@
 #import "PUShopListItems.h"
 
 #import "PUShopListItem.h"
+#import "PUDispatch.h"
 
 #import "NSString+PURandomFoodName.h"
 
@@ -21,10 +22,8 @@ static NSString * const kPUItemsKey = @"items";
 
 - (void)fillWithBlock:(PUVoidBlock)block {
     if (block) {
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
-            block();
-            self.state = PUModelStateDidLoad;
-        });
+        block();
+        self.state = PUModelStateDidLoad;
     }
 }
 
@@ -36,30 +35,32 @@ static NSString * const kPUItemsKey = @"items";
 }
 
 - (void)load {
-    self.state = PUModelStateLoading;
-    
-    NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
-    PUVoidBlock block = nil;
-    
-    if (items) {
-        block = ^{
-            [self performWithoutNotification:^{
-                for (id item in items) {
-                    [self addObject:item];
-                }
-            }];
-        };
-    } else {
-        block = ^{
-            for (NSUInteger count = 0; count < kPUShopListItemCount; count++) {
+    PUDispatchAsyncOnBackgroundQueue(^{
+        self.state = PUModelStateLoading;
+        
+        NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
+        PUVoidBlock block = nil;
+        
+        if (items) {
+            block = ^{
                 [self performWithoutNotification:^{
-                    [self addObject:[PUShopListItem shopListItemWithName:[NSString randomName]]];
+                    for (id item in items) {
+                        [self addObject:item];
+                    }
                 }];
-            }
-        };
-    }
-    
-    [self fillWithBlock:block];
+            };
+        } else {
+            block = ^{
+                for (NSUInteger count = 0; count < kPUShopListItemCount; count++) {
+                    [self performWithoutNotification:^{
+                        [self addObject:[PUShopListItem shopListItemWithName:[NSString randomName]]];
+                    }];
+                }
+            };
+        }
+        
+        [self fillWithBlock:block];
+    });
 }
 
 #pragma mark -

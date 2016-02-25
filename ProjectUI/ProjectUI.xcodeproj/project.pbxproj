@@ -16,6 +16,7 @@
 		A653E0FD1C679ED7002F424F /* PUSquareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A653E0F41C679ED7002F424F /* PUSquareView.xib */; };
 		A653E0FE1C679ED7002F424F /* PUSquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A653E0F61C679ED7002F424F /* PUSquareViewController.m */; };
 		A66753851C7DDF680097726F /* PUModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A66753841C7DDF680097726F /* PUModel.m */; };
+		A667538A1C7E85950097726F /* PUDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = A66753891C7E85950097726F /* PUDispatch.m */; };
 		A68BB75E1C78733E00B1180A /* UIImage+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB75D1C78733E00B1180A /* UIImage+PUExtensions.m */; };
 		A68BB7691C788C7F00B1180A /* PUArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB7661C788C7F00B1180A /* PUArrayModel.m */; };
 		A68BB7701C79091800B1180A /* NSIndexPath+PUExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB76F1C79091800B1180A /* NSIndexPath+PUExtensions.m */; };
@@ -69,6 +70,8 @@
 		A66753831C7DDF680097726F /* PUModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUModel.h; sourceTree = "<group>"; };
 		A66753841C7DDF680097726F /* PUModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUModel.m; sourceTree = "<group>"; };
 		A66753861C7E55790097726F /* PUModelObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUModelObserver.h; sourceTree = "<group>"; };
+		A66753881C7E85950097726F /* PUDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUDispatch.h; sourceTree = "<group>"; };
+		A66753891C7E85950097726F /* PUDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUDispatch.m; sourceTree = "<group>"; };
 		A68BB75C1C78733E00B1180A /* UIImage+PUExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PUExtensions.h"; sourceTree = "<group>"; };
 		A68BB75D1C78733E00B1180A /* UIImage+PUExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PUExtensions.m"; sourceTree = "<group>"; };
 		A68BB7651C788C7F00B1180A /* PUArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUArrayModel.h; sourceTree = "<group>"; };
@@ -207,6 +210,7 @@
 		A653E0DA1C6794DE002F424F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A66753871C7E85950097726F /* PUDispatch */,
 				A66753821C7DDF160097726F /* PUModel */,
 				A6959CB41C6A0C880045A6E6 /* PUObservableObject */,
 				A653E0DC1C67951D002F424F /* PUTableViewCell */,
@@ -254,6 +258,15 @@
 				A66753841C7DDF680097726F /* PUModel.m */,
 			);
 			path = PUModel;
+			sourceTree = "<group>";
+		};
+		A66753871C7E85950097726F /* PUDispatch */ = {
+			isa = PBXGroup;
+			children = (
+				A66753881C7E85950097726F /* PUDispatch.h */,
+				A66753891C7E85950097726F /* PUDispatch.m */,
+			);
+			path = PUDispatch;
 			sourceTree = "<group>";
 		};
 		A68BB75B1C7872FD00B1180A /* UIImage */ = {
@@ -730,6 +743,7 @@
 				A6959CE11C6CCEA50045A6E6 /* PUShopListItem.m in Sources */,
 				A68BB75E1C78733E00B1180A /* UIImage+PUExtensions.m in Sources */,
 				A68BB7701C79091800B1180A /* NSIndexPath+PUExtensions.m in Sources */,
+				A667538A1C7E85950097726F /* PUDispatch.m in Sources */,
 				A66753851C7DDF680097726F /* PUModel.m in Sources */,
 				A6959D021C6F90A50045A6E6 /* UITableView+PUExtensions.m in Sources */,
 				A68BB7C61C7A230200B1180A /* PUUsersView.m in Sources */,
