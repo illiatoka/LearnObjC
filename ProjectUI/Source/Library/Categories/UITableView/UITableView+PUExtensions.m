@@ -17,18 +17,18 @@
 }
 
 - (void)updateWithBlock:(void(^)(UITableView *))block {
+    [self updateWithBlock:block completion:nil];
+}
+
+- (void)updateWithBlock:(void(^)(UITableView *))block completion:(void(^)(UITableView *))completion {
     if (block) {
         [self beginUpdates];
         block(self);
         [self endUpdates];
-    }
-}
-
-- (void)updateWithBlock:(void(^)(UITableView *))block completion:(void(^)(UITableView *))completion {
-    [self updateWithBlock:block];
-    
-    if (completion) {
-        completion(self);
+        
+        if (completion) {
+            completion(self);
+        }
     }
 }
 

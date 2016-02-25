@@ -7,6 +7,7 @@
 #import "PUShopListCell.h"
 
 #import "PUCollectionObserver.h"
+#import "PUModelObserver.h"
 
 #import "UITableView+PUCollectionChangeModel.h"
 #import "NSString+PURandomFoodName.h"
@@ -16,7 +17,12 @@
 
 PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListView)
 
-@interface PUShopListViewController () <UITableViewDelegate, UITableViewDataSource, PUCollectionObserver>
+@interface PUShopListViewController () <UITableViewDelegate,
+                                        UITableViewDataSource,
+                                        PUCollectionObserver,
+                                        PUModelObserver>
+
+- (void)updateViewWithModel;
 
 @end
 
@@ -31,7 +37,7 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
         _shopListItems = shopListItems;
         [_shopListItems addObserver:self];
         
-        [self.baseView.tableView reloadData];
+        [self updateViewWithModel];
     }
 }
 
@@ -41,7 +47,8 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.baseView.tableView reloadData];
+    [self.shopListItems load];
+    [self updateViewWithModel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,6 +60,13 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)updateViewWithModel {
+    [self.baseView.tableView reloadData];
 }
 
 #pragma mark -
@@ -98,10 +112,17 @@ PUViewControllerBaseViewProperty(PUShopListViewController, baseView, PUShopListV
 }
 
 #pragma mark -
-#pragma mark PUArrayModelObserverProtocol
+#pragma mark PUArrayModelObserver
 
 - (void)collection:(id)collection didChangeWithModel:(id)changeModel {
     [self.baseView.tableView updateWithCollectionChangeModel:changeModel];
+}
+
+#pragma mark -
+#pragma mark PUModelObserver
+
+- (void)modelDidLoad:(id)model {
+    [self updateViewWithModel];
 }
 
 @end

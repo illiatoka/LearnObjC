@@ -8,6 +8,11 @@
 
 #import "UIWindow+PUExtensions.h"
 
+@interface PUAppDelegate ()
+@property (nonatomic, strong)   PUShopListItems *shopListItems;
+
+@end
+
 @implementation PUAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -16,7 +21,9 @@
     PUShopListViewController *controller = [PUShopListViewController new];
     window.rootViewController = controller;
     
-    controller.shopListItems = [PUShopListItems new];
+    PUShopListItems *shopListItems = [PUShopListItems new];
+    self.shopListItems = shopListItems;
+    controller.shopListItems = shopListItems;
     
     [window makeKeyAndVisible];
     
@@ -24,7 +31,7 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    
+    [self.shopListItems save];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

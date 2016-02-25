@@ -1,5 +1,9 @@
 #import "PUShopListItem.h"
 
+static NSString * const kPUNameKey      = @"name";
+static NSString * const kPUCheckedKey   = @"checked";
+
+
 @implementation PUShopListItem
 
 #pragma mark -
@@ -30,6 +34,24 @@
         
         [self notifyWithSelector:@selector(shopListItemModelDidChange:)];
     }
+}
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super init];
+    if (self) {
+        self.name = [coder decodeObjectForKey:kPUNameKey];
+        self.checked = [coder decodeBoolForKey:kPUCheckedKey];
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.name forKey:kPUNameKey];
+    [coder encodeBool:self.checked forKey:kPUCheckedKey];
 }
 
 @end

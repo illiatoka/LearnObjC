@@ -1,6 +1,6 @@
-#import "PUObservableObject.h"
+#import "PUModel.h"
 
-@interface PUArrayModel : PUObservableObject
+@interface PUArrayModel : PUModel
 @property (nonatomic, readonly) NSArray     *items;
 @property (nonatomic, readonly) NSUInteger  count;
 

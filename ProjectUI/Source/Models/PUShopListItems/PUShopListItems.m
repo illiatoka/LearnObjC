@@ -6,35 +6,67 @@
 
 static const NSUInteger kPUShopListItemCount = 20;
 
+static NSString * const kPUItemsKey = @"items";
+
 @interface PUShopListItems ()
 
-- (void)fill;
+- (void)fillWithBlock:(PUVoidBlock)block;
 
 @end
 
 @implementation PUShopListItems
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
+#pragma mark Private
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [self fill];
+- (void)fillWithBlock:(PUVoidBlock)block {
+    if (block) {
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+            block();
+            self.state = PUModelStateDidLoad;
+        });
     }
-    
-    return self;
 }
 
 #pragma mark -
-#pragma mark Private
+#pragma mark PUModel
 
-- (void)fill {
-    for (NSUInteger count = 0; count < kPUShopListItemCount; count++) {
-        [self performWithoutNotification:^{
-            [self addObject:[PUShopListItem shopListItemWithName:[NSString randomName]]];
-        }];
+- (void)save {
+    [NSKeyedArchiver archiveRootObject:self.items toFile:self.filePath];
+}
+
+- (void)load {
+    self.state = PUModelStateLoading;
+    
+    NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
+    PUVoidBlock block = nil;
+    
+    if (items) {
+        block = ^{
+            [self performWithoutNotification:^{
+                for (id item in items) {
+                    [self addObject:item];
+                }
+            }];
+        };
+    } else {
+        block = ^{
+            for (NSUInteger count = 0; count < kPUShopListItemCount; count++) {
+                [self performWithoutNotification:^{
+                    [self addObject:[PUShopListItem shopListItemWithName:[NSString randomName]]];
+                }];
+            }
+        };
     }
+    
+    [self fillWithBlock:block];
+}
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.items forKey:kPUItemsKey];
 }
 
 @end
