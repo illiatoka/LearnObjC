@@ -10,10 +10,8 @@ typedef NS_ENUM(NSUInteger, PUModelState) {
 };
 
 @interface PUModel : PUObservableObject
-@property (nonatomic, readonly, getter=isCached)    BOOL        cached;
-@property (nonatomic, readonly)                     NSString    *filePath;
+@property (nonatomic, readonly) NSString    *filePath;
 
-- (void)save;
 - (void)load;
 
 @end

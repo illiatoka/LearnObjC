@@ -12,7 +12,6 @@ static NSString * const kPUFileName     = @"shoplist.plist";
 
 @implementation PUModel
 
-@dynamic cached;
 @dynamic filePath;
 
 #pragma mark -
@@ -25,13 +24,6 @@ static NSString * const kPUFileName     = @"shoplist.plist";
     }
     
     return self;
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (BOOL)isCached {
-    return NO;
 }
 
 - (NSString *)filePath {

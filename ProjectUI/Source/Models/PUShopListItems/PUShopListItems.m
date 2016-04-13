@@ -17,6 +17,15 @@ static NSString * const kPUItemsKey = @"items";
 
 @implementation PUShopListItems
 
+@dynamic cached;
+
+#pragma mark -
+#pragma mark Accessors
+
+- (BOOL)isCached {
+    return NO;
+}
+
 #pragma mark -
 #pragma mark Private
 
